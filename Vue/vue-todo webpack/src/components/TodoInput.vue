@@ -1,7 +1,7 @@
 <template>
     <div class="inputArea">
-        <input type="text">
-        <button>
+        <input type="text" v-model="newTodoItem">
+        <button v-on:click="addItem">
             <span class="material-icons">
                 add
             </span>
@@ -11,7 +11,16 @@
 
 <script>
 export default {
-
+    data:function(){
+        return{
+            listItems:[]
+        }
+    },
+    methods:{
+        addItem:function(){
+            alert(this.newTodoItem);
+        }
+    }
 }
 </script>
 
