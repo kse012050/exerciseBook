@@ -1,7 +1,11 @@
 <template>
     <div class="inputArea">
         <input type="text">
-        <button>등록</button>
+        <button>
+            <span class="material-icons">
+                add
+            </span>
+        </button>
     </div>
 </template>
 
@@ -15,7 +19,7 @@ export default {
 .inputArea{display: flex;}
 .inputArea input[type="text"]{flex:1; padding:10px;}
 .inputArea button{
-    color: #ffa804;
+    color: black;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 49%, rgba(241,203,247,1) 76%, rgba(0,212,255,1) 100%);
     }

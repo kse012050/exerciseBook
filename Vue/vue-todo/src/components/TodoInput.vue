@@ -1,7 +1,9 @@
 <template>
     <div class="inputArea">
         <input type="text">
-        <button>등록</button>
+        <span class="material-icons">
+        add
+        </span>
     </div>
 </template>
 
