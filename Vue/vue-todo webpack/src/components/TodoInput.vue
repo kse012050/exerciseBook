@@ -1,6 +1,6 @@
 <template>
     <div class="inputArea">
-        <input type="text" v-model="newTodoItem">
+        <input type="text" v-model="newTodoItem" v-on:keyup.enter="addItem">
         <button v-on:click="addItem">
             <span class="material-icons">
                 add
@@ -13,12 +13,13 @@
 export default {
     data:function(){
         return{
-            listItems:[]
+            listItems:[],
+            newTodoItem:'',
         }
     },
     methods:{
         addItem:function(){
-            alert(this.newTodoItem);
+            localStorage.setItem(this.newTodoItem, this.newTodoItem);
         }
     }
 }
