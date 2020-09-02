@@ -26,10 +26,12 @@ export default {
 </script>
 
 <style>
-.inputArea{display: flex;}
+.inputArea{display: flex; margin-bottom: 10px;}
 .inputArea input[type="text"]{flex:1; padding:10px;}
 .inputArea button{
     color: black;
+    width: 50px;
+    height: 50px;
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 49%, rgba(241,203,247,1) 76%, rgba(0,212,255,1) 100%);
     }
