@@ -1,10 +1,14 @@
 <template>
-    <button>전체삭제</button>
+    <button v-on:click="removeAll">전체삭제</button>
 </template>
 
 <script>
 export default {
-
+    methods :{
+        removeAll:function(){
+            localStorage.clear();
+        }
+    }
 }
 </script>
 
