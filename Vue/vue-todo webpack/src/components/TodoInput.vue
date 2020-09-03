@@ -19,7 +19,8 @@ export default {
     },
     methods:{
         addItem:function(){
-            localStorage.setItem(this.newTodoItem, this.newTodoItem);
+            this.$emit('addTodoItem',this.newTodoItem);
+            this.clearInput();
         }
     }
 }
