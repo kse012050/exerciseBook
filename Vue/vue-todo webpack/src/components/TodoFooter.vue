@@ -6,7 +6,8 @@
 export default {
     methods :{
         removeAll:function(){
-            localStorage.clear();
+            this.$emit('removeAll');
+            // localStorage.clear();
         }
     }
 }
