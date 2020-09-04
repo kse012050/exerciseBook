@@ -20,7 +20,8 @@ export default {
     methods:{
         addItem:function(){
             this.$emit('addTodoItem',this.newTodoItem);
-            this.clearInput();
+            // this.clearInput();
+            this.newTodoItem = '';
         }
     }
 }

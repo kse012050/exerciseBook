@@ -13,8 +13,9 @@ export default {
     props:['propsdata'],
     methods :{
         removeItem:function(todoItems, index){
-            this.todoItems.splice(index,1);
-            localStorage.removeItem(todoItems);
+            this.$emit('removeTodoItem',todoItems,index);
+            // this.todoItems.splice(index,1);
+            // localStorage.removeItem(todoItems);
         }
     }
 }
