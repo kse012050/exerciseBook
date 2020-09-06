@@ -1,8 +1,8 @@
 <template>
     <ul>
-        <li v-for="(todoItems,index) in propsdata" v-bind:key="todoItems">
-            <button class="material-icons doneIcon">done</button>
-            {{ todoItems }}
+        <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item">
+            <button class="material-icons doneIcon" v-on:click="toggleComplate(todoItems,index)">done</button>
+            <span>{{ todoItem.item }}</span>
             <button class="material-icons deleteIcon" v-on:click="removeItem(todoItems,index)">delete_forever</button>
         </li>
     </ul>
@@ -10,12 +10,20 @@
 
 <script>
 export default {
+    // data(){
+    //     return{
+    //         todoItems:[]
+    //     }
+    // },
     props:['propsdata'],
     methods :{
         removeItem:function(todoItems, index){
             this.$emit('removeTodoItem',todoItems,index);
+        },
+        toggleComplate:function(todoItems, index){
+            this.$emit('toggleComplate',todoItems,index);
         }
-    }
+    },
 }
 </script>
 

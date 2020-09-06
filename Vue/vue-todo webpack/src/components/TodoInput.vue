@@ -13,13 +13,15 @@
 export default {
     data:function(){
         return{
+            // listItems:[],
             listItems:[],
             newTodoItem:'',
         }
     },
     methods:{
         addItem:function(){
-            this.$emit('addTodoItem',this.newTodoItem);
+            var obj = {complated:false, item:this.newTodoItem};
+            this.$emit('addTodoItem',obj);
             this.newTodoItem = '';
         }
     }
