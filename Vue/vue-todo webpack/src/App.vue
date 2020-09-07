@@ -29,11 +29,11 @@ export default {
       this.todoItems.push(todoItem);
     },
     removeOneItem:function(todoItems,index){
-      localStorage.removeItem(todoItems);
+      localStorage.removeItem(this.todoItems[index].item);
       this.todoItems.splice(index,1);
     },
-    toggleOneItem:function(todoItems,index){
-      console.log(localStorage.setItem);
+    toggleOneItem:function(index){
+      console.log(index);
     },
     removeAll:function(){
       localStorage.clear();
@@ -44,7 +44,8 @@ export default {
     // if(localStorage.length > 0){
       for(var i = 0; i < localStorage.length;i++){
           if(localStorage.key(i) !=='loglevel:webpack-dev-server'){
-              this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+            this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+            console.log(localStorage.key(i));
           }
       }
     // }

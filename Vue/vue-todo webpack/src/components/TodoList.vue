@@ -10,11 +10,11 @@
 
 <script>
 export default {
-    // data(){
-    //     return{
-    //         todoItems:[]
-    //     }
-    // },
+    data(){
+        return{
+            todoItems:[]
+        }
+    },
     props:['propsdata'],
     methods :{
         removeItem:function(todoItems, index){
