@@ -20,8 +20,7 @@ export default {
     },
     methods:{
         addItem:function(){
-            var obj = {complated:false, item:this.newTodoItem};
-            this.$emit('addTodoItem',obj);
+            this.$emit('addTodoItem',this.newTodoItem);
             this.newTodoItem = '';
         }
     }

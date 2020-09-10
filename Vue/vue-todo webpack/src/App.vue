@@ -24,16 +24,22 @@ export default {
   },
   methods:{
     addOneItem:function(todoItem){
-      console.log(todoItem.complated);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-      this.todoItems.push(todoItem);
+      var obj = {complated:false, item:todoItem};
+      localStorage.setItem(todoItem, JSON.stringify(obj));
+      this.todoItems.push(obj);
     },
-    removeOneItem:function(todoItems,index){
+    removeOneItem:function(index){
       localStorage.removeItem(this.todoItems[index].item);
       this.todoItems.splice(index,1);
     },
-    toggleOneItem:function(index){
-      console.log(index);
+    toggleOneItem:function(todoItem, index){
+      this.todoItems[index].complated = !(this.todoItems[index].complated);
+      console.log(todoItem);
+      console.log(this.todoItems[index].complated)
+      // console.log(index);
+      // console.log(this.todoItems[index].complated);
+      localStorage.removeItem(todoItem.item);
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
     removeAll:function(){
       localStorage.clear();

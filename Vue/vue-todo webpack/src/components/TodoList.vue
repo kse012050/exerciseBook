@@ -1,27 +1,22 @@
 <template>
     <ul>
         <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item">
-            <button class="material-icons doneIcon" v-on:click="toggleComplate(todoItems,index)">done</button>
-            <span>{{ todoItem.item }}</span>
-            <button class="material-icons deleteIcon" v-on:click="removeItem(todoItems,index)">delete_forever</button>
+            <button class="material-icons doneIcon" v-bind:class="{checkBtnComplated: todoItem.complated}" v-on:click="toggleComplate(todoItem,index)">done</button>
+            <span v-bind:class="{textCompleted: todoItem.complated}">{{ todoItem.item }}</span>
+            <button class="material-icons deleteIcon" v-on:click="removeItem(index)">delete_forever</button>
         </li>
     </ul>
 </template>
 
 <script>
 export default {
-    data(){
-        return{
-            todoItems:[]
-        }
-    },
     props:['propsdata'],
     methods :{
-        removeItem:function(todoItems, index){
-            this.$emit('removeTodoItem',todoItems,index);
+        removeItem:function(index){
+            this.$emit('removeTodoItem',index);
         },
-        toggleComplate:function(todoItems, index){
-            this.$emit('toggleComplate',todoItems,index);
+        toggleComplate:function(todoItem, index){
+            this.$emit('toggleComplate',todoItem,index);
         }
     },
 }
@@ -34,4 +29,6 @@ export default {
     button{background: transparent; border: none;}
     .doneIcon{color: #3D65F2;}
     .deleteIcon{color: #F50043;}
+    .checkBtnComplated{color: white;}
+    .textCompleted{color: white;}
 </style>
