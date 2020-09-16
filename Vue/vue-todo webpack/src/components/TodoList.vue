@@ -1,11 +1,11 @@
 <template>
-    <ul>
+    <transition-group name="list" tag="ul">
         <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item">
             <button class="material-icons doneIcon" v-bind:class="{checkBtnComplated: todoItem.complated}" v-on:click="toggleComplate(todoItem,index)">done</button>
             <span v-bind:class="{textCompleted: todoItem.complated}">{{ todoItem.item }}</span>
             <button class="material-icons deleteIcon" v-on:click="removeItem(index)">delete_forever</button>
         </li>
-    </ul>
+    </transition-group>
 </template>
 
 <script>
@@ -31,4 +31,11 @@ export default {
     .deleteIcon{color: #F50043;}
     .checkBtnComplated{color: white;}
     .textCompleted{color: white;}
+    .list-enter-active, .list-leave-active {
+        transition: all 1s;
+    }
+    .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+        opacity: 0;
+        transform: translateY(30px);
+    }
 </style>
