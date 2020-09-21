@@ -53,12 +53,26 @@
             sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`
         };
 
-        yOffset = window.pageXOffset;
+        yOffset = window.pageYOffset;
         let totalScrollHeight = 0;
+        for(let i = 0; i < sceneInfo.length; i++){
+            totalScrollHeight += sceneInfo[i].scrollHeight;
+            if(totalScrollHeight >= yOffset){
+                currentScene = i;
+                break;
+            }
+        }
+        document.body.setAttribute('id', `show-scene-${currentScene}`);
 
     };
 
+    function scrollLoop(){
+        console.log('11');
+    }
 
+    window.addEventListener('scroll',() => {
+        scrollLoop();
+    });
 
     // 로드 되면
     window.addEventListener('load',setLayout);
