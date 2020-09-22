@@ -12,16 +12,13 @@
 export default {
     methods :{
         removeItem:function(index){
-            this.$emit('removeTodoItem',index);
+            this.$store.commit('removeOneItem',index);
         },
-        toggleComplate:function(todoItem, index){
-            this.$emit('toggleComplate',todoItem,index);
-            console.log(this.$store.state.todoItemsa[0]);
+        toggleComplate:function(todoItem,index){
+            // console.log(this.$store.state.todoItemsa[0]);
+            this.$store.commit('toggleOneItem',{todoItem,index});
         }
     },
-    created:function(){
-        // console.log(this.$store.state.todoItemsa)
-    }
 }
 </script>
 
