@@ -39,6 +39,11 @@ export const store = new Vuex.Store({
             localStorage.removeItem(payload.todoItem.item);
             localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
         },
+        removeAll:function(state){
+            console.log('111');
+            localStorage.clear();
+            state.todoItems = [];
+        }
     }
     // mutations:{
     //     created : function(){

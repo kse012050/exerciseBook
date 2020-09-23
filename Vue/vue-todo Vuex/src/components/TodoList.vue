@@ -15,7 +15,6 @@ export default {
             this.$store.commit('removeOneItem',index);
         },
         toggleComplate:function(todoItem,index){
-            // console.log(this.$store.state.todoItemsa[0]);
             this.$store.commit('toggleOneItem',{todoItem,index});
         }
     },

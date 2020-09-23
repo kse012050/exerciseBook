@@ -25,8 +25,6 @@ import Modal from './common/Modal.vue'
 export default {
     data:function(){
         return{
-            // listItems:[],
-            listItems:[],
             newTodoItem:'',
             showModal:false,
         }
