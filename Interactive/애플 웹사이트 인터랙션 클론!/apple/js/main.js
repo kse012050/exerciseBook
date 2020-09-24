@@ -41,7 +41,7 @@
 
     ];
 
-
+    let totalScrollHeight
     function setLayout(){
         // 각 스크롤 섹션의 높이 세팅
         for(let i = 0; i < sceneInfo.length; i++){
@@ -54,7 +54,7 @@
         };
 
         yOffset = window.pageYOffset;
-        let totalScrollHeight = 0;
+        totalScrollHeight = 0;
         for(let i = 0; i < sceneInfo.length; i++){
             totalScrollHeight += sceneInfo[i].scrollHeight;
             if(totalScrollHeight >= yOffset){
@@ -67,10 +67,22 @@
     };
 
     function scrollLoop(){
-        console.log('11');
+        prevScrollHeight = 0;
+        for(var i = 0; i < currentScene; i++){
+            prevScrollHeight = prevScrollHeight + sceneInfo[i].scrollHeight;
+        }
+        if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight){
+            currentScene++;
+        }
+        if(yOffset < prevScrollHeight){
+            if(currentScene === 0) return;
+            currentScene--;
+        }
+        document.body.setAttribute('id', `show-scene-${currentScene}`);
     }
 
     window.addEventListener('scroll',() => {
+        yOffset = window.pageYOffset;
         scrollLoop();
     });
 
