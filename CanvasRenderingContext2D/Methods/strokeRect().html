@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>strokeRect() 연습장</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.shadowColor = '#d53';
+        ctx.shadowBlur = 20;
+        ctx.lineJoin = 'bevel';
+        ctx.lineWidth = 15;
+        ctx.strokeStyle = '#38f';
+        ctx.strokeRect(30, 30, 160, 90);
+    </script>
+</body>
+</html>
