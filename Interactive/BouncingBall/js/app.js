@@ -2,12 +2,14 @@ class App{
     constructor(){
         this.canvas = document.querySelector("canvas");
         this.ctx = this.canvas.getContext('2d');
-        console.log(
-            document.body.clientWidth
-        )
-        
-
+        // this.canvas = document.createElement('canvas');
+        // this.ctx = this.canvas.getContext('2d');
+        // 
+        // document.body.appendChild(this.canvas);
+// 
         window.addEventListener('resize',this.resize.bind(this), false);
+        this.resize();
+
         // this.ctx.beginPath();
         // this.ctx.strokeStyle = "blue";
         // this.ctx.strokeWidth = 50;
