@@ -9,11 +9,13 @@ export class Ball{
         this.y = (this.stageHeight) - (this.size);
     }
 
-    draw(ctx){
+    draw(ctx ,block){
         this.x += this.speedX;
         this.y -= this.speedY;
         
         this.bounceWindow(this.stageWidth ,this.stageHeight);
+
+        this.bounceBlock(block);
 
         ctx.fillStyle = "yellow";
         ctx.beginPath();
@@ -32,5 +34,17 @@ export class Ball{
         }else if(this.y > maxY || this.y < minY){
             this.speedY *= -1;
         }
+    }
+
+    bounceBlock(block){
+        console.log(block);
+        const minX = block.x - this.size;
+        // const maxX = block.maxX - this.size;
+        const minY = block.y - this.size;
+        console.log(block.x);
+        
+        // if(this.x > minX && this.y > ){
+        //     this.speedX *= -1;
+        // }
     }
 }

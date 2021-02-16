@@ -1,4 +1,5 @@
-import { Block } from './block.js';
+// import { Block } from './block.js';
+import { Block } from './block02.js';
 import { Ball } from './ball.js';
 
 class App{
@@ -12,7 +13,8 @@ class App{
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
         
-        this.block = new Block(this.stageWidth, 10);
+        // this.block = new Block(this.stageWidth, 10);
+        this.block = new Block(this.stageWidth, this.stageHeight);
         this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 10);
         this.resize();
         this.animate();
@@ -35,7 +37,7 @@ class App{
         this.ctx.clearRect(0,0,this.stageWidth, this.stageHeight);
 
         this.block.draw(this.ctx);
-        this.ball.draw(this.ctx);
+        this.ball.draw(this.ctx , this.block);
     }
 }
 
