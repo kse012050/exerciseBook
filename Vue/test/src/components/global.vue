@@ -2,9 +2,9 @@
     <div class="globalArea">
         <header>
             <h1>
-                <!-- <router-link to="">
+                <router-link to="">
                     <img src="" alt="">
-                </router-link> -->
+                </router-link>
             </h1>
             <h2>HOME</h2>
             <button>CONTACT</button>
@@ -19,16 +19,16 @@
             <nav>
                 <ul>
                     <li>
-                        <!-- <router-link to="">HOME</router-link> -->
+                        <router-link to="home">HOME</router-link>
                     </li>
                     <li>
-                        <!-- <router-link to="">BRAND</router-link> -->
+                        <router-link to="brand">BRAND</router-link>
                     </li>
                     <li>
-                        <!-- <router-link to="">CHANNEL</router-link> -->
+                        <router-link to="channel">CHANNEL</router-link>
                     </li>
                     <li>
-                        <!-- <router-link to="">MAGAZINES</router-link> -->
+                        <router-link to="magazines">MAGAZINES</router-link>
                     </li>
                 </ul>
             </nav>
