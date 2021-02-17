@@ -39,20 +39,23 @@ export class Ball{
     }
 
     bounceBlock(block){
+        
         const maxX = block.width + block.x + this.size;
+        const minY = block.height - (this.size);
         const maxY = block.height + block.y + this.size;
+
         // console.log("maxY = " + maxY);
         // console.log('this.y = ' + this.y);
         
         if(this.test){
-            console.log(block);
-            console.log("maxX = " + maxX);
-            console.log('this.x = ' + this.x);
+            // console.log(block);
+            // console.log("maxX = " + maxX);
+            // console.log('this.x = ' + this.x);
         }
-        if(this.y <= maxY && this.x < maxX){
+        if(this.x < maxX && this.y >= minY  && this.y <= maxY ){
             this.test = false;
+            // this.speedY *= -1;
             // this.speedY = 0;
-            this.speedY *= -1;
             // this.speedX = 0;
             // console.log(maxY);
         }
