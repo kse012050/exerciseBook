@@ -3,7 +3,7 @@
         <header>
             <h1>
                 <router-link to="">
-                    <img src="" alt="">
+                    <img src="../images/logo.png" alt="logo">
                 </router-link>
             </h1>
             <h2>HOME</h2>
