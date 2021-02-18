@@ -15,7 +15,7 @@ class App{
         
         // this.block = new Block(this.stageWidth, 10);
         this.block = new Block(this.stageWidth, this.stageHeight);
-        this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 10);
+        this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 15);
         this.resize();
         this.animate();
 
