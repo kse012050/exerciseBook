@@ -50,6 +50,7 @@ table {
 	border-spacing: 0;
 }
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Roboto&display=swap');
+a{text-decoration: none;}
 body{background: gray;}
 // @font-face{
 // 	font-family: 'Roboto';
@@ -57,3 +58,4 @@ body{background: gray;}
 // }
 
 button{background-color: transparent; border: none; color: $color; padding: 0;}
+

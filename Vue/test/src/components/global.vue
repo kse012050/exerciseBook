@@ -7,16 +7,16 @@
                 </router-link>
             </h1>
             <h2>HOME</h2>
-            <button>CONTACT</button>
+            <button >CONTACT</button>
         </header>
 
         <aside>
-            <button>
+            <button v-on:click="menu()">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <nav>
+            <nav class="active">
                 <ul>
                     <li>
                         <router-link to="home">HOME</router-link>
@@ -37,7 +37,7 @@
         <footer>
             <p>COPYRIGHT © 2018 NATIONAL GEOGRAPHIC KOREA LLT. ALL RIGHT RESERVED</p>
             <div>
-                <button>개인정보 취급방침 이용약관</button>
+                <button >개인정보 취급방침 이용약관</button>
                 <ul>
                     <li><a href="#"><img src="../images/sns_book.png" alt=""></a></li>
                     <li><a href="#"><img src="../images/sns_instar.png" alt=""></a></li>
@@ -50,7 +50,19 @@
 
 <script>
 export default {
+    date(){
+        return{
 
+        }
+    },
+    computed:{
+        
+    },
+    methods:{
+        menu(){
+            document.querySelector('nav').classList.toggle('active');
+        }
+    }
 }
 </script>
 
@@ -69,12 +81,38 @@ $pointColor:#fcd804;
 
     aside{
         button{
-            position: fixed; top: calc(50% - 4px); left: 70px;
+            position: fixed; top: calc(50% - 4px); left: 70px; z-index: 100;
             span{display: inline-block; width: 8px; height: 8px; background-color: white; border-radius: 100%;
                 &:not(:last-of-type){margin-right: 5px;}
             }
         }
-        nav{display: none}
+        nav{
+            position: fixed;
+            top: 0;
+            left: -100%;
+            bottom: 0;
+            width: 430px;
+            padding-right: 60px;
+            box-sizing: border-box;
+            background: rgba(0,0,0,0.4);
+            transition: 0.5s left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            &.active{   
+                left: 0;
+            }
+            ul{
+                li{
+                    text-align: right;
+                    a{font-size: 26px; &:hover,.active{color:$pointColor;}}
+                    &:not(:last-of-type){
+                        margin-bottom: 100px;
+                    }
+                }
+            }
+        }
     }
 
     footer{
