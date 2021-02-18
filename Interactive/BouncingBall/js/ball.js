@@ -33,8 +33,10 @@ export class Ball{
 
         if(this.x > maxX || this.x < minX){
             this.speedX *= -1;
+            this.x += this.speedX;
         }else if(this.y > maxY || this.y < minY){
             this.speedY *= -1;
+            this.y += this.speedY;
         }
     }
 
