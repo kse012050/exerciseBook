@@ -13,7 +13,7 @@ export class Ball{
 
     draw(ctx ,block){
         this.x += this.speedX;
-        this.y -= this.speedY;
+        this.y += this.speedY;
         
         this.bounceWindow(this.stageWidth ,this.stageHeight);
 
@@ -33,15 +33,13 @@ export class Ball{
 
         if(this.x > maxX || this.x < minX){
             this.speedX *= -1;
-            this.x += this.speedX;
         }else if(this.y > maxY || this.y < minY){
             this.speedY *= -1;
-            this.y += this.speedY;
         }
     }
 
     bounceBlock(block){
-        const mixX = block.x - this.size;
+        const minX = block.x - this.size;
         const maxX = block.width + block.x + this.size;
         const minY = block.height - this.size + this.speedY;
         const maxY = block.height + block.y + this.size;
@@ -50,23 +48,17 @@ export class Ball{
         // console.log('this.y = ' + this.y);
         
         if(this.test){
-            console.log(block);
+            // console.log(block);
             // console.log("maxX = " + maxX);
             // console.log('this.x = ' + this.x);
-            console.log('this.y = ' + this.y);
+            // console.log('this.y = ' + this.y);
         }
-        if(this.x > mixX && this.x < maxX && this.y >= minY  && this.y <= maxY ){
-            this.test = false;
+        if(this.x >= minX && this.x < maxX && this.y >= minY  && this.y <= maxY ){
+            // this.test = false;
             // this.speedY = 0;
             // this.speedX = 0;
-            // console.log(maxY);
-            
-            if(this.y >= minY  && this.y <= maxY){
-                this.speedY *= -1;
-            }
-            if(this.x < mixX && this.x < maxX){
-                this.speedX *= -1;
-            }
+            const x1 = Math.abs(minX - this.x);
+            const x2 = Math.abs(this.x - maxX);
         }
     }
 }
