@@ -94,19 +94,20 @@ $pointColor:#fcd804;
             width: 430px;
             padding-right: 60px;
             box-sizing: border-box;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.8);
             transition: 0.5s left;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
+            z-index: 10;
             &.active{   
                 left: 0;
             }
             ul{
                 li{
                     text-align: right;
-                    a{font-size: 26px; &:hover,.active{color:$pointColor;}}
+                    a{font-size: 26px; &:hover{color:$pointColor;} &.router-link-active{color:$pointColor;}}
                     &:not(:last-of-type){
                         margin-bottom: 100px;
                     }
@@ -132,5 +133,6 @@ $pointColor:#fcd804;
             }
         }
     }
+    
 }
 </style>
