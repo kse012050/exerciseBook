@@ -14,8 +14,13 @@ class App{
         this.stageHeight = document.body.clientHeight;
         
         // this.block = new Block(this.stageWidth, 10);
-        this.block = new Block(this.stageWidth, this.stageHeight);
-        this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 15);
+        this.block = []
+        this.blockBetween = 40;
+        this.blockWidth = (this.stageWidth - (this.blockBetween)) / 3;
+        for(var i = 0; i < 3; i++){
+            this.block.push(new Block(this.blockWidth, this.stageHeight , this.blockBetween , i));
+        }
+        this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 20);
         this.resize();
         this.animate();
 
@@ -36,7 +41,12 @@ class App{
 
         this.ctx.clearRect(0,0,this.stageWidth, this.stageHeight);
 
-        this.block.draw(this.ctx);
+        this.block[0].draw(this.ctx);
+
+        for(var i = 0; i < this.block.length; i++){
+        // for(var i in this.block.length){
+            this.block[i].draw(this.ctx);
+        }
         this.ball.draw(this.ctx , this.block);
     }
 }
