@@ -81,7 +81,7 @@ $pointColor:#fcd804;
 
     aside{
         button{
-            position: fixed; top: calc(50% - 4px); left: 70px; z-index: 100;
+            position: fixed; top: calc(50% - 4px); left: 70px; z-index: 1000;
             span{display: inline-block; width: 8px; height: 8px; background-color: white; border-radius: 100%;
                 &:not(:last-of-type){margin-right: 5px;}
             }
@@ -100,7 +100,7 @@ $pointColor:#fcd804;
             flex-direction: column;
             justify-content: center;
             align-items: flex-end;
-            z-index: 10;
+            z-index: 100;
             &.active{   
                 left: 0;
             }
@@ -117,7 +117,7 @@ $pointColor:#fcd804;
     }
 
     footer{
-        position: fixed; left: 0; bottom: 0; width: 100%; 
+        position: fixed; left: 0; bottom: 0; width: 100%;  z-index: 10;
         display: flex; justify-content: space-between; align-items: center;
         padding: 45px 0; border-top: 1px solid rgba(255,255,255,0.4);
         >*{
