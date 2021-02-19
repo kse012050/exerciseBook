@@ -5,15 +5,15 @@ export class Ball{
         this.size = size;
         this.speedX = speed;
         this.speedY = speed * -1;
-        this.x = (this.stageWidth / 2) - (this.size);
+        this.x = (this.stageWidth / 2);
         this.y = (this.stageHeight) - (this.size * 10);
 
         this.test = true;
     }
 
     draw(ctx ,block){
-        this.x += this.speedX;
-        this.y += this.speedY;
+        // this.x += this.speedX;
+        // this.y += this.speedY;
         
         this.bounceWindow(this.stageWidth ,this.stageHeight);
 
