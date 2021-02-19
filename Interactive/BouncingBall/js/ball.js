@@ -69,7 +69,8 @@ export class Ball{
             }else{
                 this.speedY *= -1;
             }
-           
+
+            block.blockColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
         }
     }
 }
