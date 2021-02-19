@@ -2,11 +2,11 @@
     <div class="brandArea">
         <div>
             <section>
-                <h2>
+                <h3>
                     one step to the edge 
                     of impossible 
                     and then, further
-                </h2>
+                </h3>
                 <p>
                     내셔널지오그래픽은 지구와 인류 
                     그리고 ‘우리’를 둘러싼 살아있는 
