@@ -29,10 +29,7 @@ class App{
         this.animate();
 
         // window.requestAnimationFrame(this.animate.bind(this));
-        window.addEventListener('keydown',(e) => {
-            alert();
-            this.startBallBlean = true;
-        })
+        this.keydownEvent();
     }
 
     resize(){
@@ -57,6 +54,17 @@ class App{
         }
         this.bar.draw(this.ctx);
         this.ball.draw(this.ctx , this.block ,this.startBallBlean );
+    }
+
+    keydownEvent(){
+        window.addEventListener('keydown',(e) => {
+            console.log(e.key);
+            if(e.key === " "){
+                this.startBallBlean = !this.startBallBlean;
+            }
+
+            // if()
+        })
     }
 }
 
