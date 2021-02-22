@@ -52,18 +52,23 @@ class App{
         // for(var i in this.block.length){
             this.block[i].draw(this.ctx);
         }
-        this.bar.draw(this.ctx);
+        this.bar.draw(this.ctx, this.directionKey);
         this.ball.draw(this.ctx , this.block ,this.startBallBlean );
     }
 
     keydownEvent(){
         window.addEventListener('keydown',(e) => {
+
             console.log(e.key);
             if(e.key === " "){
                 this.startBallBlean = !this.startBallBlean;
             }
 
-            // if()
+            if((e.key === "ArrowLeft" || e.key === "ArrowRight") && this.startBallBlean){
+                this.directionKey = e.key;
+            }else{
+                this.directionKey = '';
+            }
         })
     }
 }
