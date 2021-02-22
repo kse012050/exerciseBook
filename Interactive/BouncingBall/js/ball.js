@@ -11,10 +11,12 @@ export class Ball{
         this.test = true;
     }
 
-    draw(ctx ,block){
-        // this.x += this.speedX;
-        // this.y += this.speedY;
-        
+    draw(ctx ,block , startBallBlean){
+        if(startBallBlean){
+            this.x += this.speedX;
+            this.y += this.speedY;
+        }            
+
         this.bounceWindow(this.stageWidth ,this.stageHeight);
 
         this.bounceBlock(block);

@@ -18,6 +18,8 @@ class App{
         this.block = []
         this.blockBetween = 40;
         this.blockWidth = (this.stageWidth - (this.blockBetween)) / 3;
+
+        this.startBallBlean = false;
         for(var i = 0; i < 3; i++){
             this.block.push(new Block(this.blockWidth, this.stageHeight , this.blockBetween , i));
         }
@@ -27,6 +29,10 @@ class App{
         this.animate();
 
         // window.requestAnimationFrame(this.animate.bind(this));
+        window.addEventListener('keydown',(e) => {
+            alert();
+            this.startBallBlean = true;
+        })
     }
 
     resize(){
@@ -50,7 +56,7 @@ class App{
             this.block[i].draw(this.ctx);
         }
         this.bar.draw(this.ctx);
-        this.ball.draw(this.ctx , this.block);
+        this.ball.draw(this.ctx , this.block ,this.startBallBlean );
     }
 }
 
