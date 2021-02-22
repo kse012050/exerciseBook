@@ -1,5 +1,8 @@
 $bgOpacity:rgba(0,0,0,0.65);
 $pointColor:#fcd804;
+@mixin aRink ($width){
+    display: block; width: $width+px;  line-height: 72px; color: black; text-align: center; font-weight: 900;  font-size: 22px; background-color: $pointColor;
+}
 
 // homeArea
 .homeArea{
@@ -27,7 +30,7 @@ $pointColor:#fcd804;
             div{width: 480px; height: 81.7vh; background-color: $bgOpacity; display: flex; flex-direction: column; justify-content: center; position: relative; padding: 145px 30px; box-sizing: border-box;
                 h4{font-size: 35px; line-height: 45px; margin-bottom: 25px;}
                 p{font-size: 22px; line-height: 32px;}
-                a{position: absolute; right: 35px; bottom: 45px; width: 290px;  line-height: 72px; color: black; text-align: center; font-weight: 900;  font-size: 22px; background-color: $pointColor;}
+                a{position: absolute; right: 35px; bottom: 45px; @include aRink(290);}
             }
         }
     }
@@ -68,6 +71,26 @@ $pointColor:#fcd804;
         }
         &:nth-of-type(2){
             background-image: url(../images/bg_magazin2.png);
+        }
+        > div{
+            width: 50%; display: flex; flex-direction: column; justify-content: center; align-items: flex-end; background: $bgOpacity; height: 100vh;
+            div{
+                max-width: 890px; padding: 0 10%; box-sizing: border-box;
+                h3{
+                    font-size: 50px; font-weight: 400; line-height: 60px; text-transform: uppercase; margin-bottom: 30px; 
+                }
+                p{
+                    font-size: 24px; font-weight: 300; line-height: 32px; margin-bottom: 70px;
+                }
+                a{
+                    @include aRink(350); margin-left: auto;
+                }
+            }
+        }
+        &:nth-of-type(2){
+            > div{
+                margin-left: auto;
+            }
         }
     }
 }
