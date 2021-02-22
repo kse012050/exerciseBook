@@ -11,7 +11,7 @@ export class Ball{
         this.test = true;
     }
 
-    draw(ctx ,block , startBallBlean){
+    draw(ctx ,block, bar , startBallBlean){
         if(startBallBlean){
             this.x += this.speedX;
             this.y += this.speedY;
@@ -20,6 +20,7 @@ export class Ball{
         this.bounceWindow(this.stageWidth ,this.stageHeight);
 
         this.bounceBlock(block);
+        this.bounceBar(bar);
 
         ctx.fillStyle = "yellow";
         ctx.beginPath();
@@ -79,6 +80,29 @@ export class Ball{
                 }
 
                 block[i].blockColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+            }
+        }
+    }
+
+    bounceBar(bar){
+        const minX = bar.x - this.size ;
+        const maxX = bar.x + bar.width + this.size ;
+        const minY = bar.y - this.size ;
+        const maxY = bar.y + bar.height + this.size ;
+        // console.log(minX);
+        if(minX <= this.x && maxX >= this.x && minY <= this.y && maxY >= this.y){
+            const x1 = Math.abs(minX - this.x);
+            const x2 = Math.abs(this.x - maxX);
+            const y1 = Math.abs(minY - this.y);
+            const y2 = Math.abs(this.y - maxY);
+            const min1 = Math.min(x1, x2);
+            const min2 = Math.min(y1, y2);
+            const min = Math.min(min1, min2);
+            console.log()
+            if(min == min1){
+                this.speedX *= -1;
+            }else{
+                this.speedY *= -1;
             }
         }
     }

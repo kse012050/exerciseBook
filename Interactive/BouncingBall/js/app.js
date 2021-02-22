@@ -53,7 +53,7 @@ class App{
             this.block[i].draw(this.ctx);
         }
         this.bar.draw(this.ctx, this.directionKey);
-        this.ball.draw(this.ctx , this.block ,this.startBallBlean );
+        this.ball.draw(this.ctx , this.block ,this.bar ,this.startBallBlean );
     }
 
     keydownEvent(){
