@@ -47,39 +47,41 @@ export class Ball{
 
     bounceBlock(block){
         for(var i = 0; i < block.length; i++){
-            const minX = block[i].x - this.size;
-            const maxX = block[i].width + block[i].x + this.size;
-            const minY = block[i].height - this.size;
-            const maxY = block[i].height + block[i].y + this.size;
+            if(block[i].blockCrash != 0){
+                const minX = block[i].x - this.size;
+                const maxX = block[i].width + block[i].x + this.size;
+                const minY = block[i].height - this.size;
+                const maxY = block[i].height + block[i].y + this.size;
 
-            // console.log("maxY = " + maxY);
-            // console.log('this.y = ' + this.y);
-            
-            if(this.test){
-                // console.log(block);
-                // console.log("maxX = " + maxX);
-                // console.log('this.x = ' + this.x);
+                // console.log("maxY = " + maxY);
                 // console.log('this.y = ' + this.y);
-            }
-            if(this.x >= minX && this.x < maxX && this.y >= minY  && this.y <= maxY ){
-                this.test = false;
-                // this.speedY = 0;
-                // this.speedX = 0;
-                const x1 = Math.abs(minX - this.x);
-                const x2 = Math.abs(this.x - maxX);
-                const y1 = Math.abs(minY - this.y);
-                const y2 = Math.abs(this.y - maxY);
-                const min1 = Math.min(x1, x2);
-                const min2 = Math.min(y1, y2);
-                const min = Math.min(min1, min2);
-                console.log()
-                if(min == min1){
-                    this.speedX *= -1;
-                }else{
-                    this.speedY *= -1;
+                
+                if(this.test){
+                    // console.log(block);
+                    // console.log("maxX = " + maxX);
+                    // console.log('this.x = ' + this.x);
+                    // console.log('this.y = ' + this.y);
                 }
-
-                block[i].blockColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                if(this.x > minX && this.x < maxX && this.y > minY  && this.y < maxY ){
+                    this.test = false;
+                    // this.speedY = 0;
+                    // this.speedX = 0;
+                    const x1 = Math.abs(minX - this.x);
+                    const x2 = Math.abs(this.x - maxX);
+                    const y1 = Math.abs(minY - this.y);
+                    const y2 = Math.abs(this.y - maxY);
+                    const min1 = Math.min(x1, x2);
+                    const min2 = Math.min(y1, y2);
+                    const min = Math.min(min1, min2);
+                    console.log()
+                    if(min == min1){
+                        this.speedX *= -1;
+                    }else{
+                        this.speedY *= -1;
+                    }
+                    block[i].blockCrash = 0;
+                    block[i].blockColor = "#" + Math.round(Math.random() * 0xffffff).toString(16);
+                }
             }
         }
     }

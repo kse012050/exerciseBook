@@ -18,10 +18,11 @@ class App{
         this.block = []
         this.blockBetween = 40;
         this.blockWidth = (this.stageWidth - (this.blockBetween)) / 3;
+        this.blockCrash = 1;
 
         this.startBallBlean = false;
         for(var i = 0; i < 3; i++){
-            this.block.push(new Block(this.blockWidth, this.stageHeight , this.blockBetween , i));
+            this.block.push(new Block(this.blockWidth, this.stageHeight , this.blockBetween , i ,this.blockCrash));
         }
         this.bar = new Bar(this.stageWidth , this.stageHeight)
         this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 20);
@@ -49,8 +50,9 @@ class App{
         this.block[0].draw(this.ctx);
 
         for(var i = 0; i < this.block.length; i++){
-        // for(var i in this.block.length){
-            this.block[i].draw(this.ctx);
+            if(this.block[i].blockCrash != 0){
+                this.block[i].draw(this.ctx );
+            }
         }
         this.bar.draw(this.ctx, this.directionKey);
         this.ball.draw(this.ctx , this.block ,this.bar ,this.startBallBlean );
