@@ -7,7 +7,7 @@
                 </router-link>
             </h1>
             <h2>HOME</h2>
-            <button >CONTACT</button>
+            <button v-on:click="show()">CONTACT</button>
         </header>
 
         <aside>
@@ -45,7 +45,9 @@
                 </ul>
             </div>
         </footer>
+      
     </div>
+    
 </template>
 
 <script>
@@ -56,13 +58,17 @@ export default {
         }
     },
     computed:{
-        
+            
     },
     methods:{
         menu(){
             document.querySelector('nav').classList.toggle('active');
-        }
+        },
+        popup(){
+            alert();
+        },
     }
+    
 }
 </script>
 
