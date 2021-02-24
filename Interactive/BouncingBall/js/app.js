@@ -15,6 +15,8 @@ class App{
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
         
+        this.startBlean = false;
+
         // this.block = new Block(this.stageWidth, 10);
         this.block = []
         this.blockBetween = 40;
@@ -27,7 +29,7 @@ class App{
         }
         this.bar = new Bar(this.stageWidth , this.stageHeight)
         this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 20);
-        this.placeholderBar = new PlaceholderBar(this.stageWidth , this.stageHeight)
+        this.placeholderBar = new PlaceholderBar(this.stageWidth , this.stageHeight ,this.ball)
 
         this.resize();
         this.animate();
@@ -59,7 +61,9 @@ class App{
         }
         this.bar.draw(this.ctx, this.directionKey);
         this.ball.draw(this.ctx , this.block ,this.bar ,this.startBallBlean );
-        this.placeholderBar.draw(this.ctx ,this.ball);
+        if(!this.blean){
+            this.placeholderBar.draw(this.ctx );
+        }
     }
 
     keydownEvent(){
@@ -67,6 +71,7 @@ class App{
             console.log(e.key);
             if(e.key === " "){
                 this.startBallBlean = !this.startBallBlean;
+                this.blean = !this.blean;
             }
 
             if((e.key === "ArrowLeft" || e.key === "ArrowRight") && this.startBallBlean){
