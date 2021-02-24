@@ -2,6 +2,7 @@
 import { Block } from './block02.js';
 import { Ball } from './ball.js';
 import { Bar } from './bar.js';
+import { PlaceholderBar } from './placeholderBar.js'
 
 class App{
     constructor(){
@@ -26,6 +27,8 @@ class App{
         }
         this.bar = new Bar(this.stageWidth , this.stageHeight)
         this.ball = new Ball(this.stageWidth, this.stageHeight, 10 , 20);
+        this.placeholderBar = new PlaceholderBar(this.stageWidth , this.stageHeight)
+
         this.resize();
         this.animate();
 
@@ -56,11 +59,11 @@ class App{
         }
         this.bar.draw(this.ctx, this.directionKey);
         this.ball.draw(this.ctx , this.block ,this.bar ,this.startBallBlean );
+        this.placeholderBar.draw(this.ctx ,this.ball);
     }
 
     keydownEvent(){
         window.addEventListener('keydown',(e) => {
-
             console.log(e.key);
             if(e.key === " "){
                 this.startBallBlean = !this.startBallBlean;
