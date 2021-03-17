@@ -1,15 +1,20 @@
+import {
+    Wave
+} from './wave.js'
+
 class App{
     constructor(){
         this.canvas = document.createElement('canvas');
         this.ctx = this.canvas.getContext('2d');
         document.body.appendChild(this.canvas);
 
+        this.Wave = new Wave();
+
+        window.addEventListener('resize',this.resize.bind(this),false);
+
         this.resize();
 
-        this.ctx.beginPath();
-        this.ctx.fillStyle = '#ff0000';
-        this.ctx.arc(30,30,30,0, 2 * Math.PI);
-        this.ctx.fill();
+        requestAnimationFrame(this.animate.bind(this));
     }
 
     resize(){
@@ -20,6 +25,16 @@ class App{
         this.canvas.height = this.stageHeight * 2;
 
         this.ctx.scale(2,2);
+
+        this.Wave.resize(this.stageWidth,this.stageHeight);
+    }
+
+    animate(t){
+        this.ctx.clearRect(0,0,this.stageWidth,this.stageHeight);
+
+        this.Wave.draw(this.ctx);
+
+        requestAnimationFrame(this.animate.bind(this));
     }
 }
 
