@@ -19,7 +19,7 @@
             <nav class="active">
                 <ul>
                     <li>
-                        <router-link to="home">HOME</router-link>
+                        <router-link to="home" v-on:click="test()">HOME</router-link>
                     </li>
                     <li>
                         <router-link to="brand">BRAND</router-link>
@@ -67,6 +67,9 @@ export default {
         popup(){
             alert();
         },
+        test(){
+            console.log(11);
+        }
     }
     
 }

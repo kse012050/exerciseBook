@@ -11,7 +11,8 @@ import global from './components/global.vue'
 export default{
   components:{
     global
-  }
+  },
+
 }
 </script>
 
