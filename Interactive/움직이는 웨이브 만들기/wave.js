@@ -28,7 +28,7 @@ export class Wave{
         ctx.beginPath();
         ctx.fillStyle = '#ff0000';
 
-        // this.point.update();
+        this.point.update();
 
         ctx.arc(this.point.x, this.point.y , 30, 0 , 2 * Math.PI);
         ctx.fill();

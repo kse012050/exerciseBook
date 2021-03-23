@@ -11,5 +11,7 @@ export class Point{
     update(){
         this.cur += this.speed;
         this.y = this.fiexdY + (Math.sin(this.cur) * this.max);
+        console.log(this.cur);
+        // console.log(Math.sin(this.cur));
     }
 }
