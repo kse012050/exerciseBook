@@ -1,6 +1,6 @@
 import {
-    Wave
-} from './wave.js'
+    WaveGroup
+} from './waveGroup.js'
 
 class App{
     constructor(){
@@ -8,7 +8,7 @@ class App{
         this.ctx = this.canvas.getContext('2d');
         document.body.appendChild(this.canvas);
 
-        this.Wave = new Wave();
+        this.WaveGroup = new WaveGroup();
 
         window.addEventListener('resize',this.resize.bind(this),false);
 
@@ -26,13 +26,13 @@ class App{
 
         this.ctx.scale(2,2);
 
-        this.Wave.resize(this.stageWidth,this.stageHeight);
+        this.WaveGroup.resize(this.stageWidth,this.stageHeight);
     }
 
     animate(t){
         this.ctx.clearRect(0,0,this.stageWidth,this.stageHeight);
 
-        this.Wave.draw(this.ctx);
+        this.WaveGroup.draw(this.ctx);
 
         requestAnimationFrame(this.animate.bind(this));
     }
