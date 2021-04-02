@@ -3,8 +3,9 @@ import {
 } from './point.js'
 
 export class Wave{
-    constructor(){
-
+    constructor(index ,totalPoints){
+        this.index = index;
+        this.totalPoints = totalPoints;
     }
 
     resize(stageWidth, stageHeight){
@@ -14,23 +15,33 @@ export class Wave{
         this.centerX = stageWidth / 2;
         this.centerY = stageHeight / 2;
 
+        this.pointGap = this.stageWidth / (this.totalPoints - 1);
+
         this.init();
     }
 
     init(){
-        this.point = new Point(
-            this.centerX,
-            this.centerY
-        );
+        this.points = [];
+        for(let i = 0; i < this.totalPoints; i++){
+            console.log(this.pointGap * i);
+            const point = new Point(
+                this.pointGap * i,
+                this.centerY
+            );
+            this.points[i] = point;
+        }
     }
 
     draw(ctx){
         ctx.beginPath();
         ctx.fillStyle = '#ff0000';
 
-        this.point.update();
+        for(let i = 0; i < this.totalPoints; i++){
+            this.points[i].update();
+            ctx.beginPath();
+            ctx.arc(this.points[i].x, this.points[i].y , 30, 0 , 2 * Math.PI);
+            ctx.fill();
+        }
 
-        ctx.arc(this.point.x, this.point.y , 30, 0 , 2 * Math.PI);
-        ctx.fill();
     }
 }
