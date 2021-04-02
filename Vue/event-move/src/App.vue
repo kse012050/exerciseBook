@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Result></Result>
-    <Btn></Btn>
+    <Btn v-on:resultSend="receive"></Btn>
   </div>
 </template>
 
@@ -11,6 +11,16 @@ import Btn from './components/btn.vue'
 
 export default {
   name: 'App',
+  data:function(){
+    return{
+
+    }
+  },
+  methods:{
+    receive: function(result){
+      console.log("App에서 데이터 받음 = " + result);
+    }
+  },
   components: {
     Result,
     Btn
