@@ -7,7 +7,9 @@ export class WaveGroup{
     }
 
     resize(stageWidth,stageHeight){
-
+        this.stageWidth = stageWidth;
+        this.stageHeight = stageHeight;
+        this.Wave.resize(stageWidth,stageHeight);
     }
 
     draw(ctx){
