@@ -2,12 +2,15 @@ import { Wave } from './wave.js';
 
 export class WaveGroup{
     constructor(){
-        this.totalWaves = 1;
+        this.totalWaves = 3;
         this.totalPoints = 6;
+
+        this.color = ['rgba(255,0,0,0.4)','rgba(255,255,0,0.4)','rgba(0,255,255,0.4)'];
+
         this.waves = [];
         // this.wave = new Wave(1,this.totalPoints);
         for(let i = 0; i < this.totalWaves; i++){
-            const wave = new Wave(i , this.totalPoints);
+            const wave = new Wave(i , this.totalPoints, this.color[i]);
             this.waves[i] = wave;
             
         }
