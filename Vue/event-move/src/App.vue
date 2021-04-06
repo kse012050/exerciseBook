@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Result></Result>
+    <Result v-bind:propsdata="result"></Result>
     <Btn v-on:resultSend="receive"></Btn>
   </div>
 </template>
@@ -13,12 +13,13 @@ export default {
   name: 'App',
   data:function(){
     return{
-
+      result:""
     }
   },
   methods:{
     receive: function(result){
       console.log("App에서 데이터 받음 = " + result);
+      this.result = result;
     }
   },
   components: {
