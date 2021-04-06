@@ -11,6 +11,11 @@ export default {
       receive : "결과값"
     }
   },
+  watch:{
+    receive:function(){
+      console.log('정말');
+    }
+  },
   props:['propsdata'],
   methods:{
     resultClick: function(){
