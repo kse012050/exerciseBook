@@ -35,7 +35,7 @@ export class Wave{
     draw(ctx){
         ctx.beginPath();
         ctx.fillStyle = '#ff0000';
-
+        
         for(let i = 0; i < this.totalPoints; i++){
             this.points[i].update();
             ctx.beginPath();
