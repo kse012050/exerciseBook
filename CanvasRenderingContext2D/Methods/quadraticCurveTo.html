@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2차 베지어 곡선</title>
+    <style>
+        *{margin: 0;}
+        #canvas{width: 100%; height: 100%;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        const BenchmarkW = width / 2;
+        const BenchmarkH = 30;
+        canvas.width = width;
+        canvas.height = height;
+
+
+        // 2차 베지어 곡선
+        ctx.beginPath();
+        ctx.moveTo(0, height);
+        ctx.lineTo(0, height / 2);
+        ctx.quadraticCurveTo(BenchmarkW, BenchmarkH, width, height / 2);
+        ctx.lineTo(width, height);
+        ctx.fill();
+
+
+        // 점령 지점
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(BenchmarkW, BenchmarkH, 5, 0, 2 * Math.PI);
+        ctx.fill();
+    </script>
+</body>
+</html>
