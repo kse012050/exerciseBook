@@ -12,8 +12,8 @@ export default {
     }
   },
   watch:{
-    receive:function(){
-      console.log('정말');
+    propsdata:function(){
+      this.receive = this.propsdata;
     }
   },
   props:['propsdata'],
