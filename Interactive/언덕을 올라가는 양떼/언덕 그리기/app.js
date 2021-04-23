@@ -31,6 +31,7 @@ class App{
     }
 
     animate(){
+        requestAnimationFrame(this.animate.bind(this));
         for(let i = 0; i < this.hills.length; i++){
             this.hills[i].draw(this.ctx);
         }
