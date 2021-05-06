@@ -7,7 +7,7 @@ class App{
         document.body.appendChild(this.canvas);
 
         this.hills = [
-            new Hill('#ff4684',0,6)
+            new Hill('#ff4684',1,6)
         ]
 
         window.addEventListener('resize', this.resize.bind(this));

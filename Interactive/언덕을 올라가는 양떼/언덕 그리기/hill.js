@@ -20,14 +20,8 @@ export class Hill{
         // console.log(this.points.length);
     }
     draw(ctx){
-        ctx.fillStyle = 'red';
-        for(let i = 0; i < this.total; i++){
-            // ctx.fillStyle = 'rgba(255,0,0,1)';
-            // console.log(this.points[i].x);
-            ctx.beginPath();
-            ctx.arc(this.points[i].x ,this.points[i].y , 5, 0, 2* Math.PI);
-            ctx.fill();
-        }
+        
+        
 
         let cur = this.points[0];
         let prev = cur;
@@ -51,6 +45,32 @@ export class Hill{
         ctx.lineTo(this.stageWidth, this.stageHeight);
         ctx.lineTo(this.points[0].x, this.stageHeight);
         ctx.fill();
+
+
+        ctx.fillStyle = 'red';
+        for(let i = 0; i < this.total; i++){
+            // ctx.fillStyle = 'rgba(255,0,0,1)';
+            // console.log(this.points[i].x);
+            ctx.beginPath();
+            ctx.arc(this.points[i].x ,this.points[i].y , 5, 0, 2* Math.PI);
+            ctx.fill();
+        }
+
+        let cur2 = this.points[0];
+        let prev2 = cur2;
+        
+        for(let i = 1; i < this.points.length; i++){
+            ctx.fillStyle = 'rgba(0,255,0,0.5)';
+            ctx.beginPath();
+            cur2 = this.points[i];
+
+            const cx = (cur2.x + prev2.x) / 2;
+            const cy = (cur2.y + prev2.y) / 2;
+            ctx.arc(cx ,cy , 5, 0, 2* Math.PI);
+
+            prev2 = cur2;
+            ctx.fill();
+        }
     }
 
     getY(){
