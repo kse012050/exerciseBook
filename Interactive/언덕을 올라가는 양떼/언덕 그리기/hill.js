@@ -14,25 +14,34 @@ export class Hill{
                 x : this.gap * i,
                 y : this.getY()
             }
-            // console.log(this.points[i]);
         }
-        // console.log(this.total);
-        // console.log(this.points.length);
     }
     draw(ctx){
         
         
-
+        
         let cur = this.points[0];
         let prev = cur;
-        
 
         ctx.fillStyle = this.color;
         ctx.beginPath();
-        
+
+        cur.x += this.speed;
+
+        if(cur.x > -this.gap){
+            this.points.unshift({
+                x: -(this.gap * 2),
+                y: this.getY()
+            });
+        }else if(cur.x > this.stageWidth + this.gap){
+            this.points.splice(-1);
+        }
+
         ctx.moveTo(prev.x , prev.y);
         for(let i = 1; i < this.points.length; i++){
             cur = this.points[i];
+
+            cur.x += this.speed;
 
             const cx = (cur.x + prev.x) / 2;
             const cy = (cur.y + prev.y) / 2;
@@ -48,6 +57,7 @@ export class Hill{
 
 
         ctx.fillStyle = 'red';
+        
         for(let i = 0; i < this.total; i++){
             // ctx.fillStyle = 'rgba(255,0,0,1)';
             // console.log(this.points[i].x);
