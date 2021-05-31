@@ -4,7 +4,10 @@ class App{
         this.ctx = this.canvas.getContext('2d');
         document.body.appendChild(this.canvas);
 
+        // window.addEventListener('resize',this.resize.bind(this))
         this.resize();
+
+        // requestAnimationFrame(this.animate.bind(this))
     }
 
     resize(){
@@ -15,6 +18,10 @@ class App{
 
         this.canvas.width = this.stageWidht;
         this.canvas.height = this.stageHeight;
+    }
+
+    animate(){
+        
     }
 }
 
