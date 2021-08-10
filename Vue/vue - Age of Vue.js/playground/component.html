@@ -49,8 +49,16 @@
         // console.log(window);
         
         var test = function( a, b){
-            return test.fn.init(a, b);
+            console.log(a);
+            console.log(b);
         }
+        test.prototype.extend({
+            classs : function(sss){
+                console.log(sss);
+            }
+        })
+        console.log(test.classs('test'));
+        
 
     </script>
 </head>
