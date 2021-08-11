@@ -163,12 +163,12 @@ var
 
 jQuery.fn = jQuery.prototype = {
 
-	// The current version of jQuery being used
+	// 현재 사용 중인 jQuery 버전
 	jquery: version,
 
 	constructor: jQuery,
 
-	// The default length of a jQuery object is 0
+	// jQuery 객체의 기본 길이는 0입니다.
 	length: 0,
 
 	toArray: function() {
