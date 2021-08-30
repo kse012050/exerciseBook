@@ -5,64 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue component</title>
-    <script src="jquery-3.6.0.js"></script>
     <script>
-        // function Vue({componentName, componentValue}){
-        //     this.component = {
-        //         componentName : componentValue
-        //     };
-        // }
-        // Vue.component('컴포넌트 이름','컴포넌트 내용')
-        // console.log(Vue);
-
+      
         function Vue(){
             this.component = function(componentName,componentValue){
                 console.log(componentName,componentValue);
             }
         };
-        // Vue.component('이름','내용')
         var vm = new Vue();
         vm.component('이름','내용');
-        // console.log(vm.component('이름','내용'));
-        // console.log(vm.component())
-
-        /* const module = {
-            x : 42,
-            getX : function(){
-                alert('test');
-            }
-        }; */
-        // module.getX();
-      /*   (function(){
-            var a = 1;
-            console.log(a);
-            // document.querySelector('div').css.style.color = 'red';
-        }()); */
-
-        // (function(){
-            
-        // });
-        // 'test';
-        // console.log(module);
-        // 2<1 ? console.log(true) : console.log(false);
-
-        // console.log(window);
         
-        // var test = function( a, b){
-        //     console.log(a);
-        //     console.log(b);
-        // }
-        var test = function(selector){
-            
-        }
-        test.prototype.extend({
-            classs : function(sss){
-                console.log(sss);
-            }
-        })
-        console.log(test.classs('test'));
-        
-
     </script>
 </head>
 <body>
