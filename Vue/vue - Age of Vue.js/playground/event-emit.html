@@ -9,7 +9,7 @@
 <body>
     <div id="app">
         <app-header v-on:pass="logText"></app-header>
-        <app-content v-on:add="addNum" v-bind:num = "num"></app-content>
+        <app-content v-on:add="addNum" v-bind:num1 = "num"></app-content>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -25,13 +25,13 @@
         }
 
         var appContent = {
-            template : '<button v-on:click="addNumber">add {{ num }}</button>',
+            template : '<button v-on:click="addNumber">add {{ num1 }}</button>',
             methods: {
                 addNumber : function(){
                     this.$emit('add');
                 }
             },
-            props:['num']
+            props:['num1']
         }
 
         new Vue({
