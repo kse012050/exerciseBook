@@ -23,12 +23,15 @@
         console.log(window);
         var sungeun = function(tagName){
             aaa : 'eee';
-            // addClass : function(colorTest){
-            //     return document.querySelector(tagName).style.color = colorTest;
-            // }
+            this.addClass = function(colorTest){
+                return document.querySelector(tagName).style.color = colorTest;
+            }
             return document.querySelector(tagName);
         }
         console.log(sungeun.aaa);
+
+        var testaa = new sungeun('div');
+        testaa.addClass('red')
         // sungeun('div').addClass('red');
 
     </script>
