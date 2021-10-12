@@ -8,7 +8,15 @@
 </head>
 <body>
     <div id="app">
+        <div>
+            <router-link to="/login">login</router-link>
+            <router-link to="/main">main</router-link>
+        </div>
+        <p>test {{ $router.name }}</p>
         <router-view></router-view>
+
+        <login-component></login-component>
+        <main-component></main-component>
     </div>
     <!-- Vue CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -21,18 +29,23 @@
         }
 
         var mainComponent = {
-            template : '<div>main</div>'
+            template : '<div>main 1 {{ $route.params.id }}</div>'
         }
 
         var router = new VueRouter({
+            mode: 'history',
+            // base: __dirname,
             routes : [
                 {
                     path: '/login',
-                    component : loginComponent
+                    component : loginComponent,
+                    name : 'login'
+                    
                 },
                 {
                     path : '/main',
-                    component : mainComponent
+                    component : mainComponent,
+                    name : 'main'
                 }
             ]
         });
@@ -41,8 +54,9 @@
             el : '#app',
             router,  
             // router : router,
-            templates : {
-
+            components : {
+                'login-component' : loginComponent,
+                'main-component' : mainComponent,
             }
         });
     </script>
