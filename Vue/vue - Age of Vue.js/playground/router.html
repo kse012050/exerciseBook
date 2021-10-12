@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="app">
-
+        <router-view></router-view>
     </div>
     <!-- Vue CDN -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -16,13 +16,32 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
     <script>
-        new VueRouter({
+        var loginComponent = {
+            template : '<div>login</div>'
+        }
 
+        var mainComponent = {
+            template : '<div>main</div>'
+        }
+
+        var router = new VueRouter({
+            routes : [
+                {
+                    path: '/login',
+                    component : loginComponent
+                },
+                {
+                    path : '/main',
+                    component : mainComponent
+                }
+            ]
         });
 
         new Vue({
             el : '#app',
-            template : {
+            router,  
+            // router : router,
+            templates : {
 
             }
         });
