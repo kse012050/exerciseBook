@@ -8,24 +8,46 @@
 </head>
 <body>
     <div id="app">
-        <app-content></app-content>
-        <app-result></app-result>
+        <app-content v-bind:content_num="numb" v-on:add="addNumb"></app-content>
+        <app-result v-bind:result_num="numb"></app-result>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 
     <script>
         var appContent = {
-            template : '<button>버튼</button>'
+            template : '<button v-on:click="addNumb">버튼 {{ content_num }}</button>',
+            // data: {
+            //     num : 10
+            // },
+            props : ['content_num'],
+            methods :{
+                addNumb : function(){
+                    // console.log(this.contentNum);
+                    this.$emit('add');
+                }
+            },
+            
+            
         }
 
         var appResult = {
-            template : '<div>숫자</div>'
+            template : '<div>숫자 {{ result_num }}</div>',
+            props : ['result_num'],
         }
         new Vue({
             el : '#app',
             components : {
                 'app-content' : appContent,
                 'app-result' : appResult
+            },
+            data : {
+                numb : 10
+            },
+            methods : {
+                addNumb : function(){
+                    this.numb++;
+                    console.log(this.numb);
+                }
             }
         })
     </script>
