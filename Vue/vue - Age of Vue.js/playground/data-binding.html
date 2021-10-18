@@ -5,11 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>데이터 바인딩</title>
+    <style>
+        .text-blue{color: blue;}
+    </style>
 </head>
 <body>
     <div id="app">
-        <p>{{ num }}</p>
+        <p v-bind:id="uuid" v-if="loading" v-bind:class="name">{{ num }}</p>
         <p>{{ doubleNum }}</p>
+        <button v-on:click="plus">버튼</button>
+        <div v-if="loading">
+            loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading">
+            test
+        </div>
     </div>
 
     <!-- Vue CDN -->
@@ -20,10 +33,19 @@
             el: "#app",
             data : {
                 num : 10,
+                uuid : 'abc1234',
+                name : 'text-blue',
+                loading : true
             },
             computed : {
                 doubleNum : function(){
                     return this.num * 2;
+                }
+            },
+            methods : {
+                plus : function(){
+                    this.num = this.num * 2;
+                    this.loading = !this.loading
                 }
             }
         });
