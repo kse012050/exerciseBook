@@ -10,13 +10,17 @@ class App{
         this.ctx = this.canvas.getContext('2d');
         document.body.appendChild(this.canvas);
 
+        this.hills = new Hill();
+
+        window.addEventListener('resize',this.resize.bind(this))
         this.resize();
 
-        this.hill = new Hill();
+
+
+        // requestAnimationFrame(this.animate.bind(this));
     }
 
     resize(){
-        console.log('test');
         this.stageWidth = document.body.clientWidth;
         this.stageHeight = document.body.clientHeight;
 
@@ -25,8 +29,18 @@ class App{
 
         this.ctx.scale(2,2);
 
+        for(let i = 0; i < this.hills.length; i++){
+            this.hills[i].resize(this.stageWidth,this.stageHeight);
+        }
+
         this.ctx.fillStyle = 'green';
         this.ctx.fillRect(this.stageWidth - 150, 10, 150, 100);
+    }
+
+    animate(t){
+        requestAnimationFrame(this.animate.bind(this));
+
+        this.ctx.clearRect(0,0,this.stageWidth , this.stageHeight);
     }
 }
 
