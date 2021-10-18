@@ -33,6 +33,8 @@ class App{
             this.hills[i].resize(this.stageWidth,this.stageHeight);
         }
 
+        
+
         this.ctx.fillStyle = 'green';
         this.ctx.fillRect(this.stageWidth - 150, 10, 150, 100);
     }
