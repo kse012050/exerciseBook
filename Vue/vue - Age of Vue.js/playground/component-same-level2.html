@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div id="app">
+        <value-content v-bind:shownum="num"></value-content>
+        <button-content v-on:add="add"></button-content>
+    </div>
+    <!-- Vue CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var valueContent = {
+            template: '<div>{{ shownum }}</div>',
+            props : ['shownum']
+        }
+
+        var buttonContent = {
+            template : '<button v-on:click="addNum">클릭</button>',
+            methods : {
+                addNum : function(){
+                    this.$emit('add');
+                }
+            }
+        }
+
+        new Vue({
+            el : '#app',
+            components : {
+                'valueContent' : valueContent,
+                'buttonContent' : buttonContent
+            },
+            data : {
+                num : 0
+            },
+            methods : {
+                add : function(a){
+                    // console.log(a);
+                    this.num += 1;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
