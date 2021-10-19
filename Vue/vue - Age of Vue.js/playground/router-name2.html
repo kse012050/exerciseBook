@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue router</title>
+</head>
+<body>
+    <div id="app">
+        <main-content></main-content>
+        <content-value></content-value>
+        <h2>{{ $route.name }}</h2>
+        <hr>
+        <router-link to="/main">main</router-link>
+        <router-link :to="{ name:'value' , params: {id : 123} }">value</router-link>
+        <router-view></router-view>
+        <router-view name="a"></router-view>
+        <router-view name="b"></router-view>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <script>
+        var mainContent = {
+            template : '<div>main</div>'
+        }
+        var contentValue = {
+            template : '<div>value{{ $route.params.id }}</div>'
+        }
+
+        var a = {
+            template : '<div>a</div>'
+        }
+        var b = {
+            template : '<div>b</div>'
+        }
+        const routers = [
+            {
+                path : '/main',
+                components : {
+                    default :mainContent,
+                    a : a,
+                    b : b
+                },
+                name : '1'
+            },
+            {
+                path : '/value/:id',
+                component : contentValue,
+                name : '2'
+            }
+        ]
+
+        const router = new VueRouter({
+            routes : routers
+        })
+
+       /*  var router = new VueRouter({
+            routes : [
+                {
+                    path : '/main',
+                    component : mainContent
+                },
+                {
+                    path : '/value',
+                    component : contentValue
+                }
+            ]
+        }) */
+
+        new Vue({
+            el : '#app',
+            router : router,
+            components: {
+                'main-content' : mainContent,
+                'content-value' : contentValue
+            }
+        })
+    </script>
+</body>
+</html>
