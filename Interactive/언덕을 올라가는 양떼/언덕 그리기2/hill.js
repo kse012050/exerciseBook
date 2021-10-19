@@ -1,19 +1,30 @@
 export class Hill {
-    constructor(){
-        
+    constructor(total){
+        this.total = total;
     }
 
     resize(stageWidth,stageHeight){
         this.stageWidth = stageWidth;
         this.stageHeight = stageHeight;
+
+        this.points = [];
+        this.gap = this.stageWidth / this.total;
+
+        for(let i = 0; i < this.total; i++){
+            this.points[i] = {
+                x : i * this.gap,
+                y : this.getY()
+            }
+        }
     }
 
     draw(ctx){
-        this.getY();
+        
     }
     
     getY(){
-        const min = stageWidth / 8;
-        console.log(min);
+        const min = this.stageWidth / 8;
+        const max = this.stageWidth - min;
+        return min + Math.random() * max;
     }
 }
