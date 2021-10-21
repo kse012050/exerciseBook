@@ -19,7 +19,23 @@ export class Hill {
     }
 
     draw(ctx){
-        
+        ctx.fillStyle = 'blue';
+        ctx.strokeStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(10 , 800 , 10, 0 , 2 * Math.PI);
+        ctx.stroke();
+        ctx.fill();
+        ctx.fillStyle = 'red';
+        ctx.strokeStyle = 'blue';
+        for(let i = 0; i < this.points.length; i++){
+            console.log(i + 'x : ' + this.points[i].x);
+            console.log(i + 'y : ' + this.points[i].y);
+            ctx.beginPath();
+            ctx.arc(this.points[i].x , this.points[i].y , 10 , 0 , 2 * Math.PI);
+            // ctx.arc(100, 75, 50, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+        }
     }
     
     getY(){

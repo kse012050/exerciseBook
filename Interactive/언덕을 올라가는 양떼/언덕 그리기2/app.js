@@ -15,7 +15,7 @@ class App{
         window.addEventListener('resize',this.resize.bind(this))
         this.resize();
 
-        this.hills.draw();
+        this.hills.draw(this.ctx);
 
         // requestAnimationFrame(this.animate.bind(this));
     }
@@ -36,8 +36,8 @@ class App{
 
         
 
-        this.ctx.fillStyle = 'green';
-        this.ctx.fillRect(this.stageWidth - 150, 10, 150, 100);
+        /* this.ctx.fillStyle = 'green';
+        this.ctx.fillRect(this.stageWidth - 150, 10, 150, 100); */
     }
 
     animate(t){
