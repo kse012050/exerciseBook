@@ -14,6 +14,7 @@ export class Hill {
             this.points[i] = {
                 x : i * this.gap,
                 y : this.getY()
+                // y : 500
             }
         }
     }
@@ -39,8 +40,8 @@ export class Hill {
     }
     
     getY(){
-        const min = this.stageWidth / 8;
-        const max = this.stageWidth - min;
+        const min = this.stageHeight / 8;
+        const max = this.stageHeight - min;
         return min + Math.random() * max;
     }
 }

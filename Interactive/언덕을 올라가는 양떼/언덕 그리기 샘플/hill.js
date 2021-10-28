@@ -18,8 +18,8 @@ export class Hill{
                 x : i * this.gap,
                 y : this.getY()
             }
+            console.log(this.points[i].y);
         }
-        console.log(this.points[5]);
     }
 
     draw(ctx){
