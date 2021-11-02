@@ -20,7 +20,6 @@
         }
         $(); */
         var test11 = 0;
-        console.log(window);
         var sungeun = function(tagName){
             aaa : 'eee';
             this.addClass = function(colorTest){
@@ -28,12 +27,50 @@
             }
             return document.querySelector(tagName);
         }
-        console.log(sungeun.aaa);
 
-        var testaa = new sungeun('div');
-        testaa.addClass('red')
+        // var testaa = new sungeun('div');
+        // testaa.addClass('red')
         // sungeun('div').addClass('red');
 
+        function a(selector){
+            return new a.prototype.init2(selector)
+        }
+       /*  a.prototype = {
+            b : function(){
+                console.log('b');
+            }
+        }
+     */
+
+        init2 = a.prototype.init2 = function(selector){
+            console.log(selector);
+        }
+        init2.prototype.test = function(){
+            console.log('test');
+        }
+        a('11').test()
+
+        // a('test');
+        // var test = new a();
+        
+       /*  a.prototype.color = function(){
+            console.log('red');
+        }
+        console.log(test.color()); */
+       
+      
+
+      /*   function Car() {}
+        car1 = new Car();
+        car2 = new Car();
+
+        console.log(car1.color);    // undefined
+
+        Car.prototype.color = "original color";
+        console.log(car1.color);    // original color
+
+        car1.color = 'black';
+        console.log(car1.color);   // black */
     </script>
 </body>
 </html>
