@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('div.wrap').css({
+                'height': 100 * ($('section').length - 1) + 'vh'
+            })
+            var secondLeft = parseInt($('.second').css('left'));
+            var thirdTop = parseInt($('.third').css('top'));
+            var testTop = parseInt($('.test').css('top'));
+            var scrollValue2 = 0;
+            $(window).on('scroll',function(){
+                // console.log($(window).scrollTop() / ($(document).height() - $(window).height()));
+                var scrollValue = $(window).scrollTop() / ($(document).height() - $(window).height());
+                scrollValue = scrollValue * ($('section').length - 1);
+                console.log(scrollValue);
+                if(scrollValue <= 1){
+                    $('.second').css({left : secondLeft - (scrollValue * $(window).width())})
+                    $('.third').css({top : 100 + '%' })
+                }else if(scrollValue <= 2){
+                    $('.second').css({left : 0 })
+                    scrollValue2 = scrollValue - 1;
+                    $('.third').css({top : thirdTop - (scrollValue2 * $(window).height())})
+                    $('.test').css({top : 100 + '%' })
+                }else{
+                    $('.third').css({top : 0 })
+                    scrollValue2 = scrollValue - 2;
+                    $('.test').css({top : testTop - (scrollValue2 * $(window).height())})
+                }
+            })
+        })
+    </script>
+    <style>
+        *{margin: 0; padding: 0;}
+        div.wrap section{width: 100%; height: 100vh; font-size: 100px; display: flex; justify-content: center; align-items: center;}
+        div.wrap > section{position: fixed; }
+        .first{background-color: lavender;}
+        .second{background-color: lemonchiffon;}
+        .third{background-color: lightblue;}
+        .fourth{background-color: lightcoral;}
+        .fifth{background-color: lightgoldenrodyellow;}
+        div.wrap section.first{left: 0; top: 0;}
+        div.wrap section.second{left: 100%; top: 0;}
+        div.wrap section.third{left: 0; top: 100%;}
+        div.wrap > div{position: fixed; left: 0; top: 100%; width: 100%;}
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <section class="first" data-scroll='test'>
+            first
+        </section>
+        <section class="second" data-scroll='test'>
+            second
+        </section>
+        <section class="third" data-scroll='test'>
+            third
+        </section>
+        <div class="test" data-scroll='test'>
+            <section class="fourth">
+                fourth
+            </section>
+            <section class="fifth">
+                fifth
+            </section>
+        </div>
+    </div>
+</body>
+</html>
