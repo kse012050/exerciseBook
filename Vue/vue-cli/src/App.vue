@@ -5,11 +5,13 @@
             v-bind:propsdata="str"
             v-on:renew="renewStr">
         </app-header>
+        <app-area></app-area>
     </div>
 </template>
 
 <script>
     import AppHeader from './components/AppHeader.vue'
+    import AppArea from './components/AppArea.vue'
 
     export default {
         data : function(){
@@ -18,7 +20,8 @@
             }
         },
         components : {
-           'app-header' : AppHeader
+           'app-header' : AppHeader,
+           'app-area' : AppArea
         },
         methods : {
             renewStr : function(){
