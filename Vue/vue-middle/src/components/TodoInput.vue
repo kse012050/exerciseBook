@@ -1,15 +1,26 @@
 <template>
     <div>
-        input
+        <input type="text" v-model="newTodoItem">
+        <button v-on:click="addTodo">add</button>
     </div>
 </template>
 
 <script>
 export default {
-
+    data: function(){
+        return {
+            newTodoItem : ""
+        }
+    },
+    methods : {
+        addTodo : function(){
+            console.log(this.newTodoItem);  
+            this.newTodoItem = "";
+        }
+    }
 }
 </script>
 
 <style>
 
-</style>
+</style> 
