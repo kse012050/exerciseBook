@@ -21,14 +21,10 @@ export default {
     },
     methods : {
         removeTodo : function(todoItem , index){
-            console.log(todoItem);
-            console.log(index);
             localStorage.removeItem(todoItem.item);
             this.todoItems.splice(index,1);
         },
         toggleComplete: function(todoItem,index){
-            console.log(todoItem);
-            console.log(index);
             todoItem.completed = !todoItem.completed
             // localStorage.removeItem(todoItem.item);
             localStorage.removeItem(localStorage.key(index));
@@ -39,10 +35,9 @@ export default {
     created : function(){
         if(localStorage.length > 0){
             for(var i = 0; i < localStorage.length; i++){
-                console.log(localStorage.key(i));
+                // console.log(localStorage.key(i));
                 if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-                    // this.todoItems.push(localStorage.key(i));
-                    // this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+                    // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
                     this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
                 }
             }
