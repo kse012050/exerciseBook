@@ -26,7 +26,6 @@ export default {
             this.todoItems.push(obj);
         },
         removeOneItem : function(todoItem , index){
-            console.log(2);
             localStorage.removeItem(todoItem.item);
             this.todoItems.splice(index,1);
         }
