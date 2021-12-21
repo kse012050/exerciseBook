@@ -23,6 +23,9 @@ export default {
             this.$emit('toggleItem',todoItem,index);
         }
     },
+    created : function(){
+        console.log('test');
+    }
 }
 </script>
 

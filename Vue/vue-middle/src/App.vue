@@ -1,7 +1,9 @@
 <template>
     <div>
         <todo-header></todo-header>
-        <todo-input v-on:addTodoItem="addOneItem"></todo-input>
+        <todo-input v-on:addTodoItem="addOneItem"
+            v-bind:propsdata="todoItems" 
+        ></todo-input>
         <todo-list 
             v-bind:propsdata="todoItems" 
             v-on:removeItem="removeOneItem" 

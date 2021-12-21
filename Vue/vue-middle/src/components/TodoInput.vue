@@ -11,7 +11,7 @@
                 경고
                 <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
             </h3>
-            <p slot="body">body</p>
+            <p slot="body">{{ modalMessage }}</p>
         </Modal>
     </div>
 </template>
@@ -20,23 +20,42 @@
 import Modal from './common/Modal.vue';
 
 export default {
+    props: ['propsdata'],
     data(){
         return {
             newTodoItem : "",
-            showModal : false
+            showModal : false,
+            modalTest : false,
+            modalMessage : '11'
         }
     },
     methods : {
         addTodo(){
+            this.modalTest = false;
             if(this.newTodoItem !== ''){
-                this.$emit('addTodoItem',this.newTodoItem)
-                this.clearInput();
+                for(let i = 0; i < this.propsdata.length; i++){
+                    console.log(this.propsdata[i].item);
+                    if(this.propsdata[i].item == this.newTodoItem){
+                        this.modalTest = !this.modalTest;
+                    }
+                }
+                if(this.modalTest){
+                    this.modalMessage = '중복된 값입니다';
+                    this.showModal = !this.showModal;    
+                }else{
+                    this.$emit('addTodoItem',this.newTodoItem)
+                    this.clearInput();
+                }
             }else{
+                this.modalMessage = '값을 입력해주세요';
                 this.showModal = !this.showModal;
             }
         },
         clearInput(){
             this.newTodoItem = "";
+        },
+        created : function(){
+            
         }
     },
     components: {
