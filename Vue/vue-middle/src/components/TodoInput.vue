@@ -26,7 +26,7 @@ export default {
             newTodoItem : "",
             showModal : false,
             modalTest : false,
-            modalMessage : '11'
+            modalMessage : ''
         }
     },
     methods : {
