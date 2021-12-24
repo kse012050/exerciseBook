@@ -47,17 +47,6 @@ export default {
             // this.todoItems.splice(0,this.todoItems.length);
         }
     },
-    created(){
-        if(localStorage.length > 0){
-            for(let i = 0; i < localStorage.length; i++){
-                // console.log(localStorage.key(i));
-                if(localStorage.key(i) !== 'loglevel:webpack-dev-server'){
-                    // console.log(JSON.parse(localStorage.getItem(localStorage.key(i))));
-                    this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
-                }
-            }
-        }
-    },
     components : {
         'todo-header' : TodoHeader,
         'todo-input' : TodoInput,
