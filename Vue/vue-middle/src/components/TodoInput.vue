@@ -33,17 +33,19 @@ export default {
         addTodo(){
             this.modalTest = false;
             if(this.newTodoItem !== ''){
-                for(let i = 0; i < this.propsdata.length; i++){
-                    console.log(this.propsdata[i].item);
-                    if(this.propsdata[i].item == this.newTodoItem){
+                for(let i = 0; i < this.$store.state.todoItems.length; i++){
+                    if(this.$store.state.todoItems[i].item == this.newTodoItem){
                         this.modalTest = !this.modalTest;
+                        this.modalTest = true;
                     }
                 }
                 if(this.modalTest){
                     this.modalMessage = '중복된 값입니다';
-                    this.showModal = !this.showModal;    
+                    this.showModal = !this.showModal;  
+                    this.newTodoItem = ''  
                 }else{
-                    this.$emit('addTodoItem',this.newTodoItem)
+                    this.$store.commit('addOneItem',this.newTodoItem);
+                    // this.$emit('addTodoItem',this.newTodoItem)
                     this.clearInput();
                 }
             }else{
