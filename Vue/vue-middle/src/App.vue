@@ -1,14 +1,9 @@
 <template>
     <div>
         <todo-header></todo-header>
-        <todo-input 
-            v-bind:propsdata="todoItems" 
-        ></todo-input>
-        <todo-list 
-            v-bind:propsdata="todoItems" 
-            v-on:toggleItem="toggleOneComplete">
-        </todo-list>
-        <todo-footer v-on:clearItem="clearAllItem"></todo-footer>
+        <todo-input ></todo-input>
+        <todo-list></todo-list>
+        <todo-footer></todo-footer>
     </div>
 </template>
 
@@ -19,11 +14,11 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-    data(){
+   /*  data(){
         return {
             todoItems : []
         }
-    },
+    }, */
     methods : {
         // addOneItem(todoItem){
         //     const obj = {completed : false, item : todoItem}
@@ -34,17 +29,17 @@ export default {
             localStorage.removeItem(todoItem.item);
             this.todoItems.splice(index,1);
         }, */
-        toggleOneComplete(todoItem,index){
-            // todoItem.completed = !todoItem.completed;
-            this.todoItems[index].completed = !this.todoItems[index].completed;
-            localStorage.removeItem(localStorage.key(index));
-            localStorage.setItem(todoItem.item , JSON.stringify(todoItem))
-        },
-        clearAllItem(){
-            localStorage.clear();
-            this.todoItems = [];
-            // this.todoItems.splice(0,this.todoItems.length);
-        }
+        // toggleOneComplete(todoItem,index){
+        //     // todoItem.completed = !todoItem.completed;
+        //     this.todoItems[index].completed = !this.todoItems[index].completed;
+        //     localStorage.removeItem(localStorage.key(index));
+        //     localStorage.setItem(todoItem.item , JSON.stringify(todoItem))
+        // },
+        // clearAllItem(){
+        //     localStorage.clear();
+        //     this.todoItems = [];
+        //     // this.todoItems.splice(0,this.todoItems.length);
+        // }
     },
     components : {
         'todo-header' : TodoHeader,

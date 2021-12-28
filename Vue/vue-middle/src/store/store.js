@@ -15,6 +15,8 @@ const storage = {
                 }
             }
         }
+        arr.sort();
+        console.log(arr);
         return arr;
     }
 }
@@ -31,9 +33,20 @@ export const store = new Vuex.Store({
             localStorage.setItem(todoItem , JSON.stringify(obj));
             state.todoItems.push(obj);
         },
-        removeOneItem(state , item){
-            localStorage.removeItem(item.todoItem.item);
+        removeOneItem(state , payload){
+            localStorage.removeItem(payload.todoItem.item);
             state.todoItems.splice(this.index,1);
         },
+        toggleOneComplete(state,payload){
+            // todoItem.completed = !todoItem.completed;
+            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
+            localStorage.removeItem(localStorage.key(payload.index));
+            localStorage.setItem(payload.todoItem.item , JSON.stringify(payload.todoItem))
+        },
+        clearAllItem(state){
+            localStorage.clear();
+            state.todoItems = [];
+            // this.todoItems.splice(0,this.todoItems.length);
+        }
     }
 });
