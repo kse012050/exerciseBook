@@ -16,7 +16,6 @@ const storage = {
             }
         }
         arr.sort();
-        console.log(arr);
         return arr;
     }
 }
@@ -25,6 +24,11 @@ export const store = new Vuex.Store({
     state : {
         headerText : 'TODO it!',
         todoItems: storage.fetch(),
+    },
+    getters : {
+        storedTodoItems(state){
+            return state.todoItems;
+        }
     },
     mutations : {
         addOneItem(state, todoItem){
