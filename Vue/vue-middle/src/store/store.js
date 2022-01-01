@@ -1,5 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+// import todoApp from './modules/todoApp'
+import * as getters from './getters.js'
+import * as mutations from './mutations.js'
 
 Vue.use(Vuex);
 
@@ -21,36 +24,13 @@ const storage = {
 }
 
 export const store = new Vuex.Store({
+   /*  modules : {
+        todoApp : todoApp
+    } */
     state : {
         headerText : 'TODO it!',
         todoItems: storage.fetch(),
     },
-    getters : {
-        storedTodoItems(state){
-            return state.todoItems;
-        }
-    },
-    mutations : {
-        addOneItem(state, todoItem){
-            console.log(state.newTodoItem);
-            const obj = {completed : false, item : todoItem};
-            localStorage.setItem(todoItem , JSON.stringify(obj));
-            state.todoItems.push(obj);
-        },
-        removeOneItem(state , payload){
-            localStorage.removeItem(payload.todoItem.item);
-            state.todoItems.splice(this.index,1);
-        },
-        toggleOneComplete(state,payload){
-            // todoItem.completed = !todoItem.completed;
-            state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
-            localStorage.removeItem(localStorage.key(payload.index));
-            localStorage.setItem(payload.todoItem.item , JSON.stringify(payload.todoItem))
-        },
-        clearAllItem(state){
-            localStorage.clear();
-            state.todoItems = [];
-            // this.todoItems.splice(0,this.todoItems.length);
-        }
-    }
+    getters :getters,
+    mutations : mutations
 });
