@@ -24,9 +24,9 @@ const storage = {
 }
 
 export const store = new Vuex.Store({
-   /*  modules : {
+    /* modules : {
         todoApp : todoApp
-    } */
+    }, */
     state : {
         headerText : 'TODO it!',
         todoItems: storage.fetch(),
