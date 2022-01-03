@@ -1,6 +1,8 @@
 <template>
     <div id="app">
-        
+        메인
+        <router-link to="/news">aaa</router-link>
+        <router-view></router-view>
     </div>
 </template>
 
