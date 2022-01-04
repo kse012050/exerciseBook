@@ -7,7 +7,12 @@ import Ask from '../views/AskView.vue';
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
+    mode: 'history',
     routes : [
+        {
+            path : '/',
+            redirect : '/news'
+        },
         {
             // path : url 주소
             path : '/news',
