@@ -18,18 +18,28 @@
         f.prototype.b = 3;
         f.prototype.c = 4;
 
-        let test = function(a){
-            return new b(a);
+        let test = function(selector){
+            return new test.prototype.init(selector);
+        }
+
+        test.prototype.init = function(selector) {
+            document.querySelector(selector);
+            console.log(document.querySelector(selector));
         }
         function b(a){
-            console.log(a);
-            return a
+            // console.log(a);
+            return document.querySelector(a);
         }
-        b.prototype.addClass = function(className){
-            console.log(this);   
+        b.prototype ={ 
+            addClass : function(className){
+                console.log(this);   
+            }
         }
+
+        test('div');
        
-        test('a').addClass('b')
+        // test('div').addClass('b')
+        // document.querySelector('div').style.color = 'red';
     </script>
 </body>
 </html>
