@@ -13,11 +13,11 @@ export default {
         }
     },
     created(){
-        let vm = this;
+        // let vm = this;
         fetchJobsList()
-            .then(function(response){
+            .then(response =>{
                 console.log(response);
-                vm.jobs = response.data;
+                this.jobs = response.data;
             })
             .catch(function(error){
                 console.log(error);
