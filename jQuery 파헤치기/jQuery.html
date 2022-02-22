@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <script src="jquery-3.6.0.js"></script> -->
+    <script src="jquery-3.6.0.js"></script>
 </head>
 <body>
     <div>test</div>
     <script>
+        console.log(window);
         let f = function() {
             this.a = 1;
             this.b = 2;
@@ -18,25 +19,37 @@
         f.prototype.b = 3;
         f.prototype.c = 4;
 
-        let test = function(selector){
-            return new test.prototype.init(selector);
+        function a(selector){
+            return new a.prototype.init(selector);
         }
 
-        test.prototype.init = function(selector) {
+        a.prototype.init = function(selector) {
             document.querySelector(selector);
             console.log(document.querySelector(selector));
+            return document.querySelector(selector);
         }
-        function b(a){
-            // console.log(a);
-            return document.querySelector(a);
-        }
-        b.prototype ={ 
+        a.prototype = {
+            constructor : a,
             addClass : function(className){
                 console.log(this);   
             }
         }
 
-        test('div');
+        function b(a){
+            // console.log(a);
+            return document.querySelector(a);
+        }
+        b.prototype = { 
+            addClass : function(className){
+                console.log(this);   
+            }
+        }
+
+        console.log($);
+        console.log(a);
+
+        a('div').addClass();
+        console.log(document.querySelector('div'));
        
         // test('div').addClass('b')
         // document.querySelector('div').style.color = 'red';
