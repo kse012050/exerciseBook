@@ -34,22 +34,32 @@
                 console.log(this);   
             }
         }
+        // console.log(a('div'));
+        // a.prototype.extend = function(){
+
+        // }
 
         function b(a){
             // console.log(a);
             return document.querySelector(a);
         }
-        b.prototype = { 
-            addClass : function(className){
-                console.log(this);   
-            }
+        b.extend = b.prototype.extend = function(){
+            console.log();
         }
+        b.extend({
+            addClass : function(className){
+                console.log(className);   
+            }
+        })
 
-        console.log($);
-        console.log(a);
+        // b.prototype = { 
+        //     addClass : function(className){
+        //         console.log(this);   
+        //     }
+        // }
 
-        a('div').addClass();
-        console.log(document.querySelector('div'));
+        console.log(b('div').addClass('test'));
+        // a('div').addClass();
        
         // test('div').addClass('b')
         // document.querySelector('div').style.color = 'red';
