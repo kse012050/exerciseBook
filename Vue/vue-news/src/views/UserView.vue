@@ -17,7 +17,7 @@ export default {
         }
     },
     created(){
-        console.log(this.$route.params.id);
+        // console.log(this.$route.params.id);
         const userName = this.$route.params.id
         // axios.get(`https://api.hnpwa.com/v0/user/${userName}.json`);
         this.$store.dispatch('FETCH_USER' , userName);
