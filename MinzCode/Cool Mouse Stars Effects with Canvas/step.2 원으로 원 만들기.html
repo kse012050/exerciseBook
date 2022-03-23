@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.2 원으로 원 만들기</title>
+    <style>
+        body{margin: 0; /* overflow: hidden; */ line-height: 0;}
+        #canvas{background-color: #000}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let canvas , ctx , w , h;
+        function init(){
+            canvas = document.querySelector('#canvas');
+            ctx = canvas.getContext('2d');
+            canvasSize();
+        }
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            var test = new Particle();
+            test.draw();
+        }
+        
+        function windowResize(){
+            canvasSize();
+        }
+
+        class Particle{
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+            }
+
+            draw(){
+                console.log(this.x);
+                ctx.beginPath();
+                ctx.fillStyle = 'red';
+                // ctx.strokeStyle = 'red';
+                ctx.arc(this.x ,this.y , 10 , 0 , Math.PI * 2);
+                ctx.fill();
+                // ctx.stroke();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('resize',windowResize);
+
+    </script>
+</body>
+</html>
