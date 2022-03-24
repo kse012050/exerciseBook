@@ -10,59 +10,13 @@
 <body>
     <div>test</div>
     <script>
-        console.log(window);
-        let f = function() {
-            this.a = 1;
-            this.b = 2;
+        var jQuery = function(selector){
+            return new jQuery.fn.init(selector);
         }
-        let o = new f();
-        f.prototype.b = 3;
-        f.prototype.c = 4;
-
-        function a(selector){
-            return new a.prototype.init(selector);
+        jQuery.fn = jQuery.prototype ={
+            length : 0
         }
-
-        a.prototype.init = function(selector) {
-            document.querySelector(selector);
-            console.log(document.querySelector(selector));
-            return document.querySelector(selector);
-        }
-        a.prototype = {
-            constructor : a,
-            addClass : function(className){
-                console.log(this);   
-            }
-        }
-        // console.log(a('div'));
-        // a.prototype.extend = function(){
-
-        // }
-
-        function b(a){
-            // console.log(a);
-            return document.querySelector(a);
-        }
-        b.extend = b.prototype.extend = function(){
-            console.log();
-        }
-        b.extend({
-            addClass : function(className){
-                console.log(className);   
-            }
-        })
-
-        // b.prototype = { 
-        //     addClass : function(className){
-        //         console.log(this);   
-        //     }
-        // }
-
-        console.log(b('div').addClass('test'));
-        // a('div').addClass();
-       
-        // test('div').addClass('b')
-        // document.querySelector('div').style.color = 'red';
+        jQuery('div');
     </script>
 </body>
 </html>
