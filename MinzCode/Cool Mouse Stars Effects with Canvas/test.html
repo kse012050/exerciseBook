@@ -67,8 +67,9 @@
                     // console.log(z);
                     r = (Math.PI / 180) * a;
                     // console.log((Math.PI / 180));
-                    x = this.x + 50 * Math.sin(r);
-                    y = this.y + 50 * Math.cos(r);
+                    y = this.y + 50 * Math.sin(r);
+                    console.log(a + " : " + y);
+                    x = this.x + 50 * Math.cos(r);
                     this.point.push({x : x, y : y, r : z});
                 }
             }
