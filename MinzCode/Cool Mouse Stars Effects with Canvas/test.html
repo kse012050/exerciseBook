@@ -13,13 +13,6 @@
 <body>
     <canvas id="canvas"></canvas>
     <script> 
-        // console.log(Math.sin(90));
-        console.log(Math.sin((Math.PI / 180) * 90));
-        console.log(Math.cos((Math.PI / 180) * -90));
-        for(var i = 0; i <= 360;i++){
-            // console.log((Math.PI / 180) * i + " 1: " + Math.sin((Math.PI / 180) * i));
-            // console.log(i + " : " + Math.sin(i));
-        }
         let canvas, ctx, w,h , particles = [];
         function init(){
             canvas = document.querySelector('#canvas');
@@ -59,24 +52,21 @@
                 this.alpha = 1;
             }
             setPoint(){
-                let r,x,y , z;
-                z = 0;
+                let r,x,y;
                 this.point = [];
                 for(let a = 0; a < 360; a += 36){
-                    z += 0.1;
-                    // console.log(z);
+                    let d = ((a / 36) % 2 === 0) ? 50 : 25;
                     r = (Math.PI / 180) * a;
-                    // console.log((Math.PI / 180));
-                    x = this.x + 50 * Math.sin(r);
-                    y = this.y + 50 * Math.cos(r);
-                    this.point.push({x : x, y : y, r : z});
+                    x = this.x + d * Math.sin(r);
+                    y = this.y + d * Math.cos(r);
+                    this.point.push({x : x, y : y, r : this.radius});
                 }
             }
             draw(){
                 this.point.map((p) => {
                     ctx.beginPath(); 
-                    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-                    ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${p.r})`;
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
                     ctx.fill();
                     ctx.closePath();    
                 });

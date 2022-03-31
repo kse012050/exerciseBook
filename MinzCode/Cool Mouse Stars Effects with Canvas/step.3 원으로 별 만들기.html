@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.3 원으로 별 만들기</title>
+    <style>
+        body{margin: 0; /* overflow: hidden; */ line-height: 0;}
+        #canvas{background-color: #000}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let canvas , ctx , w , h;
+        function init(){
+            canvas = document.querySelector('#canvas');
+            ctx = canvas.getContext('2d');
+            canvasSize();
+        }
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            var test = new Particle();
+            test.draw();
+        }
+        
+        function windowResize(){
+            canvasSize();
+        }
+
+        class Particle{
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+            }
+
+            setPoint(){
+                let x , y , r;
+                this.point = [];
+                for(let a = 0; a < 360; a += 36){
+                    let d = ((a / 36) % 2 === 1) ? 50 : 25;
+                    r = (Math.PI / 180) * a;
+                    x = this.x + d * Math.sin(r);
+                    y = this.y + d * Math.cos(r);
+                    this.point.push({
+                        x : x ,
+                        y : y ,
+                        r : r , 
+                    })
+                }
+            }
+
+            draw(){
+                this.setPoint();
+                this.point.map(function(p){
+                    console.log(p.index);
+                    ctx.beginPath();
+                    ctx.fillStyle = 'blue';
+                    // ctx.strokeStyle = 'red';
+                    ctx.arc(p.x ,p.y , 1 , 0 , Math.PI * 2);
+                    ctx.fill();
+                    // ctx.stroke();
+                })
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('resize',windowResize);
+
+    </script>
+</body>
+</html>
