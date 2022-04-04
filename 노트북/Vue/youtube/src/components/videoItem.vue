@@ -7,12 +7,14 @@
 <script>
 import axios from 'axios';
 export default {
-    data :{
+    data :function() {
+return {
         requestOptions : {
             method: 'GET',
             redirect: 'follow'
         }
-    },
+    };
+},
     created(){
         /* const requestOptions = {
             method: 'GET',
