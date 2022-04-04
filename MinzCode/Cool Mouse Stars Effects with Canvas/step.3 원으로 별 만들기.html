@@ -56,14 +56,25 @@
             draw(){
                 this.setPoint();
                 this.point.map(function(p){
-                    console.log(p.index);
                     ctx.beginPath();
                     ctx.fillStyle = 'blue';
-                    // ctx.strokeStyle = 'red';
+                    ctx.strokeStyle = 'red';
                     ctx.arc(p.x ,p.y , 1 , 0 , Math.PI * 2);
                     ctx.fill();
-                    // ctx.stroke();
                 }) 
+                console.log(this.point);
+                // ctx.beginPath();
+                // for(let i = 0; i < this.point.length; i++){
+                //     console.log(i);
+                //     if(i === 0){
+                //         ctx.moveTo(this.point[i].x , this.point[i].y);
+                //     }else{
+                //         ctx.lineTo(this.point[i].x , this.point[i].y);
+                //     }
+                // }
+                // ctx.closePath();
+                // ctx.strokeStyle = 'red';
+                // ctx.stroke();
             }
         }
 
