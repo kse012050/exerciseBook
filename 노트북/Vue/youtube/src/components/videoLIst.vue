@@ -10,10 +10,6 @@
 <script>
 export default {
     props: ['youtubeData'],
-    methods : {
-        testest(){
-        }
-    },
     created:function(){
         console.log(this.youtubeData);
     }
