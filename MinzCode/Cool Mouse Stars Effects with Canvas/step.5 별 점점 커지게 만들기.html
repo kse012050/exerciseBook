@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.5 별 점점 커지게 만들기</title>
+    <style>
+        body{margin: 0; padding: 0; line-height: 0;}
+        canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let w , h , canvas , ctx , particles = [];
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+            animationLoop();
+        }   
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function animationLoop(){
+            drawScene();
+        }
+
+        function drawScene(){
+            particles.push(new Particle());
+            particles[0].setPoint();
+            particles[0].draw();
+        }
+
+        class Particle{
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+                this.point = [];
+            }
+            
+            setPoint(){
+                let r , x , y , d;
+                for(let a = 0; a < 360; a += 36){
+                    d = (a / 36) % 2 === 0 ? 25 : 50;
+                    r = (Math.PI / 180) * a;
+                    x = this.x + d * Math.sin(r);
+                    y = this.y + d * Math.cos(r);
+                    this.point.push({
+                        x : x ,
+                        y : y
+                    })
+                }
+            }
+
+            draw(){
+                this.point.map((p)=>{
+                    ctx.beginPath();
+                    ctx.fillStyle = 'red';
+                    ctx.arc(p.x , p.y , 1 , 0 , Math.PI * 2);
+                    ctx.fill();
+                })
+
+                ctx.beginPath();
+                ctx.strokeStyle = 'blue';
+                for(let a = 0; a < this.point.length; a++){
+                    if(a === 0){
+                        ctx.moveTo(this.point[a].x , this.point[a].y)
+                    }else{
+                        ctx.lineTo(this.point[a].x , this.point[a].y)
+                    }
+                }
+                ctx.lineTo(this.point[0].x , this.point[0].y)
+                ctx.stroke();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+    </script>
+</body>
+</html>
