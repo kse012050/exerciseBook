@@ -4,7 +4,7 @@ import VideoList from './components/videoList/videoList';
 
 function App() {
   const [videos, setVideos] = useState([]);
-  const test = 1;
+  // const test = 1;
   useEffect(() => {
     const requestOptions = {
       method: 'GET',
