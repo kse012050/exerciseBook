@@ -1,6 +1,8 @@
 import { useState , useEffect } from 'react'
 import './app.css';
+import './css/reset.css'
 import VideoList from './components/videoList/videoList';
+import SearchForm from './components/searchForm/searchForm';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -19,7 +21,10 @@ function App() {
       .catch(error => console.log('error', error));
   }, [])
   return (
-    <VideoList videos={videos} />
+    <>
+      <SearchForm></SearchForm>
+      <VideoList videos={videos} />
+    </>
   );
 }
 
