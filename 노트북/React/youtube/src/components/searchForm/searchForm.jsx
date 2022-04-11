@@ -7,7 +7,7 @@ const SearchForm = () => {
     function searchClick(){
         searchValue = searchText.current.value;
         console.log(searchValue);
-        searchValue = '';
+        searchValue = ''; 
     }
 
     function keyEvent(e){
