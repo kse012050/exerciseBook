@@ -45,7 +45,6 @@
 
             // canvas에 그림을 그리는 함수
             drawScene();
-            console.log(1);
             requestAnimationFrame(animationloop);
         }
 
@@ -82,7 +81,7 @@
                 // draw points 
                 this.point.map((p) => {
                     ctx.beginPath(); 
-                    ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
                     ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
                     ctx.fill();
                     ctx.closePath();    
@@ -102,7 +101,7 @@
             }
             update(){
                 this.setPoint();
-                // this.radius -= .05;
+                this.radius -= .05;
                 this.size += .5;
                 // this.rotate -= 1;
             }
