@@ -20,7 +20,7 @@ export default {
         searchClick() {
             // console.log(this.searchText);
             if(this.searchText !== ''){
-                this.$emit('test', this.searchText);
+                this.$emit('searchFun', this.searchText);
                 this.searchText = '';
             }
         }
