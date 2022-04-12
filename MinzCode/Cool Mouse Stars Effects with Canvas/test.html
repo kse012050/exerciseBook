@@ -82,7 +82,7 @@
                 // draw points 
                 this.point.map((p) => {
                     ctx.beginPath(); 
-                    ctx.arc(p.x, p.y, 10, 0, Math.PI * 2);
+                    ctx.arc(p.x, p.y, 1, 0, Math.PI * 2);
                     ctx.fillStyle = `hsla(${this.hue}, 100%, 50%, ${this.alpha})`;
                     ctx.fill();
                     ctx.closePath();    

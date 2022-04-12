@@ -19,6 +19,7 @@
             ctx = canvas.getContext('2d');
 
             canvasSize();
+            particles.push(new Particle());
             animationLoop();
         }   
 
@@ -28,11 +29,19 @@
         }
 
         function animationLoop(){
+            // console.log(w);
+            // console.log(h);
+            ctx.clearRect(0 , 0 , w , h);
+            // setTimeout(() => {
+            // }, 3000);
+            
             drawScene();
+            requestAnimationFrame(animationLoop);
         }
 
         function drawScene(){
-            particles.push(new Particle());
+            // console.log(particles);
+            // particles.push(new Particle());
             particles[0].setPoint();
             particles[0].draw();
         }
@@ -42,12 +51,14 @@
                 this.x = w / 2;
                 this.y = h / 2;
                 this.point = [];
+                this.size = 0;
             }
             
             setPoint(){
                 let r , x , y , d;
+                this.point = [];
                 for(let a = 0; a < 360; a += 36){
-                    d = (a / 36) % 2 === 0 ? 25 : 50;
+                    d = (a / 36) % 2 === 0 ? this.size / 2 : this.size;
                     r = (Math.PI / 180) * a;
                     x = this.x + d * Math.sin(r);
                     y = this.y + d * Math.cos(r);
@@ -56,9 +67,12 @@
                         y : y
                     })
                 }
+                this.size += 0.5;
+                this.update();
             }
 
             draw(){
+                // console.log(this.point);
                 this.point.map((p)=>{
                     ctx.beginPath();
                     ctx.fillStyle = 'red';
@@ -77,6 +91,10 @@
                 }
                 ctx.lineTo(this.point[0].x , this.point[0].y)
                 ctx.stroke();
+            }
+
+            update(){
+                this.size += .1;
             }
         }
 
