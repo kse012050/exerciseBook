@@ -1,5 +1,5 @@
 import { useState , useEffect } from 'react'
-import './app.css';
+import './App.css';
 import './css/reset.css'
 import VideoList from './components/videoList/videoList';
 import SearchForm from './components/searchForm/searchForm';
@@ -20,9 +20,28 @@ function App() {
       })
       .catch(error => console.log('error', error));
   }, [])
+
+  function search(query){
+    const requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+      fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=AIzaSyDYt_M1ZCPgn78zXl23y6ZLnP-5LdWyAhM`, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+          console.log(result);
+          return result.items.map(item => ({...item, id : item.id.videoId}))
+        })
+        .then(items => {
+          console.log(items);
+          return setVideos(items)
+        })
+        .catch(error => console.log('error', error));
+  }
+
   return (
     <>
-      <SearchForm></SearchForm>
+      <SearchForm onSearch={search}></SearchForm>
       <VideoList videos={videos} />
     </>
   );

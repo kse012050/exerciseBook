@@ -1,13 +1,14 @@
 import React ,{ useRef } from 'react';
 import './searchForm.css'
 
-const SearchForm = () => {
+const SearchForm = ({onSearch}) => {
     let searchText = useRef();
     let searchValue ='';
     function searchClick(){
         searchValue = searchText.current.value;
         console.log(searchValue);
-        searchValue = ''; 
+        searchText.current.value = '';
+        onSearch(searchValue);
     }
 
     function keyEvent(e){
