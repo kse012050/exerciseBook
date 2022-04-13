@@ -1,8 +1,10 @@
 import { useState , useEffect } from 'react'
+import { BrowserRouter, Routes , Route, Link } from 'react-router-dom';
 import './App.css';
 import './css/reset.css'
 import VideoList from './components/videoList/videoList';
 import SearchForm from './components/searchForm/searchForm';
+import Test from './components/test/test';
 
 function App() {
   const [videos, setVideos] = useState([]);
@@ -41,8 +43,14 @@ function App() {
 
   return (
     <>
-      <SearchForm onSearch={search}></SearchForm>
-      <VideoList videos={videos} />
+      <SearchForm onSearch={search}/>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<VideoList videos={videos} />}></Route>
+          <Route path="/test" element={<Test />}></Route>
+        </Routes>
+      </BrowserRouter>
+      {/* <VideoList videos={videos} /> */}
     </>
   );
 }
