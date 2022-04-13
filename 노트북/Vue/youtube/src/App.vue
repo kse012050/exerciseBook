@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <!-- <video-list v-bind:youtubeData="youtubeData"></video-list> -->
-        <search-form></search-form>
+        <search-form v-on:searchFun="searchFun"></search-form>
         <video-list v-bind:youtubeData="youtubeData"></video-list>
     </div>
 </template>
@@ -36,6 +36,15 @@ export default {
                 // this.test();
             })
             .catch(error => console.log('error', error))
+    },
+    methods: {
+        searchFun(query) {
+             fetch(`https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=${query}&type=video&key=AIzaSyDYt_M1ZCPgn78zXl23y6ZLnP-5LdWyAhM`, this.requestOptions)
+                .then(response => response.json())
+                .then(result => result.items.map(item => ({...item, id : item.id.videoId})))
+                .then(items => this.youtubeData = items)
+                .catch(error => console.log('error', error));
+        }
     }
 }
 </script>

@@ -14,7 +14,7 @@
 export default {
     props: ['youtubeData'],
     created:function(){
-        console.log(this.youtubeData);
+        // console.log(this.youtubeData);
     }
 }
 </script>
