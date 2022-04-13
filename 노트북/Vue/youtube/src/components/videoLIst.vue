@@ -13,8 +13,8 @@
 <script>
 export default {
     props: ['youtubeData'],
-    created:function(){
-        // console.log(this.youtubeData);
+    updated:function(){
+        console.log(this.youtubeData);
     }
 }
 </script>

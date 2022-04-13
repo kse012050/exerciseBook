@@ -1,13 +1,14 @@
 <template>
     <div id="app">
         <!-- <video-list v-bind:youtubeData="youtubeData"></video-list> -->
+        <router-view></router-view>
         <search-form v-on:searchFun="searchFun"></search-form>
-        <video-list v-bind:youtubeData="youtubeData"></video-list>
+        <!-- <video-list v-bind:youtubeData="youtubeData"></video-list> -->
     </div>
 </template>
 
 <script>
-import VideoList from './components/VideoList.vue';
+// import VideoList from './components/VideoList.vue';
 import SearchForm from './components/SearchForm.vue';
 export default {
     components : {
@@ -23,7 +24,7 @@ export default {
             youtubeData : []
         }
     },
-    beforeCreate(){
+    created(){
          fetch("https://youtube.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&key=AIzaSyDYt_M1ZCPgn78zXl23y6ZLnP-5LdWyAhM", this.requestOptions)
             // fetch(test, requestOptions)
             .then(response => {
