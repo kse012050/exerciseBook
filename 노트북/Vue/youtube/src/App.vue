@@ -12,7 +12,7 @@
 import SearchForm from './components/SearchForm.vue';
 export default {
     components : {
-        VideoList,
+        // VideoList,
         SearchForm
     },
     data() {

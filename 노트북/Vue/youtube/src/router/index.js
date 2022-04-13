@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import VideoList from '../componenet/VideoItem.vue'
+import VideoList from '../components/VideoList.vue'
+// import Test from '../components/Test.vue'
 import VideoItem from '../views/VideoItem.vue'
 import HomeTest from '../views/Home.vue';
 Vue.use(VueRouter)
