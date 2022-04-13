@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.6 별 점점 커지다 사라지게 만들기</title>
+    <style>
+        body{margin: 0;line-height: 0;}
+        #canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let canvas , ctx, w , h , particles = [];
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+            particles.push(new Particle);
+            animationLoop();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function animationLoop(){
+            ctx.clearRect(0 , 0 , w , h);
+            particles[0].update();
+            particles[0].draw();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        class Particle {
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+                this.point = [];
+                this.size = 0;
+                this.radius = 5;
+            }
+
+            setPoint(){
+                let r , x , y , d;
+                this.point = [];
+                for(let a = 0; a < 360; a += 36){
+                    d = (a / 36) % 2 === 0 ? this.size / 2 : this.size;
+                    r = (Math.PI / 180) * a;
+                    x = this.x + d * Math.sin(r);
+                    y = this.y + d * Math.cos(r);
+                    this.point.push({
+                        x : x ,
+                        y : y 
+                    })
+                }
+            }
+
+            draw(){
+                if(this.radius <= 0) return;
+                this.point.map((p) =>{
+                    ctx.beginPath();
+                    ctx.fillStyle = 'red';
+                    ctx.arc(p.x , p.y , this.radius , 0 , Math.PI * 2);
+                    ctx.fill();
+                })
+
+                ctx.beginPath();
+                ctx.strokeStyle = 'blue';
+                for(let a = 0; a < this.point.length; a++){
+                    if(a === 0){
+                        ctx.moveTo(this.point[a].x , this.point[a].y);
+                    }else{
+                        ctx.lineTo(this.point[a].x , this.point[a].y);
+                    }
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+
+            update(){
+                this.setPoint();
+                this.size += .5;
+                this.radius -= .05;
+            }
+        }
+
+        window.onload = () =>{
+            init();
+        }
+    </script>
+</body>
+</html>
