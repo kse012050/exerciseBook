@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.7 별 회전과 색상 변경</title>
+    <style>
+        body{margin: 0; line-height: 0;}
+        #canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx, w, h , particles = [] , hue = 0;
+
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            canvasSize();
+            particles.push(new Particle);
+            animationLoop();
+        }
+        
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        
+        function animationLoop(){
+            hue += 2;
+            // console.log(hue);
+            ctx.clearRect(0,0,w,h);
+            particles[0].update();
+            particles[0].draw();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        class Particle{
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+                this.point = [];
+                this.size = 0;
+                this.radius = 5;
+                this.rotate = 0;
+                this.hue = 0;
+                this.color ='';
+                this.alpha = 0;
+            }
+
+            setPoint(){
+                let x , y , r , d;
+                this.point = [];
+                for(let a = 0; a < 360; a += 36){
+                    r = (Math.PI / 180 ) * (a + this.rotate);
+                    d = ( a / 36 ) % 2 === 0 ? this.size / 2 : this.size;
+                    x = this.x + d * Math.sin(r)
+                    y = this.y + d * Math.cos(r)
+                    this.point.push({
+                        x : x,
+                        y : y,
+                        r : this.radius
+                    })
+                }
+            }
+
+            draw(){
+                this.color = `hsla(${hue % 360} , 100% , 50% , ${this.alpha})`;
+                // console.log(this.hue);
+                console.log(this.alpha);
+
+                if(this.radius <= 0){
+                    this.radius = 5;
+                    this.size = 0;
+                    return;
+                }
+                this.point.map((p) => {
+                    ctx.beginPath();
+                    ctx.fillStyle = this.color;
+                    ctx.arc(p.x , p.y , p.r, 0 , Math.PI * 2);
+                    ctx.fill();
+                })
+
+                ctx.beginPath();
+                ctx.strokeStyle = this.color;
+                for(let a = 0; a < this.point.length; a++){
+                    if(a === 0){
+                        ctx.moveTo(this.point[a].x , this.point[a].y);
+                    }else{
+                        ctx.lineTo(this.point[a].x , this.point[a].y);
+                    }
+                }
+                ctx.closePath();
+                ctx.stroke();
+            }
+            update(){
+                this.setPoint();
+                this.size += 0.5;
+                this.radius -= 0.05;
+                this.rotate += 1;
+                this.hue += 2;
+                this.alpha = (this.radius * 0.5 < 0.5) ? this.radius * 0.5 : 0.5;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+    </script>
+</body>
+</html>
