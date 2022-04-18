@@ -1,7 +1,8 @@
 <template>
   <div>
-    test
-    <router-link to="/TesTest">testest</router-link>
+    <router-link to="/NewsView">news</router-link>
+    <router-link to="/JobsView">jobs</router-link>
+    <router-link to="/AskView">ask</router-link>
     <router-view></router-view>
   </div>
 </template>

@@ -1,7 +1,6 @@
 <template>
     <div>
-        실험중
-        
+        news
     </div>
 </template>
 
