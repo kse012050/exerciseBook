@@ -31,7 +31,7 @@
 
             // resizeReset() 함수 실행 - canvas의 크기
             resizeReset();
-            arrayCleanup();
+            // arrayCleanup();
             // animationloop() 함수 실행 - canvas animation 실행
             animationloop();
         }
@@ -67,6 +67,7 @@
             if(mouse.x != undefined && mouse.y != undefined){
                 particles.push(new Particle(mouse.x , mouse.y));
             }
+            console.log(particles)
             
             // canvas의 그림을 지운다
             ctx.clearRect(0,0,w,h);
