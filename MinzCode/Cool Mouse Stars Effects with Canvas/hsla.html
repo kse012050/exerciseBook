@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hue test</title>
+    <style>
+        body{margin:0; line-height: 0;}
+        #canvas{background-color: lightgreen;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx , w , h;
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            canvasSize();
+            draw2();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        function draw2(){
+            for(let i = 0; i <= 360; i++){
+                let rectWidth = (w / 360);
+                let startPoint = (0 + i) * (w / 360);
+                ctx.beginPath();
+                ctx.strokeStyle = 'white';
+                // ctx.fillStyle = `hsla(${i % 360} , 100% , 50% , 1)`;
+                ctx.fillStyle = `hsla(${i} , 100% , 50% , 1)`
+                ctx.rect(startPoint , 0 , rectWidth , 100);
+                ctx.stroke();
+                ctx.fill();
+            }
+            for(let i = 0; i <= 360; i++){
+                let rectWidth = (w / 360);
+                let startPoint = (0 + i) * (w / 360);
+                ctx.beginPath();
+                ctx.strokeStyle = 'white';
+                ctx.fillStyle = `hsla(0 , ${i / 360 * 100}%, 50% , 1)`;
+                // ctx.fillStyle = `hsla(${i } , 100% , 50% , 1)`
+                ctx.rect(startPoint , 100 , rectWidth , 100);
+                ctx.stroke();
+                ctx.fill();
+            }
+            for(let i = 0; i <= 360; i++){
+                let rectWidth = (w / 360);
+                let startPoint = (0 + i) * (w / 360);
+                ctx.beginPath();
+                ctx.strokeStyle = 'white';
+                ctx.fillStyle = `hsla(0 , 100%, ${i / 360 * 100}% , 1)`;
+                // ctx.fillStyle = `hsla(${i } , 100% , 50% , 1)`
+                ctx.rect(startPoint , 200 , rectWidth , 100);
+                ctx.stroke();
+                ctx.fill();
+            }
+            
+            for(let i = 0; i <= 360; i++){
+                let rectWidth = (w / 360);
+                let startPoint = (0 + i) * (w / 360);
+                ctx.beginPath();
+                ctx.strokeStyle = 'white';
+                ctx.fillStyle = `hsla(0 , 100%, 50% , ${i / 360})`;
+                // ctx.fillStyle = `hsla(${i } , 100% , 50% , 1)`
+                ctx.rect(startPoint , 300 , rectWidth , 100);
+                ctx.stroke();
+                ctx.fill();
+            }
+        }
+        window.addEventListener('DOMContentLoaded',init());
+    </script>
+</body>
+</html>
