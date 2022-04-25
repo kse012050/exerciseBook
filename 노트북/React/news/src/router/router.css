@@ -1,0 +1,4 @@
+header{color: white; background-color: #61dafb; display: flex; padding: 8px;}
+header a{color: white;}
+header .active{color: #35495e;}
+/* header a[aria-current="page"]{color: #35495e;} */
