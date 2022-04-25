@@ -1,20 +1,30 @@
 import { createRouter , createWebHistory } from 'vue-router'
-import NewsView from '../view/NewsView.vue'
-import JobsView from '../view/JobsView.vue'
-import AskView from '../view/AskView.vue'
+import News from '../views/NewsView.vue'
+import Jobs from '../views/JobsView.vue'
+import Ask from '../views/AskView.vue'
+import Item from '../views/ItemView.vue'
+import User from '../views/UserView.vue'
 
 const routes = [
     {
-        path : '/NewsView',
-        component : NewsView
+        path : '/News',
+        component : News
     },
     {
-        path : '/JobsView',
-        component : JobsView
+        path : '/Jobs',
+        component : Jobs
     },
     {
-        path : '/AskView',
-        component : AskView
+        path : '/Ask',
+        component : Ask
+    },
+    {
+        path : '/Item',
+        component : Item
+    },
+    {
+        path : '/User',
+        component : User
     }
 ]
 
