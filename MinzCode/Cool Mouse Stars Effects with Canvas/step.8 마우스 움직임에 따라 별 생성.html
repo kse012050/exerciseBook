@@ -7,19 +7,26 @@
     <title>step.8 마우스 움직임에 따라 별 생성</title>
     <style>
         body{line-height: 0; margin: 0;}
-        #canvas{background-color: black;}
+        #canvas{background-color: black; color: transparent;}
     </style>
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <script>
         let canvas , ctx , w , h , paticles = [];
+        let mouse = {
+            x : undefined,
+            y : undefined
+        }
+        let color = 0;
 
         function init(){
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
 
             canvasSize();
+            mousemove();
+            // paticles.push(new Paticle);
             animationLoop();
         }
 
@@ -27,50 +34,77 @@
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
         }
+        
+        function mousemove(){
+            canvas.addEventListener('mousemove',function(e){
+                mouse.x = e.offsetX;
+                mouse.y = e.offsetY;
+                // paticles.push(new Paticle(e.offsetX , e.offsetY));
+            })
+            canvas.addEventListener('mouseout',function(){
+                mouse.x = undefined;
+                mouse.y = undefined;
+            })
+        }
+
 
         function animationLoop(){
-            paticles.push(new Paticle);
-            paticles[0].setPoint();
-            paticles[0].draw();
+            color += 1;
+            if(mouse.x != undefined && mouse.y != undefined){
+                paticles.push(new Paticle(mouse.x , mouse.y ,color));
+            }
+
+            ctx.clearRect(0,0,w,h);
+            paticles.map((test)=>{
+                test.update();
+                test.draw();
+            })
+            // paticles[0].setPoint();
+            // paticles[0].draw();
 
             requestAnimationFrame(animationLoop);
         }
 
+    
         class Paticle{
-            constructor(){
-                this.x = w / 2;
-                this.y = h / 2;
+            constructor(mouseX , mouseY , color){
+                this.x = mouseX;
+                this.y = mouseY;
                 this.point = []
                 this.size = 0;
+                this.rotate = 0;
+                this.color = color;
+                this.alpha = 1;
+                this.test = 100;
             }
 
             setPoint(){
-                this.update();
                 let x , y , r , d;
                 this.point = [];
                 for(let a = 0; a < 360; a += 36){
                     d = (a / 36) % 2 == 0 ? this.size / 2 : this.size;
-                    r = (Math.PI / 180) * a;
+                    r = (Math.PI / 180) * (a + this.rotate);
                     x = this.x + d * Math.sin(r);
                     y = this.y + d * Math.cos(r);
                     this.point.push({
                         x : x,
-                        y : y
+                        y : y,
                     })
                 }
             }
 
             draw(){
+                if(this.rotate == 360) return;
                 this.point.map((p)=>{
                     ctx.beginPath();
-                    ctx.fillStyle = 'red'
-                    ctx.arc(p.x, p.y , 3 , 0, Math.PI * 2);
+                    ctx.fillStyle = 'transparent'
+                    ctx.arc(p.x, p.y , 1 , 0, Math.PI * 2);
                     ctx.fill();
                 });
 
                 ctx.beginPath();
                 for(let a = 0; a < this.point.length; a++){
-                    ctx.strokeStyle = 'blue';
+                    ctx.strokeStyle = `hsla(${this.color},100%,50%,${this.alpha})`;
                     (a === 0) ? ctx.moveTo(this.point[a].x ,this.point[a].y ) : ctx.lineTo(this.point[a].x , this.point[a].y);
                 }
                 ctx.closePath();
@@ -78,7 +112,13 @@
             }
 
             update(){
-                this.size += 0.5;
+                this.setPoint();
+                (this.rotate < this.test) ? this.rotate += 1 : this.rotate = this.test;
+                this.size = this.rotate / this.test * 50;
+                // this.color = this.rotate;
+                // this.color += 1;
+                this.alpha = 1 - (this.rotate / this.test);
+                // this.alpha = 1;
             }
         }
 
