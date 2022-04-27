@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>행렬의 덧셈</title>
+    <script>
+        function solution(arr1, arr2) {
+            var answer = [];
+            var test = [];
+            for(a = 0; a < arr1.length; a++){
+                test = [];
+                for(b = 0; b < arr1[a].length; b++){
+                    test.push(arr1[a][b] + arr2[a][b])
+                }
+                answer.push(test)
+            }
+            return answer;
+        }
+        console.log(
+            solution([[1,2],[2,3]],[[3,4],[5,6]])
+        );
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
