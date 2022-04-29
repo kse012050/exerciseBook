@@ -18,7 +18,16 @@
             }
             return (answer % result == 0) ? true : false;
         }
-        console.log(SE(12));
+        // console.log(SE(12));
+
+        function case01(n){
+            return !(n % (n + "").split("").reduce((a, b) => +b + +a ));
+        }
+        console.log(case01(11));
+        var test = [1,2,3];
+        console.log(test.reduce((a , b) =>{ console.log(a); console.log(b); /* b + a */}));
+        
+        
     </script>
 </head>
 <body>
