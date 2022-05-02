@@ -5,6 +5,42 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>제일 작은 수 제거하기</title>
+    <script>
+        function solution(arr) {
+            var answer = [];
+            var numb = 0;
+            var result = [];
+            var indexNumb = 0;
+            console.log(result.length);
+            if(arr.length != 1){
+                for(var a = 0; a < arr.length - 1; a++){
+                    console.log('a = ' + arr[a]);
+                    for(var b = a + 1; b < arr.length; b++){
+                        console.log('b = ' +  arr[b]);
+                        if(arr[a] > arr[b]){
+                            a = b - 1;
+                            indexNumb = 0;
+                            result[indexNumb] = b;
+                            break;
+                        }else if(arr[a] == arr[b]){
+                            indexNumb++;
+                            result[indexNumb] = b;
+                        }
+                    }
+                    console.log('------------' + result);
+                }
+                answer = arr;
+                console.log(result);
+                for(var a = 0; a < result.length; a++){
+                    answer.splice(result[0] - a , 1);
+                }
+            }else{
+                answer[0] = -1;
+            }
+            return answer;
+        }
+        console.log(solution([3,7,2,1,2,1,5,1]));
+    </script>
 </head>
 <body>
     <h1>제일 작은 수 제거하기</h1>
