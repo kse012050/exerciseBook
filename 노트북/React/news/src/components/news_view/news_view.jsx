@@ -2,47 +2,38 @@ import React, { useState , useEffect } from 'react';
 import axios from 'axios';
 
 const NewsView = (props) => {
-    let [news , setNews] = useState([]);
-    
-    useEffect(()=>{
-        // setNews('11');
-        // axios.get('https://api.hnpwa.com/v0/news/1.json')
-        //     .then((respone)=>{
-        //         console.log(respone.json());
-        //         setNews([1,2])
-        //     })
-        //     .catch(function(error){
-        //         console.log(error);
-        //     });
-    //     var config = {
-    //         method: 'get',
-    //         url: 'https://api.hnpwa.com/v0/news/1.json',
-    //         headers: { }
-    //       };
-          
-    //       axios(config)
-    //       .then(function (response) {
-    //         console.log(JSON.stringify(response.data));
-    //         setNews(JSON.stringify(response.data))
-    //       })
-    //       .catch(function (error) {
-    //         console.log(error);
-    //       });
+    const [news, setNews] = useState([]);
+    useEffect(() => {
+        
+    // case.01 fecth
+    // const requestOptions = {
+    //     method: 'GET',
+    //     redirect: 'follow'
+    // };
+    // fetch("https://api.hnpwa.com/v0/news/1.json", requestOptions)
+    //     .then(response => response.json())
+    //     .then(result => {
+    //         // console.log(result);
+    //         setNews(result)
+    //         console.log(news);
+    //     })
+    //     .catch(error => console.log('error', error));
 
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-      
-      fetch("https://api.hnpwa.com/v0/news/1.json", requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-    },[])
+    // case.01 axios
+    axios.get('https://api.hnpwa.com/v0/news/1.json')
+        .then((respone)=>{
+            // console.log(respone);
+            setNews(respone.data)
+            console.log(news);
+        })
+        .catch(function(error){
+            console.log(error);
+        });
+    }, [])
         
     return (
         <div>
-            news {news}
+            news {news.map((news)=> news.title)}
         </div>
     )    
 };
