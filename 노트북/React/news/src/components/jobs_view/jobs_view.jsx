@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
 
 const JobsView = (props) => {
-    let [stateTest , stateChange] = useState([{a : 'c' , b : 'd'}])
-    function changeTest(){
-        stateChange([{a : 'a' , b : 'b'}])
-    }
+    let [jobs , setJobs] = useState([])
+
+    useEffect(()=>{
+        axios.get('https://api.hnpwa.com/v0/jobs/1.json')
+            .then((respone)=>{
+                console.log(respone);
+                setJobs(respone.data)
+            })
+            .catch((error)=>console.log(error))
+    },[])
+
     return(
-        <div onClick={()=>changeTest()}>
-            jobs {stateTest[0].a}
+        <div>
+            {jobs.map((jobs)=>jobs.title)}
         </div>      
     )
 };
