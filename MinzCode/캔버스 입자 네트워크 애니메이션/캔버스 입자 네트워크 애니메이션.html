@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스 입자 네트워크 애니메이션</title>
+    <style>
+        body{margin: 0; line-height: 0;}
+        #canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx , w, h , paticles = [];
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+            paticleSeting();
+            animationLoop();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function paticleSeting(){
+            for(let a = 0; a < 30; a++){
+                paticles.push(new Paticle);
+            }
+        }
+
+        function animationLoop(){
+            ctx.clearRect(0,0,w,h);
+
+            paticles.map((paticle)=>{
+                paticle.draw();
+                paticle.update();
+            })
+
+            // requsetAnimationFrame(animationLoop);
+            requestAnimationFrame(animationLoop)
+        }
+
+        class Paticle{
+            constructor(){
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.speed = Math.random() + 0.5;
+                this.moveX = Math.random() * 360;
+                this.moveY = Math.random() * 360;
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.fillStyle = 'white';
+                ctx.arc(this.x , this.y , 2 , 0 , Math.PI * 2);
+                ctx.fill();
+            }
+            
+            update(){
+                this.x += Math.sin(this.moveX) * this.speed;
+                this.y += Math.sin(this.moveY) * this.speed;
+                if(this.x <= 0 || this.x >= w){
+                    this.moveX *= -1;
+                }
+                // console.log(this.moveX);
+                if(this.y <= 0 || this.y >= h){
+                    this.moveY *= -1;
+                }
+                // console.log(this.moveY);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+    </script>
+</body>
+</html>
