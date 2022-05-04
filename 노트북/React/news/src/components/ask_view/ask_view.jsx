@@ -12,7 +12,7 @@ const AskView = (props) => {
 
     return (
         <div>
-            {ask.map((ask)=>ask.title)}
+            {ask.map((ask)=>(<div key={ask.id}>{ask.title}</div>))}
         </div>
     )
 };

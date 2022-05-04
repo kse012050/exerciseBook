@@ -24,7 +24,7 @@ const NewsView = (props) => {
         .then((respone)=>{
             // console.log(respone);
             setNews(respone.data)
-            console.log(news);
+            // console.log(news);
         })
         .catch(function(error){
             console.log(error);
@@ -33,7 +33,7 @@ const NewsView = (props) => {
         
     return (
         <div>
-            news {news.map((news)=> news.title)}
+            news {news.map((news)=> (<div key={news.id}>{news.title}</div>))}
         </div>
     )    
 };
