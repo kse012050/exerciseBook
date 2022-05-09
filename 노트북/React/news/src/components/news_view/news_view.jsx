@@ -1,5 +1,6 @@
 import React, { useState , useEffect } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import { fetchNewsList } from '../../api/index.js';
 
 const NewsView = (props) => {
     const [news, setNews] = useState([]);
@@ -20,15 +21,15 @@ const NewsView = (props) => {
     //     .catch(error => console.log('error', error));
 
     // case.01 axios
-    axios.get('https://api.hnpwa.com/v0/news/1.json')
-        .then((respone)=>{
-            // console.log(respone);
-            setNews(respone.data)
-            // console.log(news);
-        })
-        .catch(function(error){
-            console.log(error);
-        });
+        fetchNewsList()
+            .then((respone)=>{
+                // console.log(respone);
+                setNews(respone.data)
+                // console.log(news);
+            })
+            .catch(function(error){
+                console.log(error);
+            });
     }, [])
         
     return (

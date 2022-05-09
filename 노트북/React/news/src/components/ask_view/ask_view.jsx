@@ -1,11 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { fetchAsksList } from '../../api';
 
 const AskView = (props) => {
     let [ask , setAsk] = useState([]);
 
     useEffect(()=>{
-        axios.get('https://api.hnpwa.com/v0/ask/1.json')
+        fetchAsksList()
             .then((respone)=>setAsk(respone.data))
             .catch((error)=>console.log(error))
     },[])
