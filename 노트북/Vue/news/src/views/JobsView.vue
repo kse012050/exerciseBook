@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { fetchJobsList } from '../api/index'
 export default {
     data() {
         return {
@@ -14,7 +14,7 @@ export default {
     },
     created(){
         const vm = this;
-        axios.get('https://api.hnpwa.com/v0/jobs/1.json')
+        fetchJobsList()
             .then((respone)=>{
                 console.log(respone);
                 vm.jobs = respone.data;

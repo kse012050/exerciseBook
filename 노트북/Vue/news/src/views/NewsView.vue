@@ -5,7 +5,8 @@
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
+import { fetchNewsList } from '../api/index'
 export default {
 // https://api.hnpwa.com/v0/news/1.json
     data(){
@@ -15,7 +16,7 @@ export default {
     },
     created(){
         let vm = this;
-        axios.get('https://api.hnpwa.com/v0/news/1.json')
+        fetchNewsList()
             .then(function(response){
                 console.log(response);
                 vm.users = response.data

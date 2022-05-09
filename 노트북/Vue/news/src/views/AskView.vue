@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import { fetchAskList } from '../api/index'
 export default {
     data(){
         return {
@@ -14,7 +14,7 @@ export default {
     },
     created(){
         const vm = this;
-        axios.get('https://api.hnpwa.com/v0/ask/1.json')
+        fetchAskList()
             .then((respone)=>{
                 console.log(respone);
                 vm.ask = respone.data
