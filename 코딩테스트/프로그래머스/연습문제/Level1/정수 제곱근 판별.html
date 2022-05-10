@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정수 제곱근 판별</title>
     <script>
-        function solution(n) {
+        function SE(n) {
             var answer = n / 2;
             var result = 0;
             for(var a = 1; true; a++){
@@ -19,7 +19,14 @@
           
             return (answer * 2 == a) ? Math.pow(a + 1,2) : -1;
         }
-        console.log(solution(121));
+        console.log(SE(121));
+
+        function case01(n){
+            var root = Math.sqrt(n);
+            var result = parseInt(root) - root === 0 ? (root + 1 ) * (root + 1) : -1;
+            return result;
+        }
+
     </script>
 </head>
 <body>
