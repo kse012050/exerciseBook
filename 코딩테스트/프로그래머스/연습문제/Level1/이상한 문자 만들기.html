@@ -7,13 +7,24 @@
     <title>이상한 문자 만들기</title>
     <script>
         function solution(s) {
-            var answer = s.split('');
+            var answer = s.split(' ');
             var test = '';
-            console.log(answer);
-            answer.map((n,i)=>{
-                (i % 2 == 0) ? n = n.toUpperCase() : n = n.toLowerCase();
-                test += n;
-            })
+            // console.log(answer);
+            // answer.map((n,i)=>{
+            //     (i % 2 == 0) ? n = n.toUpperCase() : n = n.toLowerCase();
+            //     test += n;
+            // })
+            answer.map((a,i)=>{
+                    answer[i] = answer[i].split('');
+                    answer[i].map((b,i)=>{
+                        (i % 2 == 0) ? b = b.toUpperCase() : b = b.toLowerCase();
+                        test += b;
+                    })
+                    if(i != answer.length - 1){
+                        test += ' ';
+                    }
+                }
+            )
             return test;
         }
         console.log(solution("try hello world"));
