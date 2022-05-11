@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이상한 문자 만들기</title>
     <script>
-        function solution(s) {
+        function SE(s) {
             var answer = s.split(' ');
             var test = '';
             // console.log(answer);
@@ -27,7 +27,17 @@
             )
             return test;
         }
-        console.log(solution("try hello world"));
+        console.log(SE("try hello world"));
+
+        function case01(s){
+            return s.split(' ').map(i => i.split('').map((j, key) => key % 2 === 0 ? j.toUpperCase() : j).join('')).join(' ')
+        }
+        console.log(case01("try hello world"));
+        
+        function case02(s){
+            return s.toUpperCase().replace(/(\w)(\w)/g, function(a){return a[0].toUpperCase()+a[1].toLowerCase();})
+        }
+        console.log(case02("try hello world"));
     </script>
 </head>
 <body>
