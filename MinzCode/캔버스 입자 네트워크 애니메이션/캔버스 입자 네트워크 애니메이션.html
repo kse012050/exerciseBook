@@ -20,6 +20,7 @@
 
             canvasSize();
             paticleSeting();
+            
             animationLoop();
         }
 
@@ -34,9 +35,28 @@
             }
         }
 
+        function lineDraw(){
+            for(let a = 0; a < paticles.length; a++){
+                for(let b = 0; b < paticles.length; b++){
+                    var distanceX = paticles[a].x - paticles[b].x;
+                    var distanceY = paticles[a].y - paticles[b].y;
+                    var distance = Math.abs(distanceX) + Math.abs(distanceY);
+                    var opacity = 1 - (distance / 300);
+                    if (opacity > 0){
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255,0,0,${opacity})`;
+                        ctx.moveTo(paticles[a].x , paticles[a].y);
+                        ctx.lineTo(paticles[b].x , paticles[b].y);
+                        // ctx.closePath();
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
         function animationLoop(){
             ctx.clearRect(0,0,w,h);
-
+            lineDraw();
             paticles.map((paticle)=>{
                 paticle.draw();
                 paticle.update();
