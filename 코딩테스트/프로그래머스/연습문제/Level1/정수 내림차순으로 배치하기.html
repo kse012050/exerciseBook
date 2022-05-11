@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정수 내림차순으로 배치하기</title>
+    <script>
+        function SE(n){
+            var answer = String(n);
+            var result = '';
+            answer = answer.split('');
+            answer.sort((a ,b)=>b - a);
+            answer.map((index)=>{
+                result = result + index
+            });
+            return Number(result);
+        }
+        SE(118372)
+        // console.log(SE(118372));
+    </script>
+</head>
+<body>
+    <h1>정수 내림차순으로 배치하기</h1>    
+
+    <h2>문제 설명</h2>
+    <p>함수 solution은 정수 n을 매개변수로 입력받습니다. n의 각 자릿수를 큰것부터 작은 순으로 정렬한 새로운 정수를 리턴해주세요. 예를들어 n이 118372면 873211을 리턴하면 됩니다.</p>
+
+    <h2>제한 조건</h2>
+    <ul>
+        <li>n은 1이상 8000000000 이하인 자연수입니다.</li>
+    </ul>
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <th>n</th>
+            <th>return</th>
+        </tr>
+        <tr>
+            <td>118372</td>
+            <td>873211</td>
+        </tr>
+    </table>
+</body>
+</html>
