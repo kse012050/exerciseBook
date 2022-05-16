@@ -5,6 +5,39 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>시저 암호</title>
+    <script>
+        function solution(s, n) {
+            var answer = s.split('');
+            var result = '';
+            answer.map((st)=>{
+                var numb = st.charCodeAt(0);
+                var resultNum = 0;
+                if(numb > 64 &&  numb < 97){
+                    resultNum = (numb + n);
+                    if(resultNum > 90 ){
+                        resultNum = 64 + ((numb + n) - 90);
+                    }
+                    result = result + String.fromCharCode(resultNum);
+                }else if(numb > 96){
+                    resultNum = (numb + n);
+                    if(resultNum > 122){
+                        resultNum = 96 + ((numb + n) - 122);
+                    }
+                    result = result + String.fromCharCode(resultNum);
+                }else if(numb == 32){
+                    result += ' ';
+                }
+            })
+            return result;
+        }
+        solution("AB " , 2);
+        // console.log(String.fromCharCode('a'.charCodeAt(0) + 1));
+        console.log(String.fromCharCode(91));
+        console.log('a'.charCodeAt(0));
+        console.log('z'.charCodeAt(0));
+        console.log('A'.charCodeAt(0));
+        console.log('Z'.charCodeAt(0));
+    </script>
 </head>
 <body>
     <h1>시저 암호</h1>
