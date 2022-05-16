@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캔버스로 멋진 마우스 입자 효과</title>
+    <style>
+        body{margin: 0; padding: 0; height: 100vh; background-color: #222;}
+        canvas#canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.querySelector('#canvas');
+        const ctx = canvas.getContext("2d");
+
+        let w, h, balls = [];
+
+        let mouse = {
+            x : undefined,
+            y : undefined
+        }
+
+        function init(){
+            resizeReset();
+            animationLoop();
+        }
+
+        function resizeReset(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function animationLoop(){
+            drawBalls();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        function drawBalls(){
+            for(let i = 0; i < balls.length; i++){
+                balls[i].draw();
+            }
+        }
+
+        function mousemove(e){
+            mouse.x = e.x;
+            mouse.y = e.y;
+
+            balls.push(new Ball());
+        }
+
+        function mouseout(){
+            mouse.x = undefined;
+            mouse.y = undefined;
+        }
+
+        class Ball {
+            constructor(){
+                this.x = mouse.x;
+                this.y = mouse.y;
+                this.size = 30;
+            }
+
+            draw(){
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
+                ctx.closePath();
+                ctx.fill();
+            }
+
+            undate(){
+
+            }
+        }
+
+        window.addEventListener("DOMContentLoaded", init);
+        window.addEventListener("resize", resizeReset);
+        window.addEventListener("mousemove",mousemove);
+        window.addEventListener("mouseout",mouseout); 
+
+        setInterval(() => {
+           document.querySelector('#debug span').innerText = balls.length;
+        }, 100);
+    </script>
+
+    <div id="debug" style="position: fixed; left: 10px; top: 10px; color: #0f0;">balls.length = <span></span></div>
+</body>
+</html>
