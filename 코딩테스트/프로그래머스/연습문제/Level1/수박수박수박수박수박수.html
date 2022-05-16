@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수박수박수박수박수박수?</title>
+    <script>
+        function solution(n) {
+            var result = "";
+            for(var i=0;i<n;i++) {
+                result += (i%2 == 0)? '수' : '박';
+            }
+        
+            return result;
+        }
+    </script>
+</head>
+<body>
+    <h1>수박수박수박수박수박수?</h1>
+
+    <h2>문제 설명</h2>
+    <p>길이가 n이고, "수박수박수박수...."와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 예를들어 n이 4이면 "수박수박"을 리턴하고 3이라면 "수박수"를 리턴하면 됩니다.</p>
+
+    <h2>제한 조건</h2>
+    <ul>
+        <li>n은 길이 10,000이하인 자연수입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <th>n</th>
+            <th>return</th>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>"수박수"</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>"수박수박"</td>
+        </tr>
+    </table>
+</body>
+</html>
