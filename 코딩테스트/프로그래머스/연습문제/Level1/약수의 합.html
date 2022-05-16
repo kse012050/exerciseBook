@@ -5,6 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>약수의 합</title>
+    <script>
+        function SE(n) {
+            var answer = n;
+            var result = 0;
+            for(var a = 1; a <= n; a++ ){
+                if(n % a === 0){
+                    result = result + a;
+                }
+            }
+            return result;
+        }
+        function case01(n){
+            return n<=a/2?b:solution(n,a+1,b+=n%a?0:a);
+        }
+    </script>
 </head>
 <body>
     <h1>약수의 합</h1>
