@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소수 찾기</title>
+    <script>
+        function solution(n) {
+            var answer = 0;
+            var array = [2];
+            var boolean = false;
+            for(var a = 3; a <= n; a++){
+                for(var b = 0; b < array.length; b++){
+                    if(a % array[b] == 0){
+                        boolean = false;
+                        continue;
+                    }
+                    boolean = true;
+
+                }
+            }
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    <h1>소수 찾기</h1>
+
+    <h2>문제 설명</h2>
+    <p>1부터 입력받은 숫자 n 사이에 있는 소수의 개수를 반환하는 함수, solution을 만들어 보세요.</p>
+
+    <p>
+        소수는 1과 자기 자신으로만 나누어지는 수를 의미합니다.<br/>
+        (1은 소수가 아닙니다.)
+    </p>
+
+    <h2>제한 조건</h2>
+    <ul>
+        <li>n은 2이상 1000000이하의 자연수입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <th>n</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>3</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+
+    <strong>입출력 예 #1</strong>
+    <p>1부터 10 사이의 소수는 [2,3,5,7] 4개가 존재하므로 4를 반환</p>
+
+    <strong>입출력 예 #2</strong>
+    <p>1부터 5 사이의 소수는 [2,3,5] 3개가 존재하므로 3를 반환</p>
+</body>
+</html>
