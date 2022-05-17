@@ -7,21 +7,19 @@
     <title>소수 찾기</title>
     <script>
         function solution(n) {
-            var answer = 0;
-            var array = [2];
-            var boolean = false;
-            for(var a = 3; a <= n; a++){
-                for(var b = 0; b < array.length; b++){
-                    if(a % array[b] == 0){
-                        boolean = false;
-                        continue;
+            var answer = [];
+            for(var a = 2; a <= n; a++){
+                answer.push(a);
+                for(var b = 2; b < (a / 2) + 1; b++){
+                    if(a % b == 0){
+                        answer.splice(answer.length -1, 1);
+                        break;
                     }
-                    boolean = true;
-
                 }
             }
-            return answer;
+            return answer.length;
         }
+        console.log(solution(10));
     </script>
 </head>
 <body>
