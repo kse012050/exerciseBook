@@ -6,12 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문자열 다루기 기본</title>
     <script>
-        function solution(s) {
-            var answer = Number(s);
-            console.log(isNaN(answer));
-            return !isNaN(answer);
+        function SE(s) {
+            var answer = s.split('');
+            var result = true;
+            if(answer.length == 4 || answer.length == 6){
+                for(a = 0 ; a < answer.length; a++){
+                    if(isNaN(Number(answer[a]))){
+                        result = false;
+                        break;
+                    }
+                }
+            }else{
+                result = false;
+            }
+            return result;
         }
-        console.log(solution("123"));
+        console.log(SE("1e111"));
+
+        function case01(s){
+            var result = false;
+            if((s.length == 4 || s.length == 6) && /^[0-9]+$/.test(s)) {
+                result = true;
+            }
+            return result;
+        }
+
+        function case02(s){
+            var regex = /^\d{6}$|^\d{4}$/;
+            return regex.test(s);
+        }
     </script>
 </head>
 <body>
