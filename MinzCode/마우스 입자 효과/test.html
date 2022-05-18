@@ -57,14 +57,19 @@
             mouse.y = undefined;
         }
 
+        function getRandomInt(min,max){
+            return Math.round(Math.random() * (max - min)) + min;
+        }
+
         class Ball {
             constructor(){
-                this.x = mouse.x;
-                this.y = mouse.y;
-                this.size = 30;
+                this.x = mouse.x + getRandomInt(-20, 20);
+                this.y = mouse.y + getRandomInt(-20, 20);
+                this.size = getRandomInt(30, 40);
             }
 
             draw(){
+                console.log(this.size);
                 ctx.fillStyle = "rgb(255,255,255)";
                 ctx.beginPath();
                 ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
@@ -80,7 +85,7 @@
         window.addEventListener("DOMContentLoaded", init);
         window.addEventListener("resize", resizeReset);
         window.addEventListener("mousemove",mousemove);
-        window.addEventListener("mouseout",mouseout); 
+        window.addEventListener("mouseout",mouseout);
 
         setInterval(() => {
            document.querySelector('#debug span').innerText = balls.length;
