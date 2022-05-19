@@ -1,18 +1,24 @@
 <template>
     <div>
-        <div v-for="user in this.$store.state.news" v-bind:key="user.id">{{ user.title }}</div>
+        <div v-for="user in fetchedNews" v-bind:key="user.id">{{ user.title }}</div>
     </div>
 </template>
 
 <script>
 // import axios from 'axios';
 // import { fetchNewsList } from '../api/index'
+import { mapGetters } from 'vuex';
 export default {
 // https://api.hnpwa.com/v0/news/1.json
     data(){
         // return {
         //     users : []
         // }
+    },
+    computed : {
+        ...mapGetters({
+            fetchedNews : 'fetchedNews'
+        })
     },
     created(){
         // let vm = this;

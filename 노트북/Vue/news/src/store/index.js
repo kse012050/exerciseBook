@@ -8,6 +8,11 @@ export const store = new Vuex.Store({
         jobs : [],
         ask : []
     },
+    getters : {
+        fetchedNews(state) {
+            return state.news
+        }
+    },
     mutations : {
         SET_NEWS(state, news){
             state.news = news;
