@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.3 마우스 움직이에 따라 원 뭉터기가 생성된다</title>
+    <style>
+        body{line-height: 0; margin: 0;}
+        #canvas{background-color: #222;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx , w , h , balls = [];
+        let mouse = {
+            x : undefined,
+            y : undefined
+        }
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            canvasSize();
+            animationLoop();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function mouseMove(e){
+            mouse.x = e.x;
+            mouse.y = e.y;
+            
+            balls.push(new Ball(mouse));
+        }
+
+        function mouseOut(){
+
+        }
+
+        function animationLoop(){
+            balls.map((b)=> b.draw());
+            requestAnimationFrame(animationLoop);
+        }
+        
+        function randomValue(max , min){
+            return Math.round(Math.random() * max) - min;
+        }
+
+        class Ball{
+            constructor(mouse){
+                this.x = mouse.x /* + randomValue(40 , -20) */;
+                this.y = mouse.y /* + randomValue(40 , -20) */;
+                // this.size = randomValue(10 , -30);
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.fillStyle = 'white';
+                ctx.arc(this.x , this.y , 25 , 0 , Math.PI * 2 );
+                ctx.fill();
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+        // window.onload = () => init()
+        window.addEventListener('mousemove',mouseMove)
+        
+    </script>
+</body>
+</html>
