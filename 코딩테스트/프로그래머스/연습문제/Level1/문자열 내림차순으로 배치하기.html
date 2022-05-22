@@ -5,6 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문자열 내림차순으로 배치하기</title>
+    <script>
+        function SE(s) {
+            var answer = s.split('');
+            var array = []
+            answer.map((c)=> {
+                array.push(-c.charCodeAt())
+            });
+            // array.sort();
+            array.sort((a, b) => a - b);
+            answer = []
+            array.map((c)=>{
+                answer.push(String.fromCharCode(-c));
+            })
+            return answer.join('');
+        }
+        console.log(SE("ZAbcdefg"));
+
+        
+        function case01(s) {
+            return s
+                .split("")
+                .sort()
+                .reverse()
+                .join("");
+        }
+        console.log(case01("ZAbcdefg"));
+    </script>
 </head>
 <body>
     <h1>문자열 내림차순으로 배치하기</h1>
