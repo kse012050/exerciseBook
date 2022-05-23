@@ -8,6 +8,7 @@
     <style>
         body{line-height: 0; margin: 0;}
         #canvas{background-color: #222;}
+        div{line-height: 1; position: fixed; left: 10px; top: 10px; color: #0f0;}
     </style>
 </head>
 <body>
@@ -41,26 +42,34 @@
 
         }
 
+        
+
         function animationLoop(){
-            balls.map((b)=> b.draw());
+            drawBalls();
             requestAnimationFrame(animationLoop);
         }
         
         function randomValue(max , min){
-            return Math.round(Math.random() * max) - min;
+            return Math.round(Math.random() * max) + min;
+        }
+
+        function drawBalls(){
+            for(let i = 0; i < balls.length; i++){
+                balls[i].draw();
+            }
         }
 
         class Ball{
             constructor(mouse){
-                this.x = mouse.x /* + randomValue(40 , -20) */;
-                this.y = mouse.y /* + randomValue(40 , -20) */;
-                // this.size = randomValue(10 , -30);
+                this.x = mouse.x + randomValue(40 , -20);
+                this.y = mouse.y + randomValue(40 , -20);
+                this.size = randomValue(10 , 30);
             }
 
             draw(){
                 ctx.beginPath();
                 ctx.fillStyle = 'white';
-                ctx.arc(this.x , this.y , 25 , 0 , Math.PI * 2 );
+                ctx.arc(this.x , this.y , this.size , 0 , Math.PI * 2 );
                 ctx.fill();
             }
         }
@@ -68,7 +77,11 @@
         window.addEventListener('DOMContentLoaded',init);
         // window.onload = () => init()
         window.addEventListener('mousemove',mouseMove)
+        setInterval(() => {
+           document.querySelector('div span').innerText = balls.length;
+        }, 100);
         
     </script>
+    <div>halls.length = <span></span></div>
 </body>
 </html>
