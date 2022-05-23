@@ -15,7 +15,16 @@ const JobsView = (props) => {
 
     return(
         <div>
-            {jobs.map((jobs)=><div key={jobs.id}>{jobs.title}</div>)}
+            {jobs.map((jobs)=>
+                <p key={jobs.id}>
+                    <a href={jobs.url}>
+                        {jobs.title}
+                    </a>
+                    <small>
+                        {jobs.domain} , {jobs.time_ago}
+                    </small>
+                </p>
+            )}
         </div>      
     )
 };

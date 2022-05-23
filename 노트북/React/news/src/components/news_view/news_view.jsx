@@ -31,10 +31,21 @@ const NewsView = (props) => {
                 console.log(error);
             });
     }, [])
+
+    console.log(news);
         
     return (
         <div>
-            news {news.map((news)=> (<div key={news.id}>{news.title}</div>))}
+            {news.map((news)=> (
+                <p key={news.id}>
+                    <a href={news.url}>
+                        {news.title}
+                    </a>
+                    <small>
+                        {news.domain} , {news.time_ago}
+                    </small>
+                </p>
+            ))}
         </div>
     )    
 };

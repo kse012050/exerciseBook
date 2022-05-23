@@ -9,10 +9,19 @@ const AskView = (props) => {
             .then((respone)=>setAsk(respone.data))
             .catch((error)=>console.log(error))
     },[])
-
+    
     return (
         <div>
-            {ask.map((ask)=>(<div key={ask.id}>{ask.title}</div>))}
+            {ask.map((ask)=>(
+                <p key={ask.id}>
+                    <a href={ask.url}>
+                        {ask.title} 
+                    </a>
+                    <small>
+                    {ask.user} by {ask.time_ago}
+                    </small>
+                </p>
+            ))}
         </div>
     )
 };
