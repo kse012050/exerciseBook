@@ -15,7 +15,7 @@ export const store = new Vuex.Store({
         fetchedJobs(state){
             return state.jobs
         },
-        fetchedAskb(state){
+        fetchedAsk(state){
             return state.ask
         }
     },
