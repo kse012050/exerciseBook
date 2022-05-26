@@ -8,13 +8,17 @@
     <script>
         function solution(strings, n) {
             var answer = [];
+            var array = [];
             for(var a = 0; a < strings.length; a++){
                 answer.push(strings[a].split(''));
+                array.push(answer[a][n])
             }
-            answer[1].sort()
+            console.log(answer);
+            console.log(answer.sort());
+            // answer[1].sort()
             return answer;
         }
-        console.log(solution(["sun", "bed", "car"]));
+        console.log(solution(["sun", "bed", "car"], 1));
 
         const numbers = [15, 52, 23, 11, 9]; 
 
