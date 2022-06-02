@@ -14,7 +14,7 @@ const UserView = (props) => {
             })
             .catch((error)=>console.log(error))
     },[]);
-
+  
     return(
         <div>
             <p>name : {user.id}</p>
