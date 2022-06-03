@@ -1,6 +1,11 @@
 <template>
     <div>
-        <div v-for="user in fetchedNews" v-bind:key="user.id">{{ user.title }}</div>
+        <ul v-for="user in fetchedNews" v-bind:key="user.id">
+            <li>
+                <strong>{{ user.title }}</strong>
+                <router-link v-bind:to="`/User/${ user.user }`">{{ user.user }}</router-link>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -36,5 +41,5 @@ export default {
 </script>
 
 <style>
-
+    strong{font-weight: 700;}
 </style>
