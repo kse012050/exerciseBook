@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>step.4 원 뭉터기에 색상 넣기</title>
+    <title>step.5 생성된 원들이 어느 순간 없어진다</title>
     <style>
         body{margin: 0; padding: 0; height: 100vh; background-color: #222;}
         canvas#canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
@@ -44,6 +44,7 @@
         }
 
         function animationLoop(){
+            ctx.clearRect(0,0,w,h);
             drawBalls();
 
             requestAnimationFrame(animationLoop);
@@ -51,6 +52,7 @@
 
         function drawBalls(){
             for(let i = 0; i < balls.length; i++){
+                balls[i].update();
                 balls[i].draw();
             }
         }
@@ -78,6 +80,9 @@
                 this.size = getRandomInt(30, 40);
 
                 this.style = rgb[getRandomInt(0, rgb.length - 1)];
+
+                this.time = 0;
+                this.ttl = 30;
             }
 
             draw(){
@@ -88,8 +93,11 @@
                 ctx.fill();
             }
 
-            undate(){
-
+            update(){
+                if(this.time == this.ttl){
+                    this.size = 0;
+                }
+                this.time++;
             }
         }
 
