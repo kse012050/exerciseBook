@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>캔버스로 멋진 마우스 입자 효과</title>
+    <title>step.5 생성된 원들이 어느 순간 없어진다</title>
     <style>
         body{margin: 0; padding: 0; height: 100vh; background-color: #222;}
         canvas#canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
@@ -23,6 +23,16 @@
             y : undefined
         }
 
+        let rgb = [
+            "rgb(26,188,156)",
+            "rgb(46,204,113)",
+            "rgb(52,152,219)",
+            "rgb(155,89,182)",
+            "rgb(241,196,15)",
+            "rgb(230,126,34)",
+            "rgb(231,76,60)",
+        ]
+
         function init(){
             resizeReset();
             animationLoop();
@@ -34,6 +44,7 @@
         }
 
         function animationLoop(){
+            ctx.clearRect(0,0,w,h);
             drawBalls();
 
             requestAnimationFrame(animationLoop);
@@ -41,6 +52,7 @@
 
         function drawBalls(){
             for(let i = 0; i < balls.length; i++){
+                balls[i].update();
                 balls[i].draw();
             }
         }
@@ -66,19 +78,26 @@
                 this.x = mouse.x + getRandomInt(-20, 20);
                 this.y = mouse.y + getRandomInt(-20, 20);
                 this.size = getRandomInt(30, 40);
+
+                this.style = rgb[getRandomInt(0, rgb.length - 1)];
+
+                this.time = 0;
+                this.ttl = 30;
             }
 
             draw(){
-                console.log(this.size);
-                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.fillStyle = this.style;
                 ctx.beginPath();
                 ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
                 ctx.closePath();
                 ctx.fill();
             }
 
-            undate(){
-
+            update(){
+                if(this.time == this.ttl){
+                    this.size = 0;
+                }
+                this.time++;
             }
         }
 

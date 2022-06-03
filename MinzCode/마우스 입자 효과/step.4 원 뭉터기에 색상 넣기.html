@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.4 원 뭉터기에 색상 넣기</title>
+    <style>
+        body{line-height: 0; margin: 0;}
+        canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <script>
+        let canvas , ctx , w , h , balls = [];
+        let rgb = [
+            "rgb(26,188,156)",
+            "rgb(46,204,113)",
+            "rgb(52,152,219)",
+            "rgb(155,89,182)",
+            "rgb(241,196,15)",
+            "rgb(230,126,34)",
+            "rgb(231,76,60)",
+        ]
+
+        function init(){
+            canvas = document.createElement('canvas');
+            ctx = canvas.getContext('2d');
+            document.body.appendChild(canvas);
+
+            canvasSize();
+            animationLoop();
+        };
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function mousemove(e){
+            balls.push(new ball(e.x , e.y));
+        }
+
+        function animationLoop(){
+            
+            balls.map((p) => {
+                p.draw();
+            })
+
+            requestAnimationFrame(animationLoop)
+        }
+
+        function randomValue(max , min){
+            return Math.round(Math.random() * (max - min) + min) 
+        }
+
+        class ball{
+            constructor(x , y){
+                this.x = x + randomValue(20 , -20);
+                this.y = y + randomValue(20 , -20);
+                this.size = randomValue(40 , 30);
+                console.log(rgb.length);
+                this.color = rgb[randomValue(rgb.length - 1 , 0)];
+                this.redColor = randomValue(255 , 0);
+                this.greenColor = randomValue(255 , 0);
+                this.blueColor = randomValue(255 , 0);
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.fillStyle = this.color;
+                ctx.arc(this.x , this.y , this.size , 0 , Math.PI * 2);
+                ctx.fill()
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+        window.addEventListener('mousemove',mousemove);
+    </script>
+</body>
+</html>

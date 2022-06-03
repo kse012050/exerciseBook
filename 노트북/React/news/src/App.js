@@ -18,7 +18,10 @@ function App() {
         <Route path="/jobs" element={<JobsView />}/>
         <Route path="/ask" element={<AskView />}/>
         <Route path="/item" element={<ItemView />}/>
-        <Route path="/user" element={<UserView />}/>
+        <Route path="/user/:userName" element={<UserView />}/>
+        {/* <Route path="/users">
+          <Route path=":userId" element={<UserView />} />
+        </Route> */}
     </Routes>
     </>
   );
