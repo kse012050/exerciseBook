@@ -17,7 +17,7 @@ function App() {
         <Route path="/news" element={<NewsView />}/>
         <Route path="/jobs" element={<JobsView />}/>
         <Route path="/ask" element={<AskView />}/>
-        <Route path="/item" element={<ItemView />}/>
+        <Route path="/item/:itemName" element={<ItemView />}/>
         <Route path="/user/:userName" element={<UserView />}/>
         {/* <Route path="/users">
           <Route path=":userId" element={<UserView />} />
