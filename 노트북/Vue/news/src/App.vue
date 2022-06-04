@@ -17,5 +17,6 @@ export default {
 </script>
 
 <style>
+ @import 'css/reset.css';
 body{margin: 0;}
 </style>

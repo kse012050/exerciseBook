@@ -7,27 +7,38 @@
     <title>문자열 내 마음대로 정렬하기</title>
     <script>
         function solution(strings, n) {
-            var answer = [];
-            var array = [];
-            for(var a = 0; a < strings.length; a++){
-                answer.push(strings[a].split(''));
-                array.push(answer[a][n])
+            var answer = [...strings];
+            var array = []
+            var array2 = []
+            for(var a = 0; a < answer.length; a++){
+                array.push(answer[a].substring(n));
+                array[a] = array[a] + answer[a].substring(n , 0);
             }
-            console.log(answer);
-            console.log(answer.sort());
-            // answer[1].sort()
-            return answer;
+            console.log(array.sort());
+
+            for(var a = 0; a < array.length; a++){
+                array2.push(array[a].slice(-n) + array[a].slice(0 , -n) );
+            }
+
+            answer.sort((a , b) =>{
+                console.log('a : ' + a);
+                console.log('b : ' + b);
+                console.log(a[0] > b[0]);
+                console.log('s' > 'b');
+            })
+            return array2;
         }
-        console.log(solution(["sun", "bed", "car"], 1));
+        // console.log(solution(["sun", "bed", "car"], 1));
 
-        const numbers = [15, 52, 23, 11, 9]; 
-
-    // 오름차순 정렬, 원본 배열 수정 
-    // numbers.sort((a, b) => {
-    //     console.log('b : ' + b);
-    //     console.log('a - b : ' + (a - b));
-    //     return a - b
-    // }); console.log(numbers); // [9, 11, 15, 23, 52] 
+        let numbers = [5,4,3,1,2,1]; 
+        console.log(numbers.sort((a, b) => {
+            console.log('a : ' + a);
+            console.log('b : ' + b);
+            console.log('a - b : ' + (a - b));
+            console.log(numbers);
+            console.log('------------');
+            return a - b;
+        }));
     </script>
 </head>
 <body>
