@@ -5,6 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>같은 숫자는 싫어</title>
+    <script>
+        function solution(arr){
+            var answer = [];
+            answer.push(arr[0]);
+            for(var a = 1; a < arr.length - 1; a++){
+                for(var b = a + 1; b < arr.length; b++){
+                    if(arr[a] != answer[b]){
+                        answer.push(arr[b]);
+                        a = b-1;
+                        break;
+                    }
+                }
+            }
+            return answer;
+        }
+        console.log(solution([1,1,3,3,0,1,1]));
+    </script>
 </head>
 <body>
 
