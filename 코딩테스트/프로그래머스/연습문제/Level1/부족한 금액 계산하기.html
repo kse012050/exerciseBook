@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>부족한 금액 계산하기</title>
     <script>
-        function solution(price, money, count) {
+        function SE(price, money, count) {
             var answer = -1;
             var result = 0;
             for(var a = 1; a <= count; a++){
@@ -14,7 +14,15 @@
             }
             return (result - money)  > 0 ? (result - money) : 0;
         }
-        console.log(solution(3,20,4));
+        console.log(SE(3,20,4));
+        
+        // 가우스 공식
+        function case01(price, money, count) {
+            const tmp = price * count * (count + 1) / 2 - money;
+            return tmp > 0 ? tmp : 0;
+        }
+
+        console.log(case01(3,20,4));
     </script>
 </head>
 <body>
