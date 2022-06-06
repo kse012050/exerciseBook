@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나머지가 1이 되는 수 찾기</title>
+    <script>
+        function solution(n) {
+            var answer = 0;
+            for(var a = 2; a <= n; a++){
+                if((n) % a == 1){
+                    answer = a;
+                    break;
+                }
+            }
+            // console.log(Number.isInteger(answer));
+            // return Number.isInteger(answer) == true ? answer : n - 1;
+            return answer == 0 ? n - 1 : answer;
+        }
+        console.log(solution(10));
+    </script>
+</head>
+<body>
+    <h1>나머지가 1이 되는 수 찾기</h1>
+
+    <h2>문제 설명</h2>
+    <p>자연수 n이 매개변수로 주어집니다. n을 x로 나눈 나머지가 1이 되도록 하는 가장 작은 자연수 x를 return 하도록 solution 함수를 완성해주세요. 답이 항상 존재함은 증명될 수 있습니다.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>3 ≤ n ≤ 1,000,000</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <th>n</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>11</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>10을 3으로 나눈 나머지가 1이고, 3보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 3을 return 해야 합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>12를 11로 나눈 나머지가 1이고, 11보다 작은 자연수 중에서 문제의 조건을 만족하는 수가 없으므로, 11을 return 해야 합니다.</li>
+    </ul>
+    
+</body>
+</html>
