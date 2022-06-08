@@ -1,5 +1,5 @@
 import Vuex from 'vuex';
-import { fetchNewsList ,  fetchJobsList , fetchAskList , fetchUserList } from '../api/index.js';
+import { fetchNewsList ,  fetchJobsList , fetchAskList , fetchUserList , fetchItemList } from '../api/index.js';
 
 
 export const store = new Vuex.Store({
@@ -7,7 +7,8 @@ export const store = new Vuex.Store({
         news : [],
         jobs : [],
         ask : [],
-        user : {}
+        user : {},
+        item : []
     },
     getters : {
         fetchedNews(state) {
@@ -18,6 +19,9 @@ export const store = new Vuex.Store({
         },
         fetchedAsk(state){
             return state.ask
+        },
+        fetchedItem(state){
+            return state.item
         }
     },
     mutations : {
@@ -31,7 +35,10 @@ export const store = new Vuex.Store({
             state.ask = ask;
         },
         SET_USER(state , user){
-            state.user = user
+            state.user = user;
+        },
+        SET_ITEM(state , item){
+            state.item = item;
         }
     },
     actions : {
@@ -56,6 +63,11 @@ export const store = new Vuex.Store({
                     commit('SET_USER', data)
                 })
                 .catch((error)=> console.log(error));
+        },
+        FETCH_ITEM({ commit } , itemId){
+            fetchItemList(itemId)
+                .then(({ data })=> commit('SET_ITEM',data))
+                .catch((error)=>console.log(error))
         }
     }
 })

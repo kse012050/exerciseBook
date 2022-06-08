@@ -19,7 +19,7 @@ const routes = [
         component : Ask
     },
     {
-        path : '/Item',
+        path : '/Item/:id',
         component : Item
     },
     {
