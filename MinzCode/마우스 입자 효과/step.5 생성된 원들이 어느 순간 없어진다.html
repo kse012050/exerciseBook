@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.5 생성된 원들이 어느 순간 없어진다</title>
+    <style>
+        body{margin: 0; line-height: 0;}
+        canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <script>
+        let canvas , ctx , w , h , balls = [];
+        let rgb = [
+            "rgb(26,188,156)",
+            "rgb(46,204,113)",
+            "rgb(52,152,219)",
+            "rgb(155,89,182)",
+            "rgb(241,196,15)",
+            "rgb(230,126,34)",
+            "rgb(231,76,60)",
+        ]
+        let rgbValue = [
+            ["26","188","156"],
+            ["46","204","113"],
+            ["52","152","219"],
+            ["155","89","182"],
+            ["241","196","15"],
+            ["230","126","34"],
+            ["231","76","60"],
+        ]
+        
+        function init(){
+            canvas = document.createElement('canvas');
+            document.body.appendChild(canvas);
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+            balls.push(new Ball(w / 2 , h / 2))
+            animationLoop();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function mouseMove(e){
+            // balls.push(new Ball(e.x , e.y));
+        }
+
+        function animationLoop(){
+            
+            balls.map((a)=>{
+                a.draw();
+                a.update();
+            })
+            requestAnimationFrame(animationLoop);
+        }
+
+        function randomValue(min , max){
+            return Math.round((Math.random() * (max - min)) + min);
+        }
+
+        class Ball{
+            constructor(x , y){
+                this.x = x + randomValue(-20 , 20);
+                this.y = y + randomValue(-20 , 20);
+                this.size = randomValue(20 ,35);
+                this.color = rgbValue[randomValue(0 , rgb.length - 1)]
+                this.opacity = 0.2;
+                console.log(this.opacity);
+            }
+
+            draw(){
+                console.log(this.opacity);
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(${this.color[0]},${this.color[1]},${this.color[2]},${this.opacity})`;
+                ctx.arc(this.x , this.y , this.size , 0 , Math.PI * 2);
+                ctx.fill();
+            }
+
+            update(){
+                this.opacity > 0 ? this.opacity = this.opacity - 0.05 : this.opacity = 0;
+                
+                // console.log(this.opacity);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', init);
+        window.addEventListener('mousemove',mouseMove);
+        window.addEventListener('resize',canvasSize)
+
+    </script>
+</body>
+</html>
