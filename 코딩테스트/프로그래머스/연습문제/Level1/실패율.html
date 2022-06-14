@@ -5,6 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>실패율</title>
+    <script>
+        function solution(N, stages) {
+            var answer = [...stages];
+            var num = 0;
+            var N2 = stages.length;
+            var count = []
+            var count2 = []
+            answer.sort((a , b)=>{
+                return a - b;
+            })
+            // console.log(answer);
+            for(var a = 1; a <= N; a++){
+                num = 0;
+                for(var b = 0; b < answer.length; b++){
+                    if(a == answer[b]){
+                        num += 1;
+                    }
+                }
+                (num == 0) ? count.push(0) : count.push(num);
+            }
+            console.log(count);
+            for(var a = 1; a <= N; a++){
+                count2.push(count[a] / N2)
+                N2 = N2 - count[a];
+            }
+            console.log(count2);
+            count2.sort((a , b)=>{
+                return a - b;
+            })
+            console.log(count2);
+            return answer;
+        }
+        console.log(solution(5, [2, 1, 2, 6, 2, 4, 3, 3]));
+    </script>
 </head>
 <body>
     <h2>문제 설명</h2>
@@ -40,17 +74,17 @@
     <table border="1">
         <tr>
             <th>N</th>
-            <th>stages	</th>
+            <th>stages</th>
             <th>result</th>
         </tr>
         <tr>
             <td>5</td>
-            <td>[2, 1, 2, 6, 2, 4, 3, 3]	</td>
+            <td>[2, 1, 2, 6, 2, 4, 3, 3]</td>
             <td>[3,4,2,1,5]</td>
         </tr>
         <tr>
             <td>4</td>
-            <td>[4,4,4,4,4]	</td>
+            <td>[4,4,4,4,4]</td>
             <td>[4,1,2,3]</td>
         </tr>
     </table>
