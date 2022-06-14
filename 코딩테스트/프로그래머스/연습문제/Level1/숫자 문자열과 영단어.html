@@ -8,12 +8,25 @@
     <script>
         function solution(s) {
             var answer = s;
-            var test = answer.split('one');
-            console.log(test);
+            var eng = [
+                'zero',
+                'one',
+                'two',
+                'three',
+                'four',
+                'five',
+                'six',
+                'seven',
+                'eight',
+                'nine'
+            ]
+            for(var a = 0; a < eng.length; a++){
+                answer = answer.split(eng[a]).join(a);
+            }
             return answer;
         }
-        console.log(solution("one4seveneight"));
-    </script>
+        console.log(solution("one4seveneightone"));
+        </script>
 </head>
 <body>
     <h1>숫자 문자열과 영단어</h1>
