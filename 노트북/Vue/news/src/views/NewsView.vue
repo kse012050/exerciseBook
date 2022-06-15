@@ -2,8 +2,11 @@
     <div>
         <ul v-for="user in fetchedNews" v-bind:key="user.id">
             <li>
-                <strong>{{ user.title }}</strong>
-                <router-link v-bind:to="`/User/${ user.user }`">{{ user.user }}</router-link>
+                <mark>{{ user.points }}</mark>
+                <div>
+                    <strong><a v-bind:href="user.url">{{ user.title }}</a></strong>
+                    <router-link v-bind:to="`/User/${ user.user }`">{{ user.user }}</router-link>
+                </div>
             </li>
         </ul>
     </div>
@@ -40,6 +43,9 @@ export default {
 }
 </script>
 
-<style>
-    strong{font-weight: 700;}
+<style scoped>
+    ul li{display: flex; align-items: center;}
+    ul li mark{width: 80px; line-height: 50px; text-align: center;}
+    ul li div strong{font-weight: 700; display: block; margin-bottom: 5px;}
+    ul li div a:hover{color: #42b883;}
 </style>
