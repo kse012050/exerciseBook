@@ -20,11 +20,13 @@
       </li>
     </ul>
     <button v-on:click="test01(2)">click</button>
+    <life-cycle></life-cycle>
   </div>
 </template>
 
 <script>
 import Basic from './view/Basic.vue'
+import LifeCycle from './view/LifeCycle.vue'
 export default {
   data(){
     return {
@@ -38,7 +40,8 @@ export default {
     }
   },
   components: {
-    test : Basic
+    test : Basic,
+    LifeCycle
   },
   computed : {
     test(){
@@ -56,8 +59,14 @@ export default {
       console.log('whtch');
     }
   },
-  created() {
-    console.log('created');
+  // created() {
+  //   console.log('created');
+  // }
+  beforeUpdate(){
+    console.log('beforeUpdate');
+  },
+  updated(){
+    console.log('updated');
   }
 }
 </script>

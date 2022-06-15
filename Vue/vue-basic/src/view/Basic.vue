@@ -11,7 +11,7 @@ export default {
             user : 'user',
             data : 0
         }
-    }
+    },
 }
 </script>
 
