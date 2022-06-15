@@ -42,7 +42,7 @@ export default {
   },
   computed : {
     test(){
-      return 2 * 2;
+      return this.num * 2;
     }
   },
   methods : {
@@ -55,6 +55,9 @@ export default {
     num(){
       console.log('whtch');
     }
+  },
+  created() {
+    console.log('created');
   }
 }
 </script>
