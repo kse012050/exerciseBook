@@ -17,15 +17,30 @@
 export default {
     data(){
         return {
-            data : this.$route.name
+            data : this.$route.name,
+            stateData:undefined,
         }
     },
     computed : {
         listData(){
-            return this.$store.state.jobs;
+            this.dataChange();
+            return this.stateData;
+        }
+    },
+    methods :{
+        dataChange(){
+            console.log(this.data);
+            if(this.data == 'jobs'){
+                this.stateData = this.$store.state.jobs;
+            }else if(this.data == 'news'){
+                this.stateData = this.$store.state.news;
+            }else if(this.data == 'ask'){
+                this.stateData = this.$store.state.ask;
+            }
         }
     },
     created(){
+        console.log(this.stateData);
         this.$store.dispatch('FETCH_' + this.data.toUpperCase());
     }
 }
