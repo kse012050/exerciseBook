@@ -1,11 +1,11 @@
 <template>
     <div>
-        <ul v-for="user in fetchedNews" v-bind:key="user.id">
+        <ul v-for="user in listData" v-bind:key="user.id">
             <li>
-                <mark>{{ user.points }}</mark>
+                <mark>{{ user.points || 0}}</mark>
                 <div>
                     <strong><a v-bind:href="user.url">{{ user.title }}</a></strong>
-                    <router-link v-bind:to="`/User/${ user.user }`">{{ user.user }}</router-link>
+                    <router-link v-bind:to="`/User/${ user.user }`">{{ user.user || user.domain }}</router-link>
                 </div>
             </li>
         </ul>
@@ -13,11 +13,27 @@
 </template>
 
 <script>
-export default {
 
+export default {
+    data(){
+        return {
+            data : this.$route.name
+        }
+    },
+    computed : {
+        listData(){
+            return this.$store.state.jobs;
+        }
+    },
+    created(){
+        this.$store.dispatch('FETCH_' + this.data.toUpperCase());
+    }
 }
 </script>
 
-<style>
-
+<style scoped>
+    ul li{display: flex; align-items: center;}
+    ul li mark{width: 80px; line-height: 50px; text-align: center;}
+    ul li div strong{font-weight: 700; display: block; margin-bottom: 5px;}
+    ul li div a:hover{color: #42b883;}
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div>
-        <ul v-for="user in fetchedJobs" v-bind:key="user.id">
+        <page-list></page-list>
+        <!-- <ul v-for="user in fetchedJobs" v-bind:key="user.id">
             <li>
                 <mark>{{ user.points || 0}}</mark>
                 <div>
@@ -8,21 +9,25 @@
                     <router-link v-bind:to="`/User/${ user.user }`">{{ user.user || user.domain }}</router-link>
                 </div>
             </li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import PageList from '../components/PageList.vue'
+/* import { mapGetters } from 'vuex'; */
 export default {
-    computed : {
+    components : {
+        PageList
+    },
+   /*  computed : {
         ...mapGetters({
             fetchedJobs : 'fetchedJobs' 
         })
     },
     created(){
         this.$store.dispatch('FETCH_JOBS');
-    }
+    } */
 }
 </script>
 

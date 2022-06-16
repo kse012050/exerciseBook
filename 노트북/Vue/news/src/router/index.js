@@ -8,14 +8,17 @@ import User from '../views/UserView.vue'
 const routes = [
     {
         path : '/News',
+        name : 'news',
         component : News
     },
     {
         path : '/Jobs',
+        name : 'jobs',
         component : Jobs
     },
     {
         path : '/Ask',
+        name : 'ask',
         component : Ask
     },
     {
