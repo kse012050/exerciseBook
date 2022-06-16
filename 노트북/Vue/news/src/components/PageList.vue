@@ -1,11 +1,22 @@
 <template>
     <div>
-        <ul v-for="user in listData" v-bind:key="user.id">
+        <ul v-for="item in listData" v-bind:key="item.id">
             <li>
-                <mark>{{ user.points || 0}}</mark>
+                <mark>{{ item.points || 0}}</mark>
                 <div>
-                    <strong><a v-bind:href="user.url">{{ user.title }}</a></strong>
-                    <router-link v-bind:to="`/User/${ user.user }`">{{ user.user || user.domain }}</router-link>
+                    <strong>
+                        <template v-if="item.domain">
+                            <a v-bind:href="item.url">
+                                {{ item.title }}
+                            </a>
+                        </template>
+                        <template v-else>
+                            <router-link v-bind:to="`/Item/${item.id}`">
+                                {{ item.title }}
+                            </router-link>
+                        </template>
+                    </strong>
+                    <router-link v-bind:to="`/User/${ item.user }`">{{ item.user || item.domain }}</router-link>
                 </div>
             </li>
         </ul>
