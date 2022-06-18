@@ -8,7 +8,14 @@
     <script>
         function solution(nums) {
             var answer = 0;
-            return answer;
+            nums.sort((a , b)=>{
+                return a - b;
+            })
+            answer = nums.filter((a , b)=>{
+                console.log();
+                return a != nums[b + 1];
+            })
+            return nums.length / 2 > answer.length ? answer.length : nums.length / 2;
         }
         console.log(solution([3,1,2,3]));
     </script>
