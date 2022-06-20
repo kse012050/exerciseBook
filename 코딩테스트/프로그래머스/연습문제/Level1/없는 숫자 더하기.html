@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>없는 숫자 더하기</title>
+    <script>
+        function SE(numbers) {
+            var answer = 45;
+            for(var a = 0; a < numbers.length; a++){
+                answer -= numbers[a];
+            }
+            return answer;
+        }
+        console.log(SE([1,2,3,4,6,7,8,0]));
+        
+        function case01(numbers) {
+            return 45 - numbers.reduce((cur, acc) => cur + acc, 0);
+        }
+        console.log(case01([1,2,3,4,6,7,8,0]));
+    </script>
+</head>
+<body>
+    <h1>없는 숫자 더하기</h1>
+
+    <h2>문제 설명</h2>
+    <p>0부터 9까지의 숫자 중 일부가 들어있는 정수 배열 numbers가 매개변수로 주어집니다. numbers에서 찾을 수 없는 0부터 9까지의 숫자를 모두 찾아 더한 수를 return 하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>
+            1 ≤ numbers의 길이 ≤ 9
+            <ul>
+                <li>0 ≤ numbers의 모든 원소 ≤ 9</li>
+                <li>numbers의 모든 원소는 서로 다릅니다.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <th>numbers</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>[1,2,3,4,6,7,8,0]</td>
+            <td>14</td>
+        </tr>
+        <tr>
+            <td>[5,8,4,0,6,7,9]</td>
+            <td>6</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>5, 9가 numbers에 없으므로, 5 + 9 = 14를 return 해야 합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>1, 2, 3이 numbers에 없으므로, 1 + 2 + 3 = 6을 return 해야 합니다.</li>
+    </ul>
+</body>
+</html>
