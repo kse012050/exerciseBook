@@ -8,16 +8,26 @@
     <script>
         function solution(n) {
             var answer = [];
-            for(var a = 2; a <= n; a++){
-                answer.push(a);
-                for(var b = 2; b < (a / 2) + 1; b++){
-                    if(a % b == 0){
-                        answer.splice(answer.length -1, 1);
+            var array = [];
+            answer.push(2);
+            for(var a = 0; a <= 10; a++){
+                array.push(a);
+            }
+            for(var a = 3; a <= n; a++){
+                if(array[a] == 0){
+                    continue;
+                }
+                for(var b = 0; b < answer.length; b++){
+                    if(b == (answer.length -1)){
+                        answer.push(a);
+                        break;
+                    }else if(a % answer[b] == 0){
+                        array[b] = 0;
                         break;
                     }
                 }
             }
-            return answer.length;
+           return answer.length;
         }
         console.log(solution(10));
     </script>
