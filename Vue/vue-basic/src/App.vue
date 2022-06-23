@@ -1,72 +1,29 @@
 <template>
   <div>
-    <test />
-    <ul>
-      <li>
-        문자열 : {{ str }}
-      </li>
-        숫자 : {{ num }}
-      <li>
-        배열 : {{ array[0] }}
-      </li>
-      <li>
-        오브젝트 : {{ obj.a }}
-      </li>
-      <li>
-        computed : {{ test }}
-      </li>
-      <li>
-        methods : {{ test01 }}
-      </li>
-    </ul>
-    <button v-on:click="test01(2)">click</button>
-    <life-cycle></life-cycle>
+    <h2>현재 컴포넌트에서 데이터 실험</h2>
+    {{ num }}
+    <button v-on:click="test01(10)">click</button>
+    <h2>하우시 컴포넌트와 데이터 전달 실험</h2>
+    <props v-bind:test="num" v-on:test02="test01"></props>
   </div>
 </template>
 
 <script>
-import Basic from './view/Basic.vue'
-import LifeCycle from './view/LifeCycle.vue'
+import Props from './view/Props.vue'
 export default {
   data(){
     return {
-      str : '문자열',
       num : 1,
-      array : [1,2,3],
-      obj : {
-        a : 'A',
-        b : 1,
-      }
     }
   },
   components: {
-    test : Basic,
-    LifeCycle
-  },
-  computed : {
-    test(){
-      return this.num * 2;
-    }
+    Props
   },
   methods : {
     test01(a){
       console.log('methods');
       this.num = this.num + a;
     }
-  },
-  watch : {
-    num(){
-      console.log('whtch');
-    }
-  },
-  // created() {
-  //   console.log('created');
-  // }
-  beforeUpdate(){
-    console.log('beforeUpdate');
-  },
-  updated(){
-    console.log('updated');
   }
 }
 </script>
