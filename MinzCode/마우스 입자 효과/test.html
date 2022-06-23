@@ -45,7 +45,8 @@
 
         function animationLoop(){
             ctx.clearRect(0,0,w,h);
-            ctx.globalCompositeOperation = 'lighter';
+            // ctx.globalCompositeOperation = 'lighter';
+            balls.push(new Ball());
             drawBalls();
 
             let temp = [];
@@ -90,8 +91,8 @@
         class Ball {
             constructor(){
                 this.start = {
-                    x : mouse.x + getRandomInt(-20, 20),
-                    y : mouse.y + getRandomInt(-20, 20),
+                    x : w / 2 + getRandomInt(-20, 20),
+                    y : h / 2 + getRandomInt(-20, 20),
                     size : getRandomInt(30,40)
                 }
 
@@ -111,7 +112,8 @@
             }
 
             draw(){
-                ctx.fillStyle = this.style;
+                // ctx.fillStyle = this.style;
+                ctx.fillStyle = 'white';
                 ctx.beginPath();
                 ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
                 ctx.closePath();
@@ -137,7 +139,6 @@
 
         setInterval(() => {
            document.querySelector('#debug span').innerText = balls.length;
-           console.log(balls.length);
         }, 100);
     </script>
 
