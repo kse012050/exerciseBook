@@ -1,13 +1,15 @@
 <template>
     <div>
-        <p>id : {{ userInfo.id }}</p>
-        <p>karma : {{ userInfo.karma }}</p>
-        <p>created : {{ userInfo.created }}</p>
+        <pro-file v-bind:userInfo="userInfo"></pro-file>
     </div>
 </template>
 
 <script>
+import ProFile from '../components/ProFile.vue'
 export default {
+    components : {
+        ProFile
+    },
     computed : {
         userInfo(){
             console.log(this.$store);

@@ -5,13 +5,13 @@
                 <mark>{{ item.points || 0}}</mark>
                 <div>
                     <strong>
-                        <template v-if="item.domain">
+                        <template v-if="item.url">
                             <a v-bind:href="item.url">
                                 {{ item.title }}
                             </a>
                         </template>
                         <template v-else>
-                            <router-link v-bind:to="`/Item/${item.id}`">
+                            <router-link v-bind:to="`/User/${item.user}`">
                                 {{ item.title }}
                             </router-link>
                         </template>

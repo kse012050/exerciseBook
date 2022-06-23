@@ -1,5 +1,6 @@
 <template>
     <div>
+        <user-view></user-view>
         <h2>
             {{ fetchedItema.title }}
         </h2>
@@ -18,7 +19,11 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import UserView from './UserView.vue';
 export default {
+    components : {
+        UserView
+    },
     computed : {
         ...mapGetters({
             fetchedItema : 'fetchedItem'
