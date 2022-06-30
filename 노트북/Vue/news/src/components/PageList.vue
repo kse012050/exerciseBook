@@ -16,8 +16,9 @@
                             </router-link>
                         </template>
                     </strong>
-                    <a v-bind:href="item.url" v-if="item.domain">{{ item.domain }}</a>
-                    <router-link v-bind:to="`/User/${ item.user }`" v-else>{{ item.user }}</router-link>
+                    {{ item.time_ago }} by 
+                    <!-- <a v-bind:href="item.url" v-if="item.domain">{{ item.domain }}</a> -->
+                    <router-link v-bind:to="`/User/${ item.user }`" v-if="item.user">{{ item.user }}</router-link>
                 </div>
             </li>
         </ul>
