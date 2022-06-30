@@ -5,18 +5,19 @@
                 <mark>{{ item.points || 0}}</mark>
                 <div>
                     <strong>
-                        <template v-if="item.url">
+                        <template v-if="item.type != 'ask'">
                             <a v-bind:href="item.url">
                                 {{ item.title }}
                             </a>
                         </template>
                         <template v-else>
-                            <router-link v-bind:to="`/User/${item.user}`">
+                            <router-link v-bind:to="`/Item/${item.id}`">
                                 {{ item.title }}
                             </router-link>
                         </template>
                     </strong>
-                    <router-link v-bind:to="`/User/${ item.user }`">{{ item.user || item.domain }}</router-link>
+                    <a v-bind:href="item.url" v-if="item.domain">{{ item.domain }}</a>
+                    <router-link v-bind:to="`/User/${ item.user }`" v-else>{{ item.user }}</router-link>
                 </div>
             </li>
         </ul>
@@ -35,12 +36,13 @@ export default {
     computed : {
         listData(){
             this.dataChange();
+            console.log(this.stateData);
             return this.stateData;
         }
     },
     methods :{
         dataChange(){
-            console.log(this.data);
+            // console.log(this.data);
             if(this.data == 'jobs'){
                 this.stateData = this.$store.state.jobs;
             }else if(this.data == 'news'){
@@ -51,7 +53,7 @@ export default {
         }
     },
     created(){
-        console.log(this.stateData);
+        // console.log(this.stateData);
         this.$store.dispatch('FETCH_' + this.data.toUpperCase());
     }
 }
