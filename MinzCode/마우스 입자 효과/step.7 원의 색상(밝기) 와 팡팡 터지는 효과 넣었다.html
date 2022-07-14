@@ -12,8 +12,6 @@
 </head>
 <body>
     <script>
-        let canvas , ctx , w , y , balls = [];
-
         let rgb = [
             "rgb(26,188,156)",
             "rgb(46,204,113)",
@@ -23,85 +21,6 @@
             "rgb(230,126,34)",
             "rgb(231,76,60)",
         ]
-        
-        function init(){
-            canvas = document.createElement('canvas');
-            document.body.append(canvas);
-            ctx = canvas.getContext('2d')
-
-            canvasSize();
-            balls.push(new Ball);
-            animationLoop();
-            
-        }
-        function canvasSize(){
-            canvas.width = w = window.innerWidth;
-            canvas.height = h = window.innerHeight;
-        }
-
-        function animationLoop(){
-            ctx.clearRect(0,0,w,h);
-            // balls.push(new Ball);
-            balls.map((a)=>{
-                a.update();
-                a.draw();
-            })
-
-            requestAnimationFrame(animationLoop)
-        }
-
-        function randomValue(min , max){
-            return Math.round(Math.random() * (max - min) + min)
-        }
-
-        function easeOutQuart(x){
-            return 1 - Math.pow(1 - x, 4);
-        }
-
-        class Ball{
-            constructor(){
-                this.start = {
-                    x : w / 2 + randomValue(-20, 20),
-                    y : h / 2 + randomValue(-20, 20),
-                    size : randomValue(30,40)
-                }
-
-                this.end = {
-                    x : this.start.x + randomValue(-300,300),
-                    y : this.start.y + randomValue(-300,300)
-                }
-                this.x = this.start.x;
-                this.y = this.start.y;
-                // this.sin = Math.sin((Math.PI / 180) * (Math.random() * 360));
-                // this.cos = Math.cos((Math.PI / 180) * (Math.random() * 360));
-                this.size = this.start.size;
-                console.log(this.size);
-                this.time = 0;
-                this.ttl = 120;
-            }
-
-            draw(){
-                ctx.beginPath();
-                ctx.fillStyle = 'white';
-                ctx.arc(this.x , this.y , this.size, 0 , Math.PI * 2);
-                ctx.fill();
-            }
-
-            update(){
-                if(this.time <= this.ttl){
-                    let progress = 1 - (this.ttl - this.time) / this.ttl;
-                    // this.x = this.x + (this.sin);
-                    // this.y = this.y + (this.cos);
-                    this.x = this.x + (this.end.x - this.x) * 0.01;
-                    this.y = this.y + (this.end.y - this.y) * 0.01;
-                    this.size = this.start.size * (1 - easeOutQuart(progress));
-                }
-                this.time = this.time + 1;
-                // this.time++;
-            }
-        }
-
-        window.addEventListener('DOMContentLoaded',init)
     </script>
 </body>
 </html>
