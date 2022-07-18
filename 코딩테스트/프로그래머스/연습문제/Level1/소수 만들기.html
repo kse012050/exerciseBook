@@ -5,6 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>소수 만들기</title>
+    <script>
+        function SE(nums) {
+            var answer = -1;
+            var array = [];
+            var count = 0;
+
+            for(var a = 0; a < nums.length - 2; a++){
+                for(var b = a + 1; b < nums.length - 1; b++){
+                    for(var c = b + 1; c < nums.length; c++){
+                        array.push(nums[a] + nums[b] + nums[c]);
+                    }
+                }
+            }
+         
+            
+            for(var a = 0; a < array.length; a++){
+                for(var b = 2; b < array[a]; b++){
+                    if(array[a] % b == 0){
+                        count++;
+                        break;
+                    }
+                }
+            }
+            return array.length - count
+        }
+        console.log(SE([1,2,7,6,4]));
+        // 중복된 소수까지 다 포함해야 한다
+    </script>
 </head>
 <body>
     <h1>소수 만들기</h1>
