@@ -12,6 +12,7 @@
 </head>
 <body>
     <script>
+        let ctx, canvas , w , h , balls = [];
         let rgb = [
             "rgb(26,188,156)",
             "rgb(46,204,113)",
@@ -21,6 +22,99 @@
             "rgb(230,126,34)",
             "rgb(231,76,60)",
         ]
+
+        canvas = document.createElement('canvas');
+        document.body.append(canvas);
+        ctx = canvas.getContext('2d');
+        function init(){
+            canvasSize();
+            for(var a = 0; a < 1; a++){
+                balls.push(new Ball());
+            }
+            animationLoop();
+
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function randomValue(min , max){
+            return (Math.random() * (max - min)) + min;
+        }
+
+        function drawBalls(){
+            balls.map((a)=>{
+                a.update();
+                a.draw();
+            })
+        }
+
+        function animationLoop(){
+            ctx.clearRect(0 , 0 , w , h);
+            drawBalls();
+            requestAnimationFrame(animationLoop);
+        }
+
+        function easeOutQuart(x){
+            return 1 - Math.pow(1 - x, 4);
+        }
+
+        class Ball{
+            constructor(){
+                this.x = w / 2;
+                this.y = h / 2;
+                this.size = randomValue(30 , 40);
+                this.time = 0;
+                this.ttl = 120;
+
+                // this.posX = Math.sin((Math.PI / 180) * randomValue(0 , 360)) * 10;
+                // this.posY = Math.cos((Math.PI / 180) * randomValue(0 , 360)) * 10;
+
+                this.start = {
+                    x : w / 2 + randomValue(-20, 20),
+                    y : h / 2 + randomValue(-20, 20),
+                    size : randomValue(30,40)
+                }
+
+                this.end = {
+                    x : this.start.x + randomValue(-300,300),
+                    y : this.start.y + randomValue(-300,300)
+                }
+
+                this.x = this.start.x;
+                this.y = this.start.y;
+0
+            }
+
+            draw(){
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(this.x,this.y,this.size,0,Math.PI *2);
+                ctx.closePath();
+                ctx.fill(); 
+            }
+
+            update(){
+                if(this.time <= this.ttl){
+                    let progress = 1 - (this.ttl - this.time) / this.ttl;
+
+                    this.size = this.start.size * ( 1 - easeOutQuart(progress))
+                    // this.x = this.x + this.posX;
+                    // this.y = this.y + this.posY;
+                    this.x = this.x + (this.end.x - this.x) * 0.01;
+                    this.y = this.y + (this.end.y - this.y) * 0.01;
+                    // this.size >= 0.7 ? this.size -= 0.7 : this.size = 0;
+                    console.log(1);
+                }
+                this.time++;
+            }
+        }
+        // window.onload = function(){
+        //     init();
+        // }
+        window.addEventListener('DOMContentLoaded',init)
     </script>
 </body>
 </html>

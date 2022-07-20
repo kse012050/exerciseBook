@@ -35,6 +35,9 @@
 
         function init(){
             resizeReset();
+            for(var a = 0; a < 1; a++){
+                balls.push(new Ball());
+            }
             animationLoop();
         }
 
@@ -46,17 +49,17 @@
         function animationLoop(){
             ctx.clearRect(0,0,w,h);
             // ctx.globalCompositeOperation = 'lighter';
-            balls.push(new Ball());
+            // balls.push(new Ball());
             drawBalls();
 
-            let temp = [];
+           /*  let temp = [];
             for(let i = 0; i < balls.length; i++){
                 if(balls[i].time <= balls[i].ttl){
                     temp.push(balls[i]);
                 }
             }
             balls = temp;
-
+        */
             requestAnimationFrame(animationLoop);
         }
 
@@ -70,9 +73,9 @@
         function mousemove(e){
             mouse.x = e.x;
             mouse.y = e.y;
-            for(let i = 0; i < 3; i++){
-                balls.push(new Ball());
-            }
+            // for(let i = 0; i < 3; i++){
+            //     balls.push(new Ball());
+            // }
         }
 
         function mouseout(){
@@ -127,6 +130,7 @@
                     this.size = this.start.size * (1 - easeOutQuart(progress));
                     this.x = this.x + (this.end.x - this.x) * 0.01;
                     this.y = this.y + (this.end.y - this.y) * 0.01;
+                    console.log(1);
                 }
                 this.time++;
             }
@@ -137,9 +141,9 @@
         window.addEventListener("mousemove",mousemove);
         window.addEventListener("mouseout",mouseout);
 
-        setInterval(() => {
+       /*  setInterval(() => {
            document.querySelector('#debug span').innerText = balls.length;
-        }, 100);
+        }, 100); */
     </script>
 
     <div id="debug" style="position: fixed; left: 10px; top: 10px; color: #0f0;">balls.length = <span></span></div>
