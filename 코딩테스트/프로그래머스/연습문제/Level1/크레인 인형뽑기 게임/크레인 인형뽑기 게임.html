@@ -11,28 +11,61 @@
             var array = []
             var count = 0;
             for(var a = 0; a < moves.length; a++){
-                console.log(array.length);
-                console.log(board.length);
-                console.log('-------------------------');
-                if(array.length == board.length){
-                    break;
-                }
                 for(var b = 0; b < board.length; b++){
                     if(board[b][moves[a] - 1] != 0){
+                        console.log(array[array.length-1]);
+                        console.log(board[b][moves[a] - 1]);
+                        console.log('------------------------------------');
                         if(array[array.length-1] != board[b][moves[a] - 1]){
                             array.push(board[b][moves[a] - 1]);
                             board[b][moves[a] - 1] = 0;
                         }else{
                             array.splice(array.length-1)
+                            board[b][moves[a] - 1] = 0;
                             count++;
                         }
                         break;
                     }
                 }
             }
+            console.log(array);
             return count * 2;
         }
         console.log(SE([
+                [0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]
+            ],
+            [1,5,3,5,1,2,1,4]
+        ));
+
+        function case01(board, moves) {
+            var answer = 0;
+            let grap = Array();
+            let temp = 0;
+
+            moves.forEach(elements => {
+            for(let i = 0; i < board.length; i++){
+                if(board[i][elements-1] !== 0){
+                    if(grap.length > 0){
+                        if(grap[grap.length-1] === board[i][elements-1]){
+                            grap.pop();
+                            answer++;
+                            board[i][elements-1] = 0;
+                            break;
+                        }
+                    }
+                    grap.push(board[i][elements-1]);
+                    board[i][elements-1] = 0;
+                    break; 
+                }
+            }
+            });
+
+            console.log(grap);
+
+            return answer*2;
+        }
+
+        console.log(case01([
                 [0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]
             ],
             [1,5,3,5,1,2,1,4]
