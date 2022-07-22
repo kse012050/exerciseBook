@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>div</div>
+    <script>
+        function $(a){
+            this.q = 'q';
+            this.w = 'w';
+            this.a = a;
+            this.colorTest = function(b){
+                document.body.querySelector(this.a).style.color = b;
+            }
+        }
+        let test = function(a){
+            return new $(a);
+        };
+        console.log(test().q);
+        test('div').colorTest('red');
+    </script>
+</body>
+</html>
