@@ -38,6 +38,7 @@
 
         function drawScene(){
             moon.draw();
+            moon.update();
         }
 
         class Moon{
@@ -45,15 +46,43 @@
                 this.x = 150;
                 this.y = 150;
                 this.size = 100;
+                this.shadowColor = {
+                    r : 254,
+                    g : 247,
+                    b : 144,
+                }
+                this.r = 254;
+                this.g = 247;
+                this.b = 144;
+                this.colorBool = false;
             }
 
             draw(){
                 ctx.beginPath();
                 ctx.arc(this.x , this.y , this.size , 0 , Math.PI *2);
-                ctx.shadowColor = "rgba(254,247,144,0.7)";
+                ctx.shadowColor = `rgba(${this.r},${this.g},${this.b},0.7)`;
                 ctx.shadowBlur = 70;
                 ctx.fillStyle = "rgba(254,247,144,1)";
                 ctx.fill();
+            }
+
+            update(){
+                if(this.colorBool){
+                    this.r < 255 && this.r++;
+                    this.g < 255 && this.g++;
+                    this.b < 255 && this.b++;
+                    if(this.b >= 255){
+                        this.colorBool = !this.colorBool;
+                    }
+                }else{
+                    console.log(3);
+                    this.r > 254 && this.r--;
+                    this.g > 247 && this.g--;
+                    this.b > 144 && this.b--;
+                    if(this.b <= 144){
+                        this.colorBool = !this.colorBool;
+                    }
+                }
             }
         }
 
