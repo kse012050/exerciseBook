@@ -11,37 +11,42 @@
     </style>
 </head>
 <body>
-      <canvas id="canvas"></canvas>
-      <script>
-        let canvas , ctx, w, h , moon , stars = [];
-
-        function  init() {
-            canvas = document.querySelector('#canvas');
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx , w, h , moon, stars = [];
+        function init(){
+            canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
-            resizeReset();
+
+            canvasSize();
             moon = new Moon();
+
             for(let a = 0; a < w * h * 0.0001; a++){
                 stars.push(new Star());
             }
             animationLoop();
         }
 
-        function resizeReset(){
+        function canvasSize(){
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
         }
 
         function animationLoop(){
             ctx.clearRect(0,0,w,h);
+
             drawScene();
+
             requestAnimationFrame(animationLoop);
         }
 
         function drawScene(){
             moon.draw();
+            moon.update();
+
             stars.map((star)=>{
-                star.update();
                 star.draw();
+                star.update();
             })
         }
 
@@ -50,40 +55,50 @@
                 this.x = 150;
                 this.y = 150;
                 this.size = 100;
+                this.shadowColor = [254,247,144]
+                this.shadowAni = true;
             }
+            
             draw(){
-                ctx.save();
                 ctx.beginPath();
-                ctx.arc(this.x , this.y, this.size, 0 , Math.PI *2);
-                ctx.shadowColor = "rgba(254,247,144,.7)";
+                ctx.arc(this.x,this.y,this.size,0,Math.PI * 2);
+                ctx.fillStyle = 'rgba(254,247,144,1)';
+                ctx.shadowColor = `rgba(${this.shadowColor[0]},${this.shadowColor[1]},${this.shadowColor[2]}, 0.7)`;
                 ctx.shadowBlur = 70;
-                ctx.fillStyle = "rgba(254,247,144,1)";
                 ctx.fill();
-                ctx.closePath();
-                ctx.restore();
+            }
+
+            update(){
+                if(this.shadowAni){
+                    this.shadowColor[0] < 255 && this.shadowColor[0]++;
+                    this.shadowColor[1] < 255 && this.shadowColor[1]++;
+                    this.shadowColor[2] < 255 && this.shadowColor[2]++;
+                    this.shadowColor[2] >= 255 && (this.shadowAni = !this.shadowAni)
+                }else{
+                    this.shadowColor[0] > 254 && this.shadowColor[0]--;
+                    this.shadowColor[1] > 247 && this.shadowColor[1]--;
+                    this.shadowColor[2] > 144 && this.shadowColor[2]--;
+                    this.shadowColor[2] <= 144 && (this.shadowAni = !this.shadowAni);
+                }
             }
         }
-
         class Star{
             constructor(){
                 this.x = Math.random() * w;
                 this.y = Math.random() * h;
-                this.size = Math.random() * 0.5;
-                this.blinkChance = 0.005;
+                this.size = Math.random() + 0.5;
                 this.alpha = 1;
+                this.blinkChance = 0.005;
                 this.alphaChange = 0;
             }
-
             draw(){
                 ctx.beginPath();
-                ctx.arc(this.x , this.y, this.size, 0 , Math.PI *2);
+                ctx.arc(this.x,this.y, this.size, 0 , Math.PI *2);
                 ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
                 ctx.fill();
-                ctx.closePath();
-            } 
-
+            }
             update(){
-                if(this.alphaChange === 0 && Math.random() < this.blinkChance){
+                if(this.alphaChange === 0 &&  Math.random() < this.blinkChance ){
                     this.alphaChange = -1;
                 }else if(this.alphaChange !== 0){
                     this.alpha += this.alphaChange * 0.05;
@@ -93,11 +108,21 @@
                         this.alphaChange = 0;
                     }
                 }
+                // if(this.alphaChange === 0 && Math.random() < this.blinkChance){
+                //     this.alphaChange = -1;
+                // }else if(this.alphaChange !== 0){
+                //     this.alpha += this.alphaChange * 0.05;
+                //     if(this.alpha <= 0){
+                //         this.alphaChange = 1;
+                //     }else if(this.alpha >= 1){
+                //         this.alphaChange = 0;
+                //     }
+                // }
             }
         }
 
         window.addEventListener('DOMContentLoaded',init);
-        window.addEventListener('resize',resizeReset);
-      </script>
+        window.addEventListener('resize',canvasSize);
+    </script>
 </body>
 </html>
