@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.1 중앙을 세로로 가로지는 원들</title>
+    <style>
+        body{padding: 0; margin: 0; height: 100vh; background-color: #ccc;}
+        #canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+        let canvas , ctx , w , h , tree;
+
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+            
+            canvasSize();
+
+            tree = new Tree();
+
+            animationLoop();
+
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+
+            drawGround();
+        }
+        
+        function drawGround(){
+            ctx.fillStyle = `(0,0,0,1)`
+            ctx.fillRect(0 , h - 10 , w , h);
+        }
+
+        function animationLoop(){
+            drawScene();
+
+            requestAnimationFrame(animationLoop)
+        }
+
+        function drawScene(){
+            tree.draw();
+            tree.update();
+        }
+
+        class Tree{
+            constructor(){
+                this.x = w / 2;
+                this.y = h;
+                this.size = 5;
+                console.log(w / 2);
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x , this.y, this.size, 0 , Math.PI * 2);
+                ctx.fillStyle = 'rgba(255,0,0,1)'
+                ctx.fill();
+            }
+
+            update(){
+                this.y -= this.size * 2
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init)
+        window.addEventListener('rezise',canvasSize)
+    </script>
+</body>
+</html>
