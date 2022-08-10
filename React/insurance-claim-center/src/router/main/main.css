@@ -1,0 +1,80 @@
+/* 메인 페이지 */
+.mainPage{max-width: calc(100% - 30px); width: calc(640px - 30px); margin: 0 auto;}
+.mainPage header{padding: 15px 0; margin-bottom: 25px;}
+.mainPage header h1{width: 85px; margin-left: auto;}
+.mainPage header h1 img{width: 100%;}
+.mainPage section{text-align: center; margin-bottom: 50px;}
+.mainPage section h2{font-size: 20px; font-weight: 500; margin-bottom: 30px;}
+.mainPage section h2 mark{display: block; font-size: 31px; margin-bottom: 5px;}
+.mainPage section p{max-width: 230px; margin: 0 auto; font-size: 15px; font-weight: 300; line-height: normal; color: #666; margin-bottom: 30px; position: relative;}
+.mainPage section > div{text-align: left; height: 240px; background: #2e3239;  margin-bottom: 45px; position: relative;}
+.mainPage section div::before ,.mainPage section  div::after{content: ''; position: absolute;}
+.mainPage section > div::before{width: 120px; height: 0; right: -15px; top: 30px; background-color: #0bbef3; transform-origin: right top; animation: maintBefore 1s 2s cubic-bezier(0.165, 0.44, 0.64, 1) forwards;  transform: skewX(-45deg); }
+@keyframes maintBefore {
+    0%{height: 0;}
+    40%{height: calc(100% - 5px);}
+    60%{height: calc(90% - 5px);}
+    70%{height: calc(100% - 5px);}
+    90%{height: calc(98% - 5px);}
+    100%{height: calc(100% - 5px);}
+}
+.mainPage section > div > div{height: 100%; padding: 35px; box-sizing: border-box; overflow: hidden; position: relative;}
+.mainPage section > div > div::before ,.mainPage section > div div::after{position: absolute;border-style: solid; border-color: white transparent;}
+.mainPage section > div > div::before{border-width: 30px 30px 0; left: -30px; top: 0;}
+.mainPage section > div > div::after{border-width: 0 30px 30px; right: -30px; bottom: 0;}
+.mainPage section > div div strong{display: block; font-size: 20px; font-weight: 700; color: white; margin-bottom: 10px;}
+.mainPage section > div div svg{position: absolute; right: 0; bottom: 0;}
+#line01{animation: lineAni01 4s infinite linear;}
+#line02{animation: lineAni02 3s infinite linear;}
+#line03{animation: lineAni01 2s infinite linear;}
+@keyframes lineAni01 {
+    0%{transform: translateX(-34px);}
+    100%{transform: translateX(200px);}
+}
+@keyframes lineAni02 {
+    0%{transform: translate(-34px, 18px);}
+    100%{transform: translate(200px, 18px);}
+}
+#carWheel01{animation: wheelAni 2s infinite;}
+#carWheel02{animation: wheelAni 2s infinite;}
+@keyframes wheelAni {
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(-360deg);}
+}
+#carBody01 , #carBody02{animation: bodyAni 1s ease-in-out infinite alternate; transform-origin: bottom center;}
+@keyframes bodyAni {
+    0%{
+        transform: rotateX(15deg);
+    }
+    100%{
+        transform: rotateX(0deg);
+    }
+}
+.mainPage section ul{display: flex;}
+.mainPage section ul li{flex: 1;}
+.mainPage section ul li:nth-child(3n + 2){border-width: 0 1px; border-style: solid; border-color: #e6e6e6;}
+.mainPage section ul li a{display: block; padding: 60px 0 5px; background-repeat: no-repeat; background-position: center top 15px; background-size: 32px; font-size: 12px; font-weight: 300;}
+.mainPage section ul li:nth-child(1) a{background-image: url('../../images/ic-cs.png');}
+.mainPage section ul li:nth-child(2) a{background-image: url('../../images/ic-faq.png');}
+.mainPage section ul li:nth-child(3) a{background-image: url('../../images/ic-info.png');}
+
+/* 메인 메뉴 */
+.mainPage nav{ position: fixed; left: 0; bottom: 0; width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.2); background-color: white; z-index: 1;}
+.mainPage nav .mainManu ul{display: flex;}
+.mainPage nav .mainManu ul li{flex: 1;}
+.mainPage nav .mainManu ul li :is(a , button){display: block; width: 100%; line-height: 55px; text-indent: -9999px; background-repeat: no-repeat; background-position: center; background-size: 30px; opacity: 0.5;}
+.mainPage nav .mainManu ul li:nth-child(1) :is(a , button){background-image: url('../../images/ic-home.png');}
+.mainPage nav .mainManu ul li:nth-child(2) :is(a , button){background-image: url('../../images/ic-list.png');}
+.mainPage nav .mainManu ul li:nth-child(3) :is(a , button){background-image: url('../../images/ic-search.png');}
+.mainPage nav .mainManu ul li:nth-child(4) :is(a , button){background-image: url('../../images/ic-menu.png');}
+.mainPage nav .mainManu ul li.active a{opacity: 1;}
+.mainPage nav .sideMenu > div{width: 290px; margin-left: auto; height: 100%; background-color: white; position: relative;}
+.mainPage nav .sideMenu > div h2{font-size: 16px; font-weight: 500; padding: 15px;}
+.mainPage nav .sideMenu > div h2 a{display: flex; align-items: center;}
+.mainPage nav .sideMenu > div h2 a::before{content: ''; width: 24px; height: 24px; background: url('../../images/ic-home.png') no-repeat center / cover; margin-right: 10px;}
+.mainPage nav .sideMenu > div > ul > li{padding: 0 15px; border-bottom: 1px solid #e6e6e6;}
+.mainPage nav .sideMenu > div > ul > li a{display: block;}
+.mainPage nav .sideMenu > div > ul > li > a{padding: 30px 0; font-size: 16px; font-weight: 500;}
+.mainPage nav .sideMenu > div > ul > li ul{display: none;}
+.mainPage nav .sideMenu > div > ul > li ul li a{padding: 10px; font-size: 15px; font-weight: 300; color: #666;}
+.mainPage nav .sideMenu > div > button{position: absolute; right: 15px; top: 15px;}
