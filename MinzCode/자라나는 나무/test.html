@@ -101,12 +101,11 @@
                 let radian = (Math.PI / 180) * this.angle;
                 this.x = this.sx + (this.length * this.progress) * Math.sin(radian);
                 this.y = this.sy + (this.length * this.progress) * Math.cos(radian);
-                console.log(Math.cos(radian));
                 this.progress += .1 / this.radius;
 
                 if(this.progress > 1){
                     this.radius -=1;
-                    this.angle += (Math.floor(Math.random() * 3) - 1) * 10;
+                    // this.angle += (Math.floor(Math.random() * 3) - 1) * 10;
                     this.branchReset();
                 }
             }
