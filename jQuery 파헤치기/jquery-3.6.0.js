@@ -7297,8 +7297,8 @@ function genFx( type, includeWidth ) {
 		i = 0,
 		attrs = { height: type };
 
-	// If we include width, step value is 1 to do all cssExpand values,
-	// otherwise step value is 2 to skip over Left and Right
+	// 너비를 포함하면 모든 cssExpand 값을 수행하는 단계 값은 1입니다.
+	// 그렇지 않으면 왼쪽과 오른쪽을 건너뛰기 위해 단계 값이 2입니다.
 	includeWidth = includeWidth ? 1 : 0;
 	for ( ; i < 4; i += 2 - includeWidth ) {
 		which = cssExpand[ i ];

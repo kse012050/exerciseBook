@@ -11,15 +11,18 @@
             $(window).scroll(function(){
                 console.log(1);
             });
+
+            let pTag = document.querySelector('p');
+
+            pTag.addEventListener('click',function(e){
+                console.log(e.target.nextSibling.nextSibling);
+                e.target.nextSibling.nextSibling.animate({color : 'red'} , {duration: 1000 , fill : 'forwards'})
+            })
         });
     </script>
-    <style>
-        body{margin: 0;}
-        ::-webkit-scrollbar{display: none;}
-        p{height: 1000px;}
-    </style>
 </head>
 <body>
-    <p></p>
+    <p>안녕</p>
+    <div>div</div>
 </body>
 </html>
