@@ -3,7 +3,22 @@ import Footer from '../../components/footer/Footer.jsx'
 import { useState } from 'react';
 
 function Main(){
-    let [menu , setMenu] = useState(false);
+    let [menu , setMenu] = useState(true);
+
+    function tabEvent(e){
+        e.preventDefault();
+        e.target.nextSibling.style.display = 'block';
+        console.log(e.target.nextSibling.offsetHeight);
+        let nextTagHeight = e.target.nextSibling.offsetHeight;
+        e.target.nextSibling.style.height = 0;
+        e.target.nextSibling.style.overflow = 'hidden';
+        // e.target.nextSibling.style.height = '100px';
+        console.log(test);
+        e.target.nextSibling.animate({height : test + 'px'} , {duration : 300 , fill : 'forwards'});
+        // console.log(e);
+        // console.log(e.target.nextSibling.classList.add('active'));
+    }
+
     return (
         <div>
             <div className="mainPage">
@@ -82,7 +97,7 @@ function Main(){
                                     <a href="supportServiceCenter.html">지원 서비스 안내</a>
                                 </li>
                                 <li>
-                                    <a href="#">보험금청구</a>
+                                    <a href="#" onClick={tabEvent}>보험금청구</a>
                                     <ul>
                                         <li><a href="claimDocument.html">필수 제출 서류 양식</a></li>
                                         <li><a href="claim.html">보험금 청구</a></li>
