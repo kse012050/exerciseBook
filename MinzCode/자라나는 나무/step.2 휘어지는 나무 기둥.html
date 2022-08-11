@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>step.2 휘어지는 나무 기둥</title>
+    <style>
+        body{padding: 0; margin: 0; height: 100vh; background-color: #ccc;}
+        #canvas{position: fixed; left: 0; top: 0; width: 100%; height: 100%;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas  , ctx , w , h, trees = [];
+
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+        }
+        
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+
+            drawGround();
+            animationLoop();
+        }
+
+        function drawGround(){
+            ctx.fillStyle = `(0,0,0,1)`
+            ctx.fillRect(0 , h - 10, w , h);
+
+            trees.push(new Tree());
+        }
+
+        function animationLoop(){
+            drawScene();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        function drawScene(){
+            trees.map((t)=>{
+                t.draw();
+                t.update();
+            })
+        }
+
+        class Tree{
+            constructor(){
+                this.x = w / 2;
+                this.y = h;
+                this.size = 5;
+                this.branchs = [];
+                this.addBranch(this.x , this.y , this.size , 180)
+            }
+
+            addBranch( x , y , size , angle){
+                this.branchs.push(new Branch(x, y, size, angle))
+            }
+
+            draw(){
+                this.branchs.map((b)=>{
+                    b.draw();
+                })
+            }
+
+            update(){
+                this.branchs.map((b)=>{
+                    b.update();
+                })
+            }
+        }
+
+        class Branch{
+            constructor(x, y, size , angle){
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.angle = angle;
+                this.branchReset();
+            }
+
+            branchReset(){
+                this.sx = this.x;
+                this.sy = this.y;
+                this.lenght = this.size * 20;
+                this.progress = 0;
+            }
+
+            draw(){
+                if(this.progress > 1 || this.size <=0) return;
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(0,0,0,1)';
+                ctx.arc(this.x , this.y, this.size , 0 , Math.PI * 2);
+                ctx.fill();
+            }
+
+            update(){
+                let radian = (Math.PI / 180) * this.angle;
+                this.x = this.sx + (this.lenght * this.progress) * Math.sin(radian)
+                this.y = this.sy + (this.lenght * this.progress) * Math.cos(radian)
+                this.progress += .1 / this.size;
+
+                if(this.progress > 1){
+                    this.size -= 1;
+                    this.angle += (Math.floor(Math.random() * 3) - 1) * 10;
+                    this.branchReset();
+                }
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+        window.addEventListener('resize',canvasSize);
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{margin: 0; line-height: 0;}
+        canvas{background-color: black;}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas , ctx, w , h , x , y , radian;
+
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+            x = w / 2;
+            y = h / 2;
+            // animationLoop()
+
+            for(let a = 0; a < 360; a += 36){
+                radian = (Math.PI / 180) * a;
+                ctx.beginPath();
+                ctx.arc(x + (Math.sin(radian) * 100) , y + (Math.cos(radian) * 100), 5, 0 , Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${ (a / 36) * 0.1})`
+                ctx.fill();
+                // console.log((a / 36) * 0.1 + ' : x = ' +Math.sin(radian));
+                // console.log((a / 36) * 0.1 + ' : y = ' +Math.cos(radian));
+                console.log(a + ' : x = ' +Math.sin(radian));
+                console.log(a + ' : y = ' +Math.cos(radian));
+                console.log('----------------------------------------');
+            }
+            
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        
+        function animationLoop(){
+            ctx.clearRect(0,0,w,h)
+            draw();
+            requestAnimationFrame(animationLoop)
+        }
+
+        function draw(){
+            
+
+        }
+
+        function update(){
+
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+    </script>
+</body>
+</html>
