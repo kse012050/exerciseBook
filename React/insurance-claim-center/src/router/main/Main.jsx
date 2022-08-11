@@ -1,7 +1,9 @@
 import './main.css'
 import Footer from '../../components/footer/Footer.jsx'
+import { useState } from 'react';
 
 function Main(){
+    let [menu , setMenu] = useState(false);
     return (
         <div>
             <div class="mainPage">
@@ -61,19 +63,22 @@ function Main(){
                     </ul>
                 </section>
                 <nav>
-                    <div class="mainManu maxWidth">
+                    <div className="mainManu maxWidth">
                         <ul>
-                            <li class="active"><a href="#">home</a></li>
+                            <li className="active"><a href="#">home</a></li>
                             <li><a href="#">list</a></li>
                             <li><a href="#">search</a></li>
-                            <li data-click="menu"><a href="#">menu</a></li>
+                            <li data-click="menu" onClick={()=>{
+                                setMenu(true);
+                                console.log(menu);
+                            }}><a href="#">menu</a></li>
                         </ul>
                     </div>
-                    <div class="sideMenu" data-popup="menu">
+                    <div className={"sideMenu " + (menu && 'active')} data-popup="menu">
                         <div>
                             <h2><a href="index.html">HOME</a></h2>
                             <ul data-click="drop" data-drop="one">
-                                <li class="active">
+                                <li className="active">
                                     <a href="supportServiceCenter.html">지원 서비스 안내</a>
                                 </li>
                                 <li>
@@ -90,7 +95,9 @@ function Main(){
                                     <a href="FAQ01.html">FAQ</a>
                                 </li>
                             </ul>
-                            <button class="closeBtn" data-close="menu">close button</button>
+                            <button className="closeBtn" data-close="menu" onClick={()=>{
+                                setMenu(false);
+                            }}>close button</button>
                         </div>
                     </div>
                 </nav>
