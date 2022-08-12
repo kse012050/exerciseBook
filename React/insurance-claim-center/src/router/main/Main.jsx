@@ -1,22 +1,18 @@
 import './main.css'
-import Footer from '../../components/footer/Footer.jsx'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Footer from '../../components/footer/Footer.jsx'
 
 function Main(){
-    let [menu , setMenu] = useState(true);
+    let [menu , setMenu] = useState(false);
 
     function tabEvent(e){
         e.preventDefault();
         e.target.nextSibling.style.display = 'block';
-        console.log(e.target.nextSibling.offsetHeight);
         let nextTagHeight = e.target.nextSibling.offsetHeight;
         e.target.nextSibling.style.height = 0;
         e.target.nextSibling.style.overflow = 'hidden';
-        // e.target.nextSibling.style.height = '100px';
-        console.log(test);
-        e.target.nextSibling.animate({height : test + 'px'} , {duration : 300 , fill : 'forwards'});
-        // console.log(e);
-        // console.log(e.target.nextSibling.classList.add('active'));
+        e.target.nextSibling.animate({height : nextTagHeight + 'px'} , {duration : 300 , fill : 'forwards'});
     }
 
     return (
@@ -72,7 +68,7 @@ function Main(){
                         </div>
                     </div>
                     <ul>
-                        <li><a href="supportServiceCenter.html">지원서비스안내</a></li>
+                        <li><Link to='subPage/support'>지원서비스안내</Link></li>
                         <li><a href="serviceCenter.html">고객센터</a></li>
                         <li><a href="FAQ01.html">FAQ</a></li>
                     </ul>
