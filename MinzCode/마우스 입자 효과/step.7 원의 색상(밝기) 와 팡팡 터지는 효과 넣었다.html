@@ -11,8 +11,92 @@
     </style>
 </head>
 <body>
+    <canvas id="canvas"></canvas>
     <script>
-        
+        let canvas , ctx, w , h , balls = [];
+        let rgb = [
+            "rgb(26,188,156)",
+            "rgb(46,204,113)",
+            "rgb(52,152,219)",
+            "rgb(155,89,182)",
+            "rgb(241,196,15)",
+            "rgb(230,126,34)",
+            "rgb(231,76,60)",
+        ]
+        function init(){
+            canvas = document.getElementById('canvas');
+            ctx = canvas.getContext('2d');
+
+            canvasSize();
+
+            animationLoop();
+        }
+
+        function canvasSize(){
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+
+        function animationLoop(){
+            ctx.clearRect(0,0,w,h)
+            ctx.globalCompositeOperation = 'lighter';
+
+            drawScene();
+
+            requestAnimationFrame(animationLoop);
+        }
+
+        function drawScene(){
+            balls.map((b)=>{
+                b.draw();
+                b.update();
+            })
+        }
+
+        function mouseMove(e){
+            balls.push(new Ball(e.x , e.y))
+        }
+
+        function easeOutQuart(x) {
+            return 1 - Math.pow(1 - x, 4);
+        }
+
+        function randomValue(min , max){
+            return Math.floor((Math.random() * (max - min)) + min);
+        }
+
+        class Ball{
+            constructor(x , y){
+                this.x = x + randomValue(-20 , 20);
+                this.y = y + randomValue(-20 , 20);
+                this.size = randomValue(30 , 40);
+                this.currentSize = this.size;
+                this.radian = randomValue(0 , 361);
+                this.color = rgb[randomValue(0,7)];
+                this.ttl = 80;
+                this.time = 0;
+            }
+
+            draw(){
+                ctx.beginPath()
+                ctx.arc(this.x , this.y , this.size , 0 , Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill()
+            }
+
+            update(){
+                if(this.time <= this.ttl){
+                    let progress = 1 -(this.ttl - this.time) / this.ttl;
+                    this.size = this.currentSize *(1 - easeOutQuart(progress));
+                    this.x = this.x + (Math.sin(this.radian) * 2);
+                    this.y = this.y + (Math.cos(this.radian) * 2);
+                }
+                this.time++;
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded',init);
+        window.addEventListener('mousemove',mouseMove);
     </script>
 </body>
 </html>
