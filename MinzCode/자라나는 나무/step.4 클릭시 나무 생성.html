@@ -52,22 +52,62 @@
             })
         }
 
+        function randomValue(min , max){
+            return Math.round((Math.random() * (max - min)) + min);
+        }
+
         class Tree{
             constructor(){
                 this.x = w / 2;
                 this.y = h;
-                this.radian = 180;
+                this.size = 5;
+                this.angle = 180;
+                this.branchs = [new Branch(this.x , this.y , this.size , this.angle)];
+            }
+            draw(){
+                this.branchs.map((b)=>{
+                    b.draw();
+                })
+            }
+            update(){
+                this.branchs.map((b)=>{
+                    b.update();
+
+                    if(b.size > 0 && b.progress >= 30 && b.branchCount < 3 && Math.random() < 0.3){
+                        this.branchs.push(new Branch(b.x , b.y, b.size - 1 , b.angle + randomValue(-30 , 30)))
+                        b.branchCount++;
+                    }
+                })
+            }
+        }
+
+        class Branch{
+            constructor(x , y , size , angle){
+                this.x = x;
+                this.y = y;
+                this.size = size;
+                this.angle = angle;
                 this.speed = 1.2;
+                this.progress = 0;
+                this.branchCount = 0;
             }
             draw(){
                 ctx.beginPath();
-                ctx.arc(this.x , this.y , 5, 0 , Math.PI * 2);
-                ctx.fillStyle = 'red'
+                ctx.arc(this.x , this.y , this.size, 0 , Math.PI * 2);
+                ctx.fillStyle = `rgba(0,0,0,0.5)`;
                 ctx.fill();
             }
+
             update(){
-                this.x =this.x + Math.sin(Math.PI / 180 * this.radian) * this.speed;
-                this.y =this.y + Math.cos(Math.PI / 180 * this.radian) * this.speed;
+                if(this.progress <= 60){
+                    this.x = this.x + Math.sin(Math.PI / 180 * this.angle);
+                    this.y = this.y + Math.cos(Math.PI / 180 * this.angle) * this.speed;
+                    this.progress++;
+                }else if(this.size > 0){
+                    this.angle = this.angle + randomValue(-10 , 10);
+                    this.size--;
+                    this.progress = 0;
+                }
             }
         }
 
