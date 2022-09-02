@@ -4,7 +4,6 @@ import SubHeader from '../../components/subHeader/SubHeader'
 import BottomLink from '../../components/bottomLink/BottomLink'
 
 function Support(){
-    // let [subMenu , setSubMenu] = useState(['프로그램안내' , '보상조건' , '서비스 제공기간' , '보상한도'])
     return(
         <div className="subPage supportArea" data-scroll="fixed">
             <SubHeader/>
