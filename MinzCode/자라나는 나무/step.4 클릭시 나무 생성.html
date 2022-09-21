@@ -12,71 +12,70 @@
 </head>
 <body>
     <canvas id="canvas"></canvas>
-
     <script>
-        let canvas , ctx , w , h , trees = [];
-        
+        let canvas , ctx , w, h , trees;
+
         function init(){
             canvas = document.getElementById('canvas');
             ctx = canvas.getContext('2d');
-            
             canvasSize();
+            drawGround();
+            trees = new Tree();
+            animationLoop();
         }
 
         function canvasSize(){
             w = canvas.width = window.innerWidth;
             h = canvas.height = window.innerHeight;
-
-            drawRound();
-            trees.push(new Tree)
-            animationLoop();
         }
 
-        function drawRound(){
+        function drawGround(){
             ctx.beginPath();
-            ctx.fillRect(0 , h - 10 , w , h);
-            ctx.fillStyle = "black";
+            ctx.rect(0 , h - 10, w , h);
+            ctx.fillStyle = 'black';
             ctx.fill();
         }
 
         function animationLoop(){
-            
-            drawScene()
-            requestAnimationFrame(animationLoop);
+            drawScene();
+
+            requestAnimationFrame(animationLoop)
         }
 
         function drawScene(){
-            trees.map((t)=>{
-                t.draw();
-                t.update();
-            })
+            trees.draw();
+            trees.update();
         }
 
         function randomValue(min , max){
-            return Math.round((Math.random() * (max - min)) + min);
+            return Math.floor((Math.random() * ( max - min)) + min);
         }
 
         class Tree{
             constructor(){
                 this.x = w / 2;
-                this.y = h;
-                this.size = 5;
+                this.y = h - 10;
+                this.size = randomValue(5 , 7);
                 this.angle = 180;
-                this.branchs = [new Branch(this.x , this.y , this.size , this.angle)];
+                this.branch = [];
+                console.log(this.size);
+                this.branch.push(new Branch(this.x , this.y ,this.size , this.angle));
+                // this.addBranch();
             }
+
+            addBranch(){
+                // this.branch.push(new Branch());
+            }
+            
             draw(){
-                this.branchs.map((b)=>{
+                this.branch.map((b)=>{
                     b.draw();
                 })
             }
-            update(){
-                this.branchs.map((b)=>{
-                    b.update();
 
-                    if(b.size > 0 && b.progress >= 30 && b.branchCount < 3 && Math.random() < 0.3){
-                        this.branchs.push(new Branch(b.x , b.y, b.size - 1 , b.angle + randomValue(-30 , 30)))
-                        b.branchCount++;
-                    }
+            update(){
+                this.branch.map((b)=>{
+                    b.update();
                 })
             }
         }
@@ -87,32 +86,37 @@
                 this.y = y;
                 this.size = size;
                 this.angle = angle;
-                this.speed = 1.2;
+                this.length = this.size * 20;
                 this.progress = 0;
-                this.branchCount = 0;
+                this.branchReset();
             }
+
+            branchReset(){
+                this.sx = this.x;
+                this.sy = this.y;
+            }
+
             draw(){
                 ctx.beginPath();
-                ctx.arc(this.x , this.y , this.size, 0 , Math.PI * 2);
-                ctx.fillStyle = `rgba(0,0,0,0.5)`;
+                ctx.arc(this.x , this.y , this.size, 0 ,Math.PI * 2);
+                ctx.fillStyle = 'black';
                 ctx.fill();
             }
 
             update(){
-                if(this.progress <= 60){
-                    this.x = this.x + Math.sin(Math.PI / 180 * this.angle);
-                    this.y = this.y + Math.cos(Math.PI / 180 * this.angle) * this.speed;
-                    this.progress++;
-                }else if(this.size > 0){
-                    this.angle = this.angle + randomValue(-10 , 10);
-                    this.size--;
+                let radian = (Math.PI / 180) * this.angle;
+                this.x = this.sx + (this.progress * this.length * Math.sin(radian));
+                this.y = this.sy + (this.progress * this.length * Math.cos(radian));
+                this.progress = this.progress + 0.1 / this.size;
+                if(this.progress > 1){
                     this.progress = 0;
+                    this.branchReset();
                 }
+                // console.log(this.progress);
             }
         }
-
+        
         window.addEventListener('DOMContentLoaded',init);
-        window.addEventListener('resize' , canvasSize);
     </script>
 </body>
 </html>

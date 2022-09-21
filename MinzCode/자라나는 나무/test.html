@@ -127,6 +127,7 @@
                 this.x = this.sx + (this.length * this.progress) * Math.sin(radian);
                 this.y = this.sy + (this.length * this.progress) * Math.cos(radian);
                 this.progress += .1 / this.radius;
+                console.log(this.progress);
 
                 if(this.progress > 1){
                     this.radius -=1;
