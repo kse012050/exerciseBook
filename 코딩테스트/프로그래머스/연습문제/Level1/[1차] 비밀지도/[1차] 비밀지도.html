@@ -8,12 +8,53 @@
     <script>
         function SE(n, arr1, arr2) {
             var answer = [];
-            let test = 20;
-            console.log(test.toString(2));
+            
+            let numb1 = arr1.map((a)=>{
+                return Number(a.toString(2))
+            })
+            let numb2 = arr2.map((a)=>{
+                return Number(a.toString(2))
+            })
+            let result = [];
+            for(let a = 0; a < n; a++){
+                result.push(numb1[a] + numb2[a] + '');
+            }
+            result = result.map((r)=>{
+                let rLength = r.length;
+                if(r.length != n){
+                    for(let a = 0; a < (n - rLength); a++){
+                        r = '0' + r;
+                    }
+                }
+                return r;
+            })
+            
+            let string = ''
+            for(let a = 0; a < n; a++){
+                for(let b = 0; b < n; b++){
+                    if(result[a][b] != '0' && result[a][b] != undefined){
+                        string += '#';
+                    }else{
+                        string += ' ';
+                    }
+                }
+                answer.push(string);
+                string = '';
+            }
             return answer;
         }
 
-        console.log(SE());
+        /* let test = 30;
+        console.log(Number(test.toString(2)));
+        let test01 = Number(test.toString(2))
+        test = 1;
+        console.log(Number(test.toString(2)));
+        let test02 = Number(test.toString(2)) */
+        // console.log(SE(5 , [9, 20, 28, 18, 11] ,[30, 1, 21, 17, 28]));
+        // console.log(SE(6 , [46, 33, 33 ,22, 31, 50] ,[27 ,56, 19, 14, 14, 10]));
+        console.log(SE(5 , [0 , 0 , 0, 0 , 0] ,[30 ,1, 21, 17, 28]));
+        ["######","###  #","##  ##","#### #","######","### # "]
+        ["######","###  #","##  ##"," #### "," #####","### # "]
     </script>
 </head>
 <body>
@@ -53,7 +94,7 @@
         <tbody>
             <tr>
                 <td>n</td>
-                <td><5/td>
+                <td>5</td>
             </tr>
             <tr>
                 <td>arr1</td>
