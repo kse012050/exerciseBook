@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import {Link} from 'react-scroll'
 import './subHeader.css';
+
 
 const SubTitle = () => {
     let [scrolBool , setScrollBool] = useState(false)
@@ -10,16 +12,21 @@ const SubTitle = () => {
         })
     }
     let menuList = [
-        {href : '#program' , maneName : '프로그램안내'},
-        {href : '#condition' , menuName : '보상조건'},
-        {href : '#offerPeriod' , menuName : '서비스 제공기간'},
-        {href : '#limit' , menuName : '보상 한도'},
-        {href : '#submission' , menuName : '필수 제출 서류'},
-        {href : '#procedure' , menuName : '자기부담금 지급 절차'},
-        {href : '#way' , menuName : '서류 제출 방법'},
-        {href : '#notCompensated' , menuName : '보상하지 않는 손해'}
+        {href : 'program' , maneName : '프로그램안내'},
+        {href : 'condition' , menuName : '보상조건'},
+        {href : 'offerPeriod' , menuName : '서비스 제공기간'},
+        {href : 'limit' , menuName : '보상 한도'},
+        {href : 'submission' , menuName : '필수 제출 서류'},
+        {href : 'procedure' , menuName : '자기부담금 지급 절차'},
+        {href : 'way' , menuName : '서류 제출 방법'},
+        {href : 'notCompensated' , menuName : '보상하지 않는 손해'}
     ]
     scrollEvent();
+
+    function menuClick(e){
+        e.preventDefault();
+        console.log(e);
+    }
     return (
         <header className={"BGColor " + (scrolBool && 'active')}>
             <h1 className="hiddenTitle">보험 중계 청구 센터</h1>
@@ -39,9 +46,10 @@ const SubTitle = () => {
                     <li><a href="#notCompensated">보상하지 않는 손해</a></li>
                 </ul> */}
                 <ul>
-                    {menuList.map((m)=>{
+                    {menuList.map((m , i)=>{
                         return(
-                            <li><a href={m.href}>{m.menuName}</a></li>
+                            // <li key={i}><a href={m.href} onClick={menuClick} >{m.menuName}</a></li>
+                            <li key={i}><Link to={m.href} spy={true} smooth={true} duration={500} onClick={menuClick}>{m.menuName}</Link></li>
                         )
                     })}
                 </ul>
