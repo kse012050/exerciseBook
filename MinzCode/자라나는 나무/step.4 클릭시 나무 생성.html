@@ -14,6 +14,8 @@
     <canvas id="canvas"></canvas>
     <script>
         let canvas , ctx , w, h , trees;
+        let branchChance = [0.08, 0.09, 0.10, 0.11, 0.12, 0.15, 0.3];
+        let branchAngles = [20, 25, 30, 35];
 
         function init(){
             canvas = document.getElementById('canvas');
@@ -58,7 +60,7 @@
                 this.size = randomValue(5 , 7);
                 this.angle = 180;
                 this.branch = [];
-                console.log(this.size);
+                
                 this.branch.push(new Branch(this.x , this.y ,this.size , this.angle));
                 // this.addBranch();
             }
@@ -76,6 +78,11 @@
             update(){
                 this.branch.map((b)=>{
                     b.update();
+                    if(b.size > 0 && b.progress > 0.4 && Math.random() < b.branchChance && b.branchCount < 3){
+                        this.branch.push(new Branch(b.x , b.y, b.size - 1 , b.angle + branchAngles[Math.floor(Math.random() * branchAngles.length)] * b.branchDirection))
+                        b.branchCount++;
+                        b.branchDirection *= -1;
+                    }
                 })
             }
         }
@@ -86,17 +93,21 @@
                 this.y = y;
                 this.size = size;
                 this.angle = angle;
-                this.length = this.size * 20;
-                this.progress = 0;
                 this.branchReset();
             }
-
+            
             branchReset(){
                 this.sx = this.x;
                 this.sy = this.y;
+                this.length = this.size * 20;
+                this.progress = 0;
+                this.branchCount = 0;
+                this.branchChance = branchChance[7 - this.size];
+                this.branchDirection = (Math.random() < 0.5) ? -1 : 1;
             }
 
             draw(){
+                if(this.progress > 1 || this.size <= 0) return;
                 ctx.beginPath();
                 ctx.arc(this.x , this.y , this.size, 0 ,Math.PI * 2);
                 ctx.fillStyle = 'black';
@@ -110,6 +121,8 @@
                 this.progress = this.progress + 0.1 / this.size;
                 if(this.progress > 1){
                     this.progress = 0;
+                    this.size -= 1;
+                    this.angle += randomValue(-10 , 10);
                     this.branchReset();
                 }
                 // console.log(this.progress);
