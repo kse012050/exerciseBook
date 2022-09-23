@@ -7,9 +7,23 @@
     <title>[1차] 다트 게임</title>
     <script>
         function SE(dartResult) {
-            var answer = dartResult;
+            var answer = [''];
+            let numb = 0;
             for(let a = 0; a < dartResult.length; a++){
                 console.log(dartResult[a]);
+                if(!isNaN(dartResult[a])){
+                    answer[numb] += dartResult[a];
+                }else{
+                    console.log(answer[numb]);
+                    if(dartResult[a] == 'S'){
+                        answer[numb] = Math.pow(answer[numb] , 1);
+                    }else if(dartResult[a] == 'D'){
+                        answer[numb] = Math.pow(answer[numb] , 2);
+                    }else if(dartResult[a] == 'T'){
+                        answer[numb] = Math.pow(answer[numb] , 3);
+                    }
+                    numb++;
+                }
             }
             return answer;
         }
