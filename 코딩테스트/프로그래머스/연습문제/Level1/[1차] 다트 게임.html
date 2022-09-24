@@ -7,27 +7,60 @@
     <title>[1차] 다트 게임</title>
     <script>
         function SE(dartResult) {
-            var answer = [''];
+            var answer = [];
             let numb = 0;
+            let result = 0;
             for(let a = 0; a < dartResult.length; a++){
-                console.log(dartResult[a]);
                 if(!isNaN(dartResult[a])){
+                    answer[numb] == undefined && (answer[numb] = '');
                     answer[numb] += dartResult[a];
                 }else{
-                    console.log(answer[numb]);
                     if(dartResult[a] == 'S'){
                         answer[numb] = Math.pow(answer[numb] , 1);
+                        numb++;
                     }else if(dartResult[a] == 'D'){
                         answer[numb] = Math.pow(answer[numb] , 2);
+                        numb++;
                     }else if(dartResult[a] == 'T'){
                         answer[numb] = Math.pow(answer[numb] , 3);
+                        numb++;
+                    }else if(dartResult[a] == '#'){
+                        answer[numb - 1] *= -1
+                    }else if(dartResult[a] == '*'){
+                        answer[numb - 1] *= 2;
+                        if(numb >= 2){
+                            answer[numb - 2] *= 2;
+                        }
                     }
-                    numb++;
                 }
             }
-            return answer;
+            result = answer.reduce(function(a , b){
+                return a + b;
+            })
+            
+            return result;
         }
         console.log(SE('1S2D*3T'));
+
+        function case01(dartResult) {
+            const bonus = { 'S': 1, 'D': 2, 'T': 3 },
+                options = { '*': 2, '#': -1, undefined: 1 };
+
+            let darts = dartResult.match(/\d.?\D/g);
+
+            for (let i = 0; i < darts.length; i++) {
+                let split = darts[i].match(/(^\d{1,})(S|D|T)(\*|#)?/),
+                    score = Math.pow(split[1], bonus[split[2]]) * options[split[3]];
+
+                if (split[3] === '*' && darts[i - 1]) darts[i - 1] *= options['*'];
+
+                darts[i] = score;
+            }
+
+            return darts.reduce((a, b) => a + b);
+        }
+
+        console.log(case01('1S2D*3T'));
     </script>
 </head>
 <body>
