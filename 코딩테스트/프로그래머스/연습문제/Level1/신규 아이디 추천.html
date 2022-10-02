@@ -6,25 +6,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>신규 아이디 추천</title>
     <script>
-        function solution(new_id) {
+        function SE(new_id) {
             var answer = new_id.toLowerCase();
             var array = [];
-            // answer = answer.replace('a');
             answer = answer.match(/[\w]|[-]|[.]/g);
             answer = answer.filter((a , i)=>{
-                console.log(a);
-                console.log(answer[i]);
-                console.log(i);
-                console.log('-------------------------');
-                if(a=='.' && a == answer[i + 1]){
-                    console.log(a);
+                if(a=='.' && a == answer[i + 1] ){
                     return
                 }
                 return a
             })
+            answer = answer.join('')
+            if(answer[answer.length - 1] == '.'){
+                answer = answer.substring(0,answer.length - 1);
+            }
+            if(answer[0] == '.'){
+                answer = answer.substring(1,answer.length);
+            }
+            if(answer.length > 15){
+                answer = answer.substring(0,15)
+            }
+            if(answer[answer.length - 1] == '.'){
+                answer = answer.substring(0,answer.length - 1);
+            }
+            if(answer[0] == '.'){
+                answer = answer.substring(1,answer.length);
+            }
+            if(answer.length == 0){
+                answer = answer.padEnd(3, "a");
+            }
+            if(answer.length < 3){
+                answer = answer.padEnd(3, answer[answer.length - 1]);
+            }
             return answer;
         }
-        console.log(solution("-...!@BaT#*..y.abcdef_54gh1i0jklm"));
+        console.log(SE("...!@BaT#*..y.abcdefghijklm"));
+
+        function case01(new_id) {
+            const answer = new_id
+                .toLowerCase() // 1
+                .replace(/[^\w-_.]/g, '') // 2
+                .replace(/\.+/g, '.') // 3
+                .replace(/^\.|\.$/g, '') // 4
+                .replace(/^$/, 'a') // 5
+                .slice(0, 15).replace(/\.$/, ''); // 6
+            const len = answer.length;
+            return len > 2 ? answer : answer + answer.charAt(len - 1).repeat(3 - len);
+        }
+
+        console.log(case01('...!@BaT#*..y.abcdefghijklm'));
     </script>
 </head>
 <body>
