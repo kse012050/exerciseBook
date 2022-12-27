@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음에 올 숫자</title>
+    <script>
+        function SE(common) {
+            var answer = 0;
+            let first = common[1] - common[0];
+            let second = common[2] - common[1];
+            let last = common.pop();
+            let fin = 0;
+            if(second == first){
+                fin = second - first
+                answer = last + first
+            }else{
+                fin = second / first;
+                answer = last * fin;
+            }
+            return answer;
+        }
+       
+    </script>
+</head>
+<body>
+    <h1>다음에 올 숫자</h1>
+    <h2>문제 설명</h2>
+    <p>등차수열 혹은 등비수열 common이 매개변수로 주어질 때, 마지막 원소 다음으로 올 숫자를 return 하도록 solution 함수를 완성해보세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>2 < common의 길이 < 1,000</li>
+        <li>-1,000 < common의 원소 < 2,000</li>
+        <li>등차수열 혹은 등비수열이 아닌 경우는 없습니다.</li>
+        <li>공비가 0인 경우는 없습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <th>common</th>
+            <th>result</th>
+        </tr>
+        <tr>
+            <td>[1, 2, 3, 4]</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>[2, 4, 8]</td>
+            <td>16</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>[1, 2, 3, 4]는 공차가 1인 등차수열이므로 다음에 올 수는 5이다.</li>
+    </ul>
+    
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>[2, 4, 8]은 공비가 2인 등비수열이므로 다음에 올 수는 16이다.</li>
+    </ul>
+</body>
+</html>
