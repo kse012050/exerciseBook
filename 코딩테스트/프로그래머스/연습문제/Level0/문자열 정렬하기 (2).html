@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 정렬하기 (2)</title>
+    <script>
+        function SE(my_string) {
+            var answer = '';
+            answer = my_string.toLowerCase()
+            answer = answer.split('');
+            answer = answer.sort()
+            answer = answer.join('');
+            return answer;
+        }
+        console.log(SE("Bcad"));
+    </script>
+</head>
+<body>
+    <h1>문자열 정렬하기 (2)</h1>
+    <h2>문제 설명</h2>
+    <p>영어 대소문자로 이루어진 문자열 my_string이 매개변수로 주어질 때, my_string을 모두 소문자로 바꾸고 알파벳 순서대로 정렬한 문자열을 return 하도록 solution 함수를 완성해보세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < my_string 길이 < 100</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <th>result</th>
+            <th>my_string</th>
+        </tr>
+        <tr>
+            <td>"Bcad"</td>
+            <td>"abcd"</td>
+        </tr>
+        <tr>
+            <td>"heLLo"</td>
+            <td>"ehllo"</td>
+        </tr>
+        <tr>
+            <td>"Python"</td>
+            <td>"hnopty"</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"Bcad"를 모두 소문자로 바꾸면 "bcad"이고 이를 알파벳 순으로 정렬하면 "abcd"입니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"heLLo"를 모두 소문자로 바꾸면 "hello"이고 이를 알파벳 순으로 정렬하면 "ehllo"입니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>"Python"를 모두 소문자로 바꾸면 "python"이고 이를 알파벳 순으로 정렬하면 "hnopty"입니다.</li>
+    </ul>
+</body>
+</html>
