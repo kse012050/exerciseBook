@@ -6,10 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>잘라서 배열로 저장하기</title>
     <script>
-        function solution(my_str, n) {
+        function SE(my_str, n) {
             var answer = [];
+            var text = '';
+            for(let a = 0 ; a < my_str.length; a++){
+                text += my_str[a]
+                if(text.length === n){
+                    answer.push(text);
+                    text = '';
+                }
+            }
+            text.length && answer.push(text);
             return answer;
         }
+        console.log(SE("abc1Addfggg4556b" , 6));
+        
+        function case01(my_str, n) {
+            return my_str.match(new RegExp(`.{1,${n}}`, "g"));
+        }
+        console.log(case01("abc1Addfggg4556b" , 6));
+        
+        function case02(my_str, n) {
+            let res = [];
+            for (let i = 0; i < my_str.length; i+=n) res.push(my_str.slice(i, i+n));
+            return res;
+        }
+        
+        console.log(case02("abc1Addfggg4556b" , 6));
+        function case03(my_str, n) {
+            var answer = [];
+            for(let i=0; i < my_str.length; i+=n) {
+                answer.push(my_str.substr(i, n));
+            }
+            return answer;
+        }
+        console.log(case03("abc1Addfggg4556b" , 6));
     </script>
 </head>
 <body>
