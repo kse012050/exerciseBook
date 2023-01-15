@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>몫 구하기</title>
+    <script>
+        function SE(num1, num2) {
+            var answer = num1 / num2;
+            return Math.floor(answer);
+        }
+
+        console.log(SE(7 , 2));
+    </script>
+</head>
+<body>
+    <h1>몫 구하기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 num1, num2가 매개변수로 주어질 때, num1을 num2로 나눈 몫을 return 하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < num1 ≤ 100</li>
+        <li>0 < num2 ≤ 100</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>num1</td>
+            <td>num2</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>5</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>num1이 10, num2가 5이므로 10을 5로 나눈 몫 2를 return 합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>num1이 7, num2가 2이므로 7을 2로 나눈 몫 3을 return 합니다.</li>
+    </ul>
+</body>
+</html>
