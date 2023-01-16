@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>머쓱이보다 키 큰 사람</title>
+    <script>
+        function SE(array, height) {
+            var answer = array.filter(a => a > height);
+            return answer;
+        }
+        console.log(SE([149, 180, 192, 170]	 , 167));
+    </script>
+</head>
+<body>
+    <h1>머쓱이보다 키 큰 사람</h1>
+    <h2>문제 설명</h2>
+    <p>머쓱이는 학교에서 키 순으로 줄을 설 때 몇 번째로 서야 하는지 궁금해졌습니다. 머쓱이네 반 친구들의 키가 담긴 정수 배열 array와 머쓱이의 키 height가 매개변수로 주어질 때, 머쓱이보다 키 큰 사람 수를 return 하도록 solution 함수를 완성해보세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ array의 길이 ≤ 100</li>
+        <li>1 ≤ height ≤ 200</li>
+        <li>1 ≤ array의 원소 ≤ 200</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>array</td>
+            <td>height</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[149, 180, 192, 170]</td>
+            <td>167</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>[180, 120, 140]</td>
+            <td>190</td>
+            <td>0</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>149, 180, 192, 170 중 머쓱이보다 키가 큰 사람은 180, 192, 170으로 세 명입니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>180, 120, 140 중 190보다 큰 수는 없으므로 0명입니다.</li>
+    </ul>
+</body>
+</html>
