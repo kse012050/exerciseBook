@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>각도기</title>
+    <script>
+        function SE(angle) {
+            if(angle < 90){
+                answer = 1;
+            }else if(angle === 90){
+                answer = 2;
+            }else if(angle < 180){
+                answer = 3;
+            }else{
+                answer = 4;
+            }
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    <h1>각도기</h1>
+    <h2>문제 설명</h2>
+    <p>각에서 0도 초과 90도 미만은 예각, 90도는 직각, 90도 초과 180도 미만은 둔각 180도는 평각으로 분류합니다. 각 angle이 매개변수로 주어질 때 예각일 때 1, 직각일 때 2, 둔각일 때 3, 평각일 때 4를 return하도록 solution 함수를 완성해주세요.</p>
+    <ul>
+        <li>예각 : 0 < angle < 90</li>
+        <li>직각 : angle = 90</li>
+        <li>둔각 : 90 < angle < 180</li>
+        <li>평각 : angle = 180</li>
+    </ul>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < angle ≤ 180</li>
+        <li>angle은 정수입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <td>angle</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>70</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>91</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>180</td>
+            <td>4</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>angle이 70이므로 예각입니다. 따라서 1을 return합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>angle이 91이므로 둔각입니다. 따라서 3을 return합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>angle이 180이므로 평각입니다. 따라서 4를 return합니다.</li>
+    </ul>
+</body>
+</html>
