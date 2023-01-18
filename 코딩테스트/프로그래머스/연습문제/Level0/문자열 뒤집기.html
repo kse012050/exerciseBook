@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 뒤집기</title>
+    <script>
+        function SE(my_string) {
+            var answer = my_string.split('').reverse().join('');
+            return answer;
+        }
+        console.log(SE("jaron"));
+
+        function case01(my_string){
+            var answer = [...my_string].reverse().join("");
+            return answer;
+        }
+        console.log(case01("jaron"));
+    </script>
+</head>
+<body>
+    <h1>문자열 뒤집기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string이 매개변수로 주어집니다. my_string을 거꾸로 뒤집은 문자열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ my_string의 길이 ≤ 1,000</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <td>my_string</td>
+            <td>return</td>
+        </tr>
+        <tr>
+            <td>"jaron"</td>
+            <td>noraj"</td>
+        </tr>
+        <tr>
+            <td>"bread"</td>
+            <td>"daerb"</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>my_string이 "jaron"이므로 거꾸로 뒤집은 "noraj"를 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>my_string이 "bread"이므로 거꾸로 뒤집은 "daerb"를 return합니다.</li>
+    </ul>
+    
+</body>
+</html>
