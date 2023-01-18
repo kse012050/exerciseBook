@@ -4,6 +4,7 @@ function LayoutTest(props){
         <div style={{background : 'red',}}>
             test
             {props.test}
+            {props.children}
         </div>    
     )
 }

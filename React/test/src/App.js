@@ -6,8 +6,10 @@ function App() {
   const [test , setState] = useState('?');
   return (
     <div className="App">
-      <Input a={setState}/>
-      <LayoutTest test={<div>a</div>}/>
+      <LayoutTest>
+        <Input a={setState}/>
+
+      </LayoutTest>
       <div>{test}</div>
     </div>
   );
