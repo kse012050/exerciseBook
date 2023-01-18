@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-function Test(props){
+function Input(props){
     const inputRef = useRef();
 
     const onChange = (e) =>{
@@ -15,4 +15,4 @@ function Test(props){
     )
 }
 
-export default Test;
+export default Input;
