@@ -8,9 +8,6 @@
     <script>
         function SE(sides) {
             sides.sort((a , b)=> a - b)
-            console.log(sides);
-            console.log(sides[0] + sides[1]);
-            console.log(sides[2]);
             return sides[0] + sides[1] > sides[2] ? 1 : 2;
         }
         console.log(SE([199, 72, 222]));
