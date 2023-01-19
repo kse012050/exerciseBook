@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특정 문자 제거하기</title>
+    <script>
+        function SE(my_string, letter) {
+            var answer = my_string.replaceAll(letter ,'');
+            return answer;
+        }
+        console.log(SE("BCBdbe" , 'B'));
+        
+        function case01(my_string, letter) {
+            const answer = my_string.split(letter).join('')
+            return answer;
+        }
+        console.log(case01("BCBdbe" , 'B'));
+    </script>
+</head>
+<body>
+    <h1>특정 문자 제거하기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string과 문자 letter이 매개변수로 주어집니다. my_string에서 letter를 제거한 문자열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ my_string의 길이 ≤ 100</li>
+        <li>letter은 길이가 1인 영문자입니다.</li>
+        <li>my_string과 letter은 알파벳 대소문자로 이루어져 있습니다.</li>
+        <li>대문자와 소문자를 구분합니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>my_string</td>
+            <td>letter</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"abcdef"</td>
+            <td>"f"</td>
+            <td>"abcde"</td>
+        </tr>
+        <tr>
+            <td>"BCBdbe"</td>
+            <td>"B"</td>
+            <td>"Cdbe"</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"abcdef" 에서 "f"를 제거한 "abcde"를 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"BCBdbe" 에서 "B"를 모두 제거한 "Cdbe"를 return합니다.</li>
+    </ul>
+</body>
+</html>
