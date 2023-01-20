@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 두배 만들기</title>
+    <script>
+        function SE(numbers) {
+            return numbers.map((n)=> n * 2);
+        }
+        console.log(SE([1, 2, 100, -99, 1, 2, 3]));
+    </script>
+</head>
+<body>
+    <h1>배열 두배 만들기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 배열 numbers가 매개변수로 주어집니다. numbers의 각 원소에 두배한 원소를 가진 배열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>-10,000 ≤ numbers의 원소 ≤ 10,000</li>
+        <li>1 ≤ numbers의 길이 ≤ 1,000</li>
+    </ul>
+    <h2>입출력 예</h2>
+    <table>
+        <tr>
+            <td>numbers</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[1, 2, 3, 4, 5]</td>
+            <td>[2, 4, 6, 8, 10]</td>
+        </tr>
+        <tr>
+            <td>[1, 2, 100, -99, 1, 2, 3]</td>
+            <td>[2, 4, 200, -198, 2, 4, 6]</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>[1, 2, 3, 4, 5]의 각 원소에 두배를 한 배열 [2, 4, 6, 8, 10]을 return합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>[1, 2, 100, -99, 1, 2, 3]의 각 원소에 두배를 한 배열 [2, 4, 200, -198, 2, 4, 6]을 return합니다.</li>
+    </ul>
+</body>
+</html>
