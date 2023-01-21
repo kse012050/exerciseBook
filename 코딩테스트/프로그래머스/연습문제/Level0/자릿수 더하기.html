@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자릿수 더하기</title>
+    <script>
+        function SE(n) {
+            var answer = 0;
+            n = String(n)
+            for(let a = 0; a < n.length; a++){
+                answer += Number(n[a])
+            }
+            return answer;
+        }
+        console.log(SE(930211));
+    </script>
+</head>
+<body>
+    <h1>자릿수 더하기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 n이 매개변수로 주어질 때 n의 각 자리 숫자의 합을 return하도록 solution 함수를 완성해주세요</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 ≤ n ≤ 1,000,000</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>1234</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>930211</td>
+            <td>16</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>1 + 2 + 3 + 4 = 10을 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>9 + 3 + 0 + 2 + 1 + 1 = 16을 return합니다.</li>
+    </ul>
+</body>
+</html>
