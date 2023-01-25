@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>개미 군단</title>
+    <script>
+        function SE(hp) {
+            var answer = 0;
+            answer += Math.floor(hp / 5);
+            answer += Math.floor(hp % 5 / 3);
+            answer += Math.floor(hp % 5 % 3);
+            return answer;
+        }
+        console.log(SE(999));
+    </script>
 </head>
 <body>
     <h1>개미 군단</h1>
@@ -19,21 +29,38 @@
     
     <h2>입출력 예</h2>
     <table border="1">
-
+        <tr>
+            <td>hp</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>23</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>24</td>
+            <td>6</td>
+        </tr>
+        <tr>
+            <td>999</td>
+            <td>201</td>
+        </tr>
     </table>
-    hp	result
-    23	5
-    24	6
-    999	201
+
     <h2>입출력 예 설명</h2>
-    입출력 예 #1
-    
-    hp가 23이므로, 장군개미 네마리와 병정개미 한마리로 사냥할 수 있습니다. 따라서 5를 return합니다.
-    입출력 예 #2
-    
-    hp가 24이므로, 장군개미 네마리 병정개미 한마리 일개미 한마리로 사냥할 수 있습니다. 따라서 6을 return합니다.
-    입출력 예 #3
-    
-    hp가 999이므로, 장군개미 199 마리 병정개미 한마리 일개미 한마리로 사냥할 수 있습니다. 따라서 201을 return합니다.
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>hp가 23이므로, 장군개미 네마리와 병정개미 한마리로 사냥할 수 있습니다. 따라서 5를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>hp가 24이므로, 장군개미 네마리 병정개미 한마리 일개미 한마리로 사냥할 수 있습니다. 따라서 6을 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>hp가 999이므로, 장군개미 199 마리 병정개미 한마리 일개미 한마리로 사냥할 수 있습니다. 따라서 201을 return합니다.</li>
+    </ul>
 </body>
 </html>
