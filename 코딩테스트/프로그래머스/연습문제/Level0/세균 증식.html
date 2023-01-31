@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>세균 증식</title>
+    <script>
+        function SE(n, t) {
+            var answer = 0;
+            answer += (n * 2);
+            for(let a = 1; a < t; a++){
+                answer = (answer * 2);
+            }
+            return answer;
+        }
+        console.log(SE(2 , 10));
+
+        function case01(n, t) {
+            return n << t;
+        }
+        console.log(case01(2 , 10));
+
+        function case02(n, t) {
+            while (t-- > 0) n*=2;
+            return n;
+        }
+        console.log(case02(2 , 10));
+
+        function case03(n, t) {
+            return n*Math.pow(2,t);
+        }
+        console.log(case03(2 , 10));
+    </script>
+</head>
+<body>
+    <h1>세균 증식</h1>
+
+    <h2>문제 설명</h2>
+    <p>어떤 세균은 1시간에 두배만큼 증식한다고 합니다. 처음 세균의 마리수 n과 경과한 시간 t가 매개변수로 주어질 때 t시간 후 세균의 수를 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ n ≤ 10</li>
+        <li>1 ≤ t ≤ 15</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>t</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>10</td>
+            <td>2048</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>15</td>
+            <td>229,376</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>처음엔 2마리, 1시간 후엔 4마리, 2시간 후엔 8마리, ..., 10시간 후엔 2048마리가 됩니다. 따라서 2048을 return합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>처음엔 7마리, 1시간 후엔 14마리, 2시간 후엔 28마리, ..., 15시간 후엔 229376마리가 됩니다. 따라서 229,376을 return합니다.</li>
+    </ul>
+</body>
+</html>
