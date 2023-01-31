@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숨어있는 숫자의 덧셈 (1)</title>
+    <script>
+        function SE(my_string) {
+            return my_string.replace(/[^0-9]/g , '').split('').reduce((a , b)=> {return parseInt(a) + parseInt(b)});
+        }
+        console.log(SE("aAb1B2cC34oOp"));
+    </script>
+</head>
+<body>
+    <h1>숨어있는 숫자의 덧셈 (1)</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string이 매개변수로 주어집니다. my_string안의 모든 자연수들의 합을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ my_string의 길이 ≤ 1,000</li>
+        <li>my_string은 소문자, 대문자 그리고 한자리 자연수로만 구성되어있습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>my_string</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"aAb1B2cC34oOp"</td>
+            <td>10</td>
+        </tr>
+        <tr>
+            <td>"1a2b3c4d123"</td>
+            <td>16</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"aAb1B2cC34oOp"안의 한자리 자연수는 1, 2, 3, 4 입니다. 따라서 1 + 2 + 3 + 4 = 10 을 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"1a2b3c4d123Z"안의 한자리 자연수는 1, 2, 3, 4, 1, 2, 3 입니다. 따라서 1 + 2 + 3 + 4 + 1 + 2 + 3 = 16 을 return합니다.</li>
+    </ul>
+
+    <h2>유의사항</h2>
+    <ul>
+        <li>연속된 숫자도 각각 한 자리 숫자로 취급합니다.</li>
+    </ul>
+</body>
+</html>
