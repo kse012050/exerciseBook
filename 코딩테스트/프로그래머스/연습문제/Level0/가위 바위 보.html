@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가위 바위 보</title>
+    <script>
+        function SE(rsp) {
+            var answer = '';
+            rsp.split('').map((r)=>{
+                r === '2' && (answer += '0')
+                r === '0' && (answer += '5')
+                r === '5' && (answer += '2')
+            })
+            return answer;
+        }
+
+        console.log(SE("205"));
+
+        function case01(rsp) {
+            let arr = {
+                2: 0,
+                0: 5,
+                5: 2
+            };
+            var answer = [...rsp].map(v => arr[v]).join("");
+            return answer;
+        }
+
+        console.log(case01("205"));
+    </script>
+</head>
+<body>
+    <h1>가위 바위 보</h1>
+    <h2>문제 설명</h2>
+    <p>가위는 2 바위는 0 보는 5로 표현합니다. 가위 바위 보를 내는 순서대로 나타낸 문자열 rsp가 매개변수로 주어질 때, rsp에 저장된 가위 바위 보를 모두 이기는 경우를 순서대로 나타낸 문자열을 return하도록 solution 함수를 완성해보세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < rsp의 길이 ≤ 100</li>
+        <li>rsp와 길이가 같은 문자열을 return 합니다.</li>
+        <li>rsp는 숫자 0, 2, 5로 이루어져 있습니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>rsp</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"2"</td>
+            <td>"0"</td>
+        </tr>
+        <tr>
+            <td>"205"</td>
+            <td>"052"</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"2"는 가위이므로 바위를 나타내는 "0"을 return 합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"205"는 순서대로 가위, 바위, 보이고 이를 모두 이기려면 바위, 보, 가위를 순서대로 내야하므로 “052”를 return합니다.</li>
+    </ul>
+</body>
+</html>
