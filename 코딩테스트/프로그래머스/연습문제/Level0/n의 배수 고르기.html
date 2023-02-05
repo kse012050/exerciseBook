@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n의 배수 고르기</title>
+    <script>
+        function SE(n, numlist) {
+            return numlist.filter((a)=> a % n === 0 && a);
+        }
+        console.log(SE(3 , [4, 5, 6, 7, 8, 9, 10, 11, 12]));
+    </script>
+</head>
+<body>
+    <h1>n의 배수 고르기</h1>
+
+    <h2>문제 설명</h2>
+    <p>정수 n과 정수 배열 numlist가 매개변수로 주어질 때, numlist에서 n의 배수가 아닌 수들을 제거한 배열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ n ≤ 10,000</li>
+        <li>1 ≤ numlist의 크기 ≤ 100</li>
+        <li>1 ≤ numlist의 원소 ≤ 100,000</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>numlist	</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>[4, 5, 6, 7, 8, 9, 10, 11, 12]	</td>
+            <td>[6, 9, 12]</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>[1, 9, 3, 10, 13, 5]	</td>
+            <td>[10, 5]</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>[2, 100, 120, 600, 12, 12]	</td>
+            <td>[120, 600, 12, 12]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>numlist에서 3의 배수만을 남긴 [6, 9, 12]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>numlist에서 5의 배수만을 남긴 [10, 5]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>numlist에서 12의 배수만을 남긴 [120, 600, 12, 12]를 return합니다.</li>
+    </ul>
+</body>
+</html>
