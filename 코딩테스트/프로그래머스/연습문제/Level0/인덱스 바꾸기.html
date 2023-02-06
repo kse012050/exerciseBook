@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>인덱스 바꾸기</title>
+    <script>
+        function SE(my_string, num1, num2) {
+            var answer = my_string[num1];
+            let result = my_string.split('')
+            result[num1] = result[num2];
+            result[num2] = answer
+            return result.join('');
+        }
+        console.log(SE("I love you" , 3 , 6));
+        
+        function case01(my_string, num1, num2) {
+            my_string = my_string.split('');
+            [my_string[num1], my_string[num2]] = [my_string[num2], my_string[num1]];
+            return my_string.join('');
+        }
+        console.log(case01("I love you" , 3 , 6));
+    </script>
+</head>
+<body>
+    <h1>인덱스 바꾸기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string과 정수 num1, num2가 매개변수로 주어질 때, my_string에서 인덱스 num1과 인덱스 num2에 해당하는 문자를 바꾼 문자열을 return 하도록 solution 함수를 완성해보세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 < my_string의 길이 < 100</li>
+        <li>0 ≤ num1, num2 < my_string의 길이</li>
+        <li>my_string은 소문자로 이루어져 있습니다.</li>
+        <li>num1 ≠ num2</li>
+    </ul>
+    
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>my_string</td>
+            <td>num1</td>
+            <td>num2</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"hello"</td>
+            <td>1</td>
+            <td>2</td>
+            <td>"hlelo"</td>
+        </tr>
+        <tr>
+            <td>"I love you"</td>
+            <td>3</td>
+            <td>6</td>
+            <td>"I l veoyou"</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"hello"의 1번째 인덱스인 "e"와 2번째 인덱스인 "l"을 바꾸면 "hlelo"입니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"I love you"의 3번째 인덱스 "o"와 " "(공백)을 바꾸면 "I l veoyou"입니다.</li>
+    </ul>
+</body>
+</html>
