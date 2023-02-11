@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 찾기</title>
+    <script>
+        function SE(num, k) {
+            var answer = -1;
+            String(num).split('').map((n , i)=>{(answer < 0 && n == k) && (answer = i + 1);});
+            return answer;
+        }
+        console.log(SE(291813 , 1));
+        
+        function cse01(num, k) {
+            let ind = (''+num).indexOf(k);
+            return ind === -1 ? -1 : ind+1;
+        }
+        console.log(case01(291813 , 1));
+    </script>
+</head>
+<body>
+    <h1>숫자 찾기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 num과 k가 매개변수로 주어질 때, num을 이루는 숫자 중에 k가 있으면 num의 그 숫자가 있는 자리 수를 return하고 없으면 -1을 return 하도록 solution 함수를 완성해보세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < num < 1,000,000</li>
+        <li>0 ≤ k < 10</li>
+        <li>num에 k가 여러 개 있으면 가장 처음 나타나는 자리를 return 합니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>num</td>
+            <td>k</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>29183</td>
+            <td>1</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>232443</td>
+            <td>4</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>123456</td>
+            <td>7</td>
+            <td>-1</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>29183에서 1은 3번째에 있습니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>232443에서 4는 4번째에 처음 등장합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>123456에 7은 없으므로 -1을 return 합니다.</li>
+    </ul>
+</body>
+</html>
