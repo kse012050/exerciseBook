@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>합성수 찾기</title>
+    <script>
+        function SE(n) {
+            var answer = 0;
+            let count;
+            for(let a = 4; a <= n; a++){
+                count = 0;
+                for(let b = 1; b <= a; b++){
+                    a % b === 0 && count++;
+                    if(count >= 3){
+                        answer++;
+                        break;
+                    }
+                }
+            }
+            return answer;
+        }
+        console.log(SE(10));
+    </script>
+</head>
+<body>
+    <h1>합성수 찾기</h1>
+    <h2>문제 설명</h2>
+    <p>약수의 개수가 세 개 이상인 수를 합성수라고 합니다. 자연수 n이 매개변수로 주어질 때 n이하의 합성수의 개수를 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ n ≤ 100</li>
+    </ul>
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>8</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>10 이하 합성수는 4, 6, 8, 9, 10 로 5개입니다. 따라서 5를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>15 이하 합성수는 4, 6, 8, 9, 10, 12, 14, 15 로 8개입니다. 따라서 8을 return합니다.</li>
+    </ul>
+</body>
+</html>
