@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A로 B 만들기</title>
+    <script>
+        function SE(before, after) {
+            [...before].map((b)=>{
+                after.indexOf(b) >= 0 && (after = after.replace(b , ''));
+            })
+            return !after ? 1 : 0;
+        }
+        console.log(SE("allpe" , "apple"));
+        
+        function case01(before, after) {
+            return before.split('').sort().join('') === after.split('').sort().join('') ? 1 : 0;
+        }
+        console.log(case01("allpe" , "apple"));
+    </script>
+</head>
+<body>
+    <h1>A로 B 만들기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 before와 after가 매개변수로 주어질 때, before의 순서를 바꾸어 after를 만들 수 있으면 1을, 만들 수 없으면 0을 return 하도록 solution 함수를 완성해보세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 < before의 길이 == after의 길이 < 1,000</li>
+        <li>before와 after는 모두 소문자로 이루어져 있습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>before</td>
+            <td>after</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"olleh"</td>
+            <td>"hello"</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>"allpe"</td>
+            <td>"apple"</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"olleh"의 순서를 바꾸면 "hello"를 만들 수 있습니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"allpe"의 순서를 바꿔도 "apple"을 만들 수 없습니다.</li>
+    </ul>
+</body>
+</html>
