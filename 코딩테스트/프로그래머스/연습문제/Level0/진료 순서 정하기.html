@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>진료 순서 정하기</title>
+    <script>
+        function SE(emergency) {
+            var answer = [...emergency];
+            emergency.sort((a , b)=> b - a);
+            answer = answer.map((a)=>{
+                return emergency.indexOf(a) + 1;
+            })
+            return answer;
+        }
+
+        console.log(SE([3, 76, 24]));
+    </script>
+<body>
+    <h1>진료 순서 정하기</h1>
+    <h2>문제 설명</h2>
+    <p>외과의사 머쓱이는 응급실에 온 환자의 응급도를 기준으로 진료 순서를 정하려고 합니다. 정수 배열 emergency가 매개변수로 주어질 때 응급도가 높은 순서대로 진료 순서를 정한 배열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>중복된 원소는 없습니다.</li>
+        <li>1 ≤ emergency의 길이 ≤ 10</li>
+        <li>1 ≤ emergency의 원소 ≤ 100</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>emergency</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[3, 76, 24]</td>
+            <td>[3, 1, 2]</td>
+        </tr>
+        <tr>
+            <td>[1, 2, 3, 4, 5, 6, 7]</td>
+            <td>[7, 6, 5, 4, 3, 2, 1]</td>
+        </tr>
+        <tr>
+            <td>[30, 10, 23, 6, 100]</td>
+            <td>[2, 4, 3, 5, 1]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>emergency가 [3, 76, 24]이므로 응급도의 크기 순서대로 번호를 매긴 [3, 1, 2]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>emergency가 [1, 2, 3, 4, 5, 6, 7]이므로 응급도의 크기 순서대로 번호를 매긴 [7, 6, 5, 4, 3, 2, 1]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>emergency가 [30, 10, 23, 6, 100]이므로 응급도의 크기 순서대로 번호를 매긴 [2, 4, 3, 5, 1]를 return합니다.</li>
+    </ul>
+</body>
+</html>
