@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어가 싫어요</title>
+    <script>
+        function SE(numbers) {
+            var a = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+            a.map((a , i)=>{
+                numbers = numbers.replaceAll(a , i)
+            })
+            return Number(numbers);
+        }
+        console.log(SE("onefourzerosixseven"));
+    </script>
+</head>
+<body>
+    <h1>영어가 싫어요</h1>
+    <h2>문제 설명</h2>
+    <p>영어가 싫은 머쓱이는 영어로 표기되어있는 숫자를 수로 바꾸려고 합니다. 문자열 numbers가 매개변수로 주어질 때, numbers를 정수로 바꿔 return 하도록 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>numbers는 소문자로만 구성되어 있습니다.</li>
+        <li>numbers는 "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" 들이 공백 없이 조합되어 있습니다.</li>
+        <li>1 ≤ numbers의 길이 ≤ 50</li>
+        <li>"zero"는 numbers의 맨 앞에 올 수 없습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>numbers</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"onetwothreefourfivesixseveneightnine"</td>
+            <td>123456789</td>
+        </tr>
+        <tr>
+            <td>"onefourzerosixseven"</td>
+            <td>14067</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"onetwothreefourfivesixseveneightnine"를 숫자로 바꾼 123456789를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"onefourzerosixseven"를 숫자로 바꾼 14067를 return합니다.</li>
+    </ul>
+</body>
+</html>
