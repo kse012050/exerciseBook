@@ -8,13 +8,19 @@
     <script>
         function SE(chicken) {
             var answer = 0;
-            while(chicken % 10 > 0){
-                console.log(1);
-                chicken = chicken % 10;
+            while(Math.floor(chicken / 10) > 0){
+                answer += Math.floor(chicken / 10)
+                chicken = Math.floor(chicken / 10) + (chicken % 10);
             }
             return answer;
         }
         console.log(SE(1081));
+        
+        function case01(chicken){
+            var answer = parseInt((chicken-1) / 9);
+            return answer;
+        }
+        console.log(case01(1081));
     </script>
 </head>
 <body>
