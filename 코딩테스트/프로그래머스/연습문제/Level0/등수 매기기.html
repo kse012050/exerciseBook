@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등수 매기기</title>
+    <script>
+        function SE(score) {
+            var answer = [];
+            var avg = []
+            score = score.map((s)=>{
+                avg.push((s[0] + s[1]) / 2);
+                return ((s[0] + s[1]) / 2);
+            })
+            avg = avg.sort((a , b)=> b - a)
+            answer = score.map((s)=>{
+                return avg.indexOf(s) + 1;
+            })
+            return answer;
+        }
+        console.log(SE([[80, 70], [70, 80], [30, 50], [90, 100], [100, 90], [100, 100], [10, 30]]));
+        
+        function case01(score) {
+            return score.map((el) => {
+                return (
+                    score.filter((v) => (v[0] + v[1]) / 2 > (el[0] + el[1]) / 2).length + 1
+                );
+            });
+        }
+        console.log(case01([[80, 70], [70, 80], [30, 50], [90, 100], [100, 90], [100, 100], [10, 30]]));
+
+        function case02(score) {
+            let avg = score.map(v=>(v[0]+v[1])/2);
+            let sorted = avg.slice().sort((a,b)=>b-a);
+            return avg.map(v=>sorted.indexOf(v)+1);
+        }
+        console.log(case02([[80, 70], [70, 80], [30, 50], [90, 100], [100, 90], [100, 100], [10, 30]]));
+    </script>
+</head>
+<body>
+    <h1>등수 매기기</h1>
+    <h2>문제 설명</h2>
+    <p>영어 점수와 수학 점수의 평균 점수를 기준으로 학생들의 등수를 매기려고 합니다. 영어 점수와 수학 점수를 담은 2차원 정수 배열 score가 주어질 때, 영어 점수와 수학 점수의 평균을 기준으로 매긴 등수를 담은 배열을 return하도록 solution 함수를 완성해주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 ≤ score[0], score[1] ≤ 100</li>
+        <li>1 ≤ score의 길이 ≤ 10</li>
+        <li>score의 원소 길이는 2입니다.</li>
+        <li>score는 중복된 원소를 갖지 않습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>score</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[[80, 70], [90, 50], [40, 70], [50, 80]]</td>
+            <td>[1, 2, 4, 3]</td>
+        </tr>
+        <tr>
+            <td>[[80, 70], [70, 80], [30, 50], [90, 100], [100, 90], [100, 100], [10, 30]]</td>
+            <td>[4, 4, 6, 2, 2, 1, 7]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>평균은 각각 75, 70, 55, 65 이므로 등수를 매겨 [1, 2, 4, 3]을 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>평균은 각각 75, 75, 40, 95, 95, 100, 20 이므로 [4, 4, 6, 2, 2, 1, 7] 을 return합니다.</li>
+        <li>공동 2등이 두 명, 공동 4등이 2명 이므로 3등과 5등은 없습니다.</li>
+    </ul>
+    
+</body>
+</html>
