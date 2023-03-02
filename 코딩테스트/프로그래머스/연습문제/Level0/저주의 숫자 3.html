@@ -7,18 +7,17 @@
     <title>저주의 숫자 3</title>
     <script>
         function SE(n) {
-            var answer = 1;
-            for(let a = 1; a < n; a++){
+            var answer = 0;
+            for(let a = 0; a < n; a++){
                 answer++;
-                if(answer % 3 === 0){
-                    answer++;
-                }else if(){
+                while(answer % 3 === 0 || String(answer).split('').some((b)=> b == '3')){
                     answer++;
                 }
             }
             return answer;
         }
-        console.log(SE(15));
+        console.log(SE(10));
+        console.log(SE(40));
     </script>
 </head>
 <body>
