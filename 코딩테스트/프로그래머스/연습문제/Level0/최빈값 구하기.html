@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최빈값 구하기</title>
+    <script>
+        function SE(array) {
+            var answer = 0;
+            var test = {}
+            array.map((a)=>{
+                test[a] = 0;
+            })
+            array.map((a)=>{
+                test[a] += 1;
+            })
+            console.log(test);
+            return answer;
+        }
+        console.log(SE([1, 2, 3, 3, 3, 4]));
+    </script>
+</head>
+<body>
+    <h1>최빈값 구하기</h1>
+    <h2>문제 설명</h2>
+    <p>최빈값은 주어진 값 중에서 가장 자주 나오는 값을 의미합니다. 정수 배열 array가 매개변수로 주어질 때, 최빈값을 return 하도록 solution 함수를 완성해보세요. 최빈값이 여러 개면 -1을 return 합니다.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>0 &lt; array의 길이 &lt; 100</li>
+        <li>0 ≤ array의 원소 &lt; 1000</li>
+    </ul>
+    
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>array</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[1, 2, 3, 3, 3, 4]</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>[1, 1, 2, 2]</td>
+            <td>-1</td>
+        </tr>
+        <tr>
+            <td>[1]</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>[1, 2, 3, 3, 3, 4]에서 1은 1개 2는 1개 3은 3개 4는 1개로 최빈값은 3입니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>[1, 1, 2, 2]에서 1은 2개 2는 2개로 최빈값이 1, 2입니다. 최빈값이 여러 개이므로 -1을 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>[1]에는 1만 있으므로 최빈값은 1입니다.</li>
+    </ul>
+    
+    <p>※ 공지 - 2022년 10월 17일 제한 사항 및 테스트케이스가 수정되었습니다.</p>
+</body>
+</html>
