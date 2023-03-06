@@ -7,18 +7,29 @@
     <title>최빈값 구하기</title>
     <script>
         function SE(array) {
-            var answer = 0;
-            var test = {}
-            array.map((a)=>{
-                test[a] = 0;
+            var answer = -1;
+            let count = []
+            array.map((a , i)=>{
+                if(answer !== a){
+                    answer = a;
+                    count.push(0)
+                }
+                count[count.length - 1] += 1;
             })
-            array.map((a)=>{
-                test[a] += 1;
+            answer = 0;
+            count.map((n , i)=>{
+                if(count[answer] < count[i]){
+                    answer = i;
+                }
             })
-            console.log(test);
+
+            array = Array.from(new Set(array));
+            
+            count.sort((a , b)=> b - a)
+            count[0] === count[1] ? answer = -1 : answer = array[answer];
             return answer;
         }
-        console.log(SE([1, 2, 3, 3, 3, 4]));
+        console.log(SE([1, 2, 3, 3, 3, 4 , 4 , 4 , 4]));
     </script>
 </head>
 <body>
