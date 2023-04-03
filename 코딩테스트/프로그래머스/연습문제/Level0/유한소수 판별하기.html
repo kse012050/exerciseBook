@@ -14,15 +14,25 @@
                 }
                 return gcd(b, a % b);
             }
-            let test = gcd(a,b);
-            a = a / test;
-            b = b / test;
-            console.log(a);
-            console.log(b);
-            // 최대 공약수로 기약분수까지 만들었다
-            // return !!answer.toString().split('.')[1] ?( answer.toString().split('.')[1].length >= 16 ? 2 : 1) : 1;
+            let gcdValue = gcd(a,b);
+            a = a / gcdValue;
+            b = b / gcdValue;
+
+            const factors = [];
+            let divisor = 2;
+
+            while (b >= 2) {
+                if (b % divisor == 0) {
+                    factors.push(divisor);
+                    b = b / divisor;
+                } else {
+                    divisor++;
+                }
+            }
+            return factors.every((c)=>(c === 2 || c === 5)) ? 1 : 2;
         }
-        console.log(SE(12 , 21));
+        console.log(SE(11 ,22));
+
     </script>
 </head>
 <body>

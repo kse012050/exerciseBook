@@ -35,9 +35,7 @@
         function case01(array) {
             let m = new Map();
             for (let n of array) m.set(n, (m.get(n) || 0)+1);
-            console.log(m);
             m = [...m].sort((a,b)=>b[1]-a[1]);
-            console.log(m);
             return m.length === 1 || m[0][1] > m[1][1] ? m[0][0] : -1;
         }
         console.log(case01([4 , 4 , 100, 100, 100 , 100 , 1, 2, 3, 3, 3 , 99, 99,99,99 , 1,1,1,1,1]));
@@ -47,11 +45,11 @@
                 ...acc,
                 [cur]: (acc[cur] || 0) + 1
             }), {})
-            
+
             const items = Object.keys(counter).map((key) => [
                 Number(key), counter[key]
             ]).sort((a, b) => b[1] - a[1])
-            
+
             if (items[0][1] === items?.[1]?.[1]) {
                 return -1
             }
@@ -60,7 +58,7 @@
         }
         console.log(case02([4 , 4 , 100, 100, 100 , 100 , 1, 2, 3, 3, 3 , 99, 99,99,99 , 1,1,1,1,1]));
 
-        // 공부하자!!!
+        // 공부하자!!! 
     </script>
 </head>
 <body>
