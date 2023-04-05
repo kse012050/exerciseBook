@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연속된 수의 합</title>
+    <script>
+        function SE(num, total) {
+            var answer = [];
+            let numb = Math.floor(total / num);
+            let odd = numb;
+            answer.push(numb);
+            for(let a = 1; a < num; a++){
+                a % 2 === 0 ? answer.push(odd -= 1) : answer.push(numb += 1);
+            }
+            return answer.sort((a , b)=> a - b);
+        }
+        console.log(SE(5 , 15));
+        
+        function case01(num, total) {
+            var min = Math.ceil(total/num - Math.floor(num/2));
+            var max = Math.floor(total/num + Math.floor(num/2));
+            
+            return new Array(max-min+1).fill(0).map((el,i)=>{return i+min;});
+        }
+        console.log(case01(5 , 15));
+        
+        function case02(num, total) {
+            const a = (2 * total / num + 1 - num) / 2
+            return Array(num).fill().map((_, i) => i + a)
+        }
+        console.log(case02(5 , 15));
+    </script>
+</head>
+<body>
+    <h1>연속된 수의 합</h1>
+    <h2>문제 설명</h2>
+    <p>연속된 세 개의 정수를 더해 12가 되는 경우는 3, 4, 5입니다. 두 정수 num과 total이 주어집니다. 연속된 수 num개를 더한 값이 total이 될 때, 정수 배열을 오름차순으로 담아 return하도록 solution함수를 완성해보세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ num ≤ 100</li>
+        <li>0 ≤ total ≤ 1000</li>
+        <li>num개의 연속된 수를 더하여 total이 될 수 없는 테스트 케이스는 없습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>num</td>
+            <td>total</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>12</td>
+            <td>[3, 4, 5]</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>15</td>
+            <td>[1, 2, 3, 4, 5]</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>14</td>
+            <td>[2, 3, 4, 5]</td>
+        </tr>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+            <td>[-1, 0, 1, 2, 3]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>num = 3, total = 12인 경우 [3, 4, 5]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>num = 5, total = 15인 경우 [1, 2, 3, 4, 5]를 return합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>4개의 연속된 수를 더해 14가 되는 경우는 2, 3, 4, 5입니다.</li>
+    </ul>
+
+    <strong>입출력 예 #4</strong>
+    <ul>
+        <li>설명 생략</li>
+    </ul>
+</body>
+</html>
