@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>안전지대</title>
+    <script>
+        function SE(board) {
+            var answer = 0;
+            console.log(board[10][10]);
+            board.map((a , ai)=>{
+                a.map((b , bi)=>{
+                    if(b === 1){
+                        for(let c = 0 ; c < 3; c++){
+                            for(let d = 0 ; d < 3; d++){
+                                // console.log(board[ai - 1 + c][bi - 1 + d]);
+                                // (board[ai - 1 + c][bi - 1 + d] === 0) && (board[ai - 1 + c][bi - 1 + d] = 2);
+                            }
+                        }
+                    }
+                })
+            })
+            board.map((a)=>{
+                a.map((b)=>{
+                    b === 0 && (answer+=1);
+                })
+            })
+            return answer;
+        }
+        console.log(SE([[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]]));
+    </script>
+</head>
+<body>
+    <h1>안전지대</h1>
+    <h2>문제 설명</h2>
+    <p>다음 그림과 같이 지뢰가 있는 지역과 지뢰에 인접한 위, 아래, 좌, 우 대각선 칸을 모두 위험지역으로 분류합니다.</p>
+    <img src="images/안전지대.png" alt="">
+    <p>지뢰는 2차원 배열 board에 1로 표시되어 있고 board에는 지뢰가 매설 된 지역 1과, 지뢰가 없는 지역 0만 존재합니다.</p>
+    <p>지뢰가 매설된 지역의 지도 board가 매개변수로 주어질 때, 안전한 지역의 칸 수를 return하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>board는 n * n 배열입니다.</li>
+        <li>1 ≤ n ≤ 100</li>
+        <li>지뢰는 1로 표시되어 있습니다.</li>
+        <li>board에는 지뢰가 있는 지역 1과 지뢰가 없는 지역 0만 존재합니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>board</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 0, 0]]</td>
+            <td>16</td>
+        </tr>
+        <tr>
+            <td>[[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 1, 1, 0], [0, 0, 0, 0, 0]]</td>
+            <td>13</td>
+        </tr>
+        <tr>
+            <td>[[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]]</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>(3, 2)에 지뢰가 있으므로 지뢰가 있는 지역과 지뢰와 인접한 위, 아래, 좌, 우, 대각선 총 8칸은 위험지역입니다. 따라서 16을 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>(3, 2), (3, 3)에 지뢰가 있으므로 지뢰가 있는 지역과 지뢰와 인접한 위, 아래, 좌, 우, 대각선은 위험지역입니다. 따라서 위험지역을 제외한 칸 수 13을 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>모든 지역에 지뢰가 있으므로 안전지역은 없습니다. 따라서 0을 return합니다.</li>
+    </ul>
+</body>
+</html>
