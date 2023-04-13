@@ -8,14 +8,18 @@
     <script>
         function SE(board) {
             var answer = 0;
-            console.log(board[10][10]);
+            let aLength = board.length;
+            let bLength = board[0].length;
             board.map((a , ai)=>{
                 a.map((b , bi)=>{
                     if(b === 1){
                         for(let c = 0 ; c < 3; c++){
+                            if(ai == 0 && c == 0){continue;}
+                            if(ai == aLength - 1 && c == 2){continue;}
                             for(let d = 0 ; d < 3; d++){
-                                // console.log(board[ai - 1 + c][bi - 1 + d]);
-                                // (board[ai - 1 + c][bi - 1 + d] === 0) && (board[ai - 1 + c][bi - 1 + d] = 2);
+                                if(bi == 0 && d == 0){continue;}
+                                if(bi == bLength - 1 && d == 2){continue;}
+                                (board[ai - 1 + c][bi - 1 + d] === 0) && (board[ai - 1 + c][bi - 1 + d] = 2);
                             }
                         }
                     }
@@ -23,12 +27,13 @@
             })
             board.map((a)=>{
                 a.map((b)=>{
-                    b === 0 && (answer+=1);
+                    b === 0 && (answer+=1);  
                 })
             })
             return answer;
         }
         console.log(SE([[1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1], [1, 1, 1, 1, 1, 1]]));
+        console.log(SE([[0, 0, 0, 0, 0], [1, 0, 0, 0, 1], [0, 0, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 1, 0, 0]]));
     </script>
 </head>
 <body>
