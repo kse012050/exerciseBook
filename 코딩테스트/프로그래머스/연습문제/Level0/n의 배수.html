@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n의 배수</title>
+    <script>
+        function SE(num, n) {
+            var answer = (num % 2 === 0 ? 1 : 0);
+            return answer;
+        }
+
+        console.log(SE(98 , 2));
+    </script>
+</head>
+<body>
+    <h1>n의 배수</h1>
+    <h2>문제 설명</h2>
+    <p>정수 num과 n이 매개 변수로 주어질 때, num이 n의 배수이면 1을 return n의 배수가 아니라면 0을 return하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>2 ≤ num ≤ 100</li>
+        <li>2 ≤ n ≤ 9</li>
+    </ul>
+    
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>num</td>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>98</td>
+            <td>2</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>34</td>
+            <td>3</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>98은 2의 배수이므로 1을 return합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>32는 3의 배수가 아니므로 0을 return합니다.</li>
+    </ul>
+</body>
+</html>
