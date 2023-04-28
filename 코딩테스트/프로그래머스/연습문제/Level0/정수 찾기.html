@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정수 찾기</title>
+    <script>
+        function SE(num_list, n) {
+            var answer = num_list.includes(n) ? 1 : 0;
+            return answer;
+        }
+        console.log(SE([1, 2, 3, 4, 5]));
+    </script>
+</head>
+<body>
+    <h1>정수 찾기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 리스트 num_list와 찾으려는 정수 n이 주어질 때, num_list안에 n이 있으면 1을 없으면 0을 return하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>3 ≤ num_list의 길이 ≤ 100</li>
+        <li>1 ≤ num_list의 원소 ≤ 100</li>
+        <li>1 ≤ n ≤ 100</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>num_list</td>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[1, 2, 3, 4, 5]</td>
+            <td>3</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>[15, 98, 23, 2, 15]</td>
+            <td>20</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>[1, 2, 3, 4, 5] 안에 3이 있으므로 1을 return합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>[15, 98, 23, 2, 15] 안에 20이 없으므로 0을 return합니다.</li>
+    </ul>
+</body>
+</html>
