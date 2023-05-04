@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flag에 따라 다른 값 반환하기</title>
+    <script>
+        function solution(a, b, flag) {
+            var answer = flag ? a + b : a - b;
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    <h1>flag에 따라 다른 값 반환하기</h1>
+    <h2>문제 설명</h2>
+    <p>두 정수 a, b와 boolean 변수 flag가 매개변수로 주어질 때, flag가 true면 a + b를 false면 a - b를 return 하는 solution 함수를 작성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>-1000 ≤ a, b ≤ 1,000</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>a</td>
+            <td>b</td>
+            <td>flag</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>-4</td>
+            <td>7</td>
+            <td>true</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>-4</td>
+            <td>7</td>
+            <td>false</td>
+            <td>-11</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>예제 1번에서 flag가 true이므로 a + b = (-4) + 7 = 3을 return 합니다.</li>
+    </ul>
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>예제 2번에서 flag가 false이므로 a - b = (-4) - 7 = -11을 return 합니다.</li>
+    </ul>
+</body>
+</html>
