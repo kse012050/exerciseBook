@@ -8,37 +8,6 @@
     <script>
         function SE(number) {
             var answer = 0;
-            /* let plus = []
-            let minus = []
-            let isZero = number.includes(0)
-            let zeroCount = number.filter((n)=> n == 0).length
-            number.map((n)=>{
-                n > 0 && plus.push(n)
-                n < 0 && minus.push(n)
-            });
-            for(let a = 0; a < plus.length - 1; a++){
-                for(let b = a + 1; b < plus.length; b++){
-                    minus.map((m)=>{
-                        m === -(plus[a] + plus[b]) && (answer += 1)
-                    })
-                }
-            }
-            for(let a = 0; a < minus.length - 1; a++){
-                for(let b = a + 1; b < minus.length; b++){
-                    plus.map((p)=>{
-                        p === -(minus[a] + minus[b]) && (answer += 1)
-                    })
-                }
-            }
-            if(isZero){
-                for(let b = 0; b < zeroCount; b++){
-                    for(let a = 0; a < plus.length; a++){
-                        minus.includes(-(plus[a])) && (answer += 1);
-                    }
-                }
-                answer += Math.floor(zeroCount / 3) 
-            } */
-
             for(let a = 0; a < number.length - 2; a++){
                 for(let b = 1; b < number.length - 1; b++){
                     for(let c = 2; c < number.length; c++){
