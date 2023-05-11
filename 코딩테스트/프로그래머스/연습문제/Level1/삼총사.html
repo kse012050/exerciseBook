@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼총사</title>
+    <script>
+        function SE(number) {
+            var answer = 0;
+            /* let plus = []
+            let minus = []
+            let isZero = number.includes(0)
+            let zeroCount = number.filter((n)=> n == 0).length
+            number.map((n)=>{
+                n > 0 && plus.push(n)
+                n < 0 && minus.push(n)
+            });
+            for(let a = 0; a < plus.length - 1; a++){
+                for(let b = a + 1; b < plus.length; b++){
+                    minus.map((m)=>{
+                        m === -(plus[a] + plus[b]) && (answer += 1)
+                    })
+                }
+            }
+            for(let a = 0; a < minus.length - 1; a++){
+                for(let b = a + 1; b < minus.length; b++){
+                    plus.map((p)=>{
+                        p === -(minus[a] + minus[b]) && (answer += 1)
+                    })
+                }
+            }
+            if(isZero){
+                for(let b = 0; b < zeroCount; b++){
+                    for(let a = 0; a < plus.length; a++){
+                        minus.includes(-(plus[a])) && (answer += 1);
+                    }
+                }
+                answer += Math.floor(zeroCount / 3) 
+            } */
+
+            for(let a = 0; a < number.length - 2; a++){
+                for(let b = 1; b < number.length - 1; b++){
+                    for(let c = 2; c < number.length; c++){
+                        number[a] + number[b] + number[c] === 0 && (answer += 1)
+                    }
+                }
+            }
+            return answer;
+        }
+        console.log(SE([-1, 1, -1, 1]));
+        console.log(SE([0, 0, 1, -1, 0]));
+    </script>
+</head>
+<body>
+    <h1>삼총사</h1>
+    <h2>문제 설명</h2>
+    <p>
+        한국중학교에 다니는 학생들은 각자 정수 번호를 갖고 있습니다. 이 학교 학생 3명의 정수 번호를 더했을 때 0이 되면 3명의 학생은 삼총사라고 합니다. 예를 들어, 5명의 학생이 있고, 각각의 정수 번호가 순서대로 -2, 3, 0, 2, -5일 때, 첫 번째, 세 번째, 네 번째 학생의 정수 번호를 더하면 0이므로 세 학생은 삼총사입니다. 또한, 두 번째, 네 번째, 다섯 번째 학생의 정수 번호를 더해도 0이므로 세 학생도 삼총사입니다. 따라서 이 경우 한국중학교에서는 두 가지 방법으로 삼총사를 만들 수 있습니다.
+        한국중학교 학생들의 번호를 나타내는 정수 배열 number가 매개변수로 주어질 때, 학생들 중 삼총사를 만들 수 있는 방법의 수를 return 하도록 solution 함수를 완성하세요.
+    </p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>3 ≤ number의 길이 ≤ 13</li>
+        <li>-1,000 ≤ number의 각 원소 ≤ 1,000</li>
+        <li>서로 다른 학생의 정수 번호가 같을 수 있습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>number</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[-2, 3, 0, 2, -5]</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>[-3, -2, -1, 0, 1, 2, 3]</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>[-1, 1, -1, 1]</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>문제 예시와 같습니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>학생들의 정수 번호 쌍 (-3, 0, 3), (-2, 0, 2), (-1, 0, 1), (-2, -1, 3), (-3, 1, 2) 이 삼총사가 될 수 있으므로, 5를 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>삼총사가 될 수 있는 방법이 없습니다.</li>
+    </ul>
+    
+</body>
+</html>
