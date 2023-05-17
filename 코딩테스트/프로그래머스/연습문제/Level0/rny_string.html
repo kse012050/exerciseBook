@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rny_string</title>
+    <script>
+        function SE(rny_string) {
+            var answer = rny_string.replaceAll('m','rn');
+            return answer;
+        }
+        console.log(SE("programmers"));
+    </script>
+</head>
+<body>
+    <h1>rny_string</h1>
+    <h2>문제 설명</h2>
+    <p>'m'과 "rn"이 모양이 비슷하게 생긴 점을 활용해 문자열에 장난을 하려고 합니다. 문자열 rny_string이 주어질 때, rny_string의 모든 'm'을 "rn"으로 바꾼 문자열을 return 하는 solution 함수를 작성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ rny_string의 길이 ≤ 100</li>
+        <li>rny_string은 영소문자로만 이루어져 있습니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>rny_string</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"masterpiece"</td>
+            <td>"rnasterpiece"</td>
+        </tr>
+        <tr>
+            <td>"programmers"</td>
+            <td>"prograrnrners"</td>
+        </tr>
+        <tr>
+            <td>"jerry"</td>
+            <td>"jerry"</td>
+        </tr>
+        <tr>
+            <td>"burn"</td>
+            <td>"burn"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>
+            예제 1번의 rny_string의 'm'을 "rn"으로 바꾸는 과정을 표로 나타내면 다음과 같습니다.
+            <table border="1">
+                <tr>
+                    <td>rny_string</td>
+                    <td>m</td>
+                    <td>a</td>
+                    <td>s</td>
+                    <td>t</td>
+                    <td>e</td>
+                    <td>r</td>
+                    <td>p</td>
+                    <td>i</td>
+                    <td>e</td>
+                    <td>c</td>
+                    <td>e</td>
+                </tr>
+                <tr>
+                    <td>result</td>
+                    <td>rn</td>
+                    <td>a</td>
+                    <td>s</td>
+                    <td>t</td>
+                    <td>e</td>
+                    <td>r</td>
+                    <td>p</td>
+                    <td>i</td>
+                    <td>e</td>
+                    <td>c</td>
+                    <td>e</td>
+                </tr>
+            </table>
+            따라서 "rnasterpiece"를 return 합니다.
+        </li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>
+            예제 2번의 rny_string의 'm'을 "rn"으로 바꾸는 과정을 표로 나타내면 다음과 같습니다.
+            <table border="1">
+                <tr>
+                    <td>rny_string</td>
+                    <td>p</td>
+                    <td>r</td>
+                    <td>o</td>
+                    <td>g</td>
+                    <td>r</td>
+                    <td>a</td>
+                    <td>m</td>
+                    <td>m</td>
+                    <td>e</td>
+                    <td>r</td>
+                    <td>s</td>
+                </tr>
+                <tr>
+                    <td>result</td>
+                    <td>p</td>
+                    <td>r</td>
+                    <td>o</td>
+                    <td>g</td>
+                    <td>r</td>
+                    <td>a</td>
+                    <td>rn</td>
+                    <td>rn</td>
+                    <td>e</td>
+                    <td>r</td>
+                    <td>s</td>
+                </tr>
+            </table>
+            따라서 "prograrnrners"를 return 합니다.
+        </li>
+    </ul>
+    
+    <strong>입출력 예 #3</strong>
+    <ul>
+        <li>예제 3번의 rny_string에는 'm'이 없습니다. 따라서 rny_string 그대로인 "jerry"를 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #4</strong>
+    <ul>
+        <li>예제 4번의 rny_string에는 'm'이 없습니다. 따라서 rny_string 그대로인 "burn"를 return 합니다.</li>
+    </ul>
+</body>
+</html>
