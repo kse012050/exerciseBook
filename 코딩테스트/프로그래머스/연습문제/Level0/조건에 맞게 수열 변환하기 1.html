@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>조건에 맞게 수열 변환하기 1</title>
+  <script>
+    function SE(arr) {
+      var answer = arr.map((a) => {
+        if(a >= 50 && a % 2 === 0){
+          return a / 2;
+        }else if(a < 50 && a % 2 === 1){
+          return a * 2;
+        }else{
+          return a;
+        }
+      });
+      return answer;
+    }
+    console.log(SE([1, 2, 3, 100, 99, 98]))
+  </script>
+</head>
+<body>
+  <h1>조건에 맞게 수열 변환하기 1</h1>
+  <h2>문제 설명</h2>
+  <p>정수 배열 arr가 주어집니다. arr의 각 원소에 대해 값이 50보다 크거나 같은 짝수라면 2로 나누고, 50보다 작은 홀수라면 2를 곱합니다. 그 결과인 정수 배열을 return 하는 solution 함수를 완성해 주세요.</p>
+  
+  <h2>제한사항</h2>
+  <ul>
+    <li>1 ≤ arr의 길이 ≤ 1,000,000</li>
+    <li>1 ≤ arr의 원소의 값 ≤ 100</li>
+  </ul>
+
+  <h2>입출력 예</h2>
+  <table border="1">
+    <tr>
+      <td>arr</td>
+      <td>result</td>
+    </tr>
+    <tr>
+      <td>[1, 2, 3, 100, 99, 98]</td>
+      <td>[2, 2, 6, 50, 99, 49]</td>
+    </tr>
+  </table>
+
+  <h2>입출력 예 설명</h2>
+  <strong>입출력 예 #1</strong>
+  <ul>
+    <li>1, 3은 50 미만의 홀수 이므로 2를 곱하고, 100, 98은 50 이상의 짝수이므로 2로 나눕니다.</li>
+    <li>나머지 값들은 변경 조건에 해당하지 않으므로 바꾸지 않습니다.</li>
+    <li>따라서 [2, 2, 6, 50, 99, 49]를 return 합니다.</li>
+  </ul>
+</body>
+</html>
