@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이어 붙인 수</title>
+  <script>
+    function SE(num_list) {
+      var answer = 0;
+      let odd = '';
+      let even = '';
+      num_list.forEach((a)=>{
+        if(a % 2 === 1){
+          odd += String(a)
+        }else{
+          even += String(a)
+        }
+      })
+      return Number(odd) + Number(even);
+    }
+    console.log(SE([3, 4, 5, 2, 1]));
+  </script>
+</head>
+<body>
+  <h1>이어 붙인 수</h1>
+  <h2>문제 설명</h2>
+  <p>정수가 담긴 리스트 num_list가 주어집니다. num_list의 홀수만 순서대로 이어 붙인 수와 짝수만 순서대로 이어 붙인 수의 합을 return하도록 solution 함수를 완성해주세요.</p>
+  
+  <h2>제한사항</h2>
+  <ul>
+    <li>2 ≤ num_list의 길이 ≤ 10</li>
+    <li>1 ≤ num_list의 원소 ≤ 9</li>
+    <li>num_list에는 적어도 한 개씩의 짝수와 홀수가 있습니다.</li>
+  </ul>
+
+  <h2>입출력 예</h2>
+  <table>
+    <tr>
+      <td>num_list</td>
+      <td>result</td>
+    </tr>
+    <tr>
+      <td>[3, 4, 5, 2, 1]</td>
+      <td>393</td>
+    </tr>
+    <tr>
+      <td>[5, 7, 8, 3]</td>
+      <td>581</td>
+    </tr>
+  </table>
+
+  <h2>입출력 예 설명</h2>
+  <strong>입출력 예 #1</strong>
+  <ul>
+    <li>홀수만 이어 붙인 수는 351이고 짝수만 이어 붙인 수는 42입니다. 두 수의 합은 393입니다.</li>
+  </ul>
+  <strong>입출력 예 #2</strong>
+  <ul>
+    <li>홀수만 이어 붙인 수는 573이고 짝수만 이어 붙인 수는 8입니다. 두 수의 합은 581입니다.</li>
+  </ul>
+</body>
+</html>
