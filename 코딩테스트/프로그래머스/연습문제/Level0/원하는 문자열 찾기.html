@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>원하는 문자열 찾기</title>
+  <script>
+    function SE(myString, pat) {
+      var answer = myString.toLowerCase().includes(pat.toLowerCase()) ? 1 : 0;
+      return answer;
+    }
+    console.log(SE("AbCdEfG","aBc"));
+  </script>
+</head>
+<body>
+  <h1>원하는 문자열 찾기</h1>
+  <h2>문제 설명</h2>
+  <p>알파벳으로 이루어진 문자열 myString과 pat이 주어집니다. myString의 연속된 부분 문자열 중 pat이 존재하면 1을 그렇지 않으면 0을 return 하는 solution 함수를 완성해 주세요.</p>
+  <p>단, 알파벳 대문자와 소문자는 구분하지 않습니다.</p>
+  
+  <h2>제한사항</h2>
+  <ul>
+    <li>1 ≤ myString의 길이 ≤ 100,000</li>
+    <li>1 ≤ pat의 길이 ≤ 300</li>
+    <li>myString과 pat은 모두 알파벳으로 이루어진 문자열입니다.</li>
+  </ul>
+  <h2>입출력 예</h2>
+  <table border="1">
+    <tr>
+      <td>myString</td>
+      <td>pat</td>
+      <td>return</td>
+    </tr>
+    <tr>
+      <td>"AbCdEfG"</td>
+      <td>"aBc"</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>"aaAA"</td>
+      <td>"aaaaa"</td>
+      <td>0</td>
+    </tr>
+  </table>
+
+  <h2>입출력 예 설명</h2>
+  <strong>입출력 예 #1</strong>
+  <ul>
+    <li>"AbCdEfG"의 0~2번 인덱스의 문자열은 "AbC"이며, 이는 pat인 "aBc"와 같습니다. 따라서 1을 return 합니다.</li>
+  </ul>
+  <strong>입출력 예 #2</strong>
+  <ul>
+    <li>myString의 길이가 pat보다 더 짧기 때문에 myString의 부분 문자열 중 pat와 같은 문자열이 있을 수 없습니다. 따라서 0을 return 합니다.</li>
+  </ul>
+  <p>※2023년 05월 15일 제한사항이 수정되었습니다.</p>
+</body>
+</html>
