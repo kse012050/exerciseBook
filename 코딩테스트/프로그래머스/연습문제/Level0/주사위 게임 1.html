@@ -8,10 +8,7 @@
         function SE(a, b) {
             var answer = 0;
             answer = a % 2 && b % 2 ? Math.pow(a, 2) + Math.pow(b, 2) : 
-                (!a % 2 && !b % 2 ? a - b : 2 * ( a + b )) ;
-            console.log(!(a % 2));
-            console.log(!(b % 2));
-            console.log('---------');
+                (!(a % 2) && !(b % 2) ? Math.abs(a - b) : 2 * ( a + b )) ;
             return answer;
         }
 
