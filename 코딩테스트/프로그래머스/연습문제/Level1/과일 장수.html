@@ -21,6 +21,19 @@
         }
         console.log(SE(3, 4, [1, 2, 3, 1, 2, 3, 1]))
         // console.log(SE(4, 3, [4, 1, 2, 2, 4, 4, 4, 4, 1, 2, 4, 2]));
+
+        case01 = (_, m, s) => s.sort().filter((_, i) => !((s.length - i) % m)).reduce((a, v) => a + v, 0) * m
+        console.log(case01(3, 4, [1, 2, 3, 1, 2, 3, 1]));
+        
+        function case02(k, m, score) {
+            let answer = 0;
+            const sortedScore = score.slice().sort((a, b) => a - b).slice(score.length % m);
+            for (let i = 0; i < sortedScore.length; i += m) {
+                answer += sortedScore[i] * m;
+            }
+            return answer;
+        }
+        console.log(case02(3, 4, [1, 2, 3, 1, 2, 3, 1]));
     </script>
 </head>
 <body>
