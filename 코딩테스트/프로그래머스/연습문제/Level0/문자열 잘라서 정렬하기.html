@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 잘라서 정렬하기</title>
+    <script>
+        function SE(myString) {
+            var answer = myString.split('x').filter((value)=> value).sort((a,b)=> b > a ? -1 : 1);
+            return answer;
+        }
+        console.log(SE("dxccxbbbxaaaa"));
+    </script>
+</head>
+<body>
+    <h1>문자열 잘라서 정렬하기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 myString이 주어집니다. "x"를 기준으로 해당 문자열을 잘라내 배열을 만든 후 사전순으로 정렬한 배열을 return 하는 solution 함수를 완성해 주세요.</p>
+    <p>단, 빈 문자열은 반환할 배열에 넣지 않습니다.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ myString ≤ 100,000</li>
+        <li>myString은 알파벳 소문자로 이루어진 문자열입니다.</li>
+    </ul>
+    
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>myString</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"axbxcxdx"</td>
+            <td>["a","b","c","d"]</td>
+        </tr>
+        <tr>
+            <td>"dxccxbbbxaaaa"</td>
+            <td>["aaaa","bbb","cc","d"]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>myString을 "x"를 기준으로 자른 배열은 ["a","b","c","d"]이며, 이 배열은 이미 사전순으로 정렬된 상태입니다. 따라서 해당 배열을 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>myString을 "x"를 기준으로 자른 배열은 ["d","cc","bbb","aaaa"]이며, 이 배열을 사전순으로 정렬하면 ["aaaa","bbb","cc","d"]입니다. 따라서 해당 배열을 return 합니다.</li>
+    </ul>
+</body>
+</html>
