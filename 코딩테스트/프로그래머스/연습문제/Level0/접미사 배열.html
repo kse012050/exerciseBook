@@ -15,6 +15,14 @@
             return answer;
         }
         console.log(SE("banana"));
+        
+        function case01(my_string) {
+            return Array.from(my_string)
+            .map((_, i) => my_string.substring(i))
+            .sort();
+        }
+        console.log(case01("banana"));
+
     </script>
 </head>
 <body>
