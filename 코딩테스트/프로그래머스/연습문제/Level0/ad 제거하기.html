@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ad 제거하기</title>
+    <script>
+        function SE(strArr) {
+            return strArr.filter((value)=> !value.includes('ad'));
+        }
+        console.log(SE(["and","notad","abcd"]));
+    </script>
+</head>
+<body>
+    <h1>ad 제거하기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 배열 strArr가 주어집니다. 배열 내의 문자열 중 "ad"라는 부분 문자열을 포함하고 있는 모든 문자열을 제거하고 남은 문자열을 순서를 유지하여 배열로 return 하는 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ strArr의 길이 ≤ 1,000</li>
+        <li>1 ≤ strArr의 원소의 길이 ≤ 20</li>
+        <li>strArr의 원소는 알파벳 소문자로 이루어진 문자열입니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>strArr</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>["and","notad","abcd"]</td>
+            <td>["and","abcd"]</td>
+        </tr>
+        <tr>
+            <td>["there","are","no","a","ds"]</td>
+            <td>["there","are","no","a","ds"]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>1번 인덱스의 문자열인 "notad"는 부분 문자열로 "ad"를 가집니다. 따라서 해당 문자열을 제거하고 나머지는 순서를 유지하여 ["and","abcd"]를 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"ad"가 부분 문자열로 들어간 문자열이 존재하지 않습니다. 따라서 원래 배열을 그대로 return 합니다.</li>
+    </ul>
+</body>
+</html>
