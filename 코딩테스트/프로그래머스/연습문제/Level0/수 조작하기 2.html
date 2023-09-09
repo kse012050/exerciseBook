@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수 조작하기 2</title>
+    <script>
+        function SE(numLog) {
+            var answer = '';
+            numLog.forEach((value, i, arr)=>{
+                if(i === 0){return}
+                value - arr[i - 1] === 1 && (answer += 'w')
+                value - arr[i - 1] === -1 && (answer += 's')
+                value - arr[i - 1] === 10 && (answer += 'd')
+                value - arr[i - 1] === -10 && (answer += 'a')
+            })
+            return answer;
+        }
+        console.log(SE([0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]));
+    </script>
+</head>
+<body>
+    <h1>수 조작하기 2</h1>
+    <h2>문제 설명</h2>
+    <p>정수 배열 numLog가 주어집니다. 처음에 numLog[0]에서 부터 시작해 "w", "a", "s", "d"로 이루어진 문자열을 입력으로 받아 순서대로 다음과 같은 조작을 했다고 합시다.</p>
+    <ul>
+        <li>"w" : 수에 1을 더한다.</li>
+        <li>"s" : 수에 1을 뺀다.</li>
+        <li>"d" : 수에 10을 더한다.</li>
+        <li>"a" : 수에 10을 뺀다.</li>
+    </ul>
+    <p>그리고 매번 조작을 할 때마다 결괏값을 기록한 정수 배열이 numLog입니다. 즉, numLog[i]는 numLog[0]로부터 총 i번의 조작을 가한 결과가 저장되어 있습니다.</p>
+    <p>주어진 정수 배열 numLog에 대해 조작을 위해 입력받은 문자열을 return 하는 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>2 ≤ numLog의 길이 ≤ 100,000
+            <ul>
+                <li>-100,000 ≤ numLog[0] ≤ 100,000</li>
+                <li>1 ≤ i ≤ numLog의 길이인 모든 i에 대해 |numLog[i] - numLog[i - 1]|의 값은 1 또는 10입니다.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>numLog</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[0, 1, 0, 10, 0, 1, 0, 10, 0, -1, -2, -1]</td>
+            <td>"wsdawsdassw"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>result인 "wsdawsdassw"를 따라 numLog[0]에서부터 시작해 조작을 하면 numLog의 값과 순서대로 일치합니다. 따라서 "wsdawsdassw"를 return 합니다.</li>
+    </ul>
+    
+    <strong>Hint</strong>
+    <p>"수 조작하기 1" 문제의 n값이 numLog[0]에 해당하며, 이 문제에서 주어진 numLog에 따라 "수 조작하기 1" 문제의 control을 구하는 문제라고 이해할 수 있습니다.</p>
+    <p>입출력 예 #1은 "수 조작하기 1" 문제의 입출력 예 #1과 같은 예시이므로 참고하시기 바랍니다.</p>
+</body>
+</html>
