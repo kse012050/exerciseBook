@@ -14,6 +14,11 @@
             return answer;
         }
         console.log(SE("aaaaa", "bbbbb"));
+        
+        function case01(str1, str2) {
+            return [...str1].map((x, idx)=> x+str2[idx]).join("");
+        }
+        console.log(case01("aaaaa", "bbbbb"));
     </script>
 </head>
 <body>

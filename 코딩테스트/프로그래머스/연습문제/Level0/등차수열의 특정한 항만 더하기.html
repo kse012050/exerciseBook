@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등차수열의 특정한 항만 더하기</title>
+    <script>
+        function SE(a, d, included) {
+            var answer = 0;
+            included.forEach(function(value, i){
+                value && (answer += a +(d * i));
+            })
+            return answer;
+        }
+        console.log(SE(3, 4, [true, false, false, true, true]));
+    </script>
+</head>
+<body>
+    <h1>등차수열의 특정한 항만 더하기</h1>
+    <h2>문제 설명</h2>
+    <p>두 정수 a, d와 길이가 n인 boolean 배열 included가 주어집니다. 첫째항이 a, 공차가 d인 등차수열에서 included[i]가 i + 1항을 의미할 때, 이 등차수열의 1항부터 n항까지 included가 true인 항들만 더한 값을 return 하는 solution 함수를 작성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ a ≤ 100</li>
+        <li>1 ≤ d ≤ 100</li>
+        <li>1 ≤ included의 길이 ≤ 100</li>
+        <li>included에는 true가 적어도 하나 존재합니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>a</td>
+            <td>d</td>
+            <td>included</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>4</td>
+            <td>[true, false, false, true, true]</td>
+            <td>37</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>1</td>
+            <td>[false, false, false, true, false, false, false]</td>
+            <td>10</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>
+            <p>예제 1번은 a와 d가 각각 3, 4이고 included의 길이가 5입니다. 이를 표로 나타내면 다음과 같습니다.</p>
+            <table border="1">
+                <tr>
+                    <td></td>
+                    <td>1항</td>
+                    <td>2항</td>
+                    <td>3항</td>
+                    <td>4항</td>
+                    <td>5항</td>
+                </tr>
+                <tr>
+                    <td>등차수열</td>
+                    <td>3</td>
+                    <td>7</td>
+                    <td>11</td>
+                    <td>15</td>
+                    <td>19</td>
+                </tr>
+                <tr>
+                    <td>included</td>
+                    <td>true</td>
+                    <td>false</td>
+                    <td>false</td>
+                    <td>true</td>
+                    <td>true</td>
+                </tr>
+            </table>
+            <p>따라서 true에 해당하는 1항, 4항, 5항을 더한 3 + 15 + 19 = 37을 return 합니다.</p>
+        </li>
+    </ul>
+    
+    
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>
+            <p>예제 2번은 a와 d가 각각 7, 1이고 included의 길이가 7입니다. 이를 표로 나타내면 다음과 같습니다.</p>
+            <table border="1">
+                <tr>
+                    <td></td>
+                    <td>1항</td>
+                    <td>2항</td>
+                    <td>3항</td>
+                    <td>4항</td>
+                    <td>5항</td>
+                    <td>6항</td>
+                    <td>7항</td>
+                </tr>
+                <tr>
+                    <td>등차수열</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                </tr>
+                <tr>
+                    <td>included</td>
+                    <td>false</td>
+                    <td>false</td>
+                    <td>false</td>
+                    <td>true</td>
+                    <td>false</td>
+                    <td>false</td>
+                    <td>false</td>
+                </tr>
+            </table>
+            <p>따라서 4항만 true이므로 10을 return 합니다.</p>
+        </li>
+    </ul>
+</body>
+</html>
