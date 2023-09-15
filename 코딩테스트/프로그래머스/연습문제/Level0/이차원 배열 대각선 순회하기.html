@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이차원 배열 대각선 순회하기</title>
+    <script>
+        function SE(board, k) {
+            var answer = 0;
+            board.forEach(function(arr1, i){
+                arr1.forEach(function(value, j){
+                    i + j <= k && (answer += value)
+                })
+            })
+            return answer;
+        }
+        console.log(SE([[0, 1, 2],[1, 2, 3],[2, 3, 4],[3, 4, 5]], 2));
+    </script>
+</head>
+<body>
+    <h1>이차원 배열 대각선 순회하기</h1>
+    <h2>문제 설명</h2>
+    <p>2차원 정수 배열 board와 정수 k가 주어집니다.</p>
+    <p>i + j <= k를 만족하는 모든 (i, j)에 대한 board[i][j]의 합을 return 하는 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ board의 길이 ≤ 100</li>
+        <li>1 ≤ board[i]의 길이 ≤ 100</li>
+        <li>1 ≤ board[i][j] ≤ 10,000</li>
+        <li>모든 board[i]의 길이는 같습니다.</li>
+        <li>0 ≤ k < board의 길이 + board[i]의 길이</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>board</td>
+            <td>k</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[[0, 1, 2],[1, 2, 3],[2, 3, 4],[3, 4, 5]]</td>
+            <td>2</td>
+            <td>8</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>입출력 예 #1의 board를 표로 나타내면 다음과 같습니다.</li>
+    </ul>
+    <table border="1">
+        <tr>
+            <td>i \ j</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>0</td>
+            <td>1</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+    <ul>
+        <li>i + j가 2보다 작거나 같은 항들의 합은 0 + 1 + 2 + 1 + 2 + 2 = 8이므로 8을 return 합니다.</li>
+    </ul>
+</body>
+</html>
