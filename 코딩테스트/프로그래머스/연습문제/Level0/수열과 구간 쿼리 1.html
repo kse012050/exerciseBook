@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수열과 구간 쿼리 1</title>
+    <script>
+        function SE(arr, queries) {
+            queries.forEach((queriesArray)=>{
+                for(let a = queriesArray[0]; a <= queriesArray[1];a++){
+                    arr[a]++;
+                }
+            })
+            return arr;
+        }
+        console.log(SE([0, 1, 2, 3, 4], [[0, 1],[1, 2],[2, 3]]));
+    </script>
+</head>
+<body>
+    <h1>수열과 구간 쿼리 1</h1>
+    <h2>문제 설명</h2>
+    <p>정수 배열 arr와 2차원 정수 배열 queries이 주어집니다. queries의 원소는 각각 하나의 query를 나타내며, [s, e] 꼴입니다.</p>
+    <p>각 query마다 순서대로 s ≤ i ≤ e인 모든 i에 대해 arr[i]에 1을 더합니다.</p>
+    <p>위 규칙에 따라 queries를 처리한 이후의 arr를 return 하는 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ arr의 길이 ≤ 1,000</li>
+        <li>0 ≤ arr의 원소 ≤ 1,000,000</li>
+        <li>1 ≤ queries의 길이 ≤ 1,000</li>
+        <li>0 ≤ s ≤ e < arr의 길이</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>arr</td>
+            <td>queries</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[0, 1, 2, 3, 4]</td>
+            <td>[[0, 1],[1, 2],[2, 3]]</td>
+            <td>[1, 3, 4, 4, 4]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>각 쿼리에 따라 arr가 다음과 같이 변합니다.</li>
+    </ul>
+    <table border="1">
+        <tr>
+            <td>i</td>
+            <td>queries[i]</td>
+            <td>arr</td>
+        </tr>
+        <tr>
+            <td>-</td>
+            <td>-</td>
+            <td>[0, 1, 2, 3, 4]</td>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>[0,1]</td>
+            <td>[1, 2, 2, 3, 4]</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>[1,2]</td>
+            <td>[1, 3, 3, 3, 4]</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>[2,3]</td>
+            <td>[1, 3, 4, 4, 4]</td>
+        </tr>
+    </table>
+
+    <ul>
+        <li>따라서 [1, 3, 4, 4, 4]를 return 합니다.</li>
+    </ul>
+</body>
+</html>
