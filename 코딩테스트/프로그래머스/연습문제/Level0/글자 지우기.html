@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글자 지우기</title>
+    <script>
+        function SE(my_string, indices) {
+            var answer = '';
+            my_string = my_string.split('')
+            indices.forEach(function(number){
+                my_string[number] = '';
+            })
+            return my_string.join('');
+        }
+        console.log(SE("apporoograpemmemprs", [1, 16, 6, 15, 0, 10, 11, 3]));
+    </script>
+</head>
+<body>
+    <h1>글자 지우기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string과 정수 배열 indices가 주어질 때, my_string에서 indices의 원소에 해당하는 인덱스의 글자를 지우고 이어 붙인 문자열을 return 하는 solution 함수를 작성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ indices의 길이 < my_string의 길이 ≤ 100</li>
+        <li>my_string은 영소문자로만 이루어져 있습니다</li>
+        <li>0 ≤ indices의 원소 < my_string의 길이</li>
+        <li>indices의 원소는 모두 서로 다릅니다.</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>my_string</td>
+            <td>indices</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"apporoograpemmemprs"</td>
+            <td>[1, 16, 6, 15, 0, 10, 11, 3]</td>
+            <td>"programmers"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>
+            <p>예제 1번의 my_string의 인덱스가 잘 보이도록 표를 만들면 다음과 같습니다.</p>
+            <table border="1">
+                <tr>
+                    <td>index</td>
+                    <td>0</td>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                </tr>
+                <tr>
+                    <td>my_string</td>
+                    <td>a</td>
+                    <td>p</td>
+                    <td>p</td>
+                    <td>o</td>
+                    <td>r</td>
+                    <td>o</td>
+                    <td>o</td>
+                    <td>g</td>
+                    <td>r</td>
+                    <td>a</td>
+                    <td>p</td>
+                    <td>e</td>
+                    <td>m</td>
+                    <td>m</td>
+                    <td>e</td>
+                    <td>m</td>
+                    <td>m</td>
+                    <td>p</td>
+                    <td>r</td>
+                    <td>s</td>
+                </tr>
+            </table>
+            <p>indices에 있는 인덱스의 글자들을 지우고 이어붙이면 "programmers"가 되므로 이를 return 합니다.</p>
+        </li>
+    </ul>
+</body>
+</html>
