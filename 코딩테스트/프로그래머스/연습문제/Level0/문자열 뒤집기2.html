@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문자열 뒤집기2</title>
+    <script>
+        function SE(my_string, s, e) {
+            let first = my_string.slice(0, s);
+            let last = my_string.slice(e + 1);
+            let answer = my_string.slice(s, e + 1)
+            console.log(first);
+            console.log(last);
+            console.log(answer);
+            answer = answer.split('').reverse().join('');
+            return first + answer + last;
+        }
+        console.log(SE("Progra21Sremm3", 6,	12));
+    </script>
+</head>
+<body>
+    <h1>문자열 뒤집기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 my_string과 정수 s, e가 매개변수로 주어질 때, my_string에서 인덱스 s부터 인덱스 e까지를 뒤집은 문자열을 return 하는 solution 함수를 작성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>my_string은 숫자와 알파벳으로만 이루어져 있습니다.</li>
+        <li>1 ≤ my_string의 길이 ≤ 1,000</li>
+        <li>0 ≤ s ≤ e < my_string의 길이</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>my_string</td>
+            <td>s</td>
+            <td>e</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"Progra21Sremm3"</td>
+            <td>6</td>
+            <td>12</td>
+            <td>"ProgrammerS123"</td>
+        </tr>
+        <tr>
+            <td>"Stanley1yelnatS"</td>
+            <td>4</td>
+            <td>10</td>
+            <td>"Stanley1yelnatS"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>예제 1번의 my_string에서 인덱스 6부터 인덱스 12까지를 뒤집은 문자열은 "ProgrammerS123"이므로 "ProgrammerS123"를 return 합니다.</li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>예제 2번의 my_string에서 인덱스 4부터 인덱스 10까지를 뒤집으면 원래 문자열과 같은 "Stanley1yelnatS"이므로 "Stanley1yelnatS"를 return 합니다.</li>
+    </ul>
+</body>
+</html>
