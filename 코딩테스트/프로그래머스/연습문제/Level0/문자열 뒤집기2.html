@@ -16,6 +16,15 @@
             return first + answer + last;
         }
         console.log(SE("Progra21Sremm3", 6,	12));
+        
+        function case01(my_string, s, e) {
+            const arr = Array.from(my_string)
+            const words = arr.slice(s, e+1)
+            words.reverse()
+            arr.splice(s, e - s + 1, ...words)
+            return arr.join('')
+        }
+        console.log(case01("Progra21Sremm3", 6,	12));
     </script>
 </head>
 <body>

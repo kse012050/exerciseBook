@@ -14,6 +14,22 @@
             return my_string.join('');
         }
         console.log(SE("apporoograpemmemprs", [1, 16, 6, 15, 0, 10, 11, 3]));
+        
+        function case01(m, a) {
+            var answer = '';
+            
+            for(let i = 0; i<m.length; i++){
+                if(!a.includes(i)){
+                    answer += m[i]
+                }
+            }
+            
+            return answer;
+        }
+        console.log(case01("apporoograpemmemprs", [1, 16, 6, 15, 0, 10, 11, 3]));
+        
+        const case02=(s,d)=>[...s].filter((v,i)=>!d.includes(i)).join('')
+        console.log(case02("apporoograpemmemprs", [1, 16, 6, 15, 0, 10, 11, 3]));
     </script>
 </head>
 <body>
