@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>특정 문자열로 끝나는 가장 긴 부분 문자열 찾기</title>
+    <script>
+        function SE(myString, pat) {
+            return myString.slice(0,myString.lastIndexOf(pat)) + pat;
+        }
+        console.log(SE("AbCdEFG", 'dE'));
+        console.log(SE("AAAAaaaa", 'a'));
+    </script>
+</head>
+<body>
+    <h1>특정 문자열로 끝나는 가장 긴 부분 문자열 찾기</h1>
+    <h2>문제 설명</h2>
+    <p>문자열 myString과 pat가 주어집니다. myString의 부분 문자열중 pat로 끝나는 가장 긴 부분 문자열을 찾아서 return 하는 solution 함수를 완성해 주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>5 ≤ myString ≤ 20</li>
+        <li>1 ≤ pat ≤ 5
+            <ul>
+                <li>pat은 반드시 myString의 부분 문자열로 주어집니다.</li>
+            </ul>
+        </li>
+        <li>myString과 pat에 등장하는 알파벳은 대문자와 소문자를 구분합니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>myString</td>
+            <td>pat</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>"AbCdEFG"</td>
+            <td>"dE"</td>
+            <td>"AbCdE"</td>
+        </tr>
+        <tr>
+            <td>"AAAAaaaa"</td>
+            <td>"a"</td>
+            <td>"AAAAaaaa"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>"AbCdEFG"에서 "dE"는 한 번 등장하며 처음부터 해당 위치까지 잘라내면 "AbCdE"가 됩니다. 따라서 이 문자열이 "dE"로 끝나는 가장 긴 문자열이며, "AbCdE"를 return 합니다.</li>
+    </ul>
+
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>"AAAAaaaa"에서 "a"는 총 네 번 등장하며 이 중 가장 마지막에 있는 위치까지 잘라내면 "AAAAaaaa"가 됩니다. 따라서 이 문자열이 "a"로 끝나는 가장 긴 문자열이며, "AAAAaaaa"를 return 합니다.</li>
+    </ul>
+
+</body>
+</html>
