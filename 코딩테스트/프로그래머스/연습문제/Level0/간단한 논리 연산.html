@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간단한 논리 연산</title>
+    <script>
+        function SE(x1, x2, x3, x4) {
+            var answer = true;
+            
+            return (x1 || x2) && (x3 || x4);
+        }
+        console.log(SE(true,false,false,false));
+    </script>
+</head>
+<body>
+    <h1>간단한 논리 연산</h1>
+    <h2>문제 설명</h2>
+    <p>boolean 변수 x1, x2, x3, x4가 매개변수로 주어질 때, 다음의 식의 true/false를 return 하는 solution 함수를 작성해 주세요.</p>
+    <ul>
+        <li>(x1 ∨ x2) ∧ (x3 ∨ x4)</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>x1</td>
+            <td>x3</td>
+            <td>x3</td>
+            <td>x4</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>false</td>
+            <td>true</td>
+            <td>true</td>
+            <td>true</td>
+            <td>true</td>
+        </tr>
+        <tr>
+            <td>true</td>
+            <td>false</td>
+            <td>false</td>
+            <td>false</td>
+            <td>false</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>
+            예제 1번의 x1, x2, x3, x4로 식을 계산하면 다음과 같습니다.
+            (x1 ∨ x2) ∧ (x3 ∨ x4) ≡ (F ∨ T) ∧ (T ∨ T) ≡ T ∧ T ≡ T
+            따라서 true를 return 합니다.
+            예제 2번의 x1, x2, x3, x4로 식을 계산하면 다음과 같습니다.
+            (x1 ∨ x2) ∧ (x3 ∨ x4) ≡ (T ∨ F) ∧ (F ∨ F) ≡ T ∧ F ≡ F
+            따라서 false를 return 합니다.
+        </li>
+    </ul>
+    
+    <strong>입출력 예 #2</strong>
+    <ul>
+        <li>
+            예제 1번의 x1, x2, x3, x4로 식을 계산하면 다음과 같습니다.
+            (x1 ∨ x2) ∧ (x3 ∨ x4) ≡ (F ∨ T) ∧ (T ∨ T) ≡ T ∧ T ≡ T
+            따라서 true를 return 합니다.
+            예제 2번의 x1, x2, x3, x4로 식을 계산하면 다음과 같습니다.
+            (x1 ∨ x2) ∧ (x3 ∨ x4) ≡ (T ∨ F) ∧ (F ∨ F) ≡ T ∧ F ≡ F
+            따라서 false를 return 합니다.
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            ∨과 ∧의 진리표는 다음과 같습니다.
+            <table border="1">
+                <tr>
+                    <td>x</td>
+                    <td>y</td>
+                    <td>x ∨ y</td>
+                    <td>x ∧ y</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>T</td>
+                </tr>
+                <tr>
+                    <td>T</td>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>T</td>
+                    <td>T</td>
+                    <td>F</td>
+                </tr>
+                <tr>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                    <td>F</td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+    
+</body>
+</html>
