@@ -6,11 +6,8 @@
     <title>2의 영역</title>
     <script>
         function SE(arr) {
-            var answer = [];
-            console.log(arr.indexOf(2));
-            console.log(arr.lastIndexOf(2));
-            console.log(arr.slice(arr.indexOf(2), arr.lastIndexOf(2) + 1));
-            return answer;
+            var answer = arr.slice(arr.indexOf(2), arr.lastIndexOf(2) + 1);
+            return answer.length ? answer : [-1];
         }
         console.log(SE([1, 2, 1, 4, 5, 2, 9]));
         console.log(SE([1, 2, 1]));
