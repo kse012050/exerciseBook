@@ -19,9 +19,11 @@
             for (const str of strArr) {
                 counter.set(str.length, (counter.get(str.length) || 0) + 1);
             }
+            console.log(counter);
+            console.log(counter.values());
             return Math.max(...counter.values());
         }
-        console.log(case01(["a","bc","d","efg","hi"]));
+        console.log(case01(["a","bc","d","efg","hi"])); 
     </script>
 </head>
 <body>
