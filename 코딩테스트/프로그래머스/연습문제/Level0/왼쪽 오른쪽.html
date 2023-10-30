@@ -18,6 +18,17 @@
         console.log(SE(["u", "u", "l", "r"]));
         console.log(SE(["l"])); 
         console.log(SE(["u", "u", "d", "r", "d", "l"])); 
+
+        function case01(arr) {
+            for(let i = 0; i < arr.length; i++) {
+                if (arr[i] === 'l') return arr.slice(0, i);
+                if (arr[i] === 'r') return arr.slice(i + 1);
+            }
+            return [];
+        }
+        console.log(case01(["u", "u", "l", "r"]));
+        console.log(case01(["l"])); 
+        console.log(case01(["u", "u", "d", "r", "d", "l"])); 
     </script>
 </head>
 <body>
