@@ -6,7 +6,6 @@
     <title>수열과 구간 쿼리 4</title>
     <script>
         function SE(arr, queries) {
-            var answer = [];
             queries.forEach((query)=>{
                 for(let a = query[0]; a <= query[1]; a++){
                     a % query[2] === 0 && arr[a]++;
