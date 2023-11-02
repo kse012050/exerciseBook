@@ -6,7 +6,6 @@
     <title>qr code</title>
     <script>
         function SE(q, r, code) {
-            var answer = '';
             return code.split('').filter((value, i)=> i % q === r).join('');
         }
         console.log(SE(3, 1, "qjnwezgrpirldywt"));
