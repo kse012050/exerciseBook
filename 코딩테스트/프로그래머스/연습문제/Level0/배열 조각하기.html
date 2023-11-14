@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 조각하기</title>
+    <script>
+        function SE(arr, query) {
+            query.forEach((value, i)=>{
+                i % 2 === 0 ?
+                    (arr = arr.slice(0, value + 1)) :
+                    (arr = arr.splice(value))
+            })
+            return arr;
+        }
+        console.log(SE([0, 1, 2, 3, 4, 5], [4, 1, 2]));
+    </script>
+</head>
+<body>
+    <h1>배열 조각하기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 배열 arr와 query가 주어집니다.</p>
+    <p>query를 순회하면서 다음 작업을 반복합니다.</p>
+    <ul>
+        <li>짝수 인덱스에서는 arr에서 query[i]번 인덱스를 제외하고 배열의 query[i]번 인덱스 뒷부분을 잘라서 버립니다.</li>
+        <li>홀수 인덱스에서는 arr에서 query[i]번 인덱스는 제외하고 배열의 query[i]번 인덱스 앞부분을 잘라서 버립니다.</li>
+    </ul>
+    <p>위 작업을 마친 후 남은 arr의 부분 배열을 return 하는 solution 함수를 완성해 주세요.</p>
+    
+    <h2>제한사항</h2>
+    <ul>
+        <li>5 ≤ arr의 길이 ≤ 100,000
+            <ul>
+                <li>0 ≤ arr의 원소 ≤ 100</li>
+            </ul>
+        </li>
+        <li>1 ≤ query의 길이 < min(50, arr의 길이 / 2)
+            <ul>
+                <li>query의 각 원소는 0보다 크거나 같고 남아있는 arr의 길이 보다 작습니다.</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>arr</td>
+            <td>query</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>[0, 1, 2, 3, 4, 5]</td>
+            <td>[4, 1, 2]</td>
+            <td>[1, 2, 3]</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    <ul>
+        <li>이번에 매번 처리할 query의 값과 처리 전후의 arr의 상태를 표로 나타내면 다음과 같습니다.
+            <table border="1">
+                <tr>
+                    <td>query의 값</td>
+                    <td>query 처리 전</td>
+                    <td>query 처리 후</td>
+                    <td>비고</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>[0, 1, 2, 3, 4, 5]</td>
+                    <td>[0, 1, 2, 3, 4</td>
+                    <td>	0번 인덱스의 쿼리이므로 뒷부분을 자른다.</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>[0, 1, 2, 3, 4]</td>
+                    <td>[1, 2, 3, 4]</td>
+                    <td>1번 인덱스의 쿼리이므로 앞부분을 자른다.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>[1, 2, 3, 4]</td>
+                    <td>[1, 2, 3]</td>
+                    <td>2번 인덱스의 쿼리이므로 뒷부분을 자른다.</td>
+                </tr>
+            </table>
+            따라서 [1, 2, 3]을 return 합니다.
+        </li>
+    </ul>
+</body>
+</html>
