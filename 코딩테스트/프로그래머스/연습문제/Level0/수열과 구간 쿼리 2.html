@@ -6,7 +6,7 @@
     <title>수열과 구간 쿼리 2</title>
     <script>
         function SE(arr, queries) {
-            return queries.map((query)=>arr.slice(query[0], query[1] + 1).sort((a, b)=> a - b).filter((value)=>value > query[2]));
+            return queries.map((query)=>arr.slice(query[0], query[1] + 1).sort((a, b)=> a - b).filter((value)=>value > query[2])[0] || - 1);
         }
         console.log(SE([0, 1, 2, 4, 3], [[0, 4, 2],[0, 3, 2],[0, 2, 2]]));
     </script>
