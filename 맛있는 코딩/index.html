@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마우스에 따라 움직이는 3D 카드</title>
+    <style>
+        body{margin: 0;}
+        .wrap{height: 100vh; display: flex; justify-content: center; align-items: center; transition: 1s;}
+        .wrap:has(.card:hover){perspective: 1000px; transform-style: preserve-3d;}
+        .wrap .card{width: 300px; height: 400px; background: url(background.jpg) no-repeat center / cover; border-radius: 10px;
+            /* transform: rotateX(30deg); */
+            transition: 0.2s;
+        }
+        .wrap .card:hover{scale: 1.05;}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="card">
+
+        </div>
+    </div>
+    <script>
+        const card = document.querySelector('.card');
+        card.addEventListener('mousemove',mouseMove);
+        card.addEventListener('mouseleave',mouseLeave);
+
+        function mouseMove(e){
+            const { offsetX, offsetY } = e;
+            const { width, height } = e.target.getBoundingClientRect();
+            const deg = 20;
+            const centerX = (offsetX / width * 2 -1) * 20
+            const centerY = -(offsetY / width * 2 -1) * 20
+            document.querySelector('.wrap').style = `perspective: 1000px`
+            e.target.style = `transform: rotateY(${centerX}deg) rotateX(${centerY}deg)`
+        }
+
+        function mouseLeave(e){
+            document.querySelector('.wrap').removeAttribute('style');
+            e.target.removeAttribute('style');
+        }
+    </script>
+</body>
+</html>
