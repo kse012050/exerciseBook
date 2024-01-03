@@ -24,22 +24,24 @@
                 yValue[value] = Y.lastIndexOf(value) + 1;
                 Y = Y.slice(Y.lastIndexOf(value) + 1)
             })
-            console.log(xValue);
-            console.log(yValue);
             Object.entries(xValue).forEach(([key, value])=>{
                 if(key in yValue){
                     resultValue[key] = value > yValue[key] ? yValue[key] : value;
                 }
             })
-            var resultArray = Array.from(Object.entries(resultValue).flatMap(([key, count]) => Array(count).fill(parseInt(key, 10)))).sort((a, b) => b - a).join('');
-            console.log(resultArray);
-
+            
+            // 처음 내가 한 결과
+            // var resultArray = Array.from(Object.entries(resultValue).flatMap(([key, count]) => Array(count).fill(parseInt(key, 10)))).sort((a, b) => b - a).join('');
             // return resultArray.length ? String(Number(resultArray)) : '-1'
             
-            resultArray[0] === '0' && (resultArray = '0')
-            !resultArray[0].length && (resultArray = '-1')
-            return resultArray
+            // 질문 보고 한 결과
+            // var resultArray = Array.from(Object.entries(resultValue).flatMap(([key, count]) => Array(count).fill(parseInt(key, 10)))).sort((a, b) => b - a).join('');
+            // resultArray[0] === '0' && (resultArray = '0')
+            // !resultArray[0].length && (resultArray = '-1')
+            // return resultArray
 
+            // 질문에 나와 있는 결과
+            var resultArray = Array.from(Object.entries(resultValue).flatMap(([key, count]) => Array(count).fill(parseInt(key, 10)))).sort((a, b) => b - a);
             if (arrresult[0] === 0){ arrresult = [0]}
             if (arrresult.length === 0) { arrresult = [-1] }
             return String(arrresult.join(""))
@@ -50,6 +52,30 @@
         // console.log(SE("12321", "42531"));
         // console.log(SE("100", "2345"));
         // console.log(SE("100", "123450")); 
+
+        function case01(X, Y) {
+            let result = '';
+            const numObj = {};
+
+            for (const char of X) {
+                numObj[char] = (numObj[char] || 0) + 1;
+            }
+
+            for (const char of Y) {
+                if (!numObj[char]) continue;
+                result += char;
+                numObj[char]--;
+            }
+
+            if (result === '') return '-1';
+            if (+result === 0) return '0';
+            return [...result]
+                .map((num) => +num)
+                .sort((a, b) => b - a)
+                .join('');    
+        }
+        console.log(case01("100", "123450")); 
+
     </script>
 </head>
 <body>
