@@ -10,29 +10,41 @@
             let count = 1;
             let x = s[0]
             let test = ''
-            while(count < 50){
+            while(count < 20){
                 if(x === s[count] || x === ''){
                     x += s[count];
                 }else{
                     test += s[count];
                 }
-                if(x.length === test.length){
-                    console.log(x);
+                console.log('s = ' ,s);
+                console.log('x = ' ,x);
+                console.log('test = ' ,test);
+                if(x.length === test.length && x !== '' && test !== ''){
+                    // console.log(s.slice(x.length * 2));
+                    
+                    s = s.slice(x.length * 2)
                     x = '';
                     test = '';
-                    s = s.slice(count)
-                    count = 0;
                     answer++;
+                    count = 0;
                 }else{
                     count++;
                 }
                 
-                // console.log(count);
+                
+                
+                return answer;
+                // console.log(count);  
                 // console.log(s);
             }
+            console.log(s.length);
+            s.length && (answer++)
             return answer;
         }
-        console.log(SE("banana", 3));
+        // console.log('test'.slice(2));
+        // console.log(SE("banana"));
+        console.log(SE("abracadabra"));
+        // console.log(SE("aaabbaccccabba"));
     </script>
 </head>
 <body>
