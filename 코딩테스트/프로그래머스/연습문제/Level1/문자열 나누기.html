@@ -7,43 +7,46 @@
     <script>
         function SE(s) {
             var answer = 0;
-            let count = 1;
-            let x = s[0]
+            let count = 0;
+            let x;
             let test = ''
             while(count < 20){
-                if(x === s[count] || x === ''){
+                // console.log('1', s[count]);
+                if(!x){
+                    x = s[count]
+                }
+                count++;
+
+                if(x === s[count]){
                     x += s[count];
                 }else{
                     test += s[count];
                 }
-                console.log('s = ' ,s);
-                console.log('x = ' ,x);
-                console.log('test = ' ,test);
-                if(x.length === test.length && x !== '' && test !== ''){
-                    // console.log(s.slice(x.length * 2));
-                    
-                    s = s.slice(x.length * 2)
-                    x = '';
-                    test = '';
-                    answer++;
-                    count = 0;
-                }else{
+                // console.log('2', s[count]);
+                if(x.length !== test.length){
                     count++;
+                }else{
+                    s = s.slice(x.length + test.length);
+                    count = 0;
+                    answer++;
+                    x = ''
+                    test = ''
                 }
-                
-                
-                return answer;
-                // console.log(count);  
-                // console.log(s);
+                // console.log('3', s[count]);
+                // console.log('----------------------');
+                console.log(s[count]);
+                if(!s[count]){
+                    return answer;
+                }
             } 
-            console.log(s.length);
-            s.length && (answer++) 
+
             return answer;
         }
         // console.log('test'.slice(2));
+        // console.log('test'[4]);
         // console.log(SE("banana"));
-        console.log(SE("abracadabra"));
-        // console.log(SE("aaabbaccccabba"));
+        // console.log(SE("abracadabra"));
+        console.log(SE("aaabbaccccabba"));
     </script>
 </head>
 <body>
