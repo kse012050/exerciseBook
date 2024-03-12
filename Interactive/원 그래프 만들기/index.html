@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원 만들기</title>
+    <style>
+        .circle{width: 280px; aspect-ratio: 1; border: 2px solid red; position: relative;}
+        .circle::after{content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50); width: 100%; height: 1px; background-color: red;}
+        /* .circle canvas{width: 100%; height: 100%;} */
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <canvas></canvas>
+    </div>
+
+    <script>
+        const canvas = document.querySelector('canvas')
+        const ctx = canvas.getContext('2d')
+        const dpr = window.devicePixelRatio
+        const circleArea = document.querySelector('.circle')
+        // console.log(canvas);
+        // console.log(circleArea.clientWidth);
+        canvas.style.width = circleArea.clientWidth + 'px'
+        canvas.style.height = circleArea.clientHeight + 'px'
+        canvas.width = circleArea.clientWidth * dpr
+        canvas.height = circleArea.clientHeight * dpr
+
+        ctx.scale(dpr, dpr)
+
+        class Graph {
+            constructor(percent, color, prevPercent){
+                this.x = circleArea.clientWidth / 2;
+                this.y = circleArea.clientHeight / 2;
+                this.color = color
+                this.percent = percent
+                this.prevPercent = prevPercent
+            }
+
+            draw(){
+                ctx.beginPath();
+                ctx.moveTo(this.x, this.y); // 중심점으로 이동
+                // ctx.arc(this.x, this.y, this.radius, 0 , Math.PI / 180 * this.test);
+                // ctx.arc(this.x ,this.y ,this.y - 50, 0 * Math.PI/180, Math.PI/180 * 360);
+                ctx.arc(this.x, this.y, circleArea.clientWidth / 2 , Math.PI/180 * (-90 + (360 * (0.01 * this.prevPercent))) , Math.PI / 180 * (-90 + (360 * (0.01 * this.percent)) + (360 * (0.01 * this.prevPercent))));
+                ctx.fillStyle = this.color
+                ctx.fill()
+                ctx.closePath();
+
+                ctx.beginPath();
+                ctx.fillStyle = 'black'
+                ctx.font = "400 13px sans-serif";
+                // ctx.fillText('100%',circleArea.clientWidth / 2 + (circleArea.clientWidth / 2 * Math.sin((Math.PI / 180) * 36)), circleArea.clientHeight / 2 + (circleArea.clientHeight / 2 * Math.cos(36)), 1000);
+                console.log((360 * (this.percent * 0.01) / 2) + (360 * (this.prevPercent * 0.01)));
+                // ctx.fillText('100%',
+                //     (circleArea.clientWidth / 2 - 25) + (circleArea.clientWidth / 4 * Math.sin((Math.PI / 180) * ((360 * (this.percent * 0.01) / 2) + (360 * (this.prevPercent * 0.01))))),
+                //     (circleArea.clientHeight / 2 + 10) + (-circleArea.clientHeight / 4 * Math.cos((Math.PI / 180) * ((360 * (this.percent * 0.01) / 2) + (360 * (this.prevPercent * 0.01))))),
+                //     1000
+                // );
+                ctx.fillText('100%',
+                    (circleArea.clientWidth / 2 - 20),
+                    (circleArea.clientHeight / 2 + 10),
+                    1000
+                );
+
+                // ctx.fillText("Hello world", 0, 10, 100000);
+                ctx.fill()
+                ctx.closePath();
+            }
+        } 
+
+        function drawing(){
+            let test = new Graph(50, 'orange', 0);
+            let test2 = new Graph(50, 'blue', 50);
+            test.draw();
+            test2.draw();
+            for(let a = 0; a <= 360; a++){
+
+            }
+        }
+
+        drawing()
+    </script>
+</body>
+</html>
