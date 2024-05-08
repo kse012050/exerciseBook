@@ -5,48 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>문자열 나누기</title>
     <script>
+        // 문제 이해가 어렵다..
+        // 그렇니까 글자 하나씩 추가했을 때 첫번째 글자와 동일한 글자 갯수와 동일하지 않은 갯수가 같을 때 짜르고
+        // 짜르면 1 카운트
         function SE(s) {
-            var answer = 0;
-            let count = 0;
-            let x;
-            let test = ''
-            while(count < 20){
-                // console.log('1', s[count]);
-                if(!x){
-                    x = s[count]
+            let answer = 0;
+            let b = '';
+            for(let a = 0; a < s.length; a++){
+                if(!b){
+                    b = s[a]
+                }else {
+                    b += s[a];
                 }
-                count++;
-
-                if(x === s[count]){
-                    x += s[count];
-                }else{
-                    test += s[count];
-                }
-                // console.log('2', s[count]);
-                if(x.length !== test.length){
-                    count++;
-                }else{
-                    s = s.slice(x.length + test.length);
-                    count = 0;
+                
+                if(b.split('').filter((data)=>data === b[0]).length === b.split('').filter((data)=>data !== b[0]).length){
                     answer++;
-                    x = ''
-                    test = ''
-                }
-                // console.log('3', s[count]);
-                // console.log('----------------------');
-                console.log(s[count]);
-                if(!s[count]){
-                    return answer;
+                    b = ''
                 }
             } 
-
+            if(b){
+                answer++;
+            }
             return answer;
         }
-        // console.log('test'.slice(2));
-        // console.log('test'[4]);
-        // console.log(SE("banana"));
-        // console.log(SE("abracadabra"));
-        console.log(SE("aaabbaccccabba"));
+        console.log(SE("abracadabra"));
     </script>
 </head>
 <body>
