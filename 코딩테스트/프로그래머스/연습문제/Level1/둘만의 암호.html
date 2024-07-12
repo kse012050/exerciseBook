@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>둘만의 암호</title>
+    <script>
+        function SE(s, skip, index) {
+            let alphabet = 'abcdefghijklmnopqrstuvwxyz'
+            const regex = new RegExp(`[${skip}]`, 'g');
+            let answer = '';
+            alphabet = alphabet.replace(regex, '');
+            for(let a = 0; a < s.length; a++){
+                let order = alphabet.indexOf(s[a]) + index
+                if(order >= alphabet.length){
+                    order = order % alphabet.length
+                }
+                answer += alphabet[order]
+            }
+            return answer;
+        }
+
+        console.log(SE('aukks', 'wbqd', 5));
+    </script>
 </head>
 <body>
     <h1>둘만의 암호</h1>
@@ -44,7 +62,7 @@
             <td>5</td>
             <td>"happy"</td>
         </tr>
-    </table>
+    </table> 
     
     <strong>입출력 예 설명</strong>
     <p>
