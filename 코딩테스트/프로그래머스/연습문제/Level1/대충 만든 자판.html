@@ -7,21 +7,25 @@
     <script>
         function SE(keymap, targets) {
             var answer = [];
-            keymap = keymap.map((data)=>{
-                const test = data.split('').map((data2, i)=>{
-                    return {[data2]: i + 1}
+            let obj = {}
+            keymap.forEach((data)=>{
+                data.split('').forEach((data2, i)=>{
+                    const count = i + 1;
+                    obj[data2] = obj[data2] ? (obj[data2] > count ? count : obj[data2]) : count
                 })
-                console.log(test);
-                let obj = {} 
-                for(let a = 0; a < test.length; a++) {
-                    obj = Object.assign(test[a], obj)
-                }
-                return obj
             })
-            console.log(keymap);
+            answer = targets.map(data=> {
+                const arr = data.split('');
+                let result = 0;
+                for(let a = 0; a < arr.length; a++){
+                    result += obj[arr[a]]
+                }
+                return !isNaN(result) ? result : -1
+            })
             return answer;
         }
-        console.log(SE(["ABACD", "BCEFD"], ["ABCD","AABB"]));
+        // console.log(SE(["ABACD", "BCEFD"], ["ABCD","AABB"])); 
+        console.log(SE(["AA"], ["B"])); 
     </script>
 </head>
 <body>
