@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자의 표현</title>
+    <script>
+        function SE(n) {
+            var answer = 1;
+            let down = Math.floor(n / 2);
+            let up = Math.round(n / 2);
+            let sum = 0;
+            for(let a = 1; a <= down; a++){
+                sum = a;
+                for(let b = a; b <= up; b++){
+                    if(sum >= n){
+                        if(sum === n){
+                            console.log(a);
+                            console.log(sum);
+                            answer++;
+                        }
+                        break;
+                    }
+                    sum += b + 1;
+                }
+            }
+            return answer;
+        }
+        console.log(SE(2001));
+        
+    </script>
+</head>
+<body>
+    <h1>숫자의 표현</h1>
+
+    <h2>문제 설명</h2>
+    <p>Finn은 요즘 수학공부에 빠져 있습니다. 수학 공부를 하던 Finn은 자연수 n을 연속한 자연수들로 표현 하는 방법이 여러개라는 사실을 알게 되었습니다. 예를들어 15는 다음과 같이 4가지로 표현 할 수 있습니다.</p>
+    <ul>
+        <li>1 + 2 + 3 + 4 + 5 = 15</li>
+        <li>4 + 5 + 6 = 15</li>
+        <li>7 + 8 = 15</li>
+        <li>15 = 15</li>
+    </ul>
+
+    <p>자연수 n이 매개변수로 주어질 때, 연속된 자연수들로 n을 표현하는 방법의 수를 return하는 solution를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>n은 10,000 이하의 자연수 입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>4</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예#1</strong>
+    <p>문제의 예시와 같습니다.</p>
+</body>
+</html>
