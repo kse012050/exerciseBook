@@ -8,15 +8,11 @@
         function SE(n) {
             var answer = 1;
             let down = Math.floor(n / 2);
-            let up = Math.round(n / 2);
-            let sum = 0;
             for(let a = 1; a <= down; a++){
-                sum = a;
-                for(let b = a; b <= up; b++){
+                let = sum = a
+                for(let b = a; b <= a + Math.floor(n / a); b++){
                     if(sum >= n){
                         if(sum === n){
-                            console.log(a);
-                            console.log(sum);
                             answer++;
                         }
                         break;
@@ -26,7 +22,7 @@
             }
             return answer;
         }
-        console.log(SE(2001));
+        console.log(SE(15));
         
     </script>
 </head>
