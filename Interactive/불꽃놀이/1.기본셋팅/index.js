@@ -1,23 +1,44 @@
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+import CanvasOption from "./js/CanvasOption.js";
 
-function init(){
-    const windowWidth = window.innerWidth
-    const windowHeight = window.innerHeight
-    const dpr = window.devicePixelRatio;
-    canvas.width = windowWidth * dpr;
-    canvas.height = windowHeight * dpr;
-    ctx.scale(dpr, dpr)
+class Canvas extends CanvasOption {
+    constructor(){
+        super();
+    }
+
+    init(){
+        this.canvas.width = this.canvasWidth * this.dpr;
+        this.canvas.height = this.canvasHeight * this.dpr;
+        this.ctx.scale(this.dpr, this.dpr);
+
+        this.canvas.style.width = this.canvasWidth + 'px';
+        this.canvas.style.height = this.canvasHeight + 'px';
+    }
+
+    render(){
+        let now, delta;
+        let then = Date.now()
+
+        const frame = () => {
+            requestAnimationFrame(frame)
+
+            now = Date.now();
+            delta = now - then;
+            if(delta < this.interval) return;
+
+            then = now - (delta % this.interval)
+        }
+
+        requestAnimationFrame(frame)
+    }
 }
 
-function renter() {
-    ctx.fillStyle = 'red';
-    ctx.arc(10, 10, 10, 0, Math.PI * 2);
-    ctx.fill();
+const canvas = new Canvas()
 
-}
+window.addEventListener("load", () =>{
+    canvas.init()
+    canvas.render()
+})
 
-window.addEventListener('load', ()=> {
-    init();
-    renter();
+window.addEventListener("resize", () =>{
+    canvas.init()
 })
