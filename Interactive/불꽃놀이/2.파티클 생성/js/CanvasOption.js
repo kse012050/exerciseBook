@@ -1,7 +1,5 @@
 export default class CanvasOption{
     constructor(){
-        console.log('??');
-        
         this.canvas = document.querySelector('canvas');
         this.ctx = this.canvas.getContext('2d');
         this.dpr = window.devicePixelRatio;
