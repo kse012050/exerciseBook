@@ -19,14 +19,13 @@ class Canvas extends CanvasOption {
         this.canvas.style.height = this.canvasHeight + 'px';
     }
 
-    createParticles(x, y){
-        const PARTICLE_COUNT = 1;
+    createParticles(){
+        const PARTICLE_COUNT = 200;
+        const x = randomNumBetween(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
+        const y = randomNumBetween(this.canvasHeight * 0.2, this.canvasHeight * 0.8);
         for(let i = 0; i < PARTICLE_COUNT; i++){
             this.particles.push(
-                new Particle(
-                    randomNumBetween(this.canvasWidth * 0.2, this.canvasWidth * 0.8), 
-                    randomNumBetween(this.canvasHeight * 0.2, this.canvasHeight * 0.8)
-                )
+                new Particle(x, y)
             )
         }
     }
@@ -48,6 +47,12 @@ class Canvas extends CanvasOption {
 
             this.particles.forEach((particle, index)=>{
                 particle.draw()
+            })
+            this.particles.forEach((particle, index)=>{
+                particle.update()
+                if(particle.opacity <= 0){
+                    this.particles.splice(index, 1)
+                }
             })
 
             
