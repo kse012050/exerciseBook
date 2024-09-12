@@ -7,13 +7,25 @@
     <script>
         function SE(ingredient) {
             var answer = 0;
-            ingredient = ingredient.join('')
+            // ingredient = ingredient.join('')
+            // let test = ingredient.splice(7, 4)
+            // console.log(ingredient);
+            // console.log(test);
+            
+            
             for(let a = 0; a < ingredient.length - 3; a++){
-                ingredient.slice(a, a + 4) === '1231' && (answer += 1)
+                if(ingredient[a] !== 1){
+                    continue;
+                }else if(ingredient.slice(a, a + 4).join('') == '1231'){
+                    ingredient.splice(a, 4)
+                    answer += 1;
+                    a = -1;
+                }
             } 
             return answer;
         }
-        console.log(SE([1, 2, 3, 2, 1, 2, 3, 1, 1])); 
+        // console.log(SE([1, 2, 3, 2, 1, 2, 3, 1, 1])); 
+        console.log(SE([2, 1, 1, 2, 3, 1, 2, 3, 1])); 
     </script>
 </head>
 <body>
