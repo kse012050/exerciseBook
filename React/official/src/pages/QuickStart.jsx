@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
+import { shuffle } from 'lodash'
 
 export default function QuickStart() {
     const indexInputRef = useRef(null)
@@ -18,6 +19,9 @@ export default function QuickStart() {
         {id: 4,name: '김성은4'}
     ])
 
+    const test = [1,2,3,4]
+    console.log(shuffle(test));
+    
     const indexAdd = () =>{
         setIndexUserList([
             {
@@ -31,12 +35,16 @@ export default function QuickStart() {
     const idAdd = () =>{
         setIdUserList([
             {
-                id: indexUserList.length + 1,
-                name: indexInputRef.current.value
+                id: idUserList.length + 1,
+                name: idInputRef.current.value
             },
             ...idUserList
         ])
     }
+
+    const handleShuffleList = useCallback(() => {
+        setIdUserList(shuffle(idUserList))
+      }, [idUserList])
 
     return (
         <div>
@@ -55,6 +63,7 @@ export default function QuickStart() {
             )}
             <input type="text" ref={idInputRef} />
             <button onClick={idAdd}>등록</button>
+            <button onClick={handleShuffleList}>test</button>
         </div>
     );
 }
