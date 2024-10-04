@@ -7,19 +7,33 @@
     <script>
         function SE(ingredient) {
             var answer = 0;
-            ingredient = ingredient.join('').split('1231')
+            ingredient = ingredient.join('')
+            // ingredient = ingredient.join('')
+            // console.log(ingredient.indexOf('1231'));
+            // console.log(ingredient.slice(ingredient.indexOf('1231'), 4));
+            // console.log(ingredient);
             
-            while(ingredient.length > 1){
-                answer += (ingredient.length - 1);
-                console.log(ingredient);
-                
-                ingredient = ingredient.join('').split('1231')
+            
+            while(ingredient.indexOf('1231') >= 0){
+                answer++;
+                ingredient = ingredient.replace('1231', '')
             }
+
+            
+            // ingredient = ingredient.join('').split('1231')
+            
+            // while(ingredient.length > 1){
+            //     answer += (ingredient.length - 1);
+                
+            //     ingredient = ingredient.join('').split('1231')
+            // }
 
             return answer; 
         }
-        console.log(SE([1])); 
-        // console.log(SE([2, 1, 1, 2, 3, 1, 2, 3, 1]));  
+        // console.log(SE([1])); 
+        // console.log(SE([2, 1, 1, 2, 3, 1, 2, 3, 1]));
+        console.log(SE([1,  , 2, 3, 1, 2, 3, 1, 2, 3, 1]));
+        
     </script>
 </head>
 <body>
