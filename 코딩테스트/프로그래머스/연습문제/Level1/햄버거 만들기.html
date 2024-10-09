@@ -7,33 +7,36 @@
     <script>
         function SE(ingredient) {
             var answer = 0;
+
             ingredient = ingredient.join('')
-            // ingredient = ingredient.join('')
-            // console.log(ingredient.indexOf('1231'));
-            // console.log(ingredient.slice(ingredient.indexOf('1231'), 4));
-            // console.log(ingredient);
-            
             
             while(ingredient.indexOf('1231') >= 0){
                 answer++;
                 ingredient = ingredient.replace('1231', '')
+                console.log(ingredient);
+            }
+            
+            return answer;  
+        }
+
+        function case01(ingredient){
+            var answer = 0;
+            let stack = [];
+
+            for (let ing of ingredient) {
+                stack.push(ing);
+                
+                if (stack.slice(-4).join('') === '1231') {
+                    stack.splice(-4);
+                    answer++;
+                }
             }
 
-            
-            // ingredient = ingredient.join('').split('1231')
-            
-            // while(ingredient.length > 1){
-            //     answer += (ingredient.length - 1);
-                
-            //     ingredient = ingredient.join('').split('1231')
-            // }
-
-            return answer; 
+            return answer;  
         }
-        // console.log(SE([1])); 
-        // console.log(SE([2, 1, 1, 2, 3, 1, 2, 3, 1]));
-        console.log(SE([1,  , 2, 3, 1, 2, 3, 1, 2, 3, 1]));
-        
+
+        // console.log(SE([1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1]));
+        console.log(case01([1, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1]));
     </script>
 </head>
 <body>
