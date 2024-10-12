@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2022 KAKAO TECH INTERNSHIP 성격 유형 검사하기</title>
+    <script>
+        function SE(survey, choices) {
+            const standard = 'RTCFJMAN';
+            var answer = new Array(4).fill(0);
+            survey.forEach((s, idx)=>{
+                const location = Math.floor(standard.indexOf(s[0]) / 2);
+                let numb = choices[idx] - 4;
+                standard.indexOf(s[0]) % 2 && (numb *= -1);
+                answer[location] += numb;
+            })
+
+            return answer.map((a, idx)=>{
+                let location = idx * 2;
+                a > 0 && location++;
+                return standard[location]
+            }).join('')
+        }
+
+        console.log(SE(["AN", "CF", "MJ", "RT", "NA"], [5, 3, 2, 7, 5]));
+        console.log(SE(["TR", "RT", "TR"], [7, 1, 3]));
+
+        function GPT(survey, choices) {
+            const standard = 'RTCFJMAN';
+            const answer = [0, 0, 0, 0];
+
+            survey.forEach((s, idx) => {
+                const location = Math.floor(standard.indexOf(s[0]) / 2);
+                answer[location] += (choices[idx] - 4) * (standard.indexOf(s[0]) % 2 ? -1 : 1);
+            });
+
+            return answer.map((a, idx) => standard[idx * 2 + (a > 0 ? 1 : 0)]).join('');
+        }
+
+        
+        console.log(GPT(["AN", "CF", "MJ", "RT", "NA"], [5, 3, 2, 7, 5]));
+        console.log(GPT(["TR", "RT", "TR"], [7, 1, 3]));
+        
+    </script>
+</head>
+<body>
+    <h1>성격 유형 검사하기</h1>
+    <h2>문제 설명</h2>
+    <p>나만의 카카오 성격 유형 검사지를 만들려고 합니다.</p>
+    <p>성격 유형 검사는 다음과 같은 4개 지표로 성격 유형을 구분합니다. 성격은 각 지표에서 두 유형 중 하나로 결정됩니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>지표 번호</b></td>
+            <td><b>성격 유형</b></td>
+        </tr>
+        <tr>
+            <td>1번 지표</td>
+            <td>라이언형(R), 튜브형(T)</td>
+        </tr>
+        <tr>
+            <td>2번 지표</td>
+            <td>콘형(C), 프로도형(F)</td>
+        </tr>
+        <tr>
+            <td>3번 지표</td>
+            <td>제이지형(J), 무지형(M)</td>
+        </tr>
+        <tr>
+            <td>4번 지표</td>
+            <td>어피치형(A), 네오형(N)</td>
+        </tr>
+    </table>
+    
+    <p>4개의 지표가 있으므로 성격 유형은 총 16(=2 x 2 x 2 x 2)가지가 나올 수 있습니다. 예를 들어, "RFMN"이나 "TCMA"와 같은 성격 유형이 있습니다.</p>
+
+    <p>검사지에는 총 <mark>n</mark>개의 질문이 있고, 각 질문에는 아래와 같은 7개의 선택지가 있습니다.</p>
+
+    <ul>
+        <li>매우 비동의</li>
+        <li>비동의</li>
+        <li>약간 비동의</li>
+        <li>모르겠음</li>
+        <li>약간 동의</li>
+        <li>동의</li>
+        <li>매우 동의</li>
+    </ul>
+    
+    <p>각 질문은 1가지 지표로 성격 유형 점수를 판단합니다.</p>
+
+    <p>예를 들어, 어떤 한 질문에서 4번 지표로 아래 표처럼 점수를 매길 수 있습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>네오형 3점</td>
+        </tr>
+        <tr>
+            <td>비동의</td>
+            <td>네오형 2점</td>
+        </tr>
+        <tr>
+            <td>약간 비동의</td>
+            <td>네오형 1점</td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td>약간 동의</td>
+            <td>어피치형 1점</td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>어피치형 2점</td>
+        </tr>
+        <tr>
+            <td>매우 동의</td>
+            <td>어피치형 3점</td>
+        </tr>
+    </table>
+
+    <p>이때 검사자가 질문에서 약간 동의 선택지를 선택할 경우 어피치형(A) 성격 유형 1점을 받게 됩니다. 만약 검사자가 매우 비동의 선택지를 선택할 경우 네오형(N) 성격 유형 3점을 받게 됩니다.</p>
+
+    <p><b>위 예시처럼 네오형이 비동의, 어피치형이 동의인 경우만 주어지지 않고, 질문에 따라 네오형이 동의, 어피치형이 비동의인 경우도 주어질 수 있습니다.</b></p>
+    <p>하지만 각 선택지는 고정적인 크기의 점수를 가지고 있습니다.</p>
+
+    <ul>
+        <li><mark>매우 동의</mark>나 <mark>매우 비동의</mark> 선택지를 선택하면 3점을 얻습니다.</li>
+        <li><mark>동의</mark>나 <mark>비동의</mark> 선택지를 선택하면 2점을 얻습니다.</li>
+        <li><mark>약간 동의</mark>나 <mark>약간 비동의</mark> 선택지를 선택하면 1점을 얻습니다.</li>
+        <li><mark>모르겠음</mark> 선택지를 선택하면 점수를 얻지 않습니다.</li>
+    </ul>
+    <p>검사 결과는 모든 질문의 성격 유형 점수를 더하여 각 지표에서 더 높은 점수를 받은 성격 유형이 검사자의 성격 유형이라고 판단합니다. 단, 하나의 지표에서 각 성격 유형 점수가 같으면, 두 성격 유형 중 사전 순으로 빠른 성격 유형을 검사자의 성격 유형이라고 판단합니다.</p>
+
+    <p>질문마다 판단하는 지표를 담은 1차원 문자열 배열 <mark>survey</mark>와 검사자가 각 질문마다 선택한 선택지를 담은 1차원 정수 배열 <mark>choices</mark>가 매개변수로 주어집니다. 이때, 검사자의 성격 유형 검사 결과를 지표 번호 순서대로 return 하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ survey의 길이 ( = n) ≤ 1,000
+            <ul>
+                <li>survey의 원소는 "RT", "TR", "FC", "CF", "MJ", "JM", "AN", "NA" 중 하나입니다.</li>
+                <li>survey[i]의 첫 번째 캐릭터는 i+1번 질문의 비동의 관련 선택지를 선택하면 받는 성격 유형을 의미합니다.</li>
+                <li>survey[i]의 두 번째 캐릭터는 i+1번 질문의 동의 관련 선택지를 선택하면 받는 성격 유형을 의미합니다.</li>
+            </ul>
+        </li>
+        <li>choices의 길이 = survey의 길이
+            <ul>
+                <li>choices[i]는 검사자가 선택한 i+1번째 질문의 선택지를 의미합니다.</li>
+                <li>1 ≤ choices의 원소 ≤ 7</li>
+            </ul>
+        </li>
+    </ul>
+
+    <table border="1">
+        <tr>
+            <td><b>choices</b></td>
+            <td><b>뜻</b></td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>매우 비동의</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>비동의</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>약간 비동의</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>모르겠음</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>약간 동의</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>동의</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>매우 동의</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td><b>survey</b></td>
+            <td><b>choices</b></td>
+            <td><b>result</b></td>
+        </tr>
+        <tr>
+            <td>["AN", "CF", "MJ", "RT", "NA"]</td>
+            <td>[5, 3, 2, 7, 5]</td>
+            <td>"TCMA"</td>
+        </tr>
+        <tr>
+            <td>["TR", "RT", "TR"]</td>
+            <td>[7, 1, 3]</td>
+            <td>"RCJA"</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+
+    <p>1번 질문의 점수 배치는 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>어피치형 3점</td>
+        </tr>
+        <tr>
+            <td>비동의</td>
+            <td>어피치형 2점</td>
+        </tr>
+        <tr>
+            <td>약간 비동의</td>
+            <td>어피치형 1점</td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td><mark>약간 동의</mark></td>
+            <td><mark>네오형 1점</mark></td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>네오형 2점</td>
+        </tr>
+        <tr>
+            <td>매우 동의</td>
+            <td>네오형 3점</td>
+        </tr>
+    </table>
+
+    <>
+        1번 질문에서는 지문의 예시와 다르게 비동의 관련 선택지를 선택하면 어피치형(A) 성격 유형의 점수를 얻고, 동의 관련 선택지를 선택하면 네오형(N) 성격 유형의 점수를 얻습니다.<br/>
+        1번 질문에서 검사자는 <mark>약간 동의</mark> 선택지를 선택했으므로 네오형(N) 성격 유형 점수 1점을 얻게 됩니다.
+    </p>
+
+    <p>2번 질문의 점수 배치는 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>콘형 3점</td>
+        </tr>
+        <tr>
+            <td>비동의</td>
+            <td>콘형 2점</td>
+        </tr>
+        <tr>
+            <td><mark>약간 비동의</mark></td>
+            <td><mark>콘형 1점</mark></td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td>약간 동의</td>
+            <td>프로도형 1점</td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>프로도형 2점</td>
+        </tr>
+        <tr>
+            <td>매우 동의</td>
+            <td>프로도형 3점</td>
+        </tr>
+    </table>
+    <p>2번 질문에서 검사자는 <mark>약간 비동의</mark> 선택지를 선택했으므로 콘형(C) 성격 유형 점수 1점을 얻게 됩니다.</p>
+
+    <p>3번 질문의 점수 배치는 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>무지형 3점</td>
+        </tr>
+        <tr>
+            <td><mark>비동의</mark></td>
+            <td><mark>무지형 2점</mark></td>
+        </tr>
+        <tr>
+            <td>약간 비동의</td>
+            <td>무지형 1점</td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td>약간 동의</td>
+            <td>제이지형 1점</td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>제이지형 2점</td>
+        </tr>
+        <tr>
+            <td>매우 동의</td>
+            <td>제이지형 3점</td>
+        </tr>
+    </table>
+
+    <p>3번 질문에서 검사자는 <mark>비동의</mark> 선택지를 선택했으므로 무지형(M) 성격 유형 점수 2점을 얻게 됩니다.</p>
+
+    <p>4번 질문의 점수 배치는 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>라이언형 3점</td>
+        </tr>
+        <tr>
+            <td>비동의</td>
+            <td>라이언형 2점</td>
+        </tr>
+        <tr>
+            <td>약간 비동의</td>
+            <td>라이언형 1점</td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td>약간 동의</td>
+            <td>튜브형 1점</td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>튜브형 2점</td>
+        </tr>
+        <tr>
+            <td><mark>매우 동의</mark></td>
+            <td><mark>튜브형 3점</mark></td>
+        </tr>
+    </table>
+
+    <p>4번 질문에서 검사자는 <mark>매우 동의</mark> 선택지를 선택했으므로 튜브형(T) 성격 유형 점수 3점을 얻게 됩니다.</p>
+
+    <p>5번 질문의 점수 배치는 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>선택지</b></td>
+            <td><b>성격 유형 점수</b></td>
+        </tr>
+        <tr>
+            <td>매우 비동의</td>
+            <td>네오형 3점</td>
+        </tr>
+        <tr>
+            <td>비동의</td>
+            <td>네오형 2점</td>
+        </tr>
+        <tr>
+            <td>약간 비동의</td>
+            <td>네오형 1점</td>
+        </tr>
+        <tr>
+            <td>모르겠음</td>
+            <td>어떤 성격 유형도 점수를 얻지 않습니다</td>
+        </tr>
+        <tr>
+            <td><mark>약간 동의</mark></td>
+            <td><mark>어피치형 1점</mark></td>
+        </tr>
+        <tr>
+            <td>동의</td>
+            <td>어피치형 2점</td>
+        </tr>
+        <tr>
+            <td>매우 동의</td>
+            <td>어피치형 3점</td>
+        </tr>
+    </table>
+
+    <p>5번 질문에서 검사자는 <mark>약간 동의</mark> 선택지를 선택했으므로 어피치형(A) 성격 유형 점수 1점을 얻게 됩니다.</p>
+
+    <p>1번부터 5번까지 질문의 성격 유형 점수를 합치면 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>지표 번호</b></td>
+            <td><b>성격 유형</b></td>
+            <td><b>점수</b></td>
+            <td><b>성격 유형</b></td>
+            <td><b>점수</b></td>
+        </tr>
+        <tr>
+            <td>1번 지표</td>
+            <td>라이언형(R)</td>
+            <td>0</td>
+            <td>튜브형(T)</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2번 지표</td>
+            <td>콘형(C)</td>
+            <td>1</td>
+            <td>프로도형(F)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>3번 지표</td>
+            <td>제이지형(J)</td>
+            <td>0</td>
+            <td>무지형(M)</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>4번 지표</td>
+            <td>어피치형(A)</td>
+            <td>1</td>
+            <td>네오형(N)</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    <p>
+        각 지표에서 더 점수가 높은 <mark>T</mark>,<mark>C</mark>,<mark>M</mark>이 성격 유형입니다.<br/>
+        하지만, 4번 지표는 1점으로 동일한 점수입니다. 따라서, 4번 지표의 성격 유형은 사전순으로 빠른 <mark>A</mark>입니다.
+    </p>
+
+    <p>따라서 <mark>"TCMA"</mark>를 return 해야 합니다.</p>
+
+    <strong>입출력 예 #2</strong>
+
+    <p>1번부터 3번까지 질문의 성격 유형 점수를 합치면 아래 표와 같습니다.</p>
+
+    <table border="1">
+        <tr>
+            <td><b>지표 번호</b></td>
+            <td><b>성격 유형</b></td>
+            <td><b>점수</b></td>
+            <td><b>성격 유형</b></td>
+            <td><b>점수</b></td>
+        </tr>
+        <tr>
+            <td>1번 지표</td>
+            <td>라이언형(R)</td>
+            <td>6</td>
+            <td>튜브형(T)</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>2번 지표</td>
+            <td>콘형(C)</td>
+            <td>0</td>
+            <td>프로도형(F)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>3번 지표</td>
+            <td>제이지형(J)</td>
+            <td>0</td>
+            <td>무지형(M)</td>
+            <td>0</td>
+        </tr>
+        <tr>
+            <td>4번 지표</td>
+            <td>어피치형(A)</td>
+            <td>0</td>
+            <td>네오형(N)</td>
+            <td>0</td>
+        </tr>
+    </table>
+
+    <p>
+        1번 지표는 튜브형(T)보다 라이언형(R)의 점수가 더 높습니다. 따라서 첫 번째 지표의 성격 유형은 <mark>R</mark>입니다.<br/>
+        하지만, 2, 3, 4번 지표는 모두 0점으로 동일한 점수입니다. 따라서 2, 3, 4번 지표의 성격 유형은 사전순으로 빠른 <mark>C</mark>, <mark>J</mark>, <mark>A</mark>입니다.
+    </p>
+
+    <p>따라서 <mark>"RCJA"</mark>를 return 해야 합니다.</p>
+</body>
+</html>
