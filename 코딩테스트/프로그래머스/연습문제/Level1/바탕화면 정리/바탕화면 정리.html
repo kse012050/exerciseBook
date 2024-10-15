@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>바탕화면 정리</title>
     <script>
-        console.log([1,1].length);
-        
         function SE(wallpaper) {
             var answer = new Array(4).fill(0);
             
@@ -18,13 +16,50 @@
             answer[2] = parseInt(wallpaper.lastIndexOf('#') / length + 1)
             
             for(let a = 0; a < parseInt(wallpaper.length / length);a++){
-                answer[1] = Math.min(answer[1], wallpaper.indexOf('#', a * length) - a * length)
+                answer[1] = wallpaper.indexOf('#', a * length) >= 0 ? Math.min(answer[1], wallpaper.indexOf('#', a * length) - a * length) : answer[1];
                 const test = wallpaper.slice(a * length, (a + 1) * length)
                 answer[3] = Math.max(answer[3], test.lastIndexOf('#') + 1)
             }
             return answer;
         }
         console.log(SE([".#...", "..#..", "...#."]));
+
+        function case01(wallpaper) {
+            let left = [];
+            let top = [];
+            let right = []
+            let bottom = [];
+            wallpaper.forEach((v,i) => {
+                [...v].forEach((val,ind) => {
+                    if(val === "#") {
+                        left.push(i)
+                        top.push(ind)
+                        right.push(i + 1)
+                        bottom.push(ind + 1)
+                    }
+                })
+            })
+            return [Math.min(...left), Math.min(...top), Math.max(...right), Math.max(...bottom)]
+        }
+        console.log(case01([".#...", "..#..", "...#."]));
+
+        function case02(wallpaper) {
+            let [x1, y1, x2, y2] = [wallpaper.length, wallpaper[0].length, 0, 0];
+            // x1 => min i
+            // x2 => max i
+            // y1 => min idx
+            // y2 => max idx
+            wallpaper.forEach((paper, i) => {
+            if (paper.includes('#')) {
+                x1 = Math.min(x1, i);
+                y1 = Math.min(y1, paper.indexOf('#'));
+                x2 = Math.max(x2, i);
+                y2 = Math.max(y2, paper.lastIndexOf('#'));
+            }
+            });
+            return [x1, y1, x2 + 1, y2 + 1];
+        }
+        console.log(case02([".#...", "..#..", "...#."]));
     </script>
 </head>
 <body>
