@@ -6,9 +6,16 @@
     <title>달리기 경주</title>
     <script>
         function SE(players, callings) {
+            let obj = {}
+            for(let a = 0; a < players.length; a++){
+                obj[players[a]] = a;
+            }
             callings.forEach((value)=>{
-                const idx = players.indexOf(value)
+                const idx = obj[value];
+                
                 players.splice(idx - 1, 2, players[idx], players[idx - 1])
+                obj[value] = idx - 1;
+                obj[players[idx]] = idx;
             })
             return players;
         }
