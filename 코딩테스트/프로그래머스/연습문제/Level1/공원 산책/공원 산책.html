@@ -7,7 +7,6 @@
     <script>
         function SE(park, routes) {
             var answer = [];
-            // park = park.join('');
 
             park.forEach((item, idx)=>{
                 if(item.includes('S')){
@@ -18,31 +17,32 @@
             routes.forEach((item)=>{
                 item = item.split(' ')
                 item[1] = Number(item[1])
-                let arr = '';
+                let str = '';
+
                 if(item[0] === 'E'){
-                    arr = park[answer[0]].slice(answer[1])
-                    if(arr.length > item[1] && !arr.includes('X')){
+                    str = park[answer[1]].slice(answer[1])
+                    if(str.length > item[1] && !str.includes('X')){
                         answer[1] += item[1];
                     }
                     
                 }else if(item[0] === 'W'){
-                    arr = park[answer[0]].slice(0, answer[1]);
-                    if(arr.length >= item[1] &&!arr.includes('X')){
+                    str = park[answer[1]].slice(0, answer[1]);
+                    if(str.length >= item[1] &&!str.includes('X')){
                         answer[1] -= item[1];
                     }
                     
                 }else if(item[0] === 'S' && park.length > answer[0] + item[1]){
-                    for(let a = answer[0]; a < answer[0] + item[1]; a++){
-                        arr += park[a][answer[1]]
+                    for(let a = answer[0]; a <= answer[0] + item[1]; a++){
+                        str += park[a][answer[1]]
                     }
-                    if(!arr.includes('X')){
+                    if(!str.includes('X')){
                         answer[0] += item[1];
                     }
-                }else if(item[0] === 'N' && answer[0] - item[1] > 0){
-                    for(let a = answer[0]; a < answer[0] + item[1]; a++){
-                        arr += park[a][answer[1]]
+                }else if(item[0] === 'N' && answer[0] - item[1] >= 0){
+                    for(let a = answer[0]; a < answer[0] - item[1]; a++){
+                        str += park[a][answer[1]]
                     }
-                    if(!arr.includes('X')){
+                    if(!str.includes('X')){
                         answer[0] -= item[1];
                     }
                 }
@@ -50,9 +50,18 @@
             
             return answer;
         }
-        console.log(SE(["SOO","OOO","OOO"], ["E 2","S 2","W 1"]));
-        console.log(SE(["SOO","OXX","OOO"], ["E 2","S 2","W 1"]));
-        console.log(SE(["OSO","OOO","OXO","OOO"], ["E 2","S 3","W 1"]));
+        // console.log(SE(["SOO","OOO","OOO"], ["E 2","S 2","W 1"]));
+        // console.log(SE(["SOO","OXX","OOO"], ["E 2","S 2","W 1"]));
+        // console.log(SE(["OSO","OOO","OXO","OOO"], ["E 2","S 3","W 1"]));
+        // console.log(SE(["OOOOO", "OOOOO", "OOSOO", "OOOOO", "OOOOO"], ["E 3", "W 3", "S 3", "N 3", "E 2", "E 1", "W 4", "W 1", "S 2", "S 1", "N 4", "N 1"]));
+        // console.log(SE(["OOOOO", "OOOOO", "OOSOO", "OOOOO", "OOOOO"], ["S 3", "N 3", "S 2", "S 1", "N 4", "N 1"]));
+        // console.log(SE(["OXXO", "XSXO", "XXXX"], ["E 1", "S 1"]));
+        // console.log(SE(["OXO", "XSX", "OXO"], ["S 1", "E 1", "W 1", "N 1"]));
+        // console.log(SE(["OOS", "OOO", "OOO"], ["E 1"]));
+        // console.log(SE(["SXO", "XOO", "OOO"], ["E 2", "S 2", "W 1"]));
+        // console.log(SE(["OOO", "OSO", "OXO", "OOO"], ["W 2", "N 1"]));
+        // console.log(SE(["OOSOX", "OOOOO", "OOOOO"], ["E 1"]));
+        console.log(SE(["SOO", "OOO", "XOO"], ["S 1"]));
         
         
     </script>
