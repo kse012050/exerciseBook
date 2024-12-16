@@ -18,16 +18,19 @@
                 item = item.split(' ')
                 item[1] = Number(item[1])
                 let str = '';
-
+               
                 if(item[0] === 'E'){
-                    str = park[answer[1]].slice(answer[1])
-                    if(str.length > item[1] && !str.includes('X')){
+                    str = park[answer[0]].slice(answer[1], answer[1] + item[1])
+                    console.log(str);
+                    console.log(item[1]);
+                    
+                    if(!str.includes('X') && str.length >= item[1]){
                         answer[1] += item[1];
                     }
-                    
                 }else if(item[0] === 'W'){
-                    str = park[answer[1]].slice(0, answer[1]);
-                    if(str.length >= item[1] &&!str.includes('X')){
+                    str = park[answer[0]].slice(Math.abs(answer[1] - item[1]), answer[1]);
+                    
+                    if(!str.includes('X') && str.length >= item[1]){
                         answer[1] -= item[1];
                     }
                     
@@ -61,7 +64,13 @@
         // console.log(SE(["SXO", "XOO", "OOO"], ["E 2", "S 2", "W 1"]));
         // console.log(SE(["OOO", "OSO", "OXO", "OOO"], ["W 2", "N 1"]));
         // console.log(SE(["OOSOX", "OOOOO", "OOOOO"], ["E 1"]));
-        console.log(SE(["SOO", "OOO", "XOO"], ["S 1"]));
+        // console.log(SE(["SXO", "OXX", "OOO"], ["E 4", "S 4", "N 4", "S 1", "S 1", "E 2"]));
+        // console.log(SE(["OXXXO", "XOOOX", "XOSOX", "XOOOX", "OXXXO"], ["E 1", "W 2", "E 1", "S 1", "N 2", "S 1"]));
+        // console.log(SE(["SOOXO", "OOOXO", "OXOOO", "XOOOO"], ["E 2", "S 2", "W 2", "S 1", "W 1"]));
+        console.log(SE(["OSO", "OOO", "OXO", "OOO"], ["E 2", "S 3", "W 1"]));
+        
+        
+        // console.log(SE(["SOO", "OOO", "XOO"], ["S 1"]));
         
         
     </script>
