@@ -55,14 +55,64 @@
             
             return answer;
         }
-        console.log(SE(["OXO", "XSX", "OXO"], ["S 1", "E 1", "W 1", "N 1"]));
+        // console.log(SE(["OXO", "XSX", "OXO"], ["S 1", "E 1", "W 1", "N 1"]));
         // console.log(SE(["OOS", "OOO", "OOO"], ["E 2", "W 2", "S 2", "E 3"]));
         // console.log(SE(["OSO", "OOO", "OXO", "OOO"], ["E 2", "S 3", "W 1"]));
         
         
         
         // console.log(SE(["SOO", "OOO", "XOO"], ["S 1"]));
+
+        function case01(park, routes) {
+            const dirs = { E: [0, 1], W: [0, -1], S: [1, 0], N: [-1, 0] };
+            let [x, y] = [0, 0];
+            for (let i = 0; i < park.length; i++) {
+                if (park[i].includes('S')) {
+                    [x, y] = [i, park[i].indexOf('S')];
+                    break;
+                }
+            }
+
+            console.log(x, y);
+            
+
+            routes.forEach((route) => {
+                const [r, n] = route.split(' ');
+                let [nx, ny] = [x, y];
+                let cnt = 0;
+                console.log(nx, ny);
+                console.log(dirs);
+                console.log(dirs[r][0]);
+                
+                while (cnt < n) {
+                    [nx, ny] = [nx + dirs[r][0], ny + dirs[r][1]];
+                    if (!park[nx] || !park[nx][ny] || park[nx][ny] === 'X') break;
+                    cnt++;
+                }
+                if (cnt == n) [x, y] = [nx, ny];
+            });
+            return [x, y];
+        }
+
+        console.log(case01(["SOO", "OOO", "XOO"], ["S 1"]));
         
+
+        function case02(park, routes) {
+            const n = park.length, m = park[0].length;
+            const map = park.map(x => [...x]), dir = { 'E': [0, 1], 'S': [1, 0], 'W': [0, -1], 'N': [-1, 0]};
+            var i = map.findIndex(x => x.includes('S')), j = map[i].findIndex(x => x === 'S');
+            const move = (route) => {
+                let [r, s] = route.split(' '), x = i, y = j;
+                for(let k = 0; k < Number(s); k++) {
+                    x += dir[r][0];
+                    y += dir[r][1];
+                    if (x < 0 || y < 0 || x >= n || y >= m || map[x][y] === 'X') return [i, j];
+                }
+                return [x, y];
+            }
+            for(let route of routes) var [i, j] = move(route);
+            return [i, j];
+        }
         
     </script>
 </head>
