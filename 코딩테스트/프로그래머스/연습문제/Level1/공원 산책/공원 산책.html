@@ -73,34 +73,50 @@
                 }
             }
 
-            console.log(x, y);
+            // console.log('시작점', x, y);
             
 
             routes.forEach((route) => {
                 const [r, n] = route.split(' ');
                 let [nx, ny] = [x, y];
                 let cnt = 0;
-                console.log(nx, ny);
-                console.log(dirs);
-                console.log(dirs[r][0]);
+                console.log('이동', r, n);
+                console.log('시작점', x, y);
+                console.log('이건 왜?', nx, ny);
+                console.log('cnt', cnt);
+                console.log('n', n);
                 
                 while (cnt < n) {
                     [nx, ny] = [nx + dirs[r][0], ny + dirs[r][1]];
+                    console.log('?', nx, ny);
+                    console.log('park[nx]', park[nx]);
+                    console.log('park[nx][ny]', park[nx][ny]);
+                    
+                    console.log('---');
                     if (!park[nx] || !park[nx][ny] || park[nx][ny] === 'X') break;
                     cnt++;
                 }
                 if (cnt == n) [x, y] = [nx, ny];
+                console.log('--------------------------');
+                
             });
             return [x, y];
         }
 
-        console.log(case01(["SOO", "OOO", "XOO"], ["S 1"]));
+        // console.log(case01(["OOO", "OSO", "XOO"], ["S 1"]));
+        // console.log(case01(["OSO", "OOO", "OXO", "OOO"], ["E 2", "S 3", "W 1"]));
+        // console.log(case01(["SOOXO", "OOOXO", "OXOOO", "XOOOO"], ["E 2", "S 2", "W 2", "S 1", "W 1"]));
+        
         
 
         function case02(park, routes) {
             const n = park.length, m = park[0].length;
             const map = park.map(x => [...x]), dir = { 'E': [0, 1], 'S': [1, 0], 'W': [0, -1], 'N': [-1, 0]};
+            console.log(map);
+            
             var i = map.findIndex(x => x.includes('S')), j = map[i].findIndex(x => x === 'S');
+            console.log('시작점', i, j);
+            
             const move = (route) => {
                 let [r, s] = route.split(' '), x = i, y = j;
                 for(let k = 0; k < Number(s); k++) {
@@ -110,9 +126,11 @@
                 }
                 return [x, y];
             }
-            for(let route of routes) var [i, j] = move(route);
+            for(let route of routes) var [i, j] = move(route); 
             return [i, j];
         }
+        // console.log(case02(["OSO", "OOO", "OXO", "OOO"], ["E 2", "S 3", "W 1"]));
+        console.log(case02(["SOOXO", "OOOXO", "OXOOO", "XOOOO"], ["E 2", "S 2", "W 2", "S 1", "W 1"]));
         
     </script>
 </head>
