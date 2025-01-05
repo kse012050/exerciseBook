@@ -25,23 +25,30 @@
             
             return answer;
         }
-        console.log(SE(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2));
+        // console.log(SE(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2));
 
         function case01(id_list, report, k) {
             let reports = [...new Set(report)].map(a=>{return a.split(' ')});
+            console.log(reports);
+            
             let counts = new Map();
             for (const bad of reports){
                 counts.set(bad[1],counts.get(bad[1])+1||1)
             }
+            console.log(counts);
+            
             let good = new Map();
             for(const report of reports){
                 if(counts.get(report[1])>=k){
                     good.set(report[0],good.get(report[0])+1||1)
                 }
             }
+            console.log(good);
+            
             let answer = id_list.map(a=>good.get(a)||0)
             return answer;
-        }
+        } 
+        console.log(case01(["muzi", "frodo", "apeach", "neo"], ["muzi frodo","apeach frodo","frodo neo","muzi neo","apeach muzi"], 2));
         
     </script>
 </head>
