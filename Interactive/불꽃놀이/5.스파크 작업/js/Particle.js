@@ -9,6 +9,7 @@ export default class Particle extends CanvasOption {
         this.vx = vx;
         this.vy = vy;
         this.opacity = opacity;
+        this.friction = 0.97;
     }
 
     draw(){
@@ -21,6 +22,10 @@ export default class Particle extends CanvasOption {
 
     update(){
         this.opacity -= 0.05;   
+
+        this.vx *= this.friction;
+        this.vy *= this.friction;
+
         this.x += this.vx;
         this.y += this.vy;
     }

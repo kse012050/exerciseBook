@@ -47,8 +47,8 @@ class Canvas extends CanvasOption{
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight)
 
             this.particles.forEach((particle)=>{
-                particle.update();
                 particle.draw();
+                particle.update();
             })
 
             then = now - (delta % this.interval);
