@@ -1,10 +1,12 @@
 import CanvasOption from './js/CanvasOption.js';
 import Particle from './js/Particle.js';
+import Tail from './js/Tail.js';
 import { randomNum, hypotenuse } from './js/utils.js';
 
 class Canvas extends CanvasOption{
     constructor(){
         super();
+        this.tails = [];
         this.particles = []
     }
 
@@ -18,10 +20,13 @@ class Canvas extends CanvasOption{
         this.ctx.scale(this.dpr, this.dpr);
     }
 
-    createPaticle(){
-        const COUNT = 400;
+    createTail(){
         const x = randomNum(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
-        const y = randomNum(this.canvasHeight * 0.2, this.canvasHeight * 0.8);
+        this.tails.push(new Tail(x))
+    }
+
+    createPaticle(x, y){
+        const COUNT = 400;
         for(let a = 0; a < COUNT; a++){
             const r = randomNum(2, 100) * hypotenuse(this.canvasWidth, this.canvasHeight) * 0.00004;
             const angle = Math.PI / 180 * randomNum(360, 0)
@@ -36,7 +41,9 @@ class Canvas extends CanvasOption{
         let now, delta;
         let then = new Date();
 
-        this.createPaticle()
+        this.createTail();
+
+        // this.createPaticle()
 
         const frame = () =>{
             requestAnimationFrame(frame)
@@ -47,9 +54,23 @@ class Canvas extends CanvasOption{
             this.ctx.fillStyle = 'black';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-            this.particles.forEach((particle)=>{
+            this.tails.forEach((tail, idx) => {
+                tail.draw();
+                tail.update();
+                if(tail.opacity < 0.09){
+                    this.createPaticle(tail.x, tail.y)
+                    this.tails.splice(idx, 1);
+                }
+            })
+
+            this.particles.forEach((particle, idx)=>{
                 particle.draw();
                 particle.update();
+
+                if(particle.opacity < 0){
+                    this.particles.splice(idx, 1);
+                }
+                
             })
 
             then = now - (delta % this.interval)

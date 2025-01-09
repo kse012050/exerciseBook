@@ -30,5 +30,6 @@ export default class Particle extends CanvasOption{
         this.vy += this.gravity;
 
         this.opacity -= 0.0055;
+        
     }
 }
