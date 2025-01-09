@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>피보나치 수</title>
+    <script>
+        function SE(n) {
+            var answer = 1;
+            let prev = 0;
+            for(let a = 1; a < n; a++){
+                const current = answer + prev;
+                prev = answer;
+                answer = current % 1234567;
+            }
+            return answer;
+        }
+        // console.log(SE(3));
+        console.log(SE(5));
+        
+    </script>
+</head>
+<body>
+    <h1>피보나치 수</h1>
+    <h2>문제 설명</h2>
+    <p>피보나치 수는 F(0) = 0, F(1) = 1일 때, 1 이상의 n에 대하여 F(n) = F(n-1) + F(n-2) 가 적용되는 수 입니다.</p>
+
+    <p>예를들어</p>
+    <ul>
+        <li>F(2) = F(0) + F(1) = 0 + 1 = 1</li>
+        <li>F(3) = F(1) + F(2) = 1 + 1 = 2</li>
+        <li>F(4) = F(2) + F(3) = 1 + 2 = 3</li>
+        <li>F(5) = F(3) + F(4) = 2 + 3 = 5</li>
+    </ul>
+    <p>와 같이 이어집니다.</p>
+    <p>2 이상의 n이 입력되었을 때, n번째 피보나치 수를 1234567으로 나눈 나머지를 리턴하는 함수, solution을 완성해 주세요.</p>
+
+    <h2>제한 사항</h2>
+    <ul>
+        <li>n은 2 이상 100,000 이하인 자연수입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>return</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>5</td>
+        </tr>
+    </table>
+    
+    <h2>입출력 예 설명</h2>
+    <p>피보나치수는 0번째부터 0, 1, 1, 2, 3, 5, ... 와 같이 이어집니다.</p>
+</body>
+</html>
