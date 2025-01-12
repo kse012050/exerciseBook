@@ -19,15 +19,16 @@
                         return -1;
                     }
                 }else if(answer !== health){
-                    answer += bandage[3];
+                    if(count === bandage[0]){
+                        bandage[3] += bandage[2]
+                    }
                     if(answer >= health){
                         answer = health;
+                    }else{
+                        answer += bandage[3];
                     }
                 }
-
-                if(count === bandage[0]){
-                    bandage[3] += bandage[2]
-                }
+ 
                 count++;
                 console.log(answer);
                 
@@ -37,8 +38,8 @@
         // console.log(SE([5, 1, 5], 30, [[2, 10], [9, 15], [10, 5], [11, 5]]));
         // console.log(SE([3, 2, 7], 20, [[1, 15], [5, 16], [8, 6]]));
         console.log(SE([1, 1, 1], 5, [[1, 2], [3, 2]]));
-        
-        
+
+        // 문제에서 주어진 예시 풀이 과정을 보면 공격을 당하기 전까지 회복을 하고 공격을 당하는 것을 알 수 있습니다. 고로 글쓴이의 로직인 공격을 먼저 깎고 health <= 0 이면 return -1 하는 것은 오류 라고 생각 합니다.
     </script>
 </head>
 <body>
