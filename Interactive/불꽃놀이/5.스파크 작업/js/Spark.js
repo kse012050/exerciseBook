@@ -1,6 +1,6 @@
-import CanvasOption from './CanvasOption.js';
+import CanvasOption from "./CanvasOption.js"
 
-export default class Particle extends CanvasOption{
+export default class Spark extends CanvasOption{
     constructor(x, y, vx, vy, opacity){
         super();
         this.x = x;
@@ -8,12 +8,10 @@ export default class Particle extends CanvasOption{
         this.vx = vx;
         this.vy = vy;
         this.opacity = opacity;
-        this.friction = 0.975;
-        this.gravity = 0.1;
     }
 
     draw(){
-        this.ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        this.ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`;
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, 1, 0, Math.PI * 2);
         this.ctx.fill();
@@ -21,15 +19,8 @@ export default class Particle extends CanvasOption{
     }
 
     update(){
-        
         this.x += this.vx;
         this.y += this.vy;
-
-        this.vx *= this.friction;
-        this.vy *= this.friction;
-
-        this.vy += this.gravity;
-
-        this.opacity *= 0.985;
+        this.opacity -= 0.05;
     }
 }
