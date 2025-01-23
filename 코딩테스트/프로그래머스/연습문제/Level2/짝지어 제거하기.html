@@ -7,18 +7,57 @@
     <script>
         function SE(s){
             var answer = s[0];
-            // s = s.split('')
             for(let a = 1; a < s.length; a++){
                 if(s[a - 1] === s[a]){
-                    s.splice(a - 1, 2);
                     s = s.replace(s[a] + s[a], '')
                     a = 0;
+                }else if(a > s.length / 2 && s){
+                    break;
                 }
             }
-            return s.length ? 1 : 0;
+            console.log(s);
+            
+            return !!s ? 0 : 1;
         }
+
+        function SE2(s) {
+            let answer = [];
+
+            for (let char of s) {
+                if (answer.length > 0 && answer[answer.length - 1] === char) {
+                    answer.pop(); 
+                } else {
+                    answer.push(char); 
+                }
+            }
+
+            return answer.length === 0 ? 1 : 0;
+        }
+
+        // 테스트 6 〉	통과 (31.50ms, 51.4MB)
+
+        function SE3(s){
+            let answer = [];
+
+            for(let a = 0; a < s.length; a++){
+                if (answer.length > 0 && answer[answer.length - 1] === s[a]) {
+                    answer.pop(); 
+                } else {
+                    answer.push(s[a]); 
+                }
+            }
+
+            return answer.length === 0 ? 1 : 0;
+        }
+
+        // 테스트 6 〉	실패 (시간 초과)
+
         console.log(SE('baabaa'));
-        // 배열보다 문자열로 하는 게 더 빠르다
+        console.log(SE('cdcd'));
+        console.log(SE('abcddcba'));
+        // 배열보다 문자열로 하는 게 더 빠르다 
+
+        
     </script>
 </head>
 <body>
