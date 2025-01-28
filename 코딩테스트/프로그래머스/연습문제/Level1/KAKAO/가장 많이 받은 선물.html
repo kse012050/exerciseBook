@@ -7,27 +7,52 @@
     <script>
         function SE(friends, gifts) {
             var answer = 0;
-            let test = {}
-            let test2 = Object.fromEntries(friends.map(name => [name, new Array(3).fill(0)]));
+            const test = friends.reduce((acc, name, b, c)=>{
+                const obj = friends.reduce((acc2, name2) => {
+                    if(name !== name2){
+                        acc2[name2] = 0;
+                    }
+                    return acc2;
+                }, {})
+                acc[name] = obj;
+                return acc
+            },{})
+            const test2 = Object.fromEntries(friends.map(name => [name, new Array(3).fill(0)]));
+            const already = []
+            const result = {}
+            
             gifts.forEach((arr)=> {
                 const [giver, receiver] = arr.split(' ');
-                if(!test[giver]){
-                    test[giver] = {[receiver]: 1}
-                }else{
-                    test[giver][receiver] = (test[giver][receiver] || 0) + 1;
-                }
+                test[giver][receiver] = (test[giver][receiver] || 0) + 1;
 
                 test2[giver][0] += 1;
                 test2[receiver][1] += 1;
             })
 
-            Object.entries(test2).map(([name, arr]) => arr[2] = arr[0] - arr[1]);
+            // Object.entries(test2).map(([name, arr]) => arr[2] = arr[0] - arr[1]);
+            
+            console.log(test);
+            console.log(test2);
+            
+            Object.entries(test).map(([name, arr], a, b) => {
+                Object.entries(arr).map(([name2, value], a, b) =>{
+                    if(test[name2].hasOwnProperty(name) && !already.includes(name2)){
+                        if((test[name][name2] !== 0 && test[name2][name] !== 0) || (test[name][name2] === 0 && test2[name2][name] === 0) && (test2[name][2] > test2[name2][2])){
+                            result[name] = (result[name] || 0) + 1;
+                        }
+                    }
+                    console.log('??????????????????????????');
+                })
+                console.log('------------------');
+                
+            })
+            console.log(result);
             
             return answer;
         }
         // console.log(SE(["joy", "brad", "alessandro", "conan", "david"], ["alessandro brad", "alessandro joy", "alessandro conan", "david alessandro", "alessandro david"]));
         console.log(SE(["muzi", "ryan", "frodo", "neo"], ["muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"]));
-        
+           
     </script>
 </head>
 <body>
@@ -61,7 +86,7 @@
         </li>
         <li>1 ≤ <mark>gifts</mark>의 길이 ≤ 10,000
             <ul>
-                <li><mark>gifts</mark>의 원소는 <mark>"A B"</mark>형태의 문자열입니다. <mark>A</mark>는 선물을 준 친구의 이름을 <mark>A</mark>는 선물을 받은 친구의 이름을 의미하며 공백 하나로 구분됩니다.</li>
+                <li><mark>gifts</mark>의 원소는 <mark>"A B"</mark>형태의 문자열입니다. <mark>A</mark>는 선물을 준 친구의 이름을 <mark>B</mark>는 선물을 받은 친구의 이름을 의미하며 공백 하나로 구분됩니다.</li>
                 <li><mark>A</mark>와 <mark>B</mark>는 <mark>friends</mark>의 원소이며 <mark>A</mark>와 <mark>B</mark>가 같은 이름인 경우는 존재하지 않습니다.</li>
             </ul>
         </li>
