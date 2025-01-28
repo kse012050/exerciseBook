@@ -9,6 +9,7 @@
             var answer = 0;
             const test = friends.reduce((acc, name, b, c)=>{
                 const obj = friends.reduce((acc2, name2) => {
+                    
                     if(name !== name2){
                         acc2[name2] = 0;
                     }
@@ -18,7 +19,6 @@
                 return acc
             },{})
             const test2 = Object.fromEntries(friends.map(name => [name, new Array(3).fill(0)]));
-            const already = []
             const result = {}
             
             gifts.forEach((arr)=> {
@@ -29,29 +29,38 @@
                 test2[receiver][1] += 1;
             })
 
-            // Object.entries(test2).map(([name, arr]) => arr[2] = arr[0] - arr[1]);
+            Object.entries(test2).map(([name, arr]) => arr[2] = arr[0] - arr[1]);
             
-            console.log(test);
-            console.log(test2);
+            // console.log(test);
+            // console.log(test2);
             
-            Object.entries(test).map(([name, arr], a, b) => {
-                Object.entries(arr).map(([name2, value], a, b) =>{
-                    if(test[name2].hasOwnProperty(name) && !already.includes(name2)){
-                        if((test[name][name2] !== 0 && test[name2][name] !== 0) || (test[name][name2] === 0 && test2[name2][name] === 0) && (test2[name][2] > test2[name2][2])){
-                            result[name] = (result[name] || 0) + 1;
-                        }
+            Object.entries(test).map(([name, obj], a, b) => {
+                Object.entries(obj).map(([name2, value], a, b) =>{
+                    // console.log(name);  현재 검수하는 사람
+                    // console.log(name2);   현재 검수하는 사람이 선물을 준 사람
+                    // console.log(obj[name2]); 현재 검수하는 사람이 준 갯수
+                    // console.log(test[name2][name]); 현재 검수하는 사람이 받은 객수
+                    
+                    if(obj[name2] > test[name2][name]){
+                        result[name] = (result[name] || 0) + 1
                     }
-                    console.log('??????????????????????????');
+
+                    if(obj[name2] === test[name2][name] && test2[name][2] > test2[name2][2]){
+                        result[name] = (result[name] || 0) + 1
+                    }
+                    
                 })
-                console.log('------------------');
-                
             })
             console.log(result);
+            answer = Object.entries(result).map(([_, value]) => value).sort((value, value2) => value2 - value)
+            console.log(answer);
             
-            return answer;
+            return answer[0];
         }
         // console.log(SE(["joy", "brad", "alessandro", "conan", "david"], ["alessandro brad", "alessandro joy", "alessandro conan", "david alessandro", "alessandro david"]));
-        console.log(SE(["muzi", "ryan", "frodo", "neo"], ["muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"]));
+        // console.log(SE(["muzi", "ryan", "frodo", "neo"], ["muzi frodo", "muzi frodo", "ryan muzi", "ryan muzi", "ryan muzi", "frodo muzi", "frodo ryan", "neo muzi"]));
+        console.log(SE(["a", "b", "c"], ["a b", "b a", "c a", "a c", "a c", "c a"]));
+        
            
     </script>
 </head>
