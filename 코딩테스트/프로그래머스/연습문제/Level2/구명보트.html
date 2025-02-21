@@ -8,23 +8,19 @@
         function SE(people, limit) {
             var answer = 0;
             people.sort((a, b) => a - b);
-            for(let a = 0; a < people.length; a++){
-                const arr = people.map((data, idx) => [data, idx]).filter(([data, idx]) => idx > a && people[a] + data <= limit)
-                if(arr.length){
-                    people.splice(arr.at(-1)[1], 1);
-                    answer++;
-                }else{
-                    people = people.slice(a)
-                    break;
+            for(let a = 0, b = people.length - 1; a <= b; b--){
+                if(people[a] + people[b] <= limit){
+                    a++;
                 }
+                answer++;
             }
-            return answer + people.length;
+            return answer
         }
         // console.log(SE([70, 50, 80, 50, 50], 100));
         // console.log(SE([100, 100, 50, 40], 140));
         // console.log(SE([30, 40, 60, 70], 100));
         console.log(SE([70, 80, 50], 100));
-        
+         
         
     </script>
 </head>
