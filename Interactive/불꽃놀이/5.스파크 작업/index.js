@@ -1,5 +1,6 @@
 import CanvasOption from './js/CanvasOption.js'
 import Particle from './js/Particle.js'
+import Tail from './js/Tail.js'
 import { randomNumber } from './js/utils.js'
 
 class Canvas extends CanvasOption{
@@ -19,6 +20,8 @@ class Canvas extends CanvasOption{
         this.ctx.scale(this.dpr, this.dpr);
     }
 
+  
+
     createParticles(){
         const COUNT = 400;
         const x = randomNumber(0, this.canvasWidth);
@@ -28,7 +31,8 @@ class Canvas extends CanvasOption{
             const r = Math.hypot(this.canvasWidth, this.canvasHeight) * randomNumber(0, 10) * 0.0004;
             const vx = r * Math.cos(angle);
             const vy = r * Math.sin(angle);
-            this.particles.push(new Particle(x, y, vx, vy));
+            const opacity = randomNumber(0.7, 0.9)
+            this.particles.push(new Particle(x, y, vx, vy, opacity));
         }
     }
 
@@ -36,7 +40,8 @@ class Canvas extends CanvasOption{
         let now, delta;
         let then = new Date();
 
-        this.createParticles();
+        // this.createParticles();
+
 
         const frame = () => {
             requestAnimationFrame(frame)
@@ -47,9 +52,13 @@ class Canvas extends CanvasOption{
             this.ctx.fillStyle = 'black';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
 
-            this.particles.forEach((particle) => {
+            this.particles.forEach((particle, idx) => {
                 particle.draw();
                 particle.update();
+
+                if(particle.opacity < 0.3){
+                    this.particles.splice(idx, 1)
+                }
             })
         }
 
@@ -65,5 +74,6 @@ window.addEventListener('load', () => {
 })
 
 window.addEventListener('resize', (e) => {
+    canvas.init();
     canvas.render();
 })
