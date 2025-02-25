@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>멀리 뛰기</title>
+    <script>
+        function SE(n) {
+            var answer = 3;
+            let numb1 = 2;
+            let numb2 = 3;
+            for(let a = 4; a <= n; a++){
+                numb1 = numb1 % 1234567;
+                numb2 = numb2 % 1234567;
+                answer = numb1 + numb2;
+                numb1 = numb2;
+                numb2 = answer;
+            }
+            
+            return answer;
+        }
+        console.log(SE(7));
+        
+    </script>
+</head>
+<body>
+    <h1>멀리 뛰기</h1>
+    <h2>문제 설명</h2>
+    <p>
+        효진이는 멀리 뛰기를 연습하고 있습니다. 효진이는 한번에 1칸, 또는 2칸을 뛸 수 있습니다. 칸이 총 4개 있을 때, 효진이는<br/>
+        (1칸, 1칸, 1칸, 1칸)<br/>
+        (1칸, 2칸, 1칸)<br/>
+        (1칸, 1칸, 2칸)<br/>
+        (2칸, 1칸, 1칸)<br/>
+        (2칸, 2칸)<br/>
+        의 5가지 방법으로 맨 끝 칸에 도달할 수 있습니다. 멀리뛰기에 사용될 칸의 수 n이 주어질 때, 효진이가 끝에 도달하는 방법이 몇 가지인지 알아내, 여기에 1234567를 나눈 나머지를 리턴하는 함수, solution을 완성하세요. 예를 들어 4가 입력된다면, 5를 return하면 됩니다.
+    </p>
+
+    <h2>제한 사항</h2>
+    <ul>
+        <li>n은 1 이상, 2000 이하인 정수입니다.</li>
+    </ul>
+    
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td>n</td>
+            <td>result</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>3</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong>입출력 예 #1</strong>
+    위에서 설명한 내용과 같습니다.
+
+    <strong>입출력 예 #2</strong>
+    (2칸, 1칸)<br/>
+    (1칸, 2칸)<br/>
+    (1칸, 1칸, 1칸)<br/>
+    총 3가지 방법으로 멀리 뛸 수 있습니다.
+</body>
+</html>
