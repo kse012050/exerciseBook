@@ -6,22 +6,29 @@
     <title>예상 대진표</title>
     <script>
         function SE(n,a,b){
-            var answer = 0;
+            var answer = 1;
             const arr = new Array(8).fill(0)
             
-            for(let i = 0; i < Math.log(n) / Math.log(2); i++){
-                answer++;
+            // for(let i = 0; i < Math.log(n) / Math.log(2); i++){
+            //     answer++;
 
-                if(a % 2 === 1 && b - a === 1){
-                    break;
-                }
+            //     if(a % 2 === 1 && b - a === 1){
+            //         break;
+            //     }
+            //     a = Math.ceil(a / 2)
+            //     b = Math.ceil(b / 2)
+                
+            // }
+            while(!(a % 2 === 1 && b - a === 1)){
+                answer++;
+                
                 a = Math.ceil(a / 2)
                 b = Math.ceil(b / 2)
-                
             }
             return answer;
         }
         console.log(SE(8, 1, 7));
+        console.log(SE(8, 5, 8));
         
     </script>
 </head>
