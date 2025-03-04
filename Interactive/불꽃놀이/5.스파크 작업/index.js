@@ -1,6 +1,7 @@
 import CanvasOption from './js/CanvasOption.js';
 import Tail from './js/Tail.js';
 import Particle from './js/Particle.js';
+import Spark from './js/Spark.js';
 import { randomNumber } from './js/utils.js';
 
 class Canvas extends CanvasOption{
@@ -8,6 +9,7 @@ class Canvas extends CanvasOption{
         super();
         this.tails = [];
         this.particles = [];
+        this.sparks = [];
     }
 
     init(){
@@ -23,7 +25,8 @@ class Canvas extends CanvasOption{
     createTail(){
         const x = randomNumber(this.canvasWidth * 0.2, this.canvasWidth * 0.8);
         const vy = this.canvasHeight * randomNumber(0.01, 0.013) * -1;
-        this.tails.push(new Tail(x, vy));
+        const colorDeg = randomNumber(0, 360)
+        this.tails.push(new Tail(x, vy, colorDeg));
     }
 
     createParticle(x, y){
@@ -51,12 +54,20 @@ class Canvas extends CanvasOption{
             now = new Date();
             delta = now - then;
             if(this.interval > delta) return;
+            this.ctx.beginPath();
             this.ctx.fillStyle = 'black';
             this.ctx.fillRect(0, 0, this.canvasWidth, this.canvasHeight);
+            this.ctx.closePath();
 
             this.tails.forEach((tail, idx) => {
                 tail.draw();
                 tail.update();
+                for(let a = 0; a < Math.round(-tail.vy * 0.5); a++){
+                    const vx = randomNumber(-5, 5) * 0.05;
+                    const vy = randomNumber(-5, 5) * 0.05;
+                    const opacity = Math.min(-tail.vy, 0.5);
+                    this.sparks.push(new Spark(tail.x, tail.y, vx, vy, opacity, tail.colorDeg));
+                }
                 if(tail.opacity <= 0.2){
                     this.tails.splice(idx, 1)
                     this.createParticle(tail.x, tail.y);
@@ -67,9 +78,21 @@ class Canvas extends CanvasOption{
                 particle.draw();
                 particle.update();
 
+                if(Math.random() < 0.1) {
+                    this.sparks.push(new Spark(particle.x, particle.y, 0, 0, 0.3))
+                }
+                // this.sparks.push(new Spark(particle.x, particle.y));
+
                 if(particle.opacity <= 0){
                     this.particles.splice(idx, 1)
                 }
+            })
+
+            this.sparks.forEach((spark, idx) => {
+                spark.update();
+                spark.draw();
+
+                if(spark.opacity < 0) this.sparks.splice(idx, 1);
             })
 
             then = now - (delta % this.interval)
