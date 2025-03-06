@@ -6,14 +6,27 @@
     <title>연속 부분 수열 합의 개수</title>
     <script>
         function SE(elements) {
-            const answer = elements.reduce((a, b, c, d) => {
-                return elements.length - 1 <= c ? a : [...d, ...a.map((value, idx) => value + d[(idx + c + 1) % d.length])];
-            }, [...elements])
+            // const answer = elements.reduce((a, b, c, d) => {
+            //     return elements.length - 1 <= c ? a : [...d, ...a.map((value, idx) => value + d[(idx + c + 1) % d.length])];
+            // }, [...elements])
             
-            return new Set(answer).size;
+            // return new Set(answer).size;
+
+            var answer = [...elements];
+            elementsCopy = [...elements, ...elements]
+            for(let a = 2; a <= elements.length - 1; a++){
+                for(let b = 0; b < elements.length; b++){
+                    let sum = 0;
+                    for(let c = b; c < a + b; c++){
+                        sum += elementsCopy[c];
+                    }
+                    answer.push(sum);
+                }
+            }
+            return new Set(answer).size + 1;
         }
         // console.log(SE([10, 20, 30, 40])); /* 18 */
-        console.log(SE([7, 9, 1, 1, 4])); /* 18 */
+        console.log(SE([7, 9, 1, 1, 4])); /* 18 */ 
         
     </script>
 </head>
