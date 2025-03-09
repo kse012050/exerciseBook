@@ -7,31 +7,18 @@
     <script>
         function SE(s) {
             var answer = 0;
-            const obj = {
-                '(' : 1,
-                ')' : -1,
-                '{' : 2,
-                '}' : -2,
-                '[' : 3,
-                ']' : -3,
-            }
-            s = s.split('').map((s) => obj[s])
+            const arr = ['()', '{}', '[]'];
             for(let a = 0; a < s.length; a++){
-                for(let b = 1; b < s.length; b += 2){
-                    if(!(s[b] + s[b - 1])){
-                        break;
-                    }
-                    if(b === s.length - 1){
-                        answer++;
-                    }
+                let result = s;
+                while(arr.some((data) => result.includes(data))){
+                    result = result.replace(/\(\)|\{\}|\[\]/g, "");  
                 }
-                s.push(s.shift())
+                if(!result){answer++};
+                s = s.slice(1) + s.slice(0, 1);
             }
-            return answer;
+            return answer; 
         }
-        // console.log(SE("[](){}"));
         console.log(SE("}]()[{"));
-        
     </script>
 </head>
 <body>
