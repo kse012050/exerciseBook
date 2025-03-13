@@ -7,20 +7,13 @@
     <script>
         function SE(want, number, discount) {
             var answer = 0;
-            // const index = discount.map((list, idx) => want.includes(list) && idx).filter((idx) => idx && idx < discount.length - 9)
-            // console.log(index);
-            
-            discount.map((list, idx) => want.includes(list) && idx).filter((idx) => idx && idx < discount.length - 9).forEach((numb) => {
+            discount.map((list, idx) => want.includes(list) && idx).filter((idx) => /^\d+$/.test(idx) && idx < discount.length - 9).forEach((numb) => {
                 want.every((list, idx) => discount.slice(numb, numb + 10).filter((list2) => list === list2).length === number[idx]) && answer++;
             })
-            // for(let a = 0; a < index.length; a++) {
-            //     let arr = discount.slice(index[a], index[a] + 10);
-            //     want.every((list, idx) => arr.filter((list2) => list === list2).length === number[idx]) && answer++;
-            // }
-            
-            return answer;
+            return answer;  
         }
-        console.log(SE(["banana", "apple", "rice", "pork", "pot"], [3, 2, 2, 2, 1], ["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]));
+        // console.log(SE(["banana", "apple", "rice", "pork", "pot"], [3, 2, 2, 2, 1], ["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"])); // 3
+        console.log(SE(["banana", "apple", "rice", "pork", "pot"], [3, 2, 2, 2, 1], ["apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana", "chicken", "apple"])); // 3
         
     </script>
 </head>
