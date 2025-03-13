@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n^2 배열 자르기</title>
+    <script>
+        function SE(n, left, right) {
+            var answer = [];
+            for(let a = left + 1; a <= right + 1; a++){
+                const quotient = Math.floor(a / n);
+                const remainder = a % n;
+                answer.push(remainder ? Math.max(remainder, quotient + 1) : n);
+            }
+            return answer;
+        }
+        console.log(SE(3, 2, 5)); // [3,2,2,3]
+        // [1,2,3]
+        // [2,2,3]
+        // [3,3,3]
+        // 123 223 333
+        // 1 2 3 ( 4 ) 5 6 ( 7 8 ) 9
+        // 0 0 0 1 1 1 2 2 2 
+        // 1 2 0 1 2 0 1 2 0
+        // console.log(SE(4, 7, 14));  // [4,3,3,3,4,4,4,4]
+        
+        // [1,2,3,4]
+        // [2,2,3,4]
+        // [3,3,3,4]
+        // [4,4,4,4]
+        // 8 9 10 11 12 13 14 15 16
+        // 4 3 3  3  4  4  4  4  4
+        // 0 1 2  3  0  1  2  3  0
+        // 2 2 2  2  3  3  3  3  4
+
+        // 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+        // 1 2 3 0 1 2 3 0 1 2  3  0  1  2  3  0  1
+        // 0 0 0 1 1 1 1 2 2 2  2  3  3  3  3  4  4
+        // 1 2 3 4 2 2 3 4 3 3  3  4  4  4  4  4  5
+
+        // 나머지 <= 몫 ? 몫 + 1 : 나머지
+
+        function case01(n, left, right) {
+            var answer = [];
+
+            for (let i = left; i <= right; i++) {
+                answer.push(Math.max(i % n, parseInt(i / n)) + 1)
+            }
+
+            return answer;
+        }
+    </script>
+</head>
+<body>
+    <h1>n^2 배열 자르기</h1>
+    <h2>문제 설명</h2>
+    <p>정수 <mark>n</mark>, <mark>left</mark>, <mark>right</mark>가 주어집니다. 다음 과정을 거쳐서 1차원 배열을 만들고자 합니다.</p>
+    <ol>
+        <li><mark>n</mark>행 <mark>n</mark>열 크기의 비어있는 2차원 배열을 만듭니다.</li>
+        <li><mark>i = 1, 2, 3, ..., n</mark>에 대해서, 다음 과정을 반복합니다.
+            <ul>
+                <li>1행 1열부터 <mark>i</mark>행 <mark>i</mark>열까지의 영역 내의 모든 빈 칸을 숫자 <mark>i</mark>로 채웁니다.</li>
+            </ul>
+        </li>
+        <li>1행, 2행, ..., <mark>n</mark>행을 잘라내어 모두 이어붙인 새로운 1차원 배열을 만듭니다.</li>
+        <li>새로운 1차원 배열을 <mark>arr</mark>이라 할 때, <mark>arr[left]</mark>, <mark>arr[left+1]</mark>, ..., <mark>arr[right]</mark>만 남기고 나머지는 지웁니다.</li>
+    </ol>    
+    <p>정수 <mark>n</mark>, <mark>left</mark>, <mark>right</mark>가 매개변수로 주어집니다. 주어진 과정대로 만들어진 1차원 배열을 return 하도록 solution 함수를 완성해주세요.</p>
+
+    <h2>제한사항</h2>
+    <ul>
+        <li>1 ≤ <mark>n</mark> ≤ 107</li>
+        <li>0 ≤ <mark>left</mark> ≤ <mark>right</mark> < n2</li>
+        <li><mark>right</mark> - <mark>left</mark> < 105</li>
+    </ul>
+
+    <h2>입출력 예</h2>
+    <table border="1">
+        <tr>
+            <td><b>n</b></td>
+            <td><b>left</b></td>
+            <td><b>right</b></td>
+            <td><b>result</b></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>2</td>
+            <td>5</td>
+            <td>[3,2,2,3]</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>7</td>
+            <td>14</td>
+            <td>[4,3,3,3,4,4,4,4]</td>
+        </tr>
+    </table>
+
+    <h2>입출력 예 설명</h2>
+    <strong style="display: block;">입출력 예 #1</strong>
+    <ul>
+        <li>다음 애니메이션은 주어진 과정대로 1차원 배열을 만드는 과정을 나타낸 것입니다.</li>
+    </ul>
+    <img src="FlattenedFills_ex1.gif" alt="">
+    <strong style="display: block;">입출력 예 #2</strong>
+    <ul>
+        <li>다음 애니메이션은 주어진 과정대로 1차원 배열을 만드는 과정을 나타낸 것입니다.</li>
+    </ul>
+    <img src="FlattenedFills_ex2.gif" alt="">
+</body>
+</html>
