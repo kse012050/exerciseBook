@@ -5,20 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>행렬의 곱셈</title>
     <script>
+        // function SE(arr1, arr2) {
+        //     var answer = [];
+        //     arr2 = arr2.map((arr, idx) => arr.map((num, idx2) => arr2[idx2][idx]))
+        //     arr1.forEach((arr) => {
+        //         answer.push(arr.map((_, idx) => {
+        //             return arr.reduce((a, b, c, d) => {
+        //                 return a += b * arr2[idx][c]
+        //             }, 0)
+        //         }))
+        //     })            
+        //     return answer;
+        // }
+
         function SE(arr1, arr2) {
-            var answer = [];
-            arr2 = arr2.map((arr, idx) => arr.map((num, idx2) => arr2[idx2][idx]))
-            arr1.forEach((arr) => {
-                answer.push(arr.map((_, idx) => {
-                    return arr.reduce((a, b, c, d) => {
-                        return a += b * arr2[idx][c]
-                    }, 0)
-                }))
-            })            
-            return answer;
+            // return arr1.map((arr, idx) => arr.map((numb, idx2) => arr.reduce((a, b, c, d) => a + b * arr2[c][idx2], 0)));
+            return arr1.map((arr, idx) => arr.map((numb, idx2) => arr.reduce((a, b, c, d) => a + b * arr2[c][idx2], 0)).filter((numb) => Number(numb)));
         }
-        // console.log(SE([[1, 4], [3, 2], [4, 1]], [[3, 3], [3, 3]])); // [[15, 15], [15, 15], [15, 15]]
-        console.log(SE([[2, 3, 2], [4, 2, 4], [3, 1, 4]], [[5, 4, 3], [2, 4, 1], [3, 1, 1]])); // [[22, 22, 11], [36, 28, 18], [29, 20, 14]]
+        // console.log(SE([[1, 4], [3, 2], [4, 1]], [[3, 3], [3, 3]])); // [[15, 15], [15, 15], [15, 15]] 
+        // console.log(SE([[2, 3, 2], [4, 2, 4], [3, 1, 4]], [[5, 4, 3], [2, 4, 1], [3, 1, 1]])); // [[22, 22, 11], [36, 28, 18], [29, 20, 14]]
+        console.log(SE([[2, 3, 2], [4, 2, 4], [3, 1, 4]], [[5, 4], [2, 4], [3, 1]]));
+        
         
         
     </script>
