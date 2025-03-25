@@ -12,13 +12,39 @@
                 return acc;
             }, {}))
             console.log(test);
-            test.reduce((acc, cur, idx, arr) => {
+            
+            let test2 = test.reduce((acc, cur, idx, arr) => {
+                const arr2 = arr.slice(idx + 1);
+                const length = arr2.length;
+                const total = combination(length)
+                let sum = 0;
+                for(let a = 1; a < length + 1; a++){
+                    sum += total / (combination(a) * combination(length - a));
+                }
+                sum *= arr2.reduce((acc2, cur2) => {
+                    if(cur2 > 1){
+                        acc2 *= cur2;
+                    }
+                    return acc2
+                }, 1)
+                console.log(sum);
                 
+                return acc + sum
             }, 0)
+
+            function combination(total){
+                let multiplication = 1;
+                for(let a = 1; a < total; a++){
+                    multiplication *= a;
+                }
+                return multiplication;
+            }
+            console.log(test2);
             
             return answer;
         }
-        console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])); // 5
+        console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])); // 5 
+        
         
     </script>
 </head>
