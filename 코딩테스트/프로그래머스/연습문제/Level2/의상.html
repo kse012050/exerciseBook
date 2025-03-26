@@ -7,30 +7,15 @@
     <script>
         function SE(clothes) {
             var answer = 0;
-            const test = Object.values(clothes.reduce((acc, cur) => {
+            const arr = Object.values(clothes.reduce((acc, cur) => {
                 acc[cur[1]] ? acc[cur[1]]++ : acc[cur[1]] = 1;
                 return acc;
             }, {}))
-            console.log(test);
             
-            let test2 = test.reduce((acc, cur, idx, arr) => {
-                const arr2 = arr.slice(idx + 1);
-                const length = arr2.length;
-                const total = combination(length)
-                let sum = 0;
-                for(let a = 1; a < length + 1; a++){
-                    sum += total / (combination(a) * combination(length - a));
-                }
-                sum *= arr2.reduce((acc2, cur2) => {
-                    if(cur2 > 1){
-                        acc2 *= cur2;
-                    }
-                    return acc2
-                }, 1)
-                console.log(sum);
-                
-                return acc + sum
-            }, 0)
+            for(let a = 1; a < arr.length; a++){
+                const length = arr.slice(a).length;
+                answer += arr.slice(a - 1).reduce((acc, cur) => cur > 1 ? acc + cur : acc, 0) * combination(length);
+            }
 
             function combination(total){
                 let multiplication = 1;
@@ -39,11 +24,12 @@
                 }
                 return multiplication;
             }
-            console.log(test2);
+            answer += arr.reduce((acc, cur) => acc + cur, 0);
             
             return answer;
         }
         console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])); // 5 
+        console.log(SE([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
         
         
     </script>
