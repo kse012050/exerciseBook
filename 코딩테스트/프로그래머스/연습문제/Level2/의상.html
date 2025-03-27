@@ -14,22 +14,28 @@
             
             for(let a = 1; a < arr.length; a++){
                 const length = arr.slice(a).length;
-                answer += arr.slice(a - 1).reduce((acc, cur) => cur > 1 ? acc + cur : acc, 0) * combination(length);
+                for(let b = 1; b <= length; b++){
+                    answer += combination(length) / (combination(b) * combination(length - b));
+                }
+                answer *= arr.slice(a - 1).reduce((acc, cur) => cur > 1 ? acc * cur : acc, 1)
             }
 
             function combination(total){
                 let multiplication = 1;
-                for(let a = 1; a < total; a++){
+                for(let a = 1; a <= total; a++){
                     multiplication *= a;
                 }
                 return multiplication;
             }
-            answer += arr.reduce((acc, cur) => acc + cur, 0);
+            answer += arr.reduce((acc, cur) => acc + cur, 0); 
             
             return answer;
         }
         console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])); // 5 
-        console.log(SE([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
+        // console.log(SE([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
+        // console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"], ["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
+        // console.log(SE([['a', 'a'], ['b','b'], ['c','c']])); // 7
+        
         
         
     </script>
