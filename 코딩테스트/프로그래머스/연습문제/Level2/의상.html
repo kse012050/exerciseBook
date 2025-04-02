@@ -5,41 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>의상</title>
     <script>
+        // 공식 찾기
+        // 옷의 종류 1가지 : (a + 1) - 1 = a
+        // 옷의 종류 2가지 : (a + 1)(b + 1) - 1 = ab + a + b + 1 - 1
+        // 옷의 종류 3가지 : (a + 1)(b + 1)(c + 1) - 1 = abc + ab + ac + bc + a + b + c + 1 - 1
+        // 조합록의 곱의 법칙
+        
         function SE(clothes) {
-            var answer = 0;
-            const arr = Object.values(clothes.reduce((acc, cur) => {
-                acc[cur[1]] ? acc[cur[1]]++ : acc[cur[1]] = 1;
+            return Object.values(clothes.reduce((acc, cur) => {
+                acc[cur[1]] ? acc[cur[1]]++ : acc[cur[1]] = 2;
                 return acc;
-            }, {}))
-            
-            for(let a = 1; a <= arr.length; a++){
-                const length = arr.slice(a).length;
-                let result = 0;
-                for(let b = 1; b <= length; b++){
-                    result += combination(length) / (combination(b) * combination(length - b));
-                }
-                result++;
-                result *= arr.slice(a - 1).reduce((acc, cur) => cur > 1 ? acc * cur : acc, 1)
-                answer += result;
-            }
-
-            function combination(total){
-                let multiplication = 1;
-                for(let a = 1; a <= total; a++){
-                    multiplication *= a;
-                }
-                return multiplication;
-            }
-            
-            return answer;
+            }, {})).reduce((acc, cur) => acc *= cur, 1) - 1;
         }
         // console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"]])); // 5 
         // console.log(SE([["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
         // console.log(SE([["yellow_hat", "headgear"], ["blue_sunglasses", "eyewear"], ["green_turban", "headgear"], ["crow_mask", "face"], ["blue_sunglasses", "face"], ["smoky_makeup", "face"]]));
         // console.log(SE([['a', 'a'], ['b','b'], ['c','c']])); // 7
         // console.log(SE([['a', 'a'], ['a', 'a'], ['b','b'], ['c','c']])); // 11
-        console.log(SE([['a', 'a'], ['a', 'a'], ['b','b'], ['b','b'], ['c','c']])); // 21
-        
+        console.log(SE([['a', 'a'], ['a', 'a'], ['b','b'], ['b','b'], ['c','c'], ['c','c']])); // 26
+         
     </script>
 </head>
 <body>
@@ -50,12 +34,12 @@
 
     <table border="1">
         <tr>
-            <td>종류</td>
-            <td>이름</td>
+            <td><b>종류</b></td>
+            <td><b>이름</b></td>
         </tr>
         <tr>
-            <td><b>얼굴</b></td>
-            <td><b>동그란 안경, 검정 선글라스</b></td>
+            <td>얼굴</td>
+            <td>동그란 안경, 검정 선글라스</td>
         </tr>
         <tr>
             <td>상의</td>
