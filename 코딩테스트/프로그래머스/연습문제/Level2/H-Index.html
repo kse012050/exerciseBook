@@ -7,12 +7,16 @@
     <script>
         function SE(citations) {
             var answer = 0;
-            const citationsCounter = citations.filter((num) => num > 0).length;
-            citations = citations.sort((a, b) => b - a).filter((num) => num <= citationsCounter);
-            return citations[0];
+            citations.sort((a, b) => b - a).some((data, index, arr)=>{
+                const length = arr.filter((num) => num >= data).length
+                answer = index;
+                return data < index + 1;
+            })
+            return answer;
         }
 
-        console.log(SE([3, 0, 6, 1, 5])); // 3
+        // console.log(SE([3, 0, 6, 1, 5])); // 3
+        console.log(SE([10, 9, 8, 1, 1])); // 4
         
     </script>
 </head>
@@ -27,7 +31,7 @@
     <ul>
         <li>과학자가 발표한 논문의 수는 1편 이상 1,000편 이하입니다.</li>
         <li>논문별 인용 횟수는 0회 이상 10,000회 이하입니다.</li>
-    </ul>
+    </ul> 
 
     <h2>입출력 예</h2>
     <table border="1">
