@@ -8,11 +8,11 @@
         function SE(k, dungeons) {
             var answer = -1;
             dungeons.sort(([a, b], [c, d]) => (c - d) - (a - b))
-
+            
             dungeons.some(([a, b], index) => {
-                answer = index + 1;
                 if(k >= a){
                     k -= b;
+                    answer = index + 1;
                     return false;
                 }else{
                     return true;
@@ -21,7 +21,7 @@
 
             return answer;
         }
-        console.log(SE(80, [[80,20],[50,40],[30,10]])); // 3
+        console.log(SE(80, [[80,60],[50,40],[30,10]])); // 3 
         
     </script>
 </head>
