@@ -6,22 +6,23 @@
     <title>피로도</title>
     <script>
         function SE(k, dungeons) {
-            var answer = -1;
+            var answer = 0;
             dungeons.sort(([a, b], [c, d]) => (c - d) - (a - b))
+            console.log(dungeons);
             
-            dungeons.some(([a, b], index) => {
+            dungeons.forEach(([a, b], index) => {
                 if(k >= a){
                     k -= b;
-                    answer = index + 1;
-                    return false;
-                }else{
-                    return true;
+                    answer++;
                 }
             })
 
             return answer;
         }
-        console.log(SE(80, [[80,60],[50,40],[30,10]])); // 3 
+        // console.log(SE(80, [[80,20],[50,40],[30,10]])); // 3
+        console.log(SE(78, [[78, 18], [70, 11], [67, 9], [60, 8], [59, 2], [57, 54]])); // 4
+        
+        
         
     </script>
 </head>
