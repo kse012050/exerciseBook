@@ -5,23 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>피로도</title>
     <script>
-        function SE(k, dungeons) {
-            var answer = 0;
-            dungeons.sort(([a, b], [c, d]) => (c - d) - (a - b))
-            console.log(dungeons);
-            
-            dungeons.forEach(([a, b], index) => {
-                if(k >= a){
-                    k -= b;
-                    answer++;
-                }
-            })
+        function gpt(k, dungeons) {
+            let maxCount = 0;
 
-            return answer;
+            // 모든 순열을 생성하는 함수
+            function getPermutations(arr, n) {
+                if (n === 1) return arr.map((v) => [v]);
+                const result = [];
+
+                arr.forEach((fixed, idx, origin) => {
+                    const rest = [...origin.slice(0, idx), ...origin.slice(idx + 1)];
+                    const permutations = getPermutations(rest, n - 1);
+                    const attached = permutations.map((v) => [fixed, ...v]);
+                    result.push(...attached);
+                });
+
+                return result;
+            }
+
+            // 모든 순열을 구한다
+            const permutations = getPermutations(dungeons, dungeons.length);
+
+            // 각 순열마다 탐험 가능한 던전 수를 계산
+            for (let perm of permutations) {
+                let fatigue = k;
+                let count = 0;
+
+                for (let [minReq, cost] of perm) {
+                    if (fatigue >= minReq) {
+                        fatigue -= cost;
+                        count++;
+                    } else {
+                        break; // 더 이상 못 탐험하면 그만
+                    }
+                }
+
+                maxCount = Math.max(maxCount, count);
+            }
+
+            return maxCount;
         }
         // console.log(SE(80, [[80,20],[50,40],[30,10]])); // 3
-        console.log(SE(78, [[78, 18], [70, 11], [67, 9], [60, 8], [59, 2], [57, 54]])); // 4
+        // console.log(SE(78, [[78, 18], [70, 11], [67, 9], [60, 8], [59, 2], [57, 54]])); // 4 
         
+        function case01(k, d) {
+            const N = d.length
+            const visited = new Array(N).fill(0)
+            let ans = 0
+
+            function dfs(k, cnt){
+                ans = Math.max(cnt, ans)
+
+                for (let j = 0; j < N; j++){
+                    if (k >= d[j][0] && !visited[j]){
+                        visited[j] = 1
+                        dfs(k - d[j][1], cnt + 1)
+                        visited[j] = 0
+                    }
+                }
+            }
+
+            dfs(k, 0)
+            return ans;
+        }
         
         
     </script>
