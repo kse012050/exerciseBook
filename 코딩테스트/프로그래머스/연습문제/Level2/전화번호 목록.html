@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전화번호 목록</title>
     <script>
+        console.log('1234'.split('24')[0]);
+        
         function SE(phone_book) {
             var answer = true;
-            phone_book.sort((a, b) => a.length - b.length).forEach((data) => {
-                if(!answer) return;
+            phone_book.sort((a, b) => a.length - b.length).some((data) => {
                 phone_book = phone_book.slice(1)
-                phone_book.forEach((data2) => {
-                    data2 = data2.slice(0, data.length);
-                    if(data === data2){
+                return phone_book.some((data2) => {
+                    if(!data2.split(data)[0]){
                         answer = false;
+                        return !answer;
                     }
                 })      
             });
@@ -21,7 +22,7 @@
             return answer;
         }
         console.log(SE(["119", "97674223", "1195524421"]));
-        console.log(SE(["123","456","789"]));
+        console.log(SE(["123","456","789"])); 
     </script>
 </head>
 <body>
