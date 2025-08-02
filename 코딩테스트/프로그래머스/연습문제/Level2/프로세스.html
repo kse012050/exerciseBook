@@ -8,13 +8,30 @@
         function SE(priorities, location) {
             var answer = 0;
             let item = priorities[location]
+
+            // priorities = priorities.filter((data) => data >= itme);
+
+            // priorities.forEach((data, idx) => {
+            //     if(idx < location){
+
+            //     }
+            // })
+            
+            priorities = priorities.reduce((acc, cur, idx) => {
+                // console.log(acc, cur);
+                return {...acc, [idx]: cur}
+            }, {})
+
+            priorities = new Map(Object.entries(priorities).sort((a, b) => b[1] - a[1]));
+
+            console.log(priorities);
             
             
-            return priorities.filter((data, idx) => data > item || (idx < location && item === data)).length + 1;
+            // return priorities.filter((data, idx) => data > item || (idx < location && item === data)).length + 1;
         }
 
         console.log(SE([2, 1, 3, 2], 2));
-        console.log(SE([1, 1, 9, 1, 1, 1], 0));
+        // console.log(SE([1, 1, 9, 1, 1, 1], 0));  
         
     </script>
 </head>
