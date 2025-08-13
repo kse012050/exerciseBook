@@ -8,30 +8,59 @@
         function SE(priorities, location) {
             var answer = 0;
             let item = priorities[location]
-
-            // priorities = priorities.filter((data) => data >= itme);
-
-            // priorities.forEach((data, idx) => {
-            //     if(idx < location){
-
-            //     }
-            // })
-            
-            priorities = priorities.reduce((acc, cur, idx) => {
-                // console.log(acc, cur);
-                return {...acc, [idx]: cur}
-            }, {})
-
-            priorities = new Map(Object.entries(priorities).sort((a, b) => b[1] - a[1]));
-
-            console.log(priorities);
-            
-            
-            // return priorities.filter((data, idx) => data > item || (idx < location && item === data)).length + 1;
+            let count = 0;
+            priorities[location] = 'a'
+            priorities = priorities.filter((data) => data >= item || data === 'a');
+            while(true){
+                let numb = priorities[0]
+                priorities = priorities.slice(1)
+                let isStandard = false;
+                if(numb === 'a'){
+                    numb = item
+                    isStandard = true;
+                };
+                
+                let isUpNumber = !!priorities.filter((data) => data > numb).length;
+                if(isUpNumber){
+                    if(isStandard){
+                        priorities.push('a');
+                    }else{
+                        priorities.push(numb);
+                    }
+                }else if(isStandard){
+                    break;
+                }else{
+                    answer++;
+                }
+                
+            }
+            return answer + 1;
         }
 
         console.log(SE([2, 1, 3, 2], 2));
-        // console.log(SE([1, 1, 9, 1, 1, 1], 0));  
+        console.log(SE([1, 1, 9, 1, 1, 1], 0));  
+
+        function case01(priorities, location) {
+            var list = priorities.map((t,i)=>({
+                my : i === location,
+                val : t
+            }));
+            var count = 0;        
+            while(true){
+                var cur = list.splice(0,1)[0];
+                // list.shift(); 
+                if(list.some(t=> t.val > cur.val )){
+                    list.push(cur);                        
+                }
+                else{            
+                    count++;
+                    if(cur.my) return count;
+                }
+            }
+        }
+
+        console.log(case01([2, 1, 3, 2], 2));
+        console.log(case01([1, 1, 9, 1, 1, 1], 0));  
         
     </script>
 </head>
