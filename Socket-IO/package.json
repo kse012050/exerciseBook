@@ -9,6 +9,7 @@
   "author": "Nia",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.22.1"
+    "express": "^4.22.1",
+    "socket.io": "^4.8.3"
   }
 }
