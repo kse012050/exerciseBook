@@ -5,7 +5,9 @@ const { Server } = require('socket.io');
 
 const app = express();
 const server = createServer(app);
-const io = new Server(server);
+const io = new Server(server, {
+    connectionStateRecovery: {}
+});
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'index.html'));
@@ -25,11 +27,20 @@ app.get('/', (req, res) => {
 // });
 
 io.on('connection', (socket) => {
+  console.log('user connected:', socket.id);
+  socket.broadcast.emit('user connection', socket.id);
+
   socket.broadcast.emit('hi');
   socket.on('chat message', (msg) => {
     io.emit('chat message', msg);
   });
+
+  socket.on('disconnect', (reason) => {
+    console.log('user disconnected:', socket.id, reason);
+    socket.broadcast.emit('user disconnected', socket.id);
+  });
 });
+
 
 server.listen(3000, () => {
   console.log('server running at http://localhost:3000');
