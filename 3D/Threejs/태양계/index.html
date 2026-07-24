@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#030711" />
+    <meta name="description" content="Three.js로 구현한 인터랙티브 3D 태양계" />
+    <title>Solar Atlas — 3D 태양계</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <canvas id="space-canvas" aria-label="3D 태양계"></canvas>
+
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Solar Atlas 홈">
+        <span class="brand-mark" aria-hidden="true"><i></i></span>
+        <span>SOLAR ATLAS</span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>실시간 시뮬레이션</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">INTERACTIVE PLANETARY SYSTEM</p>
+        <h1 id="page-title">우리의<br /><em>태양계</em></h1>
+        <p class="intro">
+          태양의 중력에 이끌려 움직이는 여덟 개의 세계.<br />
+          마우스로 우주를 직접 탐험해 보세요.
+        </p>
+        <div class="hint">
+          <span class="mouse-icon" aria-hidden="true"></span>
+          <span><b>드래그</b> 회전 &nbsp;·&nbsp; <b>우클릭</b> 이동 &nbsp;·&nbsp; <b>스크롤</b> 확대</span>
+        </div>
+      </section>
+
+      <aside class="navigator" aria-label="천체 탐색">
+        <div class="panel-heading">
+          <div>
+            <p>CELESTIAL BODIES</p>
+            <h2>천체 탐색</h2>
+          </div>
+          <span id="body-count">09</span>
+        </div>
+        <nav id="planet-list"></nav>
+      </aside>
+
+      <section class="details" id="details" aria-live="polite">
+        <div class="details-index" id="detail-index">03</div>
+        <div>
+          <p class="detail-type" id="detail-type">TERRESTRIAL PLANET</p>
+          <h2 id="detail-name">지구 <small>EARTH</small></h2>
+          <p id="detail-description">물이 흐르고 생명이 숨 쉬는 우리의 푸른 행성입니다.</p>
+        </div>
+        <dl>
+          <div><dt>태양과의 거리</dt><dd id="detail-distance">149.6M km</dd></div>
+          <div><dt>공전 주기</dt><dd id="detail-period">365.3 일</dd></div>
+          <div><dt>위성</dt><dd id="detail-moons">1</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <div class="controls">
+      <button id="reset-view" type="button" title="전체 보기" aria-label="전체 보기">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+      </button>
+      <button id="toggle-play" class="primary-control" type="button" title="일시 정지" aria-label="일시 정지">
+        <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14"/></svg>
+        <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7Z"/></svg>
+      </button>
+      <label class="speed-control">
+        <span>TIME</span>
+        <input id="speed" type="range" min="0.1" max="3" value="1" step="0.1" />
+        <output id="speed-output">1.0×</output>
+      </label>
+    </div>
+
+    <div class="loading" id="loading">
+      <span class="loading-orbit"><i></i></span>
+      <p>태양계를 불러오는 중</p>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
