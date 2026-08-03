@@ -10,13 +10,15 @@
             citations.sort((a, b) => b - a).some((data, index, arr)=>{
                 const length = arr.filter((num) => num >= data).length
                 answer = index;
+                console.log(data, index);
+                
                 return data < index + 1;
             })
             return answer;
         }
 
-        // console.log(SE([3, 0, 6, 1, 5])); // 3
-        console.log(SE([10, 9, 8, 1, 1])); // 4
+        console.log(SE([3, 0, 6, 1, 5])); // 3
+        // console.log(SE([10, 9, 8, 1, 1])); // 3
         
     </script>
 </head>

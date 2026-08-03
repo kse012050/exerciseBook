@@ -17,6 +17,29 @@
             }
             return ans;
         }
+
+        function case01(n){
+            if(n === 1) return 1;
+            const nArr = Array.from(n.toString(2));
+            return nArr.reduce((a,b)=>(+a)+(+b));
+        }
+
+        function case02(n){
+            return n.toString(2).replace(/0/g,"").length
+        }
+
+        function case03(n){
+            if(n == 1) return 1;
+
+            var battery = 0;
+            // n을 2로 나눠가며 나오는 나머지의 합
+            while(n>0) {
+                battery += n%2;
+                n = Math.floor(n/2);
+            }
+
+            return battery;
+        }
     </script>
 </head>
 <body>

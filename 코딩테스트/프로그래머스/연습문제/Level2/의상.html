@@ -9,8 +9,8 @@
         // 옷의 종류 1가지 : (a + 1) - 1 = a
         // 옷의 종류 2가지 : (a + 1)(b + 1) - 1 = ab + a + b + 1 - 1
         // 옷의 종류 3가지 : (a + 1)(b + 1)(c + 1) - 1 = abc + ab + ac + bc + a + b + c + 1 - 1
-        // 조합록의 곱의 법칙
-        
+        // 조합록의 곱의 법칙 
+
         function SE(clothes) {
             return Object.values(clothes.reduce((acc, cur) => {
                 acc[cur[1]] ? acc[cur[1]]++ : acc[cur[1]] = 2;

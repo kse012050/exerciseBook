@@ -25,7 +25,8 @@
 
             // 모든 순열을 구한다
             const permutations = getPermutations(dungeons, dungeons.length);
-
+            console.log(permutations);
+            
             // 각 순열마다 탐험 가능한 던전 수를 계산
             for (let perm of permutations) {
                 let fatigue = k;
@@ -45,6 +46,7 @@
 
             return maxCount;
         }
+        console.log(gpt(80, [[80,20],[50,40],[30,10]])); // 3
         // console.log(SE(80, [[80,20],[50,40],[30,10]])); // 3
         // console.log(SE(78, [[78, 18], [70, 11], [67, 9], [60, 8], [59, 2], [57, 54]])); // 4 
         
@@ -67,7 +69,7 @@
 
             dfs(k, 0)
             return ans;
-        }
+        } 
         
         
     </script>
