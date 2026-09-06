@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>03 - Time Color (Three.js)</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #111;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script type="module">
+    import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.185.1/build/three.module.js";
+
+    const canvas = document.querySelector("#canvas");
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: false,
+      antialias: false,
+      depth: false,
+      stencil: false,
+      powerPreference: "high-performance"
+    });
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.Camera();
+    const geometry = new THREE.PlaneGeometry(2, 2);
+
+    const VS = `
+      attribute vec3 position;
+      attribute vec2 uv;
+      varying vec2 vUv;
+
+      void main() {
+        vUv = uv;
+        gl_Position = vec4(position, 1.0);
+      }
+    `;
+
+    const FS = `
+      precision mediump float;
+
+      uniform float uTime;
+      varying vec2 vUv;
+
+      void main() {
+        vec3 blue = vec3(0.04, 0.18, 0.55);
+        vec3 coral = vec3(1.0, 0.45, 0.25);
+
+        float movement = 0.5 + 0.5 * sin(vUv.y * 4.0 - uTime * 1.5);
+        vec3 color = mix(blue, coral, movement);
+
+        gl_FragColor = vec4(color, 1.0);
+      }
+    `;
+
+    const material = new THREE.RawShaderMaterial({
+      vertexShader: VS,
+      fragmentShader: FS,
+      uniforms: {
+        uTime: { value: 0 }
+      },
+      depthTest: false,
+      depthWrite: false
+    });
+
+    const rectangle = new THREE.Mesh(geometry, material);
+    rectangle.frustumCulled = false;
+    scene.add(rectangle);
+
+    function draw(timeMilliseconds) {
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(window.innerWidth, window.innerHeight, false);
+
+      material.uniforms.uTime.value = timeMilliseconds * 0.001;
+      renderer.render(scene, camera);
+
+      requestAnimationFrame(draw);
+    }
+
+    requestAnimationFrame(draw);
+  </script>
+</body>
+</html>
